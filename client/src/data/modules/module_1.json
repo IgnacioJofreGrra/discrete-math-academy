@@ -1,0 +1,259 @@
+{
+  "id": "module_1_pbo",
+  "title": "Módulo 1: Principio del Buen Orden (PBO)",
+  "description": "Aprende uno de los principios fundamentales de la matemática discreta: el Principio del Buen Orden y sus aplicaciones en pruebas matemáticas.",
+  "order": 1,
+  "difficulty": "intermediate",
+  "estimatedHours": 10,
+  "icon": "📐",
+  "sections": [
+    {
+      "id": "section_1_1",
+      "title": "Concepto Fundamental del PBO",
+      "description": "Entiende qué es el Principio del Buen Orden y por qué es tan importante.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "**Principio del Buen Orden (PBO)**: Todo conjunto no vacío de enteros no negativos tiene un elemento mínimo.",
+          "mathematical_notation": "Si $C \\subset \\mathbb{N}$ y $C \\neq \\emptyset$, entonces $\\exists c_0 = \\min C$ tal que $c_0 \\leq c$ para todo $c \\in C$.",
+          "examples": [
+            {
+              "text": "El conjunto {3, 7, 2, 9} tiene mínimo 2.",
+              "latex": "\\{3, 7, 2, 9\\} \\text{ tiene mínimo } 2"
+            },
+            {
+              "text": "El conjunto {0, 1, 2, 3, ...} tiene mínimo 0.",
+              "latex": "\\mathbb{N} \\text{ tiene mínimo } 0"
+            },
+            {
+              "text": "El conjunto vacío NO tiene mínimo (no aplica PBO).",
+              "latex": "\\emptyset \\text{ no tiene mínimo}"
+            }
+          ],
+          "why_it_matters": "Aunque parece obvio, el PBO es uno de los axiomas fundamentales de la matemática discreta y proporciona una herramienta poderosa para demostrar propiedades de números enteros.",
+          "restrictions": [
+            "Requiere que el conjunto NO sea vacío.",
+            "Requiere que sean enteros NO NEGATIVOS.",
+            "No funciona para enteros negativos.",
+            "No funciona para algunos conjuntos de racionales no negativos."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve el PBO?",
+          "applications": [
+            {
+              "area": "Pruebas por Contradicción",
+              "description": "El PBO es la base para pruebas por absurdo en matemática discreta. Permite demostrar que una propiedad es verdadera para todos los números naturales.",
+              "example": "Para probar que $P(n)$ es verdadera para todo $n \\in \\mathbb{N}$, asumimos que existe un contraejemplo y usamos el PBO para encontrar el mínimo contraejemplo, luego derivamos una contradicción."
+            },
+            {
+              "area": "Terminación de Algoritmos",
+              "description": "En ciencias de la computación, el PBO se usa para probar que un algoritmo termina. Se asigna un valor a cada paso del algoritmo, y si estos valores decrecen en un conjunto bien ordenado, el algoritmo debe terminar.",
+              "example": "En el algoritmo de Euclides para calcular $\\gcd(a, b)$, los residuos forman una sucesión decreciente de enteros no negativos, por lo que el algoritmo debe terminar."
+            },
+            {
+              "area": "Análisis de Complejidad",
+              "description": "El PBO ayuda a demostrar propiedades sobre la complejidad de algoritmos recursivos.",
+              "example": "Probar que la búsqueda binaria tiene complejidad $O(\\log n)$ usando el PBO sobre el tamaño del array."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_1_1_1",
+            "type": "flashcard",
+            "question": "¿Cuál es el Principio del Buen Orden?",
+            "answer": "Todo conjunto no vacío de enteros no negativos tiene un elemento mínimo.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_1_1_2",
+            "type": "flashcard",
+            "question": "¿Por qué el PBO no funciona para enteros negativos?",
+            "answer": "Porque el conjunto de enteros negativos no tiene un elemento mínimo (siempre hay un número más pequeño).",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_1_1_3",
+            "type": "challenge",
+            "title": "Identificar Conjuntos Bien Ordenados",
+            "problem": "¿Cuál de los siguientes conjuntos NO tiene un elemento mínimo?",
+            "options": [
+              { "value": "{5, 10, 15, 20}", "correct": false, "explanation": "Este conjunto finito sí tiene mínimo: 5." },
+              { "value": "{..., -3, -2, -1}", "correct": true, "explanation": "Correcto. Este conjunto de enteros negativos no tiene mínimo porque siempre existe uno menor." },
+              { "value": "{0, 1, 2, 3, ...}", "correct": false, "explanation": "Este conjunto sí tiene mínimo: 0." },
+              { "value": "{1/2, 2/3, 3/4, ...}", "correct": false, "explanation": "Este conjunto sí tiene mínimo: 1/2." }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_1_2",
+      "title": "Pruebas por Absurdo con el PBO",
+      "description": "Aprende a usar el PBO para construir pruebas por contradicción.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "Una **prueba por absurdo** (o por contradicción) consiste en asumir que la tesis es falsa y derivar una contradicción lógica.",
+          "template": {
+            "title": "Plantilla para Pruebas con el PBO",
+            "steps": [
+              "Definir el conjunto $C$ de contraejemplos: $C := \\{n \\in \\mathbb{N} \\mid \\neg P(n)\\}$",
+              "Asumir, para probar por contradicción, que $C \\neq \\emptyset$.",
+              "Por el PBO, $C$ tiene un elemento mínimo $n_0$.",
+              "Llegar a una contradicción (mostrando que $P(n_0)$ es verdadera o que existe un contraejemplo más pequeño).",
+              "Concluir que $C = \\emptyset$, es decir, que $P(n)$ es verdadera para todo $n$."
+            ]
+          },
+          "examples": [
+            {
+              "text": "Demostración: $2n+7$ es impar para todo $n \\in \\mathbb{N}$",
+              "latex": "2n+7 \\text{ es impar para todo } n \\in \\mathbb{N}"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Demostraciones Rigurosas",
+              "description": "Las pruebas por absurdo son una herramienta fundamental en matemática para demostrar teoremas de forma rigurosa.",
+              "example": "Demostrar que $\\sqrt{2}$ es irracional usando prueba por absurdo."
+            },
+            {
+              "area": "Verificación de Propiedades",
+              "description": "En programación, usamos pruebas por absurdo para verificar que una propiedad se cumple en todos los casos.",
+              "example": "Probar que un algoritmo de ordenamiento nunca produce un array con elementos duplicados en posiciones incorrectas."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_1_2_1",
+            "type": "step_by_step",
+            "title": "Demostración: 2n+7 es impar para todo n ∈ ℕ",
+            "steps": [
+              {
+                "instruction": "Define el conjunto de contraejemplos C.",
+                "hint": "$C = \\{n \\in \\mathbb{N} \\mid 2n+7 \\text{ es par}\\}$",
+                "answer": "$C = \\{n \\in \\mathbb{N} \\mid 2n+7 \\text{ es par}\\}$"
+              },
+              {
+                "instruction": "Asume que C no es vacío. Por el PBO, C tiene un elemento mínimo $c_0$. ¿Cuál es el menor valor posible de $c_0$?",
+                "hint": "Verifica: ¿2(0)+7 = 7 es par o impar?",
+                "answer": "$c_0 \\geq 1$ porque $2(0)+7 = 7$ es impar, así que $0 \\notin C$."
+              },
+              {
+                "instruction": "Como $c_0$ es el mínimo de C, $c_0-1 \\notin C$. ¿Qué significa esto?",
+                "hint": "Si $c_0-1 \\notin C$, entonces $2(c_0-1)+7$ es...",
+                "answer": "$2(c_0-1)+7$ es impar."
+              },
+              {
+                "instruction": "Si $2(c_0-1)+7$ es impar, ¿qué es $2(c_0-1)+7+2 = 2c_0+7$?",
+                "hint": "impar + par = ?",
+                "answer": "impar + 2 = impar, así que $2c_0+7$ es impar."
+              },
+              {
+                "instruction": "Pero esto significa que $c_0 \\notin C$. ¿Cuál es la contradicción?",
+                "hint": "Asumimos que $c_0 \\in C$...",
+                "answer": "Contradicción: asumimos que $c_0 \\in C$, pero probamos que $c_0 \\notin C$."
+              },
+              {
+                "instruction": "Conclusión: ¿Qué podemos concluir?",
+                "hint": "La contradicción vino de asumir que C no es vacío...",
+                "answer": "$C = \\emptyset$, por lo que $2n+7$ es impar para todo $n \\in \\mathbb{N}$."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exercise_1_2_2",
+            "type": "challenge",
+            "title": "Aplicar Plantilla de Prueba",
+            "problem": "¿Cuál es el primer paso al demostrar una propiedad $P(n)$ usando el PBO?",
+            "options": [
+              { "value": "Definir el conjunto de contraejemplos $C = \\{n \\in \\mathbb{N} \\mid \\neg P(n)\\}$", "correct": true, "explanation": "Correcto. Este es el primer paso de la plantilla." },
+              { "value": "Asumir que $P(n)$ es verdadera para todo $n$", "correct": false, "explanation": "Incorrecto. Eso es lo que queremos probar, no lo que asumimos." },
+              { "value": "Encontrar el mínimo de $\\mathbb{N}$", "correct": false, "explanation": "Incorrecto. Primero definimos el conjunto de contraejemplos." }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_1_3",
+      "title": "Aplicaciones: Fracciones Irreducibles",
+      "description": "Usa el PBO para demostrar que toda fracción puede simplificarse a forma irreducible.",
+      "order": 3,
+      "content": {
+        "theory": {
+          "definition": "Una fracción $\\frac{m}{n}$ está en forma irreducible si $\\gcd(m, n) = 1$.",
+          "theorem": "**Teorema**: Para cualquier par de enteros positivos $m$ y $n$, la fracción $\\frac{m}{n}$ puede escribirse de forma irreducible.",
+          "examples": [
+            {
+              "text": "La fracción $\\frac{12}{18}$ puede simplificarse a $\\frac{2}{3}$ (forma irreducible).",
+              "latex": "\\frac{12}{18} = \\frac{2}{3}"
+            },
+            {
+              "text": "La fracción $\\frac{7}{11}$ ya está en forma irreducible.",
+              "latex": "\\frac{7}{11} \\text{ es irreducible}"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Simplificación de Expresiones",
+              "description": "En álgebra y cálculo, simplificar fracciones es fundamental para resolver ecuaciones.",
+              "example": "$\\frac{12}{18} = \\frac{2}{3}$ (forma irreducible)"
+            },
+            {
+              "area": "Operaciones con Fracciones",
+              "description": "Para sumar o restar fracciones, necesitamos encontrar el mínimo común múltiplo (MCM).",
+              "example": "$\\frac{1}{6} + \\frac{1}{4} = \\frac{2}{12} + \\frac{3}{12} = \\frac{5}{12}$"
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_1_3_1",
+            "type": "step_by_step",
+            "title": "Demostración: Fracciones Irreducibles",
+            "steps": [
+              {
+                "instruction": "Define el conjunto de fracciones que NO pueden simplificarse.",
+                "hint": "$C = \\{m \\in \\mathbb{Z}^+ : \\frac{m}{n} \\text{ no es irreducible para algún } n\\}$",
+                "answer": "$C = \\{m \\in \\mathbb{Z}^+ : \\frac{m}{n} \\text{ no es irreducible para algún } n\\}$"
+              },
+              {
+                "instruction": "Asume que C no es vacío. Por el PBO, C tiene un mínimo $m_0$. ¿Qué significa que $m_0 \\in C$?",
+                "hint": "Significa que existe $n$ tal que $\\frac{m_0}{n}$ no es irreducible.",
+                "answer": "Existe $n$ tal que $\\frac{m_0}{n}$ no es irreducible, es decir, $\\gcd(m_0, n) > 1$."
+              },
+              {
+                "instruction": "Si $\\gcd(m_0, n) > 1$, entonces existe un primo $p$ que divide a ambos. ¿Qué puedes decir de $\\frac{m_0/p}{n/p}$?",
+                "hint": "¿Puede simplificarse $\\frac{m_0/p}{n/p}$?",
+                "answer": "$\\frac{m_0/p}{n/p}$ también no es irreducible, pero $m_0/p < m_0$."
+              },
+              {
+                "instruction": "Esto significa que $m_0/p \\in C$. ¿Cuál es la contradicción?",
+                "hint": "Asumimos que $m_0$ es el mínimo de C...",
+                "answer": "Contradicción: $m_0/p < m_0$ pero $m_0/p \\in C$, contradiciendo que $m_0 = \\min C$."
+              },
+              {
+                "instruction": "Conclusión: ¿Qué podemos concluir?",
+                "hint": "La contradicción vino de asumir que C no es vacío...",
+                "answer": "$C = \\emptyset$, por lo que toda fracción puede simplificarse a forma irreducible."
+              }
+            ],
+            "difficulty": "hard"
+          }
+        ]
+      }
+    }
+  ]
+}

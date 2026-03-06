@@ -1,0 +1,123 @@
+{
+  "id": "module_4_cardinality",
+  "title": "Módulo 4: Numerabilidad y Cardinalidad",
+  "description": "Entiende cardinalidad, conjuntos numerables y el Problema de la Parada de Turing.",
+  "order": 4,
+  "difficulty": "advanced",
+  "estimatedHours": 8,
+  "icon": "♾️",
+  "sections": [
+    {
+      "id": "section_4_1",
+      "title": "Cardinalidad Finita e Infinita",
+      "description": "Aprende a comparar tamaños de conjuntos.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "La **cardinalidad** de un conjunto es una medida de su 'tamaño'. Dos conjuntos tienen la misma cardinalidad si existe una función biyectiva entre ellos.",
+          "finite_cardinality": "Un conjunto es **finito** si tiene un número finito de elementos. Su cardinalidad es ese número.",
+          "infinite_cardinality": "Un conjunto es **infinito** si no es finito. Existen diferentes 'tipos' de infinito.",
+          "examples": [
+            {
+              "text": "El conjunto $\\{1, 2, 3\\}$ tiene cardinalidad 3.",
+              "latex": "|\\{1, 2, 3\\}| = 3"
+            },
+            {
+              "text": "Los conjuntos $\\{a, b, c\\}$ y $\\{1, 2, 3\\}$ tienen la misma cardinalidad.",
+              "latex": "|\\{a, b, c\\}| = |\\{1, 2, 3\\}| = 3"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Teoría de Computabilidad",
+              "description": "La cardinalidad es crucial para entender qué problemas son computables.",
+              "example": "Hay más funciones que programas, por lo que existen funciones no computables."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_4_1_1",
+            "type": "flashcard",
+            "question": "¿Cuándo tienen dos conjuntos la misma cardinalidad?",
+            "answer": "Cuando existe una función biyectiva entre ellos.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_4_1_2",
+            "type": "challenge",
+            "title": "Comparar Cardinalidades",
+            "problem": "¿Tienen $\\{1, 2, 3, 4, 5\\}$ y $\\{a, b, c, d, e\\}$ la misma cardinalidad?",
+            "options": [
+              { "value": "Sí, ambos tienen cardinalidad 5", "correct": true, "explanation": "Correcto. Podemos crear una biyección: $1 \\to a, 2 \\to b, 3 \\to c, 4 \\to d, 5 \\to e$." },
+              { "value": "No, porque tienen elementos diferentes", "correct": false, "explanation": "Incorrecto. La cardinalidad depende de la cantidad de elementos, no de qué son." },
+              { "value": "Sí, pero con cardinalidad diferente", "correct": false, "explanation": "Incorrecto. Si tienen la misma cardinalidad, es la misma." }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_4_2",
+      "title": "Conjuntos Numerables",
+      "description": "Aprende sobre conjuntos infinitos numerables.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "Un conjunto es **numerable** si es finito o tiene la misma cardinalidad que $\\mathbb{N}$ (los números naturales).",
+          "countable_infinity": "Un conjunto infinito numerable tiene cardinalidad $\\aleph_0$ (alef-cero).",
+          "examples": [
+            {
+              "text": "El conjunto de números enteros $\\mathbb{Z}$ es numerable.",
+              "latex": "\\mathbb{Z} \\text{ es numerable}"
+            },
+            {
+              "text": "El conjunto de números racionales $\\mathbb{Q}$ es numerable.",
+              "latex": "\\mathbb{Q} \\text{ es numerable}"
+            },
+            {
+              "text": "El conjunto de números reales $\\mathbb{R}$ NO es numerable (es no-numerable).",
+              "latex": "\\mathbb{R} \\text{ es no-numerable}"
+            }
+          ],
+          "cantor_diagonalization": "El argumento de la diagonal de Cantor demuestra que $\\mathbb{R}$ no es numerable."
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Problema de la Parada de Turing",
+              "description": "La numerabilidad es clave para demostrar que el Problema de la Parada es indecidible.",
+              "example": "Hay más funciones (no-numerables) que programas (numerables), por lo que existen funciones que ningún programa puede computar."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_4_2_1",
+            "type": "flashcard",
+            "question": "¿Qué es un conjunto numerable?",
+            "answer": "Un conjunto que es finito o tiene la misma cardinalidad que $\\mathbb{N}$.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_4_2_2",
+            "type": "challenge",
+            "title": "¿Es numerable?",
+            "problem": "¿Es el conjunto de números enteros $\\mathbb{Z}$ numerable?",
+            "options": [
+              { "value": "Sí, porque podemos listar todos los enteros", "correct": true, "explanation": "Correcto. Podemos listar: 0, 1, -1, 2, -2, 3, -3, ... creando una biyección con $\\mathbb{N}$." },
+              { "value": "No, porque hay infinitos enteros negativos", "correct": false, "explanation": "Incorrecto. Que sea infinito no significa que no sea numerable." },
+              { "value": "No, porque $\\mathbb{Z}$ es más grande que $\\mathbb{N}$", "correct": false, "explanation": "Incorrecto. $\\mathbb{Z}$ y $\\mathbb{N}$ tienen la misma cardinalidad (ambos numerables)." }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}

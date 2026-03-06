@@ -1,0 +1,177 @@
+{
+  "id": "module_3_sets_functions",
+  "title": "Módulo 3: Conjuntos y Funciones",
+  "description": "Explora la teoría de conjuntos, funciones inyectivas, sobreyectivas y biyectivas.",
+  "order": 3,
+  "difficulty": "intermediate",
+  "estimatedHours": 10,
+  "icon": "🎯",
+  "sections": [
+    {
+      "id": "section_3_1",
+      "title": "Teoría de Conjuntos Básica",
+      "description": "Entiende operaciones con conjuntos y propiedades fundamentales.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "Un **conjunto** es una colección de objetos distintos llamados elementos.",
+          "notation": "Escribimos $a \\in S$ si $a$ es un elemento de $S$, y $a \\notin S$ si no lo es.",
+          "operations": [
+            {
+              "name": "Unión",
+              "symbol": "$A \\cup B$",
+              "definition": "Conjunto de todos los elementos en $A$ o en $B$ (o en ambos).",
+              "example": "$\\{1,2\\} \\cup \\{2,3\\} = \\{1,2,3\\}$"
+            },
+            {
+              "name": "Intersección",
+              "symbol": "$A \\cap B$",
+              "definition": "Conjunto de todos los elementos en $A$ y en $B$.",
+              "example": "$\\{1,2\\} \\cap \\{2,3\\} = \\{2\\}$"
+            },
+            {
+              "name": "Complemento",
+              "symbol": "$A^c$ o $\\overline{A}$",
+              "definition": "Conjunto de todos los elementos en el universo que NO están en $A$.",
+              "example": "Si universo es $\\{1,2,3,4\\}$, entonces $\\{1,2\\}^c = \\{3,4\\}$"
+            },
+            {
+              "name": "Diferencia",
+              "symbol": "$A \\setminus B$",
+              "definition": "Conjunto de elementos en $A$ pero no en $B$.",
+              "example": "$\\{1,2,3\\} \\setminus \\{2,3,4\\} = \\{1\\}$"
+            }
+          ],
+          "examples": [
+            {
+              "text": "Conjunto de números pares: $\\{2, 4, 6, 8, \\ldots\\}$",
+              "latex": "\\{2, 4, 6, 8, \\ldots\\}"
+            },
+            {
+              "text": "Conjunto vacío: $\\emptyset$ (no tiene elementos)",
+              "latex": "\\emptyset"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Bases de Datos",
+              "description": "Las operaciones con conjuntos son la base de las consultas SQL (UNION, INTERSECT, EXCEPT).",
+              "example": "SELECT * FROM tabla1 UNION SELECT * FROM tabla2"
+            },
+            {
+              "area": "Teoría de Grafos",
+              "description": "Los grafos se representan como conjuntos de vértices y aristas.",
+              "example": "Un grafo es un par $(V, E)$ donde $V$ es un conjunto de vértices y $E$ es un conjunto de aristas."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_3_1_1",
+            "type": "flashcard",
+            "question": "¿Cuál es la unión de $\\{1,2,3\\}$ y $\\{3,4,5\\}$?",
+            "answer": "$\\{1,2,3,4,5\\}$",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_3_1_2",
+            "type": "flashcard",
+            "question": "¿Cuál es la intersección de $\\{1,2,3\\}$ y $\\{3,4,5\\}$?",
+            "answer": "$\\{3\\}$",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_3_1_3",
+            "type": "challenge",
+            "title": "Operaciones con Conjuntos",
+            "problem": "Si $A = \\{1,2,3\\}$, $B = \\{2,3,4\\}$, ¿cuál es $A \\setminus B$?",
+            "options": [
+              { "value": "$\\{1\\}$", "correct": true, "explanation": "Correcto. $A \\setminus B$ contiene elementos en $A$ pero no en $B$, que es solo 1." },
+              { "value": "$\\{2,3\\}$", "correct": false, "explanation": "Incorrecto. Estos elementos están en ambos conjuntos." },
+              { "value": "$\\{4\\}$", "correct": false, "explanation": "Incorrecto. 4 está en $B$ pero no en $A$." },
+              { "value": "$\\{1,2,3,4\\}$", "correct": false, "explanation": "Incorrecto. Esa es la unión." }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_3_2",
+      "title": "Funciones: Inyectivas, Sobreyectivas y Biyectivas",
+      "description": "Aprende los tipos de funciones y sus propiedades.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "Una **función** $f: A \\to B$ es una relación que asigna a cada elemento de $A$ exactamente un elemento de $B$.",
+          "types": [
+            {
+              "name": "Inyectiva (uno a uno)",
+              "symbol": "$f: A \\to B$ es inyectiva",
+              "definition": "Si $f(a_1) = f(a_2)$, entonces $a_1 = a_2$. (Elementos distintos mapean a imágenes distintas)",
+              "example": "$f(x) = 2x$ de $\\mathbb{N}$ a $\\mathbb{N}$ es inyectiva."
+            },
+            {
+              "name": "Sobreyectiva (sobre)",
+              "symbol": "$f: A \\to B$ es sobreyectiva",
+              "definition": "Para cada $b \\in B$, existe $a \\in A$ tal que $f(a) = b$. (Cada elemento de $B$ es imagen de algún elemento de $A$)",
+              "example": "$f(x) = x \\bmod 2$ de $\\mathbb{Z}$ a $\\{0,1\\}$ es sobreyectiva."
+            },
+            {
+              "name": "Biyectiva",
+              "symbol": "$f: A \\to B$ es biyectiva",
+              "definition": "$f$ es tanto inyectiva como sobreyectiva. (Hay una correspondencia uno-a-uno entre $A$ y $B$)",
+              "example": "$f(x) = 2x$ de $\\mathbb{N}$ a números pares es biyectiva."
+            }
+          ],
+          "examples": [
+            {
+              "text": "Función inyectiva pero no sobreyectiva: $f(x) = x^2$ de $\\mathbb{R}$ a $\\mathbb{R}$ (no es sobreyectiva porque números negativos no tienen preimagen)",
+              "latex": "f(x) = x^2"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Criptografía",
+              "description": "Las funciones biyectivas son usadas en cifrados porque pueden invertirse.",
+              "example": "En el cifrado de César, la función $f(x) = (x + k) \\bmod 26$ es biyectiva, permitiendo descifrar."
+            },
+            {
+              "area": "Compresión de Datos",
+              "description": "Las funciones inyectivas son importantes para no perder información.",
+              "example": "Una función de compresión debe ser inyectiva para que diferentes datos no se compriman al mismo resultado."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_3_2_1",
+            "type": "flashcard",
+            "question": "¿Cuándo es una función inyectiva?",
+            "answer": "Cuando elementos distintos del dominio mapean a imágenes distintas en el codominio.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_3_2_2",
+            "type": "challenge",
+            "title": "Clasificar Funciones",
+            "problem": "¿Es $f(x) = x^3$ de $\\mathbb{R}$ a $\\mathbb{R}$ inyectiva, sobreyectiva o biyectiva?",
+            "options": [
+              { "value": "Inyectiva pero no sobreyectiva", "correct": false, "explanation": "Incorrecto. $f$ es sobreyectiva porque todo número real es cubo de algún número." },
+              { "value": "Sobreyectiva pero no inyectiva", "correct": false, "explanation": "Incorrecto. $f$ es inyectiva porque si $x_1^3 = x_2^3$, entonces $x_1 = x_2$." },
+              { "value": "Biyectiva", "correct": true, "explanation": "Correcto. $f$ es tanto inyectiva como sobreyectiva." },
+              { "value": "Ninguna de las anteriores", "correct": false, "explanation": "Incorrecto. $f$ es biyectiva." }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}

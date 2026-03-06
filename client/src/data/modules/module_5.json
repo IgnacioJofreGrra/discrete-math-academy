@@ -1,0 +1,126 @@
+{
+  "id": "module_5_pigeonhole",
+  "title": "Módulo 5: Principio del Palomar",
+  "description": "Aprende a aplicar este principio fundamental en problemas de combinatoria.",
+  "order": 5,
+  "difficulty": "intermediate",
+  "estimatedHours": 6,
+  "icon": "🐦",
+  "sections": [
+    {
+      "id": "section_5_1",
+      "title": "Principio del Palomar Simple",
+      "description": "Entiende el enunciado y aplicaciones básicas.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "**Principio del Palomar (Simple)**: Si $n+1$ objetos se distribuyen en $n$ cajas, entonces al menos una caja contiene dos o más objetos.",
+          "intuition": "Si tienes más palomas que nidos, al menos un nido debe tener dos o más palomas.",
+          "formal": "Si $|A| > |B|$ y $f: A \\to B$ es una función, entonces $f$ no es inyectiva.",
+          "examples": [
+            {
+              "text": "Si hay 13 personas, al menos dos nacieron en el mismo mes.",
+              "latex": "13 \\text{ personas} \\Rightarrow \\text{dos en el mismo mes}"
+            },
+            {
+              "text": "En un grupo de 6 personas, al menos dos tienen el mismo sexo si solo hay 2 sexos.",
+              "latex": "6 \\text{ personas} \\Rightarrow \\text{dos del mismo sexo}"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Teoría de Grafos",
+              "description": "Demostrar que ciertos grafos deben tener ciertas propiedades.",
+              "example": "En un grafo con $n$ vértices, si cada vértice tiene grado $\\geq n/2$, entonces el grafo es conexo."
+            },
+            {
+              "area": "Criptografía",
+              "description": "Demostrar que colisiones de hash son inevitables.",
+              "example": "Si una función hash mapea $2^{256}$ posibles entradas a $2^{128}$ salidas, debe haber colisiones."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_5_1_1",
+            "type": "flashcard",
+            "question": "¿Cuál es el Principio del Palomar?",
+            "answer": "Si $n+1$ objetos se distribuyen en $n$ cajas, al menos una caja contiene dos o más objetos.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_5_1_2",
+            "type": "challenge",
+            "title": "Aplicar Principio del Palomar",
+            "problem": "¿Cuál es el número mínimo de personas necesarias para garantizar que dos comparten el mismo cumpleaños?",
+            "options": [
+              { "value": "183", "correct": false, "explanation": "Incorrecto. Necesitamos solo 366 personas para garantizar (considerando años bisiestos)." },
+              { "value": "365", "correct": false, "explanation": "Incorrecto. Con 365 personas, es posible que todas tengan cumpleaños diferentes." },
+              { "value": "366", "correct": true, "explanation": "Correcto. Por el Principio del Palomar, con 366 personas y 365 días posibles, al menos dos deben compartir cumpleaños." },
+              { "value": "732", "correct": false, "explanation": "Incorrecto. Necesitamos mucho menos." }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_5_2",
+      "title": "Principio del Palomar Generalizado",
+      "description": "Aprende la versión generalizada para distribuciones desiguales.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "**Principio del Palomar Generalizado**: Si $n$ objetos se distribuyen en $k$ cajas, entonces al menos una caja contiene $\\lceil n/k \\rceil$ o más objetos.",
+          "formula": "Si distribuimos $n$ objetos en $k$ cajas, la caja con más objetos tiene al menos $\\lceil n/k \\rceil$ objetos.",
+          "examples": [
+            {
+              "text": "Si distribuimos 10 objetos en 3 cajas, al menos una tiene $\\lceil 10/3 \\rceil = 4$ objetos.",
+              "latex": "\\lceil 10/3 \\rceil = 4"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Análisis de Algoritmos",
+              "description": "Demostrar límites inferiores en la complejidad de algoritmos.",
+              "example": "Cualquier algoritmo de búsqueda en un array desordenado debe examinar al menos $\\lceil n/2 \\rceil$ elementos en el peor caso."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_5_2_1",
+            "type": "flashcard",
+            "question": "¿Cuál es el Principio del Palomar Generalizado?",
+            "answer": "Si $n$ objetos se distribuyen en $k$ cajas, al menos una caja contiene $\\lceil n/k \\rceil$ o más objetos.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_5_2_2",
+            "type": "step_by_step",
+            "title": "Aplicar Principio Generalizado",
+            "steps": [
+              {
+                "instruction": "Si distribuimos 100 estudiantes en 7 aulas, ¿cuál es el número mínimo de estudiantes en el aula más llena?",
+                "hint": "$\\lceil 100/7 \\rceil = ?$",
+                "answer": "$\\lceil 100/7 \\rceil = \\lceil 14.29 \\rceil = 15$"
+              },
+              {
+                "instruction": "Verifica: si cada aula tuviera a lo sumo 14 estudiantes, ¿cuántos habría en total?",
+                "hint": "$7 \\times 14 = ?$",
+                "answer": "$7 \\times 14 = 98 < 100$, así que al menos una aula debe tener 15."
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}

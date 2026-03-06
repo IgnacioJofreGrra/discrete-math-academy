@@ -1,0 +1,137 @@
+{
+  "id": "module_6_relations",
+  "title": "Módulo 6: Relaciones de Equivalencia",
+  "description": "Aprende sobre relaciones, propiedades y aplicaciones en criptografía.",
+  "order": 6,
+  "difficulty": "advanced",
+  "estimatedHours": 8,
+  "icon": "🔗",
+  "sections": [
+    {
+      "id": "section_6_1",
+      "title": "Relaciones y Propiedades",
+      "description": "Entiende qué son las relaciones y sus propiedades fundamentales.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "Una **relación** $R$ en un conjunto $A$ es un subconjunto de $A \\times A$. Escribimos $aRb$ si $(a, b) \\in R$.",
+          "properties": [
+            {
+              "name": "Reflexiva",
+              "definition": "$R$ es reflexiva si $aRa$ para todo $a \\in A$.",
+              "example": "La relación $\\leq$ es reflexiva: $a \\leq a$ para todo $a$."
+            },
+            {
+              "name": "Simétrica",
+              "definition": "$R$ es simétrica si siempre que $aRb$, entonces $bRa$.",
+              "example": "La relación 'ser amigo de' es simétrica: si $a$ es amigo de $b$, entonces $b$ es amigo de $a$."
+            },
+            {
+              "name": "Transitiva",
+              "definition": "$R$ es transitiva si siempre que $aRb$ y $bRc$, entonces $aRc$.",
+              "example": "La relación $\\leq$ es transitiva: si $a \\leq b$ y $b \\leq c$, entonces $a \\leq c$."
+            }
+          ],
+          "equivalence_relation": "Una relación que es reflexiva, simétrica y transitiva se llama **relación de equivalencia**."
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Particiones de Conjuntos",
+              "description": "Las relaciones de equivalencia particionan un conjunto en clases de equivalencia.",
+              "example": "La relación 'tener el mismo resto al dividir por 3' particiona $\\mathbb{Z}$ en tres clases: $\\{0, 3, 6, ...\\}$, $\\{1, 4, 7, ...\\}$, $\\{2, 5, 8, ...\\}$."
+            },
+            {
+              "area": "Criptografía (Diffie-Hellman)",
+              "description": "Las relaciones de equivalencia módulo $p$ son fundamentales en el protocolo Diffie-Hellman.",
+              "example": "En Diffie-Hellman, trabajamos con números módulo un primo $p$, donde dos números son equivalentes si tienen el mismo resto."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_6_1_1",
+            "type": "flashcard",
+            "question": "¿Cuándo es una relación reflexiva?",
+            "answer": "Cuando $aRa$ para todo $a$ en el conjunto.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_6_1_2",
+            "type": "challenge",
+            "title": "Identificar Propiedades",
+            "problem": "¿Cuál de las siguientes relaciones es una relación de equivalencia?",
+            "options": [
+              { "value": "La relación $<$ (menor que)", "correct": false, "explanation": "No es reflexiva ($a < a$ es falso) ni simétrica." },
+              { "value": "La relación $=$ (igualdad)", "correct": true, "explanation": "Correcto. Es reflexiva ($a = a$), simétrica (si $a = b$ entonces $b = a$) y transitiva (si $a = b$ y $b = c$ entonces $a = c$)." },
+              { "value": "La relación 'tener el mismo padre'", "correct": false, "explanation": "No es reflexiva (una persona no es su propio padre)." },
+              { "value": "La relación $\\leq$ (menor o igual)", "correct": false, "explanation": "No es simétrica ($1 \\leq 2$ pero $2 \\not\\leq 1$)." }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_6_2",
+      "title": "Clases de Equivalencia",
+      "description": "Aprende cómo las relaciones de equivalencia particionan conjuntos.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "Dada una relación de equivalencia $R$ en $A$, la **clase de equivalencia** de $a$ es $[a] = \\{b \\in A : aRb\\}$.",
+          "partition": "Las clases de equivalencia particionan $A$: cada elemento pertenece a exactamente una clase.",
+          "examples": [
+            {
+              "text": "Para la relación 'congruencia módulo 3', la clase de 1 es $[1] = \\{..., -5, -2, 1, 4, 7, ...\\}$.",
+              "latex": "[1] = \\{..., -5, -2, 1, 4, 7, ...\\}"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Aritmética Modular",
+              "description": "Las clases de equivalencia son la base de la aritmética módulo $n$.",
+              "example": "En aritmética módulo 5, tenemos 5 clases: $[0], [1], [2], [3], [4]$."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_6_2_1",
+            "type": "flashcard",
+            "question": "¿Qué es una clase de equivalencia?",
+            "answer": "El conjunto de todos los elementos relacionados con un elemento dado por una relación de equivalencia.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_6_2_2",
+            "type": "step_by_step",
+            "title": "Encontrar Clases de Equivalencia",
+            "steps": [
+              {
+                "instruction": "Considera la relación 'congruencia módulo 4' en $\\mathbb{Z}$. ¿Cuál es la clase de 0?",
+                "hint": "$[0] = \\{n \\in \\mathbb{Z} : n \\equiv 0 \\pmod{4}\\}$",
+                "answer": "$[0] = \\{..., -8, -4, 0, 4, 8, ...\\}$ (múltiplos de 4)"
+              },
+              {
+                "instruction": "¿Cuál es la clase de 1?",
+                "hint": "$[1] = \\{n \\in \\mathbb{Z} : n \\equiv 1 \\pmod{4}\\}$",
+                "answer": "$[1] = \\{..., -7, -3, 1, 5, 9, ...\\}$ (números con resto 1 al dividir por 4)"
+              },
+              {
+                "instruction": "¿Cuántas clases de equivalencia hay en total?",
+                "hint": "Hay un resto diferente para cada división por 4.",
+                "answer": "4 clases: $[0], [1], [2], [3]$"
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}

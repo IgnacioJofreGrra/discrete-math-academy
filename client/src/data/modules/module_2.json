@@ -1,0 +1,245 @@
+{
+  "id": "module_2_induction",
+  "title": "Módulo 2: Inducción Completa (PIC)",
+  "description": "Aprende inducción simple y fuerte, y cómo aplicarlas a relaciones de recurrencia.",
+  "order": 2,
+  "difficulty": "intermediate",
+  "estimatedHours": 12,
+  "icon": "🔗",
+  "sections": [
+    {
+      "id": "section_2_1",
+      "title": "Inducción Completa Simple",
+      "description": "Entiende el Principio de Inducción Completa Simple y cómo usarlo para demostrar propiedades.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "**Principio de Inducción Completa Simple (PIC)**: Sea $P(n)$ una proposición para cada natural $n$ y $n_0 \\in \\mathbb{N}$. Si (1) $P(n_0)$ es verdadera, y (2) para todo $k \\geq n_0$, siempre que $P(k)$ sea verdadera entonces $P(k+1)$ también será verdadera, entonces $P(n)$ es verdadera para todo $n \\geq n_0$.",
+          "intuition": "La inducción es como una fila de fichas de dominó. Si la primera ficha cae (paso base) y cada ficha que cae hace caer la siguiente (paso inductivo), entonces todas las fichas caerán.",
+          "examples": [
+            {
+              "text": "Demostración de la fórmula de suma: $\\sum_{i=0}^{n} i = \\frac{n(n+1)}{2}$",
+              "latex": "\\sum_{i=0}^{n} i = \\frac{n(n+1)}{2}"
+            }
+          ],
+          "template": {
+            "title": "Plantilla para Pruebas por Inducción",
+            "steps": [
+              "Establecer que se va a utilizar el PIC.",
+              "Definir la proposición $P(n)$ y el valor inicial $n_0$.",
+              "Paso base: Probar que $P(n_0)$ es verdadera.",
+              "Paso inductivo: Asumir que $P(n)$ es verdadera (hipótesis inductiva) y probar que $P(n+1)$ también lo es.",
+              "Invocar inducción: Concluir que $P(n)$ es verdadera para todo $n \\geq n_0$."
+            ]
+          }
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve la inducción?",
+          "applications": [
+            {
+              "area": "Fórmulas de Suma",
+              "description": "Demostrar fórmulas cerradas para sumas de series.",
+              "example": "Probar que $1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$"
+            },
+            {
+              "area": "Análisis de Complejidad",
+              "description": "Demostrar propiedades sobre la complejidad de algoritmos recursivos.",
+              "example": "Probar que la búsqueda binaria examina a lo sumo $\\lceil \\log_2 n \\rceil$ elementos."
+            },
+            {
+              "area": "Propiedades de Estructuras Recursivas",
+              "description": "Demostrar propiedades sobre árboles, listas enlazadas y otras estructuras recursivas.",
+              "example": "Probar que un árbol binario completo de altura $h$ tiene $2^{h+1}-1$ nodos."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_2_1_1",
+            "type": "flashcard",
+            "question": "¿Cuál es el Principio de Inducción Completa Simple?",
+            "answer": "Si $P(n_0)$ es verdadera y para todo $k \\geq n_0$, $P(k) \\Rightarrow P(k+1)$, entonces $P(n)$ es verdadera para todo $n \\geq n_0$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_2_1_2",
+            "type": "flashcard",
+            "question": "¿Cuáles son los dos pasos principales de una prueba por inducción?",
+            "answer": "Paso base: probar $P(n_0)$. Paso inductivo: probar que $P(n) \\Rightarrow P(n+1)$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_2_1_3",
+            "type": "step_by_step",
+            "title": "Demostración: Suma de los primeros n naturales",
+            "steps": [
+              {
+                "instruction": "Define la proposición $P(n)$.",
+                "hint": "$P(n): \\sum_{i=0}^{n} i = \\frac{n(n+1)}{2}$",
+                "answer": "$P(n): \\sum_{i=0}^{n} i = \\frac{n(n+1)}{2}$"
+              },
+              {
+                "instruction": "Paso base: Verifica que $P(0)$ es verdadera.",
+                "hint": "¿$0 = \\frac{0(0+1)}{2}$?",
+                "answer": "Sí, $0 = 0$, así que $P(0)$ es verdadera."
+              },
+              {
+                "instruction": "Paso inductivo: Asume que $P(n)$ es verdadera. ¿Qué es $\\sum_{i=0}^{n+1} i$?",
+                "hint": "$\\sum_{i=0}^{n+1} i = \\sum_{i=0}^{n} i + (n+1)$",
+                "answer": "$\\sum_{i=0}^{n+1} i = \\sum_{i=0}^{n} i + (n+1) = \\frac{n(n+1)}{2} + (n+1)$"
+              },
+              {
+                "instruction": "Simplifica $\\frac{n(n+1)}{2} + (n+1)$.",
+                "hint": "Factoriza $(n+1)$",
+                "answer": "$\\frac{n(n+1)}{2} + (n+1) = \\frac{n(n+1) + 2(n+1)}{2} = \\frac{(n+1)(n+2)}{2}$"
+              },
+              {
+                "instruction": "¿Es esto igual a $\\frac{(n+1)((n+1)+1)}{2}$?",
+                "hint": "Compara con la fórmula para $P(n+1)$",
+                "answer": "Sí, así que $P(n+1)$ es verdadera."
+              },
+              {
+                "instruction": "Conclusión: ¿Qué podemos concluir?",
+                "hint": "Por PIC, $P(n)$ es verdadera para todo $n \\geq 0$.",
+                "answer": "Por el PIC, $\\sum_{i=0}^{n} i = \\frac{n(n+1)}{2}$ para todo $n \\geq 0$."
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_2_2",
+      "title": "Inducción Completa Fuerte",
+      "description": "Aprende la versión fuerte de inducción para casos donde necesitas múltiples hipótesis.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "**Principio de Inducción Completa Fuerte (PIF)**: Sea $P(n)$ una proposición para cada natural $n$. Si (1) $P(n_0), P(n_0+1), \\ldots, P(n_1)$ son verdaderas, y (2) para todo $n \\geq n_1$, si $P(k)$ es verdadera para todo $k$ con $n_0 \\leq k \\leq n$, entonces $P(n+1)$ también es verdadera, entonces $P(n)$ es verdadera para todo $n \\geq n_0$.",
+          "difference": "La diferencia con inducción simple es que en el paso inductivo puedes asumir que $P$ es verdadera para TODOS los valores anteriores, no solo para $P(n)$.",
+          "when_to_use": "Usa inducción fuerte cuando la demostración de $P(n+1)$ dependa de múltiples valores anteriores, como en relaciones de recurrencia."
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Relaciones de Recurrencia",
+              "description": "Demostrar propiedades sobre sucesiones definidas recursivamente.",
+              "example": "Probar que $a_n \\leq 3^n$ para la sucesión $a_0=1, a_1=2, a_2=3$ y $a_n = a_{n-1} + a_{n-2} + a_{n-3}$."
+            },
+            {
+              "area": "Descomposición en Factores Primos",
+              "description": "Probar que todo número natural $\\geq 2$ es primo o producto de primos.",
+              "example": "Para $n+1$, si es primo, listo. Si no, $n+1 = ab$ con $2 \\leq a,b \\leq n$, y por hipótesis inductiva fuerte, ambos son productos de primos."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_2_2_1",
+            "type": "flashcard",
+            "question": "¿Cuál es la diferencia entre inducción simple y fuerte?",
+            "answer": "En inducción fuerte, la hipótesis inductiva asume que $P(k)$ es verdadera para TODOS los $k \\leq n$, no solo para $P(n)$.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_2_2",
+            "type": "challenge",
+            "title": "¿Cuándo usar inducción fuerte?",
+            "problem": "¿Cuál de estos es un ejemplo clásico donde se usa inducción fuerte?",
+            "options": [
+              { "value": "Probar que $1+2+\\cdots+n = \\frac{n(n+1)}{2}$", "correct": false, "explanation": "Esto solo depende de $P(n)$, así que inducción simple es suficiente." },
+              { "value": "Probar que $a_n = a_{n-1} + a_{n-2}$ satisface $a_n \\leq 2^n$", "correct": false, "explanation": "Puede demostrarse con una formulación de inducción simple; no es el ejemplo canónico de necesidad de inducción fuerte." },
+              { "value": "Probar que todo número $\\geq 2$ es primo o producto de primos", "correct": true, "explanation": "Si $n+1$ no es primo, $n+1 = ab$ con $a,b < n+1$, y necesitas que ambos sean productos de primos." }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_2_3",
+      "title": "Relaciones de Recurrencia",
+      "description": "Aprende a modelar y resolver relaciones de recurrencia.",
+      "order": 3,
+      "content": {
+        "theory": {
+          "definition": "Una **relación de recurrencia** es una ecuación que define una sucesión en términos de sus términos anteriores.",
+          "examples": [
+            {
+              "text": "Fibonacci: $F_n = F_{n-1} + F_{n-2}$ con $F_0=0, F_1=1$",
+              "latex": "F_n = F_{n-1} + F_{n-2}"
+            },
+            {
+              "text": "Factorial: $n! = n \\cdot (n-1)!$ con $0!=1$",
+              "latex": "n! = n \\cdot (n-1)!"
+            }
+          ],
+          "solving_methods": [
+            "Método de iteración: Expandir la recurrencia hasta encontrar un patrón.",
+            "Método de sustitución: Adivinar la forma de la solución y verificar por inducción.",
+            "Método de ecuación característica: Para recurrencias lineales homogéneas."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve?",
+          "applications": [
+            {
+              "area": "Análisis de Complejidad",
+              "description": "Muchos algoritmos recursivos tienen complejidad descrita por relaciones de recurrencia.",
+              "example": "Merge Sort: $T(n) = 2T(n/2) + O(n)$, que resuelve a $T(n) = O(n \\log n)$."
+            },
+            {
+              "area": "Modelado de Procesos",
+              "description": "Muchos procesos naturales y computacionales se describen con recurrencias.",
+              "example": "Crecimiento de población: $P_n = P_{n-1} + rP_{n-1} = (1+r)P_{n-1}$."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_2_3_1",
+            "type": "flashcard",
+            "question": "¿Qué es una relación de recurrencia?",
+            "answer": "Una ecuación que define una sucesión en términos de sus términos anteriores.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_2_3_2",
+            "type": "step_by_step",
+            "title": "Resolver Fibonacci iterativamente",
+            "steps": [
+              {
+                "instruction": "Calcula $F_2$ usando $F_n = F_{n-1} + F_{n-2}$ con $F_0=0, F_1=1$.",
+                "hint": "$F_2 = F_1 + F_0$",
+                "answer": "$F_2 = 1 + 0 = 1$"
+              },
+              {
+                "instruction": "Calcula $F_3$.",
+                "hint": "$F_3 = F_2 + F_1$",
+                "answer": "$F_3 = 1 + 1 = 2$"
+              },
+              {
+                "instruction": "Calcula $F_4$.",
+                "hint": "$F_4 = F_3 + F_2$",
+                "answer": "$F_4 = 2 + 1 = 3$"
+              },
+              {
+                "instruction": "Calcula $F_5$.",
+                "hint": "$F_5 = F_4 + F_3$",
+                "answer": "$F_5 = 3 + 2 = 5$"
+              },
+              {
+                "instruction": "¿Cuál es la sucesión de Fibonacci hasta $F_5$?",
+                "hint": "0, 1, 1, 2, 3, 5",
+                "answer": "0, 1, 1, 2, 3, 5"
+              }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    }
+  ]
+}

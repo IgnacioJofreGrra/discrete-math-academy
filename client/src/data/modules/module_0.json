@@ -1,0 +1,299 @@
+{
+  "id": "module_0_divisibility",
+  "title": "Módulo 0: Desde 0 (Divisibilidad y Cimientos)",
+  "description": "Aprende los fundamentos de divisibilidad, factorización en primos y fracciones irreducibles. Comenzamos desde cero, explicando cada concepto paso a paso.",
+  "order": 0,
+  "difficulty": "beginner",
+  "estimatedHours": 8,
+  "icon": "🔢",
+  "sections": [
+    {
+      "id": "section_0_1",
+      "title": "Criterios de Divisibilidad",
+      "description": "Entender qué significa que un número sea divisible por otro y cómo verificarlo.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "Un número entero $a$ es divisible por un número entero $b \\neq 0$ si existe un número entero $k$ tal que $a = b \\cdot k$. Escribimos $b \\mid a$ (se lee '$b$ divide a $a$').",
+          "examples": [
+            {
+              "text": "12 es divisible por 3 porque $12 = 3 \\cdot 4$. Escribimos $3 \\mid 12$.",
+              "latex": "3 \\mid 12"
+            },
+            {
+              "text": "15 no es divisible por 4 porque no existe un entero $k$ tal que $15 = 4k$. Escribimos $4 \\nmid 15$.",
+              "latex": "4 \\nmid 15"
+            }
+          ],
+          "criterios": [
+            {
+              "divisor": 2,
+              "criterion": "Un número es divisible por 2 si su último dígito es par (0, 2, 4, 6, 8).",
+              "example": "246 es divisible por 2 porque termina en 6.",
+              "explanation": "Cualquier número se puede escribir como $10a + b$ donde $b$ es el último dígito. Como $10a = 2 \\cdot 5a$, el número es divisible por 2 si y solo si $b$ es divisible por 2."
+            },
+            {
+              "divisor": 3,
+              "criterion": "Un número es divisible por 3 si la suma de sus dígitos es divisible por 3.",
+              "example": "123 es divisible por 3 porque $1+2+3=6$ y 6 es divisible por 3.",
+              "explanation": "Un número $\\overline{d_n d_{n-1} \\ldots d_1 d_0}$ se puede escribir como $\\sum_{i=0}^{n} d_i \\cdot 10^i$. Como $10 \\equiv 1 \\pmod{3}$, tenemos $10^i \\equiv 1 \\pmod{3}$, por lo que el número es congruente a $\\sum d_i \\pmod{3}$."
+            },
+            {
+              "divisor": 5,
+              "criterion": "Un número es divisible por 5 si su último dígito es 0 o 5.",
+              "example": "125 es divisible por 5 porque termina en 5.",
+              "explanation": "Similar al criterio de 2: $10a + b$ es divisible por 5 si y solo si $b$ es divisible por 5."
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve esto?",
+          "applications": [
+            {
+              "area": "Criptografía",
+              "description": "En algoritmos de encriptación como RSA, necesitamos verificar si números son divisibles por ciertos valores primos para generar claves criptográficas seguras.",
+              "example": "Para generar claves RSA, verificamos la divisibilidad de números enormes para encontrar factores primos."
+            },
+            {
+              "area": "Algoritmos de Búsqueda",
+              "description": "En hash tables y funciones de hash, usamos divisibilidad para distribuir elementos uniformemente.",
+              "example": "Un hash function típica es $h(x) = x \\bmod m$, que usa divisibilidad para mapear valores a posiciones."
+            },
+            {
+              "area": "Detección de Errores",
+              "description": "Los códigos de barras y números de tarjeta de crédito usan criterios de divisibilidad para detectar errores de tipeo.",
+              "example": "El algoritmo de Luhn verifica que el número de tarjeta sea divisible por 10 después de aplicar transformaciones."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_0_1_1",
+            "type": "flashcard",
+            "question": "¿Qué significa que $a$ sea divisible por $b$?",
+            "answer": "Significa que existe un entero $k$ tal que $a = b \\cdot k$. Escribimos $b \\mid a$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_1_2",
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 3?",
+            "answer": "Un número es divisible por 3 si la suma de sus dígitos es divisible por 3.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_1_3",
+            "type": "step_by_step",
+            "title": "Verificar si 456 es divisible por 3",
+            "steps": [
+              {
+                "instruction": "Suma los dígitos del número 456.",
+                "hint": "Suma: 4 + 5 + 6",
+                "answer": "15"
+              },
+              {
+                "instruction": "Verifica si 15 es divisible por 3.",
+                "hint": "¿15 = 3k para algún entero k?",
+                "answer": "Sí, porque 15 = 3 × 5"
+              },
+              {
+                "instruction": "Conclusión: ¿Es 456 divisible por 3?",
+                "hint": "Usa el criterio de divisibilidad por 3.",
+                "answer": "Sí, 456 es divisible por 3 porque la suma de sus dígitos (15) es divisible por 3."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_1_4",
+            "type": "challenge",
+            "title": "Problema de Divisibilidad",
+            "problem": "¿Cuál de los siguientes números es divisible por 2, 3 y 5 simultáneamente?",
+            "options": [
+              { "value": "120", "correct": true, "explanation": "120 es divisible por 2 (termina en 0), por 3 (1+2+0=3), y por 5 (termina en 0)." },
+              { "value": "125", "correct": false, "explanation": "125 no es divisible por 2 (termina en 5, que es impar) ni por 3 (1+2+5=8)." },
+              { "value": "154", "correct": false, "explanation": "154 es divisible por 2, pero no por 3 (1+5+4=10) ni por 5 (no termina en 0 o 5)." },
+              { "value": "105", "correct": false, "explanation": "105 no es divisible por 2 (termina en 5, que es impar)." }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_0_2",
+      "title": "Factorización en Primos",
+      "description": "Todo número entero mayor que 1 puede expresarse de forma única como producto de números primos.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "Un número primo es un número entero mayor que 1 que tiene exactamente dos divisores positivos: 1 y él mismo.",
+          "fundamental_theorem": "**Teorema Fundamental de la Aritmética**: Todo entero mayor que 1 se puede expresar de forma única (salvo el orden) como producto de números primos.",
+          "examples": [
+            {
+              "text": "12 = 2² × 3",
+              "latex": "12 = 2^2 \\times 3"
+            },
+            {
+              "text": "60 = 2² × 3 × 5",
+              "latex": "60 = 2^2 \\times 3 \\times 5"
+            },
+            {
+              "text": "17 es primo (solo divisible por 1 y 17)",
+              "latex": "17 \\text{ es primo}"
+            }
+          ],
+          "algorithm": {
+            "title": "Algoritmo de Factorización por Prueba de Divisibilidad",
+            "steps": [
+              "Comienza con el número $n$ a factorizar.",
+              "Divide $n$ por el menor primo $p$ que lo divide.",
+              "Reemplaza $n$ con $n/p$.",
+              "Repite hasta que $n = 1$.",
+              "El producto de todos los primos usados es la factorización."
+            ]
+          }
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve esto?",
+          "applications": [
+            {
+              "area": "Criptografía RSA",
+              "description": "La seguridad de RSA depende de que es fácil multiplicar dos números primos grandes, pero muy difícil factorizar su producto.",
+              "example": "Si $n = p \\times q$ donde $p$ y $q$ son primos de 1024 bits, factorizar $n$ es computacionalmente infactible con tecnología actual."
+            },
+            {
+              "area": "Máximo Común Divisor (MCD)",
+              "description": "La factorización en primos permite calcular el MCD de dos números de forma eficiente.",
+              "example": "$\\gcd(12, 18) = 2 \\times 3 = 6$ (factores comunes con menor exponente)"
+            },
+            {
+              "area": "Algoritmos de Optimización",
+              "description": "En problemas de programación dinámica, factorizar números ayuda a identificar patrones y subestructuras óptimas.",
+              "example": "En problemas de partición de números, la factorización revela divisores que pueden optimizar la solución."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_0_2_1",
+            "type": "flashcard",
+            "question": "¿Qué es un número primo?",
+            "answer": "Un número entero mayor que 1 que tiene exactamente dos divisores positivos: 1 y él mismo.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_2_2",
+            "type": "step_by_step",
+            "title": "Factorizar 60",
+            "steps": [
+              {
+                "instruction": "¿Cuál es el menor primo que divide a 60?",
+                "hint": "Verifica: ¿60 es divisible por 2?",
+                "answer": "2, porque 60 = 2 × 30"
+              },
+              {
+                "instruction": "Ahora factoriza 30.",
+                "hint": "¿30 es divisible por 2?",
+                "answer": "30 = 2 × 15"
+              },
+              {
+                "instruction": "Ahora factoriza 15.",
+                "hint": "¿15 es divisible por 2? ¿Por 3?",
+                "answer": "15 = 3 × 5"
+              },
+              {
+                "instruction": "5 es primo. Escribe la factorización completa de 60.",
+                "hint": "Multiplica todos los factores: 2 × 2 × 3 × 5",
+                "answer": "$60 = 2^2 \\times 3 \\times 5$"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_2_3",
+            "type": "challenge",
+            "title": "Factorización de 84",
+            "problem": "Factoriza 84 en números primos.",
+            "userInput": true,
+            "expectedAnswer": "2^2 * 3 * 7",
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_0_3",
+      "title": "Fracciones Irreducibles",
+      "description": "Toda fracción puede simplificarse a su forma irreducible.",
+      "order": 3,
+      "content": {
+        "theory": {
+          "definition": "Una fracción $\\frac{m}{n}$ está en forma irreducible si $\\gcd(m, n) = 1$, es decir, si $m$ y $n$ no tienen factores primos comunes.",
+          "theorem": "**Teorema**: Para cualquier par de enteros positivos $m$ y $n$, la fracción $\\frac{m}{n}$ puede escribirse de forma irreducible como $\\frac{m'}{n'}$ donde $\\gcd(m', n') = 1$.",
+          "algorithm": {
+            "title": "Algoritmo de Euclides para encontrar MCD",
+            "description": "El Algoritmo de Euclides es un método eficiente para encontrar el máximo común divisor de dos números.",
+            "steps": [
+              "Dados $a$ y $b$ con $a \\geq b$, calcula $r = a \\bmod b$.",
+              "Si $r = 0$, entonces $\\gcd(a, b) = b$.",
+              "Si $r \\neq 0$, reemplaza $(a, b)$ con $(b, r)$ y repite."
+            ]
+          }
+        },
+        "para_que_sirve": {
+          "title": "¿Para qué sirve esto?",
+          "applications": [
+            {
+              "area": "Simplificación de Expresiones",
+              "description": "En álgebra y cálculo, simplificar fracciones es fundamental para resolver ecuaciones.",
+              "example": "$\\frac{12}{18} = \\frac{2}{3}$ (forma irreducible)"
+            },
+            {
+              "area": "Operaciones con Fracciones",
+              "description": "Para sumar o restar fracciones, necesitamos encontrar el mínimo común múltiplo (MCM), que se calcula usando factorización en primos.",
+              "example": "$\\frac{1}{6} + \\frac{1}{4} = \\frac{2}{12} + \\frac{3}{12} = \\frac{5}{12}$"
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_0_3_1",
+            "type": "flashcard",
+            "question": "¿Cuándo está una fracción en forma irreducible?",
+            "answer": "Cuando el numerador y denominador no tienen factores primos comunes, es decir, cuando $\\gcd(m, n) = 1$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_3_2",
+            "type": "step_by_step",
+            "title": "Simplificar 24/36",
+            "steps": [
+              {
+                "instruction": "Factoriza 24 en primos.",
+                "hint": "24 = 2³ × 3",
+                "answer": "$24 = 2^3 \\times 3$"
+              },
+              {
+                "instruction": "Factoriza 36 en primos.",
+                "hint": "36 = 2² × 3²",
+                "answer": "$36 = 2^2 \\times 3^2$"
+              },
+              {
+                "instruction": "Identifica los factores comunes.",
+                "hint": "¿Qué factores aparecen en ambas factorizaciones?",
+                "answer": "$2^2 \\times 3 = 12$ (factores comunes con menor exponente)"
+              },
+              {
+                "instruction": "Divide numerador y denominador por el MCD.",
+                "hint": "$\\frac{24}{36} = \\frac{24/12}{36/12}$",
+                "answer": "$\\frac{24}{36} = \\frac{2}{3}$"
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}
