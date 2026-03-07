@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { MathRenderer } from './MathRenderer';
+import { InlineMathText } from './InlineMathText';
 import { CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 
@@ -150,11 +150,8 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
                     )}
                     <div className="flex-1">
                       <p className="font-semibold text-gray-900 mb-2">
-                        Pregunta {idx + 1}: {question.question.includes('$') ? (
-                          <MathRenderer latex={question.question} inline />
-                        ) : (
-                          question.question
-                        )}
+                        Pregunta {idx + 1}:{' '}
+                        <InlineMathText text={question.question} />
                       </p>
                     </div>
                   </div>
@@ -164,7 +161,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
                   <div className="text-sm">
                     <p className="font-medium text-gray-700">Tu respuesta:</p>
                     <p className={`text-sm ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
-                      {question.options.find(opt => opt.value === result.userAnswer)?.label}
+                      <InlineMathText text={question.options.find(opt => opt.value === result.userAnswer)?.label || ''} />
                     </p>
                   </div>
 
@@ -172,7 +169,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
                     <div className="text-sm">
                       <p className="font-medium text-gray-700">Respuesta correcta:</p>
                       <p className="text-green-700">
-                        {question.options.find(opt => opt.correct)?.label}
+                        <InlineMathText text={question.options.find(opt => opt.correct)?.label || ''} />
                       </p>
                     </div>
                   )}
@@ -272,11 +269,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
       {/* Question */}
       <Card className="p-8 max-[359px]:p-4 mb-6 bg-blue-50 border-2 border-blue-200">
         <h3 className="text-xl max-[359px]:text-lg font-semibold text-gray-900 mb-6">
-          {currentQuestion.question.includes('$') ? (
-            <MathRenderer latex={currentQuestion.question} />
-          ) : (
-            currentQuestion.question
-          )}
+          <InlineMathText text={currentQuestion.question} />
         </h3>
 
         {/* Options */}
@@ -299,7 +292,9 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
                       : 'border-gray-400'
                   }`}
                 />
-                <span className="font-medium text-gray-900">{option.label}</span>
+                <span className="font-medium text-gray-900">
+                  <InlineMathText text={option.label} />
+                </span>
               </div>
             </button>
           ))}
@@ -318,7 +313,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
         </Button>
 
         <Button
-          onClick={handleSubmit}
+          onClick={isLastQuestion ? handleSubmit : handleNext}
           disabled={!selectedAnswers[currentQuestion.id]}
           className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400"
         >
