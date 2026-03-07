@@ -98,6 +98,20 @@ export const updateStreak = (days: number) => {
 
 const COMPLETED_EXERCISE_IDS_KEY = 'completed_exercise_ids';
 const LAST_STUDY_DATE_KEY = 'last_study_date';
+const EXAM_RESULTS_KEY = 'exam_results';
+
+export interface ExamSectionResult {
+  moduleId: string;
+  sectionId: string;
+  attempts: number;
+  bestScore: number;
+  lastScore: number;
+  lastTakenAt: string;
+  lastTotalQuestions: number;
+  passingScore: number;
+}
+
+type ExamResultsRecord = Record<string, ExamSectionResult>;
 
 const getCompletedExerciseIds = (): string[] => {
   try {
@@ -176,4 +190,70 @@ export const touchStudyDay = (): number => {
     console.error('Error updating study streak:', e);
     return getStreak();
   }
+};
+
+const getExamResultsRecord = (): ExamResultsRecord => {
+  try {
+    const raw = localStorage.getItem(EXAM_RESULTS_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch {
+    return {};
+  }
+};
+
+const saveExamResultsRecord = (record: ExamResultsRecord) => {
+  try {
+    localStorage.setItem(EXAM_RESULTS_KEY, JSON.stringify(record));
+  } catch (e) {
+    console.error('Error saving exam results:', e);
+  }
+};
+
+export const saveExamSectionResult = (
+  moduleId: string,
+  sectionId: string,
+  score: number,
+  totalQuestions: number,
+  passingScore = 70,
+) => {
+  try {
+    const normalizedScore = Math.max(0, Math.min(100, Math.round(score)));
+    const normalizedTotalQuestions = Math.max(0, Math.round(totalQuestions));
+    const scopedId = `${moduleId}:${sectionId}`;
+    const record = getExamResultsRecord();
+    const previous = record[scopedId];
+
+    record[scopedId] = {
+      moduleId,
+      sectionId,
+      attempts: (previous?.attempts || 0) + 1,
+      bestScore: Math.max(previous?.bestScore || 0, normalizedScore),
+      lastScore: normalizedScore,
+      lastTakenAt: new Date().toISOString(),
+      lastTotalQuestions: normalizedTotalQuestions,
+      passingScore,
+    };
+
+    saveExamResultsRecord(record);
+  } catch (e) {
+    console.error('Error updating exam section result:', e);
+  }
+};
+
+export const getExamSectionResult = (moduleId: string, sectionId: string): ExamSectionResult | null => {
+  try {
+    const scopedId = `${moduleId}:${sectionId}`;
+    const record = getExamResultsRecord();
+    return record[scopedId] || null;
+  } catch {
+    return null;
+  }
+};
+
+export const getAllExamSectionResults = (): ExamSectionResult[] => {
+  const record = getExamResultsRecord();
+  return Object.values(record).sort((a, b) => {
+    return new Date(b.lastTakenAt).getTime() - new Date(a.lastTakenAt).getTime();
+  });
 };
