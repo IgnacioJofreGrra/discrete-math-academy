@@ -7,8 +7,9 @@ import { MathRenderer } from '@/components/MathRenderer';
 import { Flashcard } from '@/components/Flashcard';
 import { StepByStep } from '@/components/StepByStep';
 import { Challenge } from '@/components/Challenge';
+import { Quiz } from '@/components/Quiz';
 import { getModuleById, markExerciseCompleted } from '@/lib/courseData';
-import { ChevronLeft, BookOpen, Lightbulb, Zap } from 'lucide-react';
+import { ChevronLeft, BookOpen, Lightbulb, Zap, ClipboardCheck } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
 import { InlineMathText } from '@/components/InlineMathText';
 
@@ -39,6 +40,18 @@ interface Section {
   };
 }
 
+interface GeneratedQuizQuestion {
+  id: string;
+  question: string;
+  options: Array<{
+    value: string;
+    label: string;
+    correct: boolean;
+    explanation: string;
+  }>;
+  difficulty?: 'easy' | 'medium' | 'hard';
+}
+
 /**
  * Module - Página que muestra un módulo completo con secciones y ejercicios
  */
@@ -47,7 +60,7 @@ export default function Module() {
   const [, setLocation] = useLocation();
   const [activeSection, setActiveSection] = useState(0);
   const [activeExercise, setActiveExercise] = useState(0);
-  const [exerciseType, setExerciseType] = useState<'theory' | 'application' | 'exercises'>('theory');
+  const [exerciseType, setExerciseType] = useState<'theory' | 'application' | 'exercises' | 'exam'>('theory');
 
   const normalizedModuleId = useMemo(() => {
     if (!moduleId) return '';
@@ -90,6 +103,164 @@ export default function Module() {
   const sectionIndex = Math.min(activeSection, module.sections.length - 1);
   const section: Section = module.sections[sectionIndex];
   const exercise = section?.content?.exercises?.[activeExercise];
+
+  const sectionExercises = useMemo(() => {
+    return Array.isArray(section?.content?.exercises) ? section.content.exercises : [];
+  }, [section]);
+
+  const examQuestions = useMemo<GeneratedQuizQuestion[]>(() => {
+    const fallbackDistractors = [
+      'Se verifica unicamente con la ultima cifra del numero.',
+      'Solo depende de que la suma de cifras sea un numero par.',
+      'Basta con que el numero sea mayor que el divisor.',
+    ];
+
+    const extractPrimaryAnswer = (item: any): string | null => {
+      if (item?.type === 'flashcard' && typeof item.answer === 'string') {
+        return item.answer.trim();
+      }
+
+      if (item?.type === 'step_by_step' && Array.isArray(item.steps) && item.steps.length > 0) {
+        const lastStepAnswer = item.steps[item.steps.length - 1]?.answer;
+        return typeof lastStepAnswer === 'string' ? lastStepAnswer.trim() : null;
+      }
+
+      if (item?.type === 'challenge') {
+        if (Array.isArray(item.options) && item.options.length > 0) {
+          const correctOption = item.options.find((option: any) => option?.correct);
+          if (correctOption?.value != null) {
+            return String(correctOption.value).trim();
+          }
+        }
+
+        if (typeof item.expectedAnswer === 'string') {
+          return item.expectedAnswer.trim();
+        }
+      }
+
+      return null;
+    };
+
+    const answerPool = Array.from(
+      new Set(
+        sectionExercises
+          .map(extractPrimaryAnswer)
+          .filter((value): value is string => Boolean(value)),
+      ),
+    );
+
+    return sectionExercises
+      .map((item, index): GeneratedQuizQuestion | null => {
+        const baseQuestion =
+          typeof item.question === 'string'
+            ? item.question
+            : typeof item.problem === 'string'
+              ? item.problem
+              : typeof item.title === 'string'
+                ? item.title
+                : null;
+
+        if (!baseQuestion) {
+          return null;
+        }
+
+        let correctLabel: string | null = null;
+        let optionBlueprint: Array<{ label: string; correct: boolean; explanation: string }> = [];
+
+        if (item.type === 'flashcard' && typeof item.answer === 'string') {
+          correctLabel = item.answer.trim();
+        }
+
+        if (item.type === 'step_by_step' && Array.isArray(item.steps) && item.steps.length > 0) {
+          const finalAnswer = item.steps[item.steps.length - 1]?.answer;
+          if (typeof finalAnswer === 'string') {
+            correctLabel = finalAnswer.trim();
+          }
+        }
+
+        if (item.type === 'challenge' && Array.isArray(item.options) && item.options.length > 1) {
+          const challengeOptions = item.options
+            .map((option: any) => ({
+              label: option?.value != null ? String(option.value) : '',
+              correct: Boolean(option?.correct),
+              explanation:
+                typeof option?.explanation === 'string'
+                  ? option.explanation
+                  : option?.correct
+                    ? 'Correcto. Esta es la respuesta esperada para el desafio.'
+                    : 'Incorrecto. Esa alternativa no satisface el desafio.',
+            }))
+            .filter((option: any) => option.label.trim().length > 0);
+
+          if (challengeOptions.some((option: any) => option.correct)) {
+            optionBlueprint = challengeOptions;
+          }
+        }
+
+        if (!optionBlueprint.length && item.type === 'challenge' && typeof item.expectedAnswer === 'string') {
+          correctLabel = item.expectedAnswer.trim();
+        }
+
+        if (!optionBlueprint.length) {
+          if (!correctLabel) {
+            return null;
+          }
+
+          const candidateDistractors = answerPool.filter((value) => value !== correctLabel);
+          const rotateFrom = candidateDistractors.length > 0 ? index % candidateDistractors.length : 0;
+          const rotatedPool = [
+            ...candidateDistractors.slice(rotateFrom),
+            ...candidateDistractors.slice(0, rotateFrom),
+          ];
+
+          const distractors = rotatedPool.slice(0, 2);
+
+          for (const fallback of fallbackDistractors) {
+            if (distractors.length >= 2) break;
+            if (fallback !== correctLabel && !distractors.includes(fallback)) {
+              distractors.push(fallback);
+            }
+          }
+
+          optionBlueprint = [
+            {
+              label: correctLabel,
+              correct: true,
+              explanation: 'Correcto. Esta es la respuesta esperada para el enunciado.',
+            },
+            ...distractors.map((distractor) => ({
+              label: distractor,
+              correct: false,
+              explanation: 'Incorrecto. Ese enunciado corresponde a otra regla o no aplica aqui.',
+            })),
+          ];
+        }
+
+        const optionRotateFrom = index % optionBlueprint.length;
+        const orderedOptions = [
+          ...optionBlueprint.slice(optionRotateFrom),
+          ...optionBlueprint.slice(0, optionRotateFrom),
+        ];
+
+        const questionPrompt =
+          item.type === 'step_by_step' && typeof item.title === 'string'
+            ? `En "${item.title}", cual es el resultado final correcto?`
+            : baseQuestion;
+
+        return {
+          id: `exam_${item.id}`,
+          question: questionPrompt,
+          options: orderedOptions.map((option, optionIndex) => ({
+            value: String.fromCharCode(97 + optionIndex),
+            label: option.label,
+            correct: option.correct,
+            explanation: option.explanation,
+          })),
+          difficulty: item.difficulty,
+        };
+      })
+      .filter((question): question is GeneratedQuizQuestion => Boolean(question));
+  }, [sectionExercises]);
 
   useEffect(() => {
     if (exerciseType !== 'exercises') return;
@@ -241,6 +412,15 @@ export default function Module() {
                   <AppIcon icon={Zap} size={16} colorClass="text-violet-600" />
                   Ejercicios ({section.content.exercises.length})
                 </Button>
+                <Button
+                  variant={exerciseType === 'exam' ? 'default' : 'outline'}
+                  onClick={() => setExerciseType('exam')}
+                  className="w-full justify-start gap-2"
+                  disabled={examQuestions.length === 0}
+                >
+                  <AppIcon icon={ClipboardCheck} size={16} colorClass="text-amber-600" />
+                  Examen ({examQuestions.length})
+                </Button>
               </div>
             </Card>
           </div>
@@ -326,6 +506,20 @@ export default function Module() {
                   Ejercicio {activeExercise + 1} de {section.content.exercises.length}
                 </div>
               </div>
+            )}
+
+            {exerciseType === 'exam' && (
+              examQuestions.length > 0 ? (
+                <Quiz
+                  title={`Examen de ${section.title}`}
+                  questions={examQuestions}
+                  passingScore={70}
+                />
+              ) : (
+                <Card className="p-8 max-[359px]:p-4 text-center">
+                  <p className="text-gray-600">Esta seccion todavia no tiene preguntas para el examen.</p>
+                </Card>
+              )
             )}
           </div>
         </div>
