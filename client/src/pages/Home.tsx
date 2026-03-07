@@ -3,9 +3,10 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { BookOpen, Zap, Target, Award, Hash, Ruler, Link2, Infinity, Bird, Sigma, type LucideIcon } from 'lucide-react';
+import { BookOpen, Zap, Target, Award, Hash, Ruler, Link2, Infinity, Bird, Sigma, Github, LogOut, type LucideIcon } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
 import { getAllModules, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, touchStudyDay } from '@/lib/courseData';
+import { useAuth } from '@/contexts/AuthContext';
 
 const moduleIconMap: Record<string, LucideIcon> = {
   hash: Hash,
@@ -42,6 +43,8 @@ const difficultyLabels = {
  */
 export default function Home() {
   const [, setLocation] = useLocation();
+  const { user, loading: authLoading, signInWithGoogle, signInWithGithub, logout } = useAuth();
+  const [authError, setAuthError] = useState<string | null>(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
   const [stats, setStats] = useState({
     totalProgress: 0,
@@ -69,6 +72,51 @@ export default function Home() {
     ? allModules
     : allModules.filter((m: any) => m.difficulty === selectedDifficulty);
 
+  const handleGoogleLogin = async () => {
+    try {
+      setAuthError(null);
+      await signInWithGoogle();
+    } catch (error: any) {
+      const code = error?.code as string | undefined;
+      if (code === 'auth/operation-not-allowed') {
+        setAuthError('Google no esta habilitado en Firebase Authentication.');
+        return;
+      }
+      if (code === 'auth/popup-closed-by-user') {
+        setAuthError('Cerraste la ventana de inicio de sesion antes de completar el acceso.');
+        return;
+      }
+      setAuthError('No se pudo iniciar sesion con Google. Revisa la configuracion del proveedor.');
+    }
+  };
+
+  const handleGithubLogin = async () => {
+    try {
+      setAuthError(null);
+      await signInWithGithub();
+    } catch (error: any) {
+      const code = error?.code as string | undefined;
+      if (code === 'auth/operation-not-allowed') {
+        setAuthError('GitHub no esta habilitado en Firebase Authentication.');
+        return;
+      }
+      if (code === 'auth/popup-closed-by-user') {
+        setAuthError('Cerraste la ventana de inicio de sesion antes de completar el acceso.');
+        return;
+      }
+      setAuthError('No se pudo iniciar sesion con GitHub. Verifica Client ID/Secret y callback URL.');
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      setAuthError(null);
+      await logout();
+    } catch {
+      setAuthError('No se pudo cerrar sesion. Intenta nuevamente.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       {/* Header */}
@@ -82,9 +130,57 @@ export default function Home() {
               </h1>
               <p className="text-gray-600 mt-2 max-[359px]:text-sm">Aprende Matemática Discreta de forma interactiva</p>
             </div>
-            <div className="text-left sm:text-right">
-              <div className="text-3xl max-[359px]:text-2xl font-bold text-blue-600">{stats.totalProgress}%</div>
-              <p className="text-sm text-gray-600">Progreso general</p>
+            <div className="text-left sm:text-right space-y-2">
+              <div>
+                <div className="text-3xl max-[359px]:text-2xl font-bold text-blue-600">{stats.totalProgress}%</div>
+                <p className="text-sm text-gray-600">Progreso general</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2 sm:justify-end">
+                {authLoading ? (
+                  <span className="text-xs text-gray-500">Cargando sesión...</span>
+                ) : user ? (
+                  <>
+                    <span className="text-xs text-gray-600 max-w-[220px] truncate" title={user.email || undefined}>
+                      {user.displayName || user.email || 'Usuario autenticado'}
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleLogout}
+                      className="gap-2"
+                    >
+                      <AppIcon icon={LogOut} size={14} colorClass="text-slate-600" />
+                      Salir
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleGoogleLogin}
+                      className="gap-2"
+                    >
+                      <span className="text-sm font-bold text-blue-600">G</span>
+                      Google
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleGithubLogin}
+                      className="gap-2"
+                    >
+                      <AppIcon icon={Github} size={14} colorClass="text-slate-700" />
+                      GitHub
+                    </Button>
+                  </>
+                )}
+              </div>
+
+              {authError && (
+                <p className="text-xs text-red-600 max-w-[320px] sm:ml-auto">{authError}</p>
+              )}
             </div>
           </div>
         </div>
