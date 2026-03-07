@@ -8,7 +8,7 @@ import { Flashcard } from '@/components/Flashcard';
 import { StepByStep } from '@/components/StepByStep';
 import { Challenge } from '@/components/Challenge';
 import { Quiz } from '@/components/Quiz';
-import { getModuleById, markExerciseCompleted } from '@/lib/courseData';
+import { getModuleById, markExerciseCompleted, saveExamSectionResult } from '@/lib/courseData';
 import { ChevronLeft, BookOpen, Lightbulb, Zap, ClipboardCheck } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
 import { InlineMathText } from '@/components/InlineMathText';
@@ -514,6 +514,10 @@ export default function Module() {
                   title={`Examen de ${section.title}`}
                   questions={examQuestions}
                   passingScore={70}
+                  onComplete={(score, totalQuestions) => {
+                    if (!normalizedModuleId || !section?.id) return;
+                    saveExamSectionResult(normalizedModuleId, section.id, score, totalQuestions, 70);
+                  }}
                 />
               ) : (
                 <Card className="p-8 max-[359px]:p-4 text-center">

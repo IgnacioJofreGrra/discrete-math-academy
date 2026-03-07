@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { ChevronLeft, TrendingUp, Target, Zap, Award } from 'lucide-react';
-import { getAllModules, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, getModuleProgress } from '@/lib/courseData';
+import { ChevronLeft, TrendingUp, Target, Zap, Award, ClipboardCheck } from 'lucide-react';
+import { getAllModules, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, getModuleProgress, getAllExamSectionResults } from '@/lib/courseData';
 import { getBadges, isBadgeUnlocked, getUnlockedBadgesCount } from '@/lib/badges';
 import { BadgeDisplay } from '@/components/BadgeDisplay';
 import { AppIcon } from '@/components/AppIcon';
@@ -26,11 +26,15 @@ export default function Statistics() {
     streak: 0,
     unlockedBadges: 0,
     totalBadges: 0,
+    examAttempts: 0,
+    sectionsWithExam: 0,
+    averageExamScore: 0,
   });
 
   const [progressData, setProgressData] = useState<any[]>([]);
   const [difficultyData, setDifficultyData] = useState<any[]>([]);
   const [recommendations, setRecommendations] = useState<string[]>([]);
+  const [examResults, setExamResults] = useState<any[]>([]);
 
   useEffect(() => {
     const allModules = getAllModules();
@@ -38,6 +42,35 @@ export default function Statistics() {
     const completedExercises = getCompletedExercises();
     const totalExercises = getTotalExercises();
     const unlockedBadges = getUnlockedBadgesCount();
+    const examResultsData = getAllExamSectionResults();
+
+    const sectionNames = new Map<string, { moduleTitle: string; sectionTitle: string }>();
+    allModules.forEach((module) => {
+      module.sections?.forEach((section: any) => {
+        sectionNames.set(`${module.id}:${section.id}`, {
+          moduleTitle: module.title,
+          sectionTitle: section.title,
+        });
+      });
+    });
+
+    const examRows = examResultsData.map((result) => {
+      const key = `${result.moduleId}:${result.sectionId}`;
+      const names = sectionNames.get(key);
+
+      return {
+        ...result,
+        moduleTitle: names?.moduleTitle || result.moduleId,
+        sectionTitle: names?.sectionTitle || result.sectionId,
+      };
+    });
+
+    setExamResults(examRows);
+
+    const examAttempts = examRows.reduce((sum, row) => sum + row.attempts, 0);
+    const averageExamScore = examRows.length > 0
+      ? Math.round(examRows.reduce((sum, row) => sum + row.lastScore, 0) / examRows.length)
+      : 0;
 
     setStats({
       totalProgress: getTotalProgress(),
@@ -47,6 +80,9 @@ export default function Statistics() {
       streak: getStreak(),
       unlockedBadges,
       totalBadges: Object.keys(getBadges()).length,
+      examAttempts,
+      sectionsWithExam: examRows.length,
+      averageExamScore,
     });
 
     // Build progress data from stored module progress (real user data)
@@ -160,14 +196,25 @@ export default function Statistics() {
               </div>
             </div>
           </Card>
+
+          <Card className="p-6 max-[359px]:p-4 bg-white border-l-4 border-cyan-500">
+            <div className="flex items-center gap-4">
+              <AppIcon icon={ClipboardCheck} colorClass="text-cyan-600" />
+              <div>
+                <p className="text-sm max-[359px]:text-xs text-gray-600">Promedio Examen</p>
+                <p className="text-3xl max-[359px]:text-2xl font-bold text-gray-900">{stats.averageExamScore || 0}%</p>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Tabs */}
         <Tabs defaultValue="progress" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-2 mb-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5 h-auto gap-2 mb-6">
             <TabsTrigger value="progress" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Progreso</TabsTrigger>
             <TabsTrigger value="difficulty" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Dificultad</TabsTrigger>
             <TabsTrigger value="badges" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Badges</TabsTrigger>
+            <TabsTrigger value="exams" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Exámenes</TabsTrigger>
             <TabsTrigger value="recommendations" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Recomendaciones</TabsTrigger>
           </TabsList>
 
@@ -261,6 +308,42 @@ export default function Statistics() {
                   />
                 ))}
               </div>
+            </Card>
+          </TabsContent>
+
+          {/* Exams Tab */}
+          <TabsContent value="exams" className="space-y-6">
+            <Card className="p-8 max-[359px]:p-4">
+              <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-2">Rendimiento en Exámenes</h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Intentos totales: {stats.examAttempts || 0} · Secciones evaluadas: {stats.sectionsWithExam || 0}
+              </p>
+
+              {examResults.length === 0 ? (
+                <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                  <p className="text-gray-700 max-[359px]:text-sm">Aún no has completado exámenes de sección.</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {examResults.map((result) => {
+                    const passed = result.lastScore >= result.passingScore;
+                    return (
+                      <div key={`${result.moduleId}:${result.sectionId}`} className={`p-4 rounded-lg border ${passed ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between mb-2">
+                          <p className="font-semibold text-gray-900 max-[359px]:text-sm">{result.sectionTitle}</p>
+                          <p className="text-sm text-gray-600">{result.moduleTitle}</p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 text-sm">
+                          <p className="text-gray-700">Ultimo: <span className="font-semibold">{result.lastScore}%</span></p>
+                          <p className="text-gray-700">Mejor: <span className="font-semibold">{result.bestScore}%</span></p>
+                          <p className="text-gray-700">Intentos: <span className="font-semibold">{result.attempts}</span></p>
+                          <p className="text-gray-700">Fecha: <span className="font-semibold">{new Date(result.lastTakenAt).toLocaleDateString('es-CL')}</span></p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </Card>
           </TabsContent>
 
