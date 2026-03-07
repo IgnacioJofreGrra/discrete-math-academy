@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { InlineMathText } from './InlineMathText';
 import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { AppIcon } from './AppIcon';
 
 interface Step {
   instruction: string;
@@ -65,9 +66,9 @@ export function StepByStep({ title, steps, onComplete }: StepByStepProps) {
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4">
+    <div className="w-full max-w-3xl mx-auto px-4 max-[359px]:px-3">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">{title}</h2>
+        <h2 className="text-2xl max-[359px]:text-xl font-bold text-gray-900 mb-4">{title}</h2>
         
         {/* Progress Bar */}
         <div className="w-full bg-gray-200 rounded-full h-2">
@@ -81,7 +82,7 @@ export function StepByStep({ title, steps, onComplete }: StepByStepProps) {
         </p>
       </div>
 
-      <Card className="p-8 mb-6 border-2 border-blue-100 bg-blue-50">
+      <Card className="p-8 max-[359px]:p-4 mb-6 border-2 border-blue-100 bg-blue-50">
         <div className="mb-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-3">
             <InlineMathText text={step.instruction} />
@@ -141,9 +142,9 @@ export function StepByStep({ title, steps, onComplete }: StepByStepProps) {
           }`}>
             <div className="flex items-start gap-3">
               {userInput.toLowerCase().trim() === step.answer.toLowerCase().trim() ? (
-                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                <AppIcon icon={CheckCircle2} size={20} colorClass="text-green-600 mt-1" />
               ) : (
-                <AlertCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-1" />
+                <AppIcon icon={AlertCircle} size={20} colorClass="text-orange-600 mt-1" />
               )}
               <div>
                 <p className="font-semibold text-gray-900 mb-2">Respuesta esperada:</p>
@@ -159,25 +160,25 @@ export function StepByStep({ title, steps, onComplete }: StepByStepProps) {
       </Card>
 
       {/* Navigation Buttons */}
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <Button
           variant="outline"
           size="lg"
           onClick={handlePrevious}
           disabled={isFirstStep}
-          className="flex items-center gap-2"
+          className="w-full sm:w-auto flex items-center justify-center gap-2"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <AppIcon icon={ChevronLeft} size={16} colorClass="text-slate-600" />
           Anterior
         </Button>
 
         <Button
           size="lg"
           onClick={handleNext}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700"
         >
           {isLastStep ? 'Completar' : 'Siguiente'}
-          {!isLastStep && <ChevronRight className="w-4 h-4" />}
+          {!isLastStep && <AppIcon icon={ChevronRight} size={16} colorClass="text-blue-600" />}
         </Button>
       </div>
     </div>

@@ -1,9 +1,9 @@
-# Discrete Math Academy - Arquitectura de Contenido y Modelo de Datos
+# DiscreMath - Arquitectura de Contenido y Modelo de Datos
 
 ## 1. Sitemap (Árbol de Navegación)
 
 ```
-Discrete Math Academy
+DiscreMath
 ├── Home / Dashboard
 │   ├── Progreso General
 │   ├── Módulos Recomendados

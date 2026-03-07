@@ -1,4 +1,4 @@
-# Discrete Math Academy - Características Finales Implementadas
+# DiscreMath - Características Finales Implementadas
 
 ## 1. Cuestionarios de Autoevaluación ✅
 

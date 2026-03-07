@@ -57,12 +57,12 @@ export function FactorVisualization({ number = 60 }: FactorVisualizationProps) {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4">
+    <div className="w-full max-w-2xl mx-auto px-4 max-[359px]:px-3">
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Factorización en Primos</h3>
 
         {/* Input */}
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-col sm:flex-row gap-2 mb-4">
           <input
             type="number"
             value={inputNumber}
@@ -72,7 +72,7 @@ export function FactorVisualization({ number = 60 }: FactorVisualizationProps) {
           />
           <Button
             onClick={() => factorize(inputNumber)}
-            className="bg-blue-600 hover:bg-blue-700"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700"
           >
             Factorizar
           </Button>
@@ -82,7 +82,7 @@ export function FactorVisualization({ number = 60 }: FactorVisualizationProps) {
       {factors.length > 0 && (
         <div className="space-y-4">
           {/* Factors List */}
-          <Card className="p-6 bg-blue-50 border-2 border-blue-200">
+          <Card className="p-6 max-[359px]:p-4 bg-blue-50 border-2 border-blue-200">
             <p className="text-sm text-gray-600 mb-3">Factores primos encontrados:</p>
             <div className="flex flex-wrap gap-2">
               {factors.map((factor, idx) => (
@@ -97,10 +97,10 @@ export function FactorVisualization({ number = 60 }: FactorVisualizationProps) {
           </Card>
 
           {/* Factorization */}
-          <Card className="p-6 bg-green-50 border-2 border-green-200">
+          <Card className="p-6 max-[359px]:p-4 bg-green-50 border-2 border-green-200">
             <p className="text-sm text-gray-600 mb-3">Factorización:</p>
             <div className="text-center">
-              <p className="text-lg text-gray-900 mb-2">
+              <p className="text-lg max-[359px]:text-base text-gray-900 mb-2">
                 {inputNumber} = {factors.join(' × ')}
               </p>
               {getLatexFactorization() && (
@@ -112,7 +112,7 @@ export function FactorVisualization({ number = 60 }: FactorVisualizationProps) {
           </Card>
 
           {/* Factorization Summary */}
-          <Card className="p-6">
+          <Card className="p-6 max-[359px]:p-4">
             <p className="text-sm text-gray-600 mb-3">Resumen:</p>
             <div className="space-y-2">
               {factorization.map(({ prime, count }) => (
@@ -128,9 +128,9 @@ export function FactorVisualization({ number = 60 }: FactorVisualizationProps) {
           </Card>
 
           {/* Verification */}
-          <Card className="p-6 bg-purple-50 border-2 border-purple-200">
+          <Card className="p-6 max-[359px]:p-4 bg-purple-50 border-2 border-purple-200">
             <p className="text-sm text-gray-600 mb-2">Verificación:</p>
-            <p className="text-center text-lg font-semibold text-purple-800">
+            <p className="text-center text-lg max-[359px]:text-base font-semibold text-purple-800">
               {factors.reduce((a, b) => a * b, 1)} = {inputNumber} ✓
             </p>
           </Card>

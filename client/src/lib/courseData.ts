@@ -95,3 +95,85 @@ export const updateStreak = (days: number) => {
     console.error('Error saving streak:', e);
   }
 };
+
+const COMPLETED_EXERCISE_IDS_KEY = 'completed_exercise_ids';
+const LAST_STUDY_DATE_KEY = 'last_study_date';
+
+const getCompletedExerciseIds = (): string[] => {
+  try {
+    const stored = localStorage.getItem(COMPLETED_EXERCISE_IDS_KEY);
+    const parsed = stored ? JSON.parse(stored) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveCompletedExerciseIds = (ids: string[]) => {
+  try {
+    localStorage.setItem(COMPLETED_EXERCISE_IDS_KEY, JSON.stringify(ids));
+    updateCompletedExercises(ids.length);
+  } catch (e) {
+    console.error('Error saving completed exercise ids:', e);
+  }
+};
+
+const getModuleTotalExercises = (moduleId: string): number => {
+  const module = getModuleById(moduleId) as any;
+  if (!module?.sections) return 0;
+
+  return module.sections.reduce((sum: number, section: any) => {
+    return sum + (section.content?.exercises?.length || 0);
+  }, 0);
+};
+
+export const markExerciseCompleted = (moduleId: string, exerciseId: string): boolean => {
+  try {
+    const scopedId = `${moduleId}:${exerciseId}`;
+    const completedIds = getCompletedExerciseIds();
+    if (completedIds.includes(scopedId)) {
+      return false;
+    }
+
+    const updatedIds = [...completedIds, scopedId];
+    saveCompletedExerciseIds(updatedIds);
+
+    const moduleExerciseTotal = getModuleTotalExercises(moduleId);
+    const moduleExerciseDone = updatedIds.filter(id => id.startsWith(`${moduleId}:`)).length;
+    const progress = moduleExerciseTotal > 0 ? Math.round((moduleExerciseDone / moduleExerciseTotal) * 100) : 0;
+    updateModuleProgress(moduleId, progress);
+
+    return true;
+  } catch (e) {
+    console.error('Error marking exercise as completed:', e);
+    return false;
+  }
+};
+
+export const touchStudyDay = (): number => {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const lastStudyDate = localStorage.getItem(LAST_STUDY_DATE_KEY);
+
+    if (lastStudyDate === today) {
+      return getStreak();
+    }
+
+    let streak = getStreak();
+    if (!lastStudyDate) {
+      streak = 1;
+    } else {
+      const last = new Date(lastStudyDate);
+      const now = new Date(today);
+      const diffDays = Math.floor((now.getTime() - last.getTime()) / (1000 * 60 * 60 * 24));
+      streak = diffDays === 1 ? streak + 1 : 1;
+    }
+
+    updateStreak(streak);
+    localStorage.setItem(LAST_STUDY_DATE_KEY, today);
+    return streak;
+  } catch (e) {
+    console.error('Error updating study streak:', e);
+    return getStreak();
+  }
+};

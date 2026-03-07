@@ -5,7 +5,7 @@
   "order": 0,
   "difficulty": "beginner",
   "estimatedHours": 8,
-  "icon": "🔢",
+  "icon": "hash",
   "sections": [
     {
       "id": "section_0_1",
@@ -28,21 +28,63 @@
           "criterios": [
             {
               "divisor": 2,
-              "criterion": "Un número es divisible por 2 si su último dígito es par (0, 2, 4, 6, 8).",
-              "example": "246 es divisible por 2 porque termina en 6.",
-              "explanation": "Cualquier número se puede escribir como $10a + b$ donde $b$ es el último dígito. Como $10a = 2 \\cdot 5a$, el número es divisible por 2 si y solo si $b$ es divisible por 2."
+              "criterion": "El número 2 puede dividir a los números terminados en número par ($0$, $2$, $4$, $6$, $8$).",
+              "example": "248 es divisible por 2 porque termina en 8.",
+              "explanation": "Basta revisar la última cifra: si es par, el número completo es divisible por 2."
             },
             {
               "divisor": 3,
-              "criterion": "Un número es divisible por 3 si la suma de sus dígitos es divisible por 3.",
-              "example": "123 es divisible por 3 porque $1+2+3=6$ y 6 es divisible por 3.",
-              "explanation": "Un número $\\overline{d_n d_{n-1} \\ldots d_1 d_0}$ se puede escribir como $\\sum_{i=0}^{n} d_i \\cdot 10^i$. Como $10 \\equiv 1 \\pmod{3}$, tenemos $10^i \\equiv 1 \\pmod{3}$, por lo que el número es congruente a $\\sum d_i \\pmod{3}$."
+              "criterion": "El número 3 puede dividir a los números cuya suma de sus cifras sea múltiplo de $3$.",
+              "example": "372 es divisible por 3 porque $3 + 7 + 2 = 12$ y 12 es múltiplo de 3.",
+              "explanation": "Si la suma de cifras da un múltiplo de 3, el número también es múltiplo de 3."
+            },
+            {
+              "divisor": 4,
+              "criterion": "El número 4 puede dividir a los números cuyas dos últimas cifras sean $00$ o un múltiplo de $4$.",
+              "example": "316 es divisible por 4 porque 16 es múltiplo de 4.",
+              "explanation": "Solo revisa las dos últimas cifras."
             },
             {
               "divisor": 5,
-              "criterion": "Un número es divisible por 5 si su último dígito es 0 o 5.",
-              "example": "125 es divisible por 5 porque termina en 5.",
-              "explanation": "Similar al criterio de 2: $10a + b$ es divisible por 5 si y solo si $b$ es divisible por 5."
+              "criterion": "El número 5 puede dividir a los números que terminan en $0$ o en $5$.",
+              "example": "945 es divisible por 5 porque termina en 5.",
+              "explanation": "Si la última cifra es 0 o 5, el número es divisible por 5."
+            },
+            {
+              "divisor": 6,
+              "criterion": "El número 6 puede dividir a los números que son divisibles por $2$ y por $3$ al mismo tiempo.",
+              "example": "234 es divisible por 6 porque es divisible por 2 y por 3.",
+              "explanation": "Primero verifica el criterio de 2 y luego el de 3."
+            },
+            {
+              "divisor": 7,
+              "criterion": "El número 7 puede dividir a un número cuando, al restar el número sin la cifra de las unidades y el doble de la cifra de las unidades, el resultado es $0$ o múltiplo de $7$.",
+              "example": "203 es divisible por 7 porque $20 - 2(3) = 14$, y 14 es múltiplo de 7.",
+              "explanation": "Aplica la regla una vez o varias veces hasta obtener un número fácil de reconocer."
+            },
+            {
+              "divisor": 8,
+              "criterion": "El número 8 puede dividir a los números cuyas tres últimas cifras sean $000$ o un múltiplo de $8$.",
+              "example": "1016 es divisible por 8 porque 016 (=16) es múltiplo de 8.",
+              "explanation": "Solo importan las tres últimas cifras."
+            },
+            {
+              "divisor": 9,
+              "criterion": "El número 9 puede dividir a los números cuya suma de sus cifras sea múltiplo de $9$.",
+              "example": "729 es divisible por 9 porque $7 + 2 + 9 = 18$, y 18 es múltiplo de 9.",
+              "explanation": "Es la misma idea del criterio de 3, pero con múltiplos de 9."
+            },
+            {
+              "divisor": 10,
+              "criterion": "El número 10 puede dividir a los números que terminan en $0$.",
+              "example": "1450 es divisible por 10 porque termina en 0.",
+              "explanation": "Si no termina en 0, no es divisible por 10."
+            },
+            {
+              "divisor": 11,
+              "criterion": "El número 11 puede dividir a un número cuando la diferencia entre la suma de las cifras en posiciones pares y la suma de las cifras en posiciones impares es $0$ o un múltiplo de $11$.",
+              "example": "121 es divisible por 11 porque $(1 + 1) - 2 = 0$.",
+              "explanation": "Resta ambas sumas; si obtienes 0 o un múltiplo de 11, sí es divisible."
             }
           ]
         },
@@ -83,37 +125,86 @@
           },
           {
             "id": "exercise_0_1_3",
-            "type": "step_by_step",
-            "title": "Verificar si 456 es divisible por 3",
-            "steps": [
-              {
-                "instruction": "Suma los dígitos del número 456.",
-                "hint": "Suma: 4 + 5 + 6",
-                "answer": "15"
-              },
-              {
-                "instruction": "Verifica si 15 es divisible por 3.",
-                "hint": "¿15 = 3k para algún entero k?",
-                "answer": "Sí, porque 15 = 3 × 5"
-              },
-              {
-                "instruction": "Conclusión: ¿Es 456 divisible por 3?",
-                "hint": "Usa el criterio de divisibilidad por 3.",
-                "answer": "Sí, 456 es divisible por 3 porque la suma de sus dígitos (15) es divisible por 3."
-              }
-            ],
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 4?",
+            "answer": "Un número es divisible por 4 si sus dos últimas cifras forman 00 o un múltiplo de 4.",
             "difficulty": "easy"
           },
           {
             "id": "exercise_0_1_4",
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 6?",
+            "answer": "Un número es divisible por 6 si es divisible por 2 y por 3 al mismo tiempo.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_1_5",
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 7?",
+            "answer": "Se resta al número sin la unidad el doble de la unidad; si el resultado es 0 o múltiplo de 7, el número original es divisible por 7.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_1_6",
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 8?",
+            "answer": "Un número es divisible por 8 si sus tres últimas cifras forman 000 o un múltiplo de 8.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_1_7",
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 9?",
+            "answer": "Un número es divisible por 9 si la suma de sus cifras es múltiplo de 9.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_1_8",
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 10?",
+            "answer": "Un número es divisible por 10 si termina en 0.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_0_1_9",
+            "type": "flashcard",
+            "question": "¿Cuál es el criterio de divisibilidad por 11?",
+            "answer": "La diferencia entre la suma de cifras en posiciones pares e impares debe ser 0 o múltiplo de 11.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_1_10",
+            "type": "step_by_step",
+            "title": "Verificar si 121 es divisible por 11",
+            "steps": [
+              {
+                "instruction": "Separa las cifras en posiciones impares y pares de 121 (de derecha a izquierda).",
+                "hint": "Impares: 1 y 1. Pares: 2.",
+                "answer": "Impares: 1 y 1; pares: 2"
+              },
+              {
+                "instruction": "Calcula la diferencia entre ambas sumas.",
+                "hint": "(1 + 1) - 2",
+                "answer": "0"
+              },
+              {
+                "instruction": "Conclusión: ¿Es 121 divisible por 11?",
+                "hint": "Si la diferencia es 0 o múltiplo de 11, sí es divisible.",
+                "answer": "Sí, 121 es divisible por 11 porque la diferencia es 0."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_1_11",
             "type": "challenge",
-            "title": "Problema de Divisibilidad",
-            "problem": "¿Cuál de los siguientes números es divisible por 2, 3 y 5 simultáneamente?",
+            "title": "Desafío de Criterios Combinados",
+            "problem": "¿Cuál de los siguientes números es divisible por 4, 6 y 11 al mismo tiempo?",
             "options": [
-              { "value": "120", "correct": true, "explanation": "120 es divisible por 2 (termina en 0), por 3 (1+2+0=3), y por 5 (termina en 0)." },
-              { "value": "125", "correct": false, "explanation": "125 no es divisible por 2 (termina en 5, que es impar) ni por 3 (1+2+5=8)." },
-              { "value": "154", "correct": false, "explanation": "154 es divisible por 2, pero no por 3 (1+5+4=10) ni por 5 (no termina en 0 o 5)." },
-              { "value": "105", "correct": false, "explanation": "105 no es divisible por 2 (termina en 5, que es impar)." }
+              { "value": "264", "correct": true, "explanation": "264 es divisible por 4 (64 es múltiplo de 4), por 6 (es divisible por 2 y por 3), y por 11 ((4+2)-6=0)." },
+              { "value": "242", "correct": false, "explanation": "242 es divisible por 11, pero no por 4 porque 42 no es múltiplo de 4." },
+              { "value": "330", "correct": false, "explanation": "330 es divisible por 6 y por 11, pero no por 4 porque 30 no es múltiplo de 4." },
+              { "value": "128", "correct": false, "explanation": "128 es divisible por 4, pero no por 6 (1+2+8=11) ni por 11." }
             ],
             "difficulty": "medium"
           }

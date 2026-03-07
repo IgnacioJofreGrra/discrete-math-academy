@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Play, RotateCcw } from 'lucide-react';
+import { AppIcon } from './AppIcon';
 
 interface EuclidStep {
   a: number;
@@ -73,12 +74,12 @@ export function EuclidAlgorithm({ initialA = 48, initialB = 18 }: EuclidAlgorith
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4">
+    <div className="w-full max-w-2xl mx-auto px-4 max-[359px]:px-3">
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Algoritmo de Euclides</h3>
 
         {/* Input Fields */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-2 max-[359px]:grid-cols-1 gap-4 mb-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Número A</label>
             <input
@@ -102,22 +103,22 @@ export function EuclidAlgorithm({ initialA = 48, initialB = 18 }: EuclidAlgorith
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-col sm:flex-row gap-2 mb-6">
           <Button
             onClick={calculateGCD}
             disabled={steps.length > 0}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700"
           >
-            <Play className="w-4 h-4" />
+            <AppIcon icon={Play} size={16} colorClass="text-blue-100" />
             Calcular MCD
           </Button>
           {steps.length > 0 && (
             <Button
               onClick={reset}
               variant="outline"
-              className="flex items-center gap-2"
+              className="w-full sm:w-auto flex items-center justify-center gap-2"
             >
-              <RotateCcw className="w-4 h-4" />
+              <AppIcon icon={RotateCcw} size={16} colorClass="text-slate-600" />
               Reiniciar
             </Button>
           )}
@@ -128,7 +129,7 @@ export function EuclidAlgorithm({ initialA = 48, initialB = 18 }: EuclidAlgorith
       {steps.length > 0 && (
         <div className="space-y-4">
           {/* Current Step */}
-          <Card className="p-6 bg-blue-50 border-2 border-blue-200">
+          <Card className="p-6 max-[359px]:p-4 bg-blue-50 border-2 border-blue-200">
             <div className="mb-4">
               <p className="text-sm text-gray-600 mb-2">Paso {currentStep + 1} de {steps.length}</p>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -140,7 +141,7 @@ export function EuclidAlgorithm({ initialA = 48, initialB = 18 }: EuclidAlgorith
             </div>
 
             <div className="text-center mb-4">
-              <p className="text-2xl font-bold text-gray-900 mb-2">
+              <p className="text-2xl max-[359px]:text-xl font-bold text-gray-900 mb-2">
                 {steps[currentStep].explanation}
               </p>
               <div className="grid grid-cols-4 gap-2 text-center">
@@ -165,11 +166,12 @@ export function EuclidAlgorithm({ initialA = 48, initialB = 18 }: EuclidAlgorith
           </Card>
 
           {/* Navigation */}
-          <div className="flex gap-2 justify-between">
+          <div className="flex flex-col sm:flex-row gap-2 sm:justify-between">
             <Button
               onClick={prevStep}
               disabled={currentStep === 0}
               variant="outline"
+              className="w-full sm:w-auto"
             >
               Anterior
             </Button>
@@ -177,6 +179,7 @@ export function EuclidAlgorithm({ initialA = 48, initialB = 18 }: EuclidAlgorith
               onClick={nextStep}
               disabled={currentStep === steps.length - 1}
               variant="outline"
+              className="w-full sm:w-auto"
             >
               Siguiente
             </Button>
@@ -184,7 +187,7 @@ export function EuclidAlgorithm({ initialA = 48, initialB = 18 }: EuclidAlgorith
 
           {/* Result */}
           {currentStep === steps.length - 1 && gcd !== null && (
-            <Card className="p-6 bg-green-50 border-2 border-green-200">
+            <Card className="p-6 max-[359px]:p-4 bg-green-50 border-2 border-green-200">
               <p className="text-center text-lg font-semibold text-green-800">
                 MCD({a}, {b}) = {gcd}
               </p>

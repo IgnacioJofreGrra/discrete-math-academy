@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { InlineMathText } from './InlineMathText';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { AppIcon } from './AppIcon';
 
 interface FlashcardProps {
   question: string;
@@ -50,7 +51,7 @@ export function Flashcard({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4">
+    <div className="w-full max-w-2xl mx-auto px-4 max-[359px]:px-3">
       <div className="mb-4 flex items-center justify-between">
         <span className={`px-3 py-1 rounded-full text-sm font-medium ${difficultyBadgeColors[difficulty]}`}>
           {difficulty === 'easy' ? 'Fácil' : difficulty === 'medium' ? 'Medio' : 'Difícil'}
@@ -58,7 +59,7 @@ export function Flashcard({
       </div>
 
       <Card
-        className={`${difficultyColors[difficulty]} cursor-pointer transition-all duration-300 transform hover:scale-105 min-h-96 flex flex-col justify-center items-center p-8 border-2`}
+        className={`${difficultyColors[difficulty]} cursor-pointer transition-all duration-300 transform hover:scale-105 min-h-96 max-[359px]:min-h-80 flex flex-col justify-center items-center p-8 max-[359px]:p-4 border-2`}
         onClick={() => setIsFlipped(!isFlipped)}
       >
         <div className="text-center">
@@ -73,7 +74,7 @@ export function Flashcard({
                 </p>
               </div>
             ) : (
-              <div className="text-2xl font-semibold text-gray-900">
+              <div className="text-2xl max-[359px]:text-xl font-semibold text-gray-900">
                 <p>
                   <InlineMathText text={question} />
                 </p>
@@ -84,15 +85,15 @@ export function Flashcard({
         </div>
       </Card>
 
-      <div className="mt-8 flex items-center justify-between gap-4">
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <Button
           variant="outline"
           size="lg"
           onClick={onPrevious}
           disabled={!canGoPrevious}
-          className="flex items-center gap-2"
+          className="w-full sm:w-auto flex items-center justify-center gap-2"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <AppIcon icon={ChevronLeft} size={16} colorClass="text-slate-600" />
           Anterior
         </Button>
 
@@ -100,7 +101,7 @@ export function Flashcard({
           variant="default"
           size="lg"
           onClick={() => setIsFlipped(!isFlipped)}
-          className="flex-1"
+          className="w-full sm:flex-1"
         >
           {isFlipped ? 'Ver Pregunta' : 'Ver Respuesta'}
         </Button>
@@ -110,10 +111,10 @@ export function Flashcard({
           size="lg"
           onClick={onNext}
           disabled={!canGoNext}
-          className="flex items-center gap-2"
+          className="w-full sm:w-auto flex items-center justify-center gap-2"
         >
           Siguiente
-          <ChevronRight className="w-4 h-4" />
+          <AppIcon icon={ChevronRight} size={16} colorClass="text-blue-600" />
         </Button>
       </div>
     </div>

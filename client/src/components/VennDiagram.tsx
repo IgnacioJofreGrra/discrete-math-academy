@@ -98,12 +98,12 @@ export function VennDiagram({
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {title && <h3 className="text-lg font-semibold text-gray-900">{title}</h3>}
+      {title && <h3 className="text-lg max-[359px]:text-base font-semibold text-gray-900 text-center">{title}</h3>}
       <canvas
         ref={canvasRef}
         width={width}
         height={height}
-        className="border border-gray-300 rounded-lg bg-white"
+        className="w-full max-w-[400px] h-auto border border-gray-300 rounded-lg bg-white"
       />
     </div>
   );

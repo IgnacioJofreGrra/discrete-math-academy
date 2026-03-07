@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { InlineMathText } from './InlineMathText';
 import { CheckCircle2, XCircle } from 'lucide-react';
+import { AppIcon } from './AppIcon';
 
 interface ChallengeOption {
   value: string;
@@ -79,21 +80,21 @@ export function Challenge({
   const selectedOptionData = options?.find(opt => opt.value === selectedOption);
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4">
+    <div className="w-full max-w-3xl mx-auto px-4 max-[359px]:px-3">
       <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
+          <h2 className="text-2xl max-[359px]:text-xl font-bold text-gray-900">{title}</h2>
           <span className={`px-3 py-1 rounded-full text-sm font-medium ${difficultyBadgeColors[difficulty]}`}>
             {difficulty === 'easy' ? 'Fácil' : difficulty === 'medium' ? 'Medio' : 'Difícil'}
           </span>
         </div>
       </div>
 
-      <Card className={`${difficultyColors[difficulty]} p-8 mb-6 border-2`}>
+      <Card className={`${difficultyColors[difficulty]} p-8 max-[359px]:p-4 mb-6 border-2`}>
         <div className="mb-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Problema:</h3>
           <div className="text-gray-800">
-            <p className="text-lg">
+            <p className="text-lg max-[359px]:text-base">
               <InlineMathText text={problem} />
             </p>
           </div>
@@ -132,10 +133,10 @@ export function Challenge({
                     )}
                   </div>
                   {submitted && option.correct && (
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <AppIcon icon={CheckCircle2} size={20} colorClass="text-green-600" />
                   )}
                   {submitted && selectedOption === option.value && !option.correct && (
-                    <XCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+                    <AppIcon icon={XCircle} size={20} colorClass="text-red-600" />
                   )}
                 </div>
               </button>
@@ -191,12 +192,12 @@ export function Challenge({
           }`}>
             {isCorrect ? (
               <>
-                <CheckCircle2 className="w-6 h-6 text-green-600" />
+                <AppIcon icon={CheckCircle2} size={24} colorClass="text-green-600" />
                 <p className="font-semibold text-green-800">¡Correcto! Excelente trabajo.</p>
               </>
             ) : (
               <>
-                <XCircle className="w-6 h-6 text-red-600" />
+                <AppIcon icon={XCircle} size={24} colorClass="text-red-600" />
                 <p className="font-semibold text-red-800">Incorrecto. Intenta de nuevo.</p>
               </>
             )}

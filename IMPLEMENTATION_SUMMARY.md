@@ -1,8 +1,8 @@
-# Discrete Math Academy - Resumen de Implementación
+# DiscreMath - Resumen de Implementación
 
 ## Visión General
 
-**Discrete Math Academy** es una aplicación web interactiva diseñada para enseñar Matemática Discreta (combinatoria, lógica y teoría de conjuntos) de forma práctica y visual. La aplicación prioriza el entendimiento del propósito práctico de cada concepto antes de la mecanización de fórmulas.
+**DiscreMath** es una aplicación web interactiva diseñada para enseñar Matemática Discreta (combinatoria, lógica y teoría de conjuntos) de forma práctica y visual. La aplicación prioriza el entendimiento del propósito práctico de cada concepto antes de la mecanización de fórmulas.
 
 ## Arquitectura de Contenido
 

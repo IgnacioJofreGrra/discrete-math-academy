@@ -5,16 +5,19 @@ import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { ChevronLeft, TrendingUp, Target, Zap, Award } from 'lucide-react';
-import { getAllModules, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak } from '@/lib/courseData';
+import { getAllModules, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, getModuleProgress } from '@/lib/courseData';
 import { getBadges, isBadgeUnlocked, getUnlockedBadgesCount } from '@/lib/badges';
 import { BadgeDisplay } from '@/components/BadgeDisplay';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { AppIcon } from '@/components/AppIcon';
+import { useIsMobile } from '@/hooks/useMobile';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 /**
  * Statistics - Página de estadísticas avanzadas con gráficos y recomendaciones
  */
 export default function Statistics() {
   const [, setLocation] = useLocation();
+  const isMobile = useIsMobile();
   const [stats, setStats] = useState({
     totalProgress: 0,
     completedModules: 0,
@@ -46,10 +49,12 @@ export default function Statistics() {
       totalBadges: Object.keys(getBadges()).length,
     });
 
-    // Generate progress data (simulated)
-    const progressChartData = allModules.map(m => ({
-      name: m.title.split(':')[0],
-      progress: Math.floor(Math.random() * 100),
+    // Build progress data from stored module progress (real user data)
+    const progressChartData = allModules.map((m, idx) => ({
+      id: m.id,
+      moduleNumber: String(idx + 1),
+      name: m.title,
+      progress: getModuleProgress(m.id),
     }));
     setProgressData(progressChartData);
 
@@ -97,11 +102,9 @@ export default function Statistics() {
     setRecommendations(recs);
   }, []);
 
-  const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="max-w-7xl mx-auto p-4">
+      <div className="max-w-7xl mx-auto p-4 max-[359px]:p-3">
         {/* Header */}
         <div className="mb-6">
           <Button
@@ -109,51 +112,51 @@ export default function Statistics() {
             onClick={() => setLocation('/')}
             className="mb-4 flex items-center gap-2"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <AppIcon icon={ChevronLeft} size={16} colorClass="text-slate-600" />
             Volver al Inicio
           </Button>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Estadísticas Avanzadas</h1>
-          <p className="text-lg text-gray-600">Analiza tu progreso y obtén recomendaciones personalizadas</p>
+          <h1 className="text-4xl max-[359px]:text-[1.65rem] font-bold text-gray-900 mb-2">Estadísticas Avanzadas</h1>
+          <p className="text-lg max-[359px]:text-sm text-gray-600">Analiza tu progreso y obtén recomendaciones personalizadas</p>
         </div>
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="p-6 bg-white border-l-4 border-blue-500">
+          <Card className="p-6 max-[359px]:p-4 bg-white border-l-4 border-blue-500">
             <div className="flex items-center gap-4">
-              <TrendingUp className="w-8 h-8 text-blue-500" />
+              <AppIcon icon={TrendingUp} colorClass="text-blue-500" />
               <div>
-                <p className="text-sm text-gray-600">Progreso General</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.totalProgress}%</p>
+                <p className="text-sm max-[359px]:text-xs text-gray-600">Progreso General</p>
+                <p className="text-3xl max-[359px]:text-2xl font-bold text-gray-900">{stats.totalProgress}%</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-6 bg-white border-l-4 border-green-500">
+          <Card className="p-6 max-[359px]:p-4 bg-white border-l-4 border-green-500">
             <div className="flex items-center gap-4">
-              <Target className="w-8 h-8 text-green-500" />
+              <AppIcon icon={Target} colorClass="text-green-500" />
               <div>
-                <p className="text-sm text-gray-600">Módulos Completados</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.completedModules}/7</p>
+                <p className="text-sm max-[359px]:text-xs text-gray-600">Módulos Completados</p>
+                <p className="text-3xl max-[359px]:text-2xl font-bold text-gray-900">{stats.completedModules}/7</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-6 bg-white border-l-4 border-purple-500">
+          <Card className="p-6 max-[359px]:p-4 bg-white border-l-4 border-purple-500">
             <div className="flex items-center gap-4">
-              <Zap className="w-8 h-8 text-purple-500" />
+              <AppIcon icon={Zap} colorClass="text-purple-500" />
               <div>
-                <p className="text-sm text-gray-600">Ejercicios Resueltos</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.completedExercises}/{stats.totalExercises}</p>
+                <p className="text-sm max-[359px]:text-xs text-gray-600">Ejercicios Resueltos</p>
+                <p className="text-3xl max-[359px]:text-2xl font-bold text-gray-900">{stats.completedExercises}/{stats.totalExercises}</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-6 bg-white border-l-4 border-orange-500">
+          <Card className="p-6 max-[359px]:p-4 bg-white border-l-4 border-orange-500">
             <div className="flex items-center gap-4">
-              <Award className="w-8 h-8 text-orange-500" />
+              <AppIcon icon={Award} colorClass="text-orange-500" />
               <div>
-                <p className="text-sm text-gray-600">Badges Desbloqueados</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.unlockedBadges}/{stats.totalBadges}</p>
+                <p className="text-sm max-[359px]:text-xs text-gray-600">Badges Desbloqueados</p>
+                <p className="text-3xl max-[359px]:text-2xl font-bold text-gray-900">{stats.unlockedBadges}/{stats.totalBadges}</p>
               </div>
             </div>
           </Card>
@@ -161,38 +164,39 @@ export default function Statistics() {
 
         {/* Tabs */}
         <Tabs defaultValue="progress" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-6">
-            <TabsTrigger value="progress">Progreso</TabsTrigger>
-            <TabsTrigger value="difficulty">Dificultad</TabsTrigger>
-            <TabsTrigger value="badges">Badges</TabsTrigger>
-            <TabsTrigger value="recommendations">Recomendaciones</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-2 mb-6">
+            <TabsTrigger value="progress" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Progreso</TabsTrigger>
+            <TabsTrigger value="difficulty" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Dificultad</TabsTrigger>
+            <TabsTrigger value="badges" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Badges</TabsTrigger>
+            <TabsTrigger value="recommendations" className="whitespace-normal text-xs sm:text-sm leading-tight py-2">Recomendaciones</TabsTrigger>
           </TabsList>
 
           {/* Progress Tab */}
           <TabsContent value="progress" className="space-y-6">
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Progreso por Módulo</h2>
+            <Card className="p-8 max-[359px]:p-4">
+              <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-6">Progreso por Módulo</h2>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={progressData}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
+                  <XAxis dataKey="moduleNumber" interval={0} tick={{ fontSize: isMobile ? 10 : 12 }} />
+                  <YAxis domain={[0, 100]} tick={{ fontSize: isMobile ? 10 : 12 }} />
                   <Tooltip />
-                  <Bar dataKey="progress" fill="#3b82f6" />
+                  <Legend />
+                  <Bar dataKey="progress" name="Progreso" fill="#3b82f6" />
                 </BarChart>
               </ResponsiveContainer>
             </Card>
 
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Desglose de Progreso</h2>
+            <Card className="p-8 max-[359px]:p-4">
+              <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-6">Desglose de Progreso</h2>
               <div className="space-y-4">
-                {getAllModules().map((module, idx) => (
+                {progressData.map((module) => (
                   <div key={module.id}>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-gray-900">{module.title}</span>
-                      <span className="text-sm text-gray-600">{Math.floor(Math.random() * 100)}%</span>
+                      <span className="font-medium max-[359px]:text-sm text-gray-900">{module.name}</span>
+                      <span className="text-sm text-gray-600">{module.progress}%</span>
                     </div>
-                    <Progress value={Math.floor(Math.random() * 100)} className="h-2" />
+                    <Progress value={module.progress} className="h-2" />
                   </div>
                 ))}
               </div>
@@ -201,8 +205,8 @@ export default function Statistics() {
 
           {/* Difficulty Tab */}
           <TabsContent value="difficulty" className="space-y-6">
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Distribución por Dificultad</h2>
+            <Card className="p-8 max-[359px]:p-4">
+              <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-6">Distribución por Dificultad</h2>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
@@ -210,8 +214,8 @@ export default function Statistics() {
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}`}
-                    outerRadius={80}
+                    label={false}
+                    outerRadius={isMobile ? 70 : 90}
                     fill="#8884d8"
                     dataKey="value"
                   >
@@ -220,21 +224,22 @@ export default function Statistics() {
                     ))}
                   </Pie>
                   <Tooltip />
+                  <Legend wrapperStyle={{ fontSize: isMobile ? '12px' : '14px' }} />
                 </PieChart>
               </ResponsiveContainer>
             </Card>
 
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Análisis por Nivel</h2>
+            <Card className="p-8 max-[359px]:p-4">
+              <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-6">Análisis por Nivel</h2>
               <div className="space-y-4">
                 {difficultyData.map((item) => (
                   <div key={item.name} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-4 h-4 rounded" style={{ backgroundColor: item.fill }} />
-                        <span className="font-medium text-gray-900">{item.name}</span>
+                        <span className="font-medium max-[359px]:text-sm text-gray-900">{item.name}</span>
                       </div>
-                      <span className="text-lg font-bold text-gray-900">{item.value} módulos</span>
+                      <span className="text-lg max-[359px]:text-base font-bold text-gray-900">{item.value} módulos</span>
                     </div>
                   </div>
                 ))}
@@ -244,9 +249,9 @@ export default function Statistics() {
 
           {/* Badges Tab */}
           <TabsContent value="badges" className="space-y-6">
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Tus Badges</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <Card className="p-8 max-[359px]:p-4">
+              <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-6">Tus Badges</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-[359px]:gap-3">
                 {getBadges().map((badge) => (
                   <BadgeDisplay
                     key={badge.id}
@@ -261,51 +266,51 @@ export default function Statistics() {
 
           {/* Recommendations Tab */}
           <TabsContent value="recommendations" className="space-y-6">
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Recomendaciones Personalizadas</h2>
+            <Card className="p-8 max-[359px]:p-4">
+              <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-6">Recomendaciones Personalizadas</h2>
               <div className="space-y-4">
                 {recommendations.length > 0 ? (
                   recommendations.map((rec, idx) => (
                     <div key={idx} className="p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
-                      <p className="text-gray-900">{rec}</p>
+                      <p className="text-gray-900 max-[359px]:text-sm">{rec}</p>
                     </div>
                   ))
                 ) : (
                   <div className="p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                    <p className="text-gray-900">¡Excelente trabajo! Vas muy bien en tu aprendizaje.</p>
+                    <p className="text-gray-900 max-[359px]:text-sm">¡Excelente trabajo! Vas muy bien en tu aprendizaje.</p>
                   </div>
                 )}
               </div>
             </Card>
 
-            <Card className="p-8 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Próximos Objetivos</h3>
+            <Card className="p-8 max-[359px]:p-4 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200">
+              <h3 className="text-xl max-[359px]:text-lg font-bold text-gray-900 mb-4">Próximos Objetivos</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl">🎯</span>
+                  <span className="text-2xl max-[359px]:text-xl">🎯</span>
                   <div>
-                    <p className="font-medium text-gray-900">Completa todos los módulos</p>
+                    <p className="font-medium max-[359px]:text-sm text-gray-900">Completa todos los módulos</p>
                     <p className="text-sm text-gray-600">Progreso: {stats.completedModules}/7</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl">💪</span>
+                  <span className="text-2xl max-[359px]:text-xl">💪</span>
                   <div>
-                    <p className="font-medium text-gray-900">Resuelve todos los ejercicios</p>
+                    <p className="font-medium max-[359px]:text-sm text-gray-900">Resuelve todos los ejercicios</p>
                     <p className="text-sm text-gray-600">Progreso: {stats.completedExercises}/{stats.totalExercises}</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl">🔥</span>
+                  <span className="text-2xl max-[359px]:text-xl">🔥</span>
                   <div>
-                    <p className="font-medium text-gray-900">Mantén una racha de 30 días</p>
+                    <p className="font-medium max-[359px]:text-sm text-gray-900">Mantén una racha de 30 días</p>
                     <p className="text-sm text-gray-600">Racha actual: {stats.streak || 0} días</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl">👑</span>
+                  <span className="text-2xl max-[359px]:text-xl">👑</span>
                   <div>
-                    <p className="font-medium text-gray-900">Desbloquea todos los badges</p>
+                    <p className="font-medium max-[359px]:text-sm text-gray-900">Desbloquea todos los badges</p>
                     <p className="text-sm text-gray-600">Progreso: {stats.unlockedBadges}/{stats.totalBadges}</p>
                   </div>
                 </li>

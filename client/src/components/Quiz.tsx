@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { MathRenderer } from './MathRenderer';
 import { CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
+import { AppIcon } from './AppIcon';
 
 interface QuizQuestion {
   id: string;
@@ -109,18 +110,18 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
     const passed = score >= passingScore;
 
     return (
-      <div className="w-full max-w-3xl mx-auto px-4">
-        <Card className={`p-8 mb-6 ${passed ? 'bg-green-50 border-2 border-green-200' : 'bg-red-50 border-2 border-red-200'}`}>
+      <div className="w-full max-w-3xl mx-auto px-4 max-[359px]:px-3">
+        <Card className={`p-8 max-[359px]:p-4 mb-6 ${passed ? 'bg-green-50 border-2 border-green-200' : 'bg-red-50 border-2 border-red-200'}`}>
           <div className="text-center mb-6">
             {passed ? (
-              <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto mb-4" />
+              <AppIcon icon={CheckCircle2} size={64} colorClass="text-green-600 mx-auto mb-4" />
             ) : (
-              <XCircle className="w-16 h-16 text-red-600 mx-auto mb-4" />
+              <AppIcon icon={XCircle} size={64} colorClass="text-red-600 mx-auto mb-4" />
             )}
-            <h2 className={`text-3xl font-bold mb-2 ${passed ? 'text-green-800' : 'text-red-800'}`}>
+            <h2 className={`text-3xl max-[359px]:text-2xl font-bold mb-2 ${passed ? 'text-green-800' : 'text-red-800'}`}>
               {passed ? '¡Aprobaste!' : 'Necesitas mejorar'}
             </h2>
-            <p className={`text-lg font-semibold ${passed ? 'text-green-700' : 'text-red-700'}`}>
+            <p className={`text-lg max-[359px]:text-base font-semibold ${passed ? 'text-green-700' : 'text-red-700'}`}>
               Puntuación: {score}% ({correctAnswers}/{questions.length} correctas)
             </p>
             {!passed && (
@@ -133,7 +134,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
 
         {/* Detailed Results */}
         <div className="space-y-4 mb-6">
-          <h3 className="text-xl font-bold text-gray-900">Resultados Detallados</h3>
+          <h3 className="text-xl max-[359px]:text-lg font-bold text-gray-900">Resultados Detallados</h3>
           {questions.map((question, idx) => {
             const result = results[idx];
             const isCorrect = result.correct;
@@ -143,9 +144,9 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
                 <div className="mb-3">
                   <div className="flex items-start gap-3">
                     {isCorrect ? (
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                      <AppIcon icon={CheckCircle2} size={20} colorClass="text-green-600 mt-1" />
                     ) : (
-                      <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-1" />
+                      <AppIcon icon={XCircle} size={20} colorClass="text-red-600 mt-1" />
                     )}
                     <div className="flex-1">
                       <p className="font-semibold text-gray-900 mb-2">
@@ -190,7 +191,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
           onClick={handleReset}
           className="w-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center gap-2"
         >
-          <RotateCcw className="w-4 h-4" />
+          <AppIcon icon={RotateCcw} size={16} colorClass="text-blue-100" />
           Intentar de Nuevo
         </Button>
       </div>
@@ -202,13 +203,13 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
     const isCorrect = selectedOption?.correct || false;
 
     return (
-      <div className="w-full max-w-3xl mx-auto px-4">
-        <Card className={`p-8 mb-6 ${isCorrect ? 'bg-green-50 border-2 border-green-200' : 'bg-red-50 border-2 border-red-200'}`}>
+      <div className="w-full max-w-3xl mx-auto px-4 max-[359px]:px-3">
+        <Card className={`p-8 max-[359px]:p-4 mb-6 ${isCorrect ? 'bg-green-50 border-2 border-green-200' : 'bg-red-50 border-2 border-red-200'}`}>
           <div className="flex items-start gap-4 mb-4">
             {isCorrect ? (
-              <CheckCircle2 className="w-8 h-8 text-green-600 flex-shrink-0" />
+              <AppIcon icon={CheckCircle2} size={32} colorClass="text-green-600" />
             ) : (
-              <XCircle className="w-8 h-8 text-red-600 flex-shrink-0" />
+              <AppIcon icon={XCircle} size={32} colorClass="text-red-600" />
             )}
             <div className="flex-1">
               <p className={`font-semibold mb-2 ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
@@ -219,11 +220,12 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
           </div>
         </Card>
 
-        <div className="flex gap-2 justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Button
             onClick={handlePrevious}
             disabled={isFirstQuestion}
             variant="outline"
+            className="w-full sm:w-auto"
           >
             Anterior
           </Button>
@@ -231,14 +233,14 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
           {!isLastQuestion ? (
             <Button
               onClick={handleNext}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700"
             >
               Siguiente
             </Button>
           ) : (
             <Button
               onClick={handleSubmit}
-              className="bg-green-600 hover:bg-green-700"
+              className="w-full sm:w-auto bg-green-600 hover:bg-green-700"
             >
               Ver Resultados
             </Button>
@@ -249,9 +251,9 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4">
+    <div className="w-full max-w-3xl mx-auto px-4 max-[359px]:px-3">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">{title}</h2>
+        <h2 className="text-2xl max-[359px]:text-xl font-bold text-gray-900 mb-4">{title}</h2>
 
         {/* Progress */}
         <div className="mb-4">
@@ -268,8 +270,8 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
       </div>
 
       {/* Question */}
-      <Card className="p-8 mb-6 bg-blue-50 border-2 border-blue-200">
-        <h3 className="text-xl font-semibold text-gray-900 mb-6">
+      <Card className="p-8 max-[359px]:p-4 mb-6 bg-blue-50 border-2 border-blue-200">
+        <h3 className="text-xl max-[359px]:text-lg font-semibold text-gray-900 mb-6">
           {currentQuestion.question.includes('$') ? (
             <MathRenderer latex={currentQuestion.question} />
           ) : (
@@ -305,11 +307,12 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
       </Card>
 
       {/* Navigation */}
-      <div className="flex gap-2 justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <Button
           onClick={handlePrevious}
           disabled={isFirstQuestion}
           variant="outline"
+          className="w-full sm:w-auto"
         >
           Anterior
         </Button>
@@ -317,7 +320,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
         <Button
           onClick={handleSubmit}
           disabled={!selectedAnswers[currentQuestion.id]}
-          className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400"
+          className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400"
         >
           {isLastQuestion ? 'Finalizar Quiz' : 'Siguiente'}
         </Button>
