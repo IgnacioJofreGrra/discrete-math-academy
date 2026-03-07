@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { InlineMathText } from './InlineMathText';
@@ -37,6 +37,21 @@ export function Flashcard({
   canGoPrevious = true,
 }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleNext = () => {
+    setIsFlipped(false);
+    onNext?.();
+  };
+
+  const handlePrevious = () => {
+    setIsFlipped(false);
+    onPrevious?.();
+  };
+
+  // Ensure each new exercise starts on the question side.
+  useEffect(() => {
+    setIsFlipped(false);
+  }, [question, answer]);
 
   const difficultyColors = {
     easy: 'bg-green-50 border-green-200',
@@ -89,7 +104,7 @@ export function Flashcard({
         <Button
           variant="outline"
           size="lg"
-          onClick={onPrevious}
+          onClick={handlePrevious}
           disabled={!canGoPrevious}
           className="w-full sm:w-auto flex items-center justify-center gap-2"
         >
@@ -109,7 +124,7 @@ export function Flashcard({
         <Button
           variant="outline"
           size="lg"
-          onClick={onNext}
+          onClick={handleNext}
           disabled={!canGoNext}
           className="w-full sm:w-auto flex items-center justify-center gap-2"
         >

@@ -6,8 +6,10 @@ import { AppIcon } from '@/components/AppIcon';
 import { useAuth } from '@/contexts/AuthContext';
 
 export default function Login() {
-  const { signInWithGoogle, signInWithGithub } = useAuth();
+  const { signInWithGoogle, signInWithGithub, authAvailable, authSetupError } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
+
+  const activeError = authError || authSetupError;
 
   const handleGoogleLogin = async () => {
     try {
@@ -57,18 +59,38 @@ export default function Login() {
         </div>
 
         <div className="space-y-3">
-          <Button variant="outline" onClick={handleGoogleLogin} className="w-full gap-2">
+          <Button
+            variant="outline"
+            onClick={handleGoogleLogin}
+            className="w-full gap-2"
+            disabled={!authAvailable}
+          >
             <span className="text-sm font-bold text-blue-600">G</span>
             Continuar con Google
           </Button>
 
-          <Button variant="outline" onClick={handleGithubLogin} className="w-full gap-2">
+          <Button
+            variant="outline"
+            onClick={handleGithubLogin}
+            className="w-full gap-2"
+            disabled={!authAvailable}
+          >
             <AppIcon icon={Github} size={16} colorClass="text-slate-700" />
             Continuar con GitHub
           </Button>
         </div>
 
-        {authError && <p className="text-xs text-red-600 mt-4 text-center">{authError}</p>}
+        {activeError && (
+          <p className="text-xs text-red-600 mt-4 text-center">
+            {activeError}
+            {!authAvailable && (
+              <>
+                {' '}
+                Configura estas variables en Vercel Project Settings, seccion Environment Variables.
+              </>
+            )}
+          </p>
+        )}
       </Card>
     </div>
   );
