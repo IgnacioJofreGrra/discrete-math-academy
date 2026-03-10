@@ -1,0 +1,3 @@
+# Keep GitHub language stats focused on application source code
+client/index.html linguist-vendored
+patches/** linguist-vendored
