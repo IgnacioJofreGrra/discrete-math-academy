@@ -5,6 +5,15 @@ import { Github, Sigma } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
 import { useAuth } from '@/contexts/AuthContext';
 
+const extractAuthErrorCode = (error: unknown): string | undefined => {
+  if (typeof error !== 'object' || error === null || !('code' in error)) {
+    return undefined;
+  }
+
+  const value = (error as { code?: unknown }).code;
+  return typeof value === 'string' ? value : undefined;
+};
+
 export default function Login() {
   const { signInWithGoogle, signInWithGithub, authAvailable, authSetupError } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
@@ -15,8 +24,8 @@ export default function Login() {
     try {
       setAuthError(null);
       await signInWithGoogle();
-    } catch (error: any) {
-      const code = error?.code as string | undefined;
+    } catch (error: unknown) {
+      const code = extractAuthErrorCode(error);
       if (code === 'auth/operation-not-allowed') {
         setAuthError('Google no esta habilitado en Firebase Authentication.');
         return;
@@ -33,8 +42,8 @@ export default function Login() {
     try {
       setAuthError(null);
       await signInWithGithub();
-    } catch (error: any) {
-      const code = error?.code as string | undefined;
+    } catch (error: unknown) {
+      const code = extractAuthErrorCode(error);
       if (code === 'auth/operation-not-allowed') {
         setAuthError('GitHub no esta habilitado en Firebase Authentication.');
         return;

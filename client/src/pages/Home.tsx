@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { BookOpen, Zap, Target, Award, Hash, Ruler, Link2, Infinity, Bird, Sigma, Github, LogOut, type LucideIcon } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
-import { getAllModules, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, touchStudyDay } from '@/lib/courseData';
+import { getAllModules, getModuleProgress, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, touchStudyDay } from '@/lib/courseData';
 import { useAuth } from '@/contexts/AuthContext';
+import type { CourseModule, Difficulty } from '@/types/course';
 
 const moduleIconMap: Record<string, LucideIcon> = {
   hash: Hash,
@@ -36,6 +37,15 @@ const difficultyLabels = {
   beginner: 'Principiante',
   intermediate: 'Intermedio',
   advanced: 'Avanzado',
+};
+
+const extractAuthErrorCode = (error: unknown): string | undefined => {
+  if (typeof error !== 'object' || error === null || !('code' in error)) {
+    return undefined;
+  }
+
+  const value = (error as { code?: unknown }).code;
+  return typeof value === 'string' ? value : undefined;
 };
 
 /**
@@ -68,16 +78,21 @@ export default function Home() {
   }, []);
 
   const allModules = getAllModules();
+  const moduleProgressById = useMemo<Record<string, number>>(
+    () => Object.fromEntries(allModules.map((module) => [module.id, getModuleProgress(module.id)])),
+    [allModules, user?.uid],
+  );
+
   const filteredModules = selectedDifficulty === 'all'
     ? allModules
-    : allModules.filter((m: any) => m.difficulty === selectedDifficulty);
+    : allModules.filter((m) => m.difficulty === selectedDifficulty);
 
   const handleGoogleLogin = async () => {
     try {
       setAuthError(null);
       await signInWithGoogle();
-    } catch (error: any) {
-      const code = error?.code as string | undefined;
+    } catch (error: unknown) {
+      const code = extractAuthErrorCode(error);
       if (code === 'auth/operation-not-allowed') {
         setAuthError('Google no esta habilitado en Firebase Authentication.');
         return;
@@ -94,8 +109,8 @@ export default function Home() {
     try {
       setAuthError(null);
       await signInWithGithub();
-    } catch (error: any) {
-      const code = error?.code as string | undefined;
+    } catch (error: unknown) {
+      const code = extractAuthErrorCode(error);
       if (code === 'auth/operation-not-allowed') {
         setAuthError('GitHub no esta habilitado en Firebase Authentication.');
         return;
@@ -270,10 +285,12 @@ export default function Home() {
 
         {/* Modules Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredModules.map((module: any) => {
-            const colors = difficultyColors[module.difficulty as keyof typeof difficultyColors];
-            const moduleIcon = moduleIconMap[module.icon] ?? BookOpen;
-            const moduleIconColor = moduleIconColorMap[module.icon] ?? 'text-blue-600';
+          {filteredModules.map((module: CourseModule) => {
+            const colors = difficultyColors[module.difficulty as Difficulty];
+            const iconKey = module.icon ?? '';
+            const moduleIcon = moduleIconMap[iconKey] ?? BookOpen;
+            const moduleIconColor = moduleIconColorMap[iconKey] ?? 'text-blue-600';
+            const moduleProgress = moduleProgressById[module.id] ?? 0;
             return (
               <Card
                 key={module.id}
@@ -300,9 +317,9 @@ export default function Home() {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-semibold text-gray-700">Progreso</span>
-                      <span className="text-xs font-bold text-gray-900">{getTotalProgress()}%</span>
+                      <span className="text-xs font-bold text-gray-900">{moduleProgress}%</span>
                     </div>
-                    <Progress value={getTotalProgress() || 0} className="h-2" />
+                    <Progress value={moduleProgress} className="h-2" />
                   </div>
 
                   <div className="flex items-center justify-between text-xs text-gray-600">

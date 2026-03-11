@@ -11,6 +11,13 @@ import { BadgeDisplay } from '@/components/BadgeDisplay';
 import { AppIcon } from '@/components/AppIcon';
 import { useIsMobile } from '@/hooks/useMobile';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import type { CourseModule, CourseSection } from '@/types/course';
+import type {
+  DifficultyChartDatum,
+  ExamPerformanceRow,
+  LearningStatsSummary,
+  ProgressChartDatum,
+} from '@shared/types';
 
 /**
  * Statistics - Página de estadísticas avanzadas con gráficos y recomendaciones
@@ -18,7 +25,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 export default function Statistics() {
   const [, setLocation] = useLocation();
   const isMobile = useIsMobile();
-  const [stats, setStats] = useState({
+  const [stats, setStats] = useState<LearningStatsSummary>({
     totalProgress: 0,
     completedModules: 0,
     completedExercises: 0,
@@ -31,10 +38,10 @@ export default function Statistics() {
     averageExamScore: 0,
   });
 
-  const [progressData, setProgressData] = useState<any[]>([]);
-  const [difficultyData, setDifficultyData] = useState<any[]>([]);
+  const [progressData, setProgressData] = useState<ProgressChartDatum[]>([]);
+  const [difficultyData, setDifficultyData] = useState<DifficultyChartDatum[]>([]);
   const [recommendations, setRecommendations] = useState<string[]>([]);
-  const [examResults, setExamResults] = useState<any[]>([]);
+  const [examResults, setExamResults] = useState<ExamPerformanceRow[]>([]);
 
   useEffect(() => {
     const allModules = getAllModules();
@@ -46,7 +53,7 @@ export default function Statistics() {
 
     const sectionNames = new Map<string, { moduleTitle: string; sectionTitle: string }>();
     allModules.forEach((module) => {
-      module.sections?.forEach((section: any) => {
+      module.sections?.forEach((section: CourseSection) => {
         sectionNames.set(`${module.id}:${section.id}`, {
           moduleTitle: module.title,
           sectionTitle: section.title,
@@ -86,7 +93,7 @@ export default function Statistics() {
     });
 
     // Build progress data from stored module progress (real user data)
-    const progressChartData = allModules.map((m, idx) => ({
+    const progressChartData: ProgressChartDatum[] = allModules.map((m, idx) => ({
       id: m.id,
       moduleNumber: String(idx + 1),
       name: m.title,
@@ -100,13 +107,13 @@ export default function Statistics() {
       intermediate: 0,
       advanced: 0,
     };
-    allModules.forEach(m => {
+    allModules.forEach((m: CourseModule) => {
       if (m.difficulty === 'beginner') difficultyMap.beginner++;
       else if (m.difficulty === 'intermediate') difficultyMap.intermediate++;
       else if (m.difficulty === 'advanced') difficultyMap.advanced++;
     });
 
-    const difficultyChartData = [
+    const difficultyChartData: DifficultyChartDatum[] = [
       { name: 'Principiante', value: difficultyMap.beginner, fill: '#10b981' },
       { name: 'Intermedio', value: difficultyMap.intermediate, fill: '#3b82f6' },
       { name: 'Avanzado', value: difficultyMap.advanced, fill: '#f59e0b' },

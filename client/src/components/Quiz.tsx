@@ -6,7 +6,7 @@ import { InlineMathText } from './InlineMathText';
 import { CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 
-interface QuizQuestion {
+export interface QuizQuestion {
   id: string;
   question: string;
   options: Array<{
