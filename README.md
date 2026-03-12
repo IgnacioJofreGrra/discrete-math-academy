@@ -4,60 +4,62 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white)
 ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
 
-Plataforma educativa interactiva optimizada para aprendizaje de Matematica Discreta, con enfoque pedagogico basado en progreso verificable y arquitectura de software desacoplada. El proyecto combina una experiencia didactica de alto rendimiento con decisiones tecnicas orientadas a escalabilidad, integridad de datos y mantenibilidad a largo plazo.
+Plataforma educativa interactiva optimizada para aprendizaje de Matemática Discreta, con enfoque pedagógico basado en progreso verificable y arquitectura de software desacoplada. El proyecto combina una experiencia didáctica de alto rendimiento con decisiones técnicas orientadas a escalabilidad, integridad de datos y mantenibilidad a largo plazo.
+
+**Live Demo:** [math.alvy.site](https://math.alvy.site)
 
 ## Value Proposition
 
-Discrete Math Academy integra teoria, aplicaciones y evaluaciones interactivas en una experiencia guiada por resultados. A nivel tecnico, el MVP esta disenado para evolucionar con bajo costo de cambio: contenido desacoplado por dominio, tipado compartido para consistencia transversal y reglas de persistencia orientadas a eventos de exito en lugar de navegacion superficial.
+Discrete Math Academy integra teoría, aplicaciones y evaluaciones interactivas en una experiencia guiada por resultados. A nivel técnico, el MVP está diseñado para evolucionar con bajo costo de cambio: contenido desacoplado por dominio, tipado compartido para consistencia transversal y reglas de persistencia orientadas a eventos de éxito en lugar de navegación superficial.
 
 ## Architecture & Design Decisions
 
 ### Domain-Driven Content
 
-El contenido academico se modela de forma desacoplada en archivos JSON bajo `client/src/data/modules`, separados de la logica de presentacion y de la capa de estado.
+El contenido académico se modela de forma desacoplada en archivos JSON bajo `client/src/data/modules`, separados de la lógica de presentación y de la capa de estado.
 
 Esto habilita:
-- Evolucion curricular sin reescribir componentes de UI.
-- Versionado de contenido por modulo/seccion con trazabilidad clara.
-- Escalado hacia internacionalizacion o pipelines editoriales sin acoplar el dominio al framework.
+- Evolución curricular sin reescribir componentes de UI.
+- Versionado de contenido por módulo/sección con trazabilidad clara.
+- Escalado hacia internacionalización o pipelines editoriales sin acoplar el dominio al framework.
 
 ### Shared Type System
 
 La integridad de datos se asegura mediante un sistema de tipos compartido:
 - Tipos de dominio educativo en `client/src/types/course.ts`.
-- Tipos transversales de progreso/estadisticas en `shared/types.ts`.
+- Tipos transversales de progreso/estadísticas en `shared/types.ts`.
 
 Este enfoque reduce deriva de contratos entre capas y permite refactors seguros, especialmente en:
-- Progreso por modulo.
-- Resultados de evaluacion.
-- Estructuras de usuario y metricas agregadas.
+- Progreso por módulo.
+- Resultados de evaluación.
+- Estructuras de usuario y métricas agregadas.
 
 ### Success-Based Persistence
 
-La completitud no se dispara por visita de pantalla, sino por eventos de aprobacion verificables.
+La completitud no se dispara por visita de pantalla, sino por eventos de aprobación verificables.
 
-Regla arquitectonica:
+Regla arquitectónica:
 - `Challenge`: persiste solo si la respuesta es correcta.
-- `Quiz`: persiste solo al cumplir el umbral de aprobacion.
-- Navegar entre ejercicios no incrementa progreso por si mismo.
+- `Quiz`: persiste solo al cumplir el umbral de aprobación.
+- Navegar entre ejercicios no incrementa progreso por sí mismo.
 
-Razon tecnica y de producto:
-- Evita inflar metricas de aprendizaje.
-- Aumenta la calidad de analitica y recomendaciones.
+Razón técnica y de producto:
+- Evita inflar métricas de aprendizaje.
+- Aumenta la calidad de analítica y recomendaciones.
 - Alinea la persistencia con evidencia real de dominio adquirido.
 
 ### Flujo de Persistencia (Mermaid)
 
 ```mermaid
 flowchart TD
-    A[Usuario completa Challenge/Quiz] --> B{Evento de exito?}
+    A[Usuario completa Challenge/Quiz] --> B{Evento de éxito?}
     B -- No --> C[No persiste progreso]
     C --> D[UI mantiene estado local de intento]
 
     B -- Si --> E[Module.tsx dispara markExerciseCompleted/saveExamSectionResult]
     E --> F[Progress Service - courseData]
-    F --> G[Calcula progreso por modulo y seccion]
-    G --> H[AuthContext valida sesion de usuario]
+    F --> G[Calcula progreso por módulo y sección]
+    G --> H[AuthContext valida sesión de usuario]
     H --> I[Persistencia por usuario en Firebase]
     I --> J[Snapshot de progreso actualizado]
     J --> K[Home/Statistics renderizan progreso consistente]
@@ -81,7 +83,7 @@ flowchart TD
 - Node.js 20+
 - pnpm 10+
 
-### Instalacion
+### Instalación
 
 1. Instalar dependencias.
 
@@ -109,7 +111,7 @@ Copy-Item .env.example .env
 pnpm dev
 ```
 
-5. Ejecutar validacion de calidad tipada.
+5. Ejecutar validación de calidad tipada.
 
 ```bash
 pnpm check
@@ -117,28 +119,28 @@ pnpm check
 
 ## Variables de Entorno
 
-El proyecto incluye un `.env.example` completo para acelerar onboarding tecnico.
+El proyecto incluye un `.env.example` completo para acelerar onboarding técnico.
 
-| Variable | Requerida | Proposito |
+| Variable | Requerida | Propósito |
 | --- | --- | --- |
-| `VITE_FIREBASE_API_KEY` | Si | Credencial publica del proyecto Firebase |
-| `VITE_FIREBASE_AUTH_DOMAIN` | Si | Dominio de autenticacion Firebase |
-| `VITE_FIREBASE_PROJECT_ID` | Si | Identificador del proyecto |
-| `VITE_FIREBASE_STORAGE_BUCKET` | Si | Bucket para almacenamiento asociado |
-| `VITE_FIREBASE_MESSAGING_SENDER_ID` | Si | Identificador de mensajeria |
-| `VITE_FIREBASE_APP_ID` | Si | Identificador de aplicacion Firebase |
-| `VITE_FIREBASE_MEASUREMENT_ID` | No | Integracion de medicion/analytics Firebase |
-| `VITE_ANALYTICS_ENDPOINT` | No | Endpoint de analitica (Umami compatible) |
-| `VITE_ANALYTICS_WEBSITE_ID` | No | Sitio objetivo para analitica |
-| `VITE_FRONTEND_FORGE_API_URL` | No | URL base para integracion de mapas/forge |
+| `VITE_FIREBASE_API_KEY` | Sí | Credencial pública del proyecto Firebase |
+| `VITE_FIREBASE_AUTH_DOMAIN` | Sí | Dominio de autenticación Firebase |
+| `VITE_FIREBASE_PROJECT_ID` | Sí | Identificador del proyecto |
+| `VITE_FIREBASE_STORAGE_BUCKET` | Sí | Bucket para almacenamiento asociado |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | Sí | Identificador de mensajería |
+| `VITE_FIREBASE_APP_ID` | Sí | Identificador de aplicación Firebase |
+| `VITE_FIREBASE_MEASUREMENT_ID` | No | Integración de medición/analytics Firebase |
+| `VITE_ANALYTICS_ENDPOINT` | No | Endpoint de analítica (Umami compatible) |
+| `VITE_ANALYTICS_WEBSITE_ID` | No | Sitio objetivo para analítica |
+| `VITE_FRONTEND_FORGE_API_URL` | No | URL base para integración de mapas/forge |
 | `VITE_FRONTEND_FORGE_API_KEY` | No | API key para servicios de mapas/forge |
 
 ## Security
 
-- Los secretos no se versionan; se gestionan mediante variables de entorno por entorno de ejecucion.
+- Los secretos no se versionan; se gestionan mediante variables de entorno por entorno de ejecución.
 - El repositorio mantiene plantilla segura en `.env.example` sin exponer credenciales productivas.
 - En Firebase, las reglas deben restringir lectura/escritura por identidad autenticada y alcance de datos de usuario.
-- Se recomienda auditar historial Git antes de releases para prevenir exposicion accidental de secretos.
+- Se recomienda auditar historial Git antes de releases para prevenir exposición accidental de secretos.
 
 ## Author
 
