@@ -1,7 +1,8 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
+import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
@@ -12,6 +13,18 @@ import Module from "./pages/Module";
 import Visualizations from "./pages/Visualizations";
 import Statistics from "./pages/Statistics";
 import ModuleQuiz from "./pages/ModuleQuiz";
+
+function ScrollToTopOnRouteChange() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [location]);
+
+  return null;
+}
 
 
 function Router() {
@@ -30,16 +43,19 @@ function Router() {
   }
 
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/module/:moduleId"} component={Module} />
-      <Route path={"/visualizations"} component={Visualizations} />
-      <Route path={"/statistics"} component={Statistics} />
-      <Route path={"/quiz/:moduleId"} component={ModuleQuiz} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <ScrollToTopOnRouteChange />
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/module/:moduleId"} component={Module} />
+        <Route path={"/visualizations"} component={Visualizations} />
+        <Route path={"/statistics"} component={Statistics} />
+        <Route path={"/quiz/:moduleId"} component={ModuleQuiz} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 
