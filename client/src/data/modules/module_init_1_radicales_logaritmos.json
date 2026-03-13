@@ -15,7 +15,7 @@
       "order": 6,
       "content": {
         "theory": {
-          "definition": "Para n natural, r es raiz n-esima de x si r^n = x. Para n=2 hablamos de raiz cuadrada y para n=3 de raiz cubica.",
+          "definition": "Para $n$ natural, $r$ es raiz $n$-esima de $x$ si $r^n=x$. Para $n=2$ hablamos de raiz cuadrada y para $n=3$ de raiz cubica.",
           "examples": [
             {
               "text": "2 es raiz cubica de 8 y -2 es raiz cubica de -8.",
@@ -30,7 +30,7 @@
               "latex": "\\nexists r\\in R: r^2=-4"
             },
             {
-              "text": "sqrt(x) representa la raiz principal cuando esta definida.",
+              "text": "$\\sqrt{x}$ representa la raiz principal cuando esta definida.",
               "latex": "\\sqrt{81}=9"
             }
           ],
@@ -51,7 +51,7 @@
             {
               "area": "Modelos geometricos",
               "description": "Se usa para recuperar longitudes a partir de areas y potencias.",
-              "example": "Si A=l^2, entonces l=sqrt(A) como longitud principal."
+              "example": "Si $A=l^2$, entonces $l=\\sqrt{A}$ como longitud principal."
             }
           ]
         },
@@ -68,9 +68,9 @@
                 "explanation": "Correcto. Potencia par de un real no puede ser negativa."
               },
               {
-                "value": "sqrt(4)=+-2.",
+                "value": "$\\sqrt{4}=\\pm 2$.",
                 "correct": false,
-                "explanation": "Incorrecto. sqrt(4) denota solo la raiz principal: 2."
+                "explanation": "Incorrecto. $\\sqrt{4}$ denota solo la raiz principal: $2$."
               },
               {
                 "value": "La raiz cubica de -8 no existe en R.",
@@ -86,8 +86,8 @@
             "title": "Operacion combinada con raices",
             "steps": [
               {
-                "instruction": "Evalua cada termino: 2*sqrt(25), -raiz4(16), 3*raiz5(32), -raiz3(-8).",
-                "hint": "sqrt(25)=5, raiz4(16)=2, raiz5(32)=2, raiz3(-8)=-2",
+                "instruction": "Evalua cada termino: $2\\sqrt{25}$, $-\\sqrt[4]{16}$, $3\\sqrt[5]{32}$, $-\\sqrt[3]{-8}$.",
+                "hint": "$\\sqrt{25}=5$, $\\sqrt[4]{16}=2$, $\\sqrt[5]{32}=2$, $\\sqrt[3]{-8}=-2$",
                 "answer": "10, -2, 6, +2"
               },
               {
@@ -98,7 +98,7 @@
               {
                 "instruction": "Explica por que el ultimo termino es +2.",
                 "hint": "Hay dos signos menos consecutivos.",
-                "answer": "Porque -raiz3(-8) = -(-2) = +2."
+                "answer": "Porque $-\\sqrt[3]{-8}=-(-2)=+2$."
               }
             ],
             "difficulty": "hard"
@@ -109,22 +109,22 @@
     {
       "id": "section_init_0_7",
       "title": "Potencia con exponente racional",
-      "description": "Define x^(m/n) mediante raiz n-esima, con fraccion m/n reducida y casos de base negativa.",
+      "description": "Define $x^{m/n}$ mediante raiz $n$-esima, con fraccion $m/n$ reducida y casos de base negativa.",
       "order": 7,
       "content": {
         "theory": {
-          "definition": "Si m es entero, n natural y m/n esta en forma irreducible, se define x^(m/n)=raiz_n(x^m) siempre que la raiz exista en R.",
+          "definition": "Si $m$ es entero, $n$ natural y $m/n$ esta en forma irreducible, se define $x^{m/n}=\\sqrt[n]{x^m}$ siempre que la raiz exista en $R$.",
           "examples": [
             {
-              "text": "2^(4/3)=raiz3(2^4)=raiz3(16).",
+              "text": "$2^{4/3}=\\sqrt[3]{2^4}=\\sqrt[3]{16}$.",
               "latex": "2^{4/3}=\\sqrt[3]{2^4}"
             },
             {
-              "text": "5^(1/2)=sqrt(5).",
+              "text": "$5^{1/2}=\\sqrt{5}$.",
               "latex": "5^{1/2}=\\sqrt{5}"
             },
             {
-              "text": "(-27)^(1/3)=-3 y (-27)^(-1/3)=-1/3.",
+              "text": "$(-27)^{1/3}=-3$ y $(-27)^{-1/3}=-1/3$.",
               "latex": "(-27)^{1/3}=-3,\\ (-27)^{-1/3}=-1/3"
             }
           ],
@@ -133,7 +133,7 @@
             "Base negativa y denominador par: no existe resultado real",
             "Con base negativa, siempre reducir m/n antes de aplicar la definicion"
           ],
-          "warning": "No reducir el exponente puede producir resultados absurdos. Ejemplo: (-2)^(6/2) debe tratarse como (-2)^3=-8."
+          "warning": "No reducir el exponente puede producir resultados absurdos. Ejemplo: $(-2)^{6/2}$ debe tratarse como $(-2)^3=-8$."
         },
         "para_que_sirve": {
           "title": "Para que sirve",
@@ -141,7 +141,7 @@
             {
               "area": "Funciones potencia",
               "description": "Permite interpretar y calcular funciones con exponentes no enteros.",
-              "example": "f(x)=x^(3/2) combina potencia y raiz."
+              "example": "$f(x)=x^{3/2}$ combina potencia y raiz."
             },
             {
               "area": "Modelos aplicados",
@@ -158,17 +158,17 @@
             "problem": "Cual expresion NO existe en R?",
             "options": [
               {
-                "value": "(-4)^(5/6)",
+                "value": "$(-4)^{5/6}$",
                 "correct": true,
                 "explanation": "Correcto. El denominador 6 es par y la base es negativa."
               },
               {
-                "value": "(-27)^(1/3)",
+                "value": "$(-27)^{1/3}$",
                 "correct": false,
                 "explanation": "Si existe: vale -3 porque el indice es impar."
               },
               {
-                "value": "(-2)^(2/5)",
+                "value": "$(-2)^{2/5}$",
                 "correct": false,
                 "explanation": "Si existe en R porque el indice 5 es impar."
               }
@@ -181,14 +181,14 @@
             "title": "Reducir exponente racional",
             "steps": [
               {
-                "instruction": "Reduce 6/2 a su forma irreducible.",
+                "instruction": "Reduce $6/2$ a su forma irreducible.",
                 "hint": "Divide numerador y denominador por 2.",
-                "answer": "6/2 = 3"
+                "answer": "$6/2=3$"
               },
               {
-                "instruction": "Reescribe (-2)^(6/2) con el exponente reducido.",
+                "instruction": "Reescribe $(-2)^{6/2}$ con el exponente reducido.",
                 "hint": "Usa el resultado anterior.",
-                "answer": "(-2)^(6/2)=(-2)^3"
+                "answer": "$(-2)^{6/2}=(-2)^3$"
               },
               {
                 "instruction": "Evalua la potencia final.",
@@ -227,7 +227,7 @@
               "latex": "(x+y)^q\\neq x^q+y^q,\\ (x-y)^q\\neq x^q-y^q"
             }
           ],
-          "negative_base_note": "Para base negativa y exponente racional irreducible m/n con n impar, puede usarse (-x)^(m/n)=(-1)^m x^(m/n) para x>0 y asi pasar a base positiva.",
+          "negative_base_note": "Para base negativa y exponente racional irreducible $m/n$ con $n$ impar, puede usarse $(-x)^{m/n}=(-1)^m x^{m/n}$ para $x>0$ y asi pasar a base positiva.",
           "warnings": [
             "En exponentes racionales, no aplicar ciegamente propiedades con bases negativas.",
             "Primero verificar si el exponente es irreducible y el denominador es impar.",
@@ -280,14 +280,14 @@
             "title": "Eliminar base negativa antes de operar",
             "steps": [
               {
-                "instruction": "Reescribe (-8)^(1/5) usando (-x)^(m/n)=(-1)^m x^(m/n).",
+                "instruction": "Reescribe $(-8)^{1/5}$ usando $(-x)^{m/n}=(-1)^m x^{m/n}$.",
                 "hint": "m=1, n=5 (impar).",
-                "answer": "(-8)^(1/5)=(-1)^1*8^(1/5)=-8^(1/5)"
+                "answer": "$(-8)^{1/5}=(-1)^1\\cdot 8^{1/5}=-8^{1/5}$"
               },
               {
-                "instruction": "Evalua 8^(1/5).",
+                "instruction": "Evalua $8^{1/5}$.",
                 "hint": "Busca la raiz quinta de 8.",
-                "answer": "8^(1/5)=raiz5(8)"
+                "answer": "$8^{1/5}=\\sqrt[5]{8}$"
               },
               {
                 "instruction": "Indica la conclusion sobre el signo final.",
@@ -326,7 +326,7 @@
               "latex": "\\sqrt[n]{x+y}\\neq\\sqrt[n]{x}+\\sqrt[n]{y}"
             }
           ],
-          "simplification_rule": "Si m=qn+r con m>n, entonces raiz_n(x^m)=x^q raiz_n(x^r), para x>0.",
+          "simplification_rule": "Si $m=qn+r$ con $m>n$, entonces $\\sqrt[n]{x^m}=x^q\\sqrt[n]{x^r}$, para $x>0$.",
           "warnings": [
             "No sumar ni restar indices de radicales al multiplicar o dividir.",
             "No operar 1/n y 1/m como si 1/n +- 1/m fuera 1/(n+-m).",
@@ -339,12 +339,12 @@
             {
               "area": "Simplificacion simbolica",
               "description": "Reduce expresiones con radicales a formas mas limpias y comparables.",
-              "example": "raiz(243/125)=3/5*raiz(3/5)."
+              "example": "$\\sqrt{243/125}=\\frac{3}{5}\\sqrt{3/5}$."
             },
             {
               "area": "Prevencion de errores",
               "description": "Evita reglas falsas al combinar radicales con diferentes indices.",
-              "example": "raiz3(7)*raiz(7) no es raiz4(7), sino raiz6(16807)."
+              "example": "$\\sqrt[3]{7}\\cdot\\sqrt{7}$ no es $\\sqrt[4]{7}$, sino $\\sqrt[6]{16807}$."
             }
           ]
         },
@@ -356,19 +356,19 @@
             "problem": "Que igualdad es incorrecta?",
             "options": [
               {
-                "value": "raiz3(24)=2*raiz3(3)",
+                "value": "$\\sqrt[3]{24}=2\\sqrt[3]{3}$",
                 "correct": false,
-                "explanation": "Correcta: 24=8*3 y raiz3(8)=2."
+                "explanation": "Correcta: $24=8\\cdot 3$ y $\\sqrt[3]{8}=2$."
               },
               {
-                "value": "raiz4(5^11)=25*raiz4(125)",
+                "value": "$\\sqrt[4]{5^{11}}=25\\sqrt[4]{125}$",
                 "correct": false,
                 "explanation": "Correcta al separar 5^11=5^8*5^3."
               },
               {
-                "value": "raiz3(7)*raiz(7)=raiz4(7)",
+                "value": "$\\sqrt[3]{7}\\cdot\\sqrt{7}=\\sqrt[4]{7}$",
                 "correct": true,
-                "explanation": "Incorrecta. No se suman indices; la combinacion correcta lleva a potencia 1/3+1/2=5/6."
+                "explanation": "Incorrecta. No se suman indices; la combinacion correcta lleva a potencia $1/3+1/2=5/6$."
               }
             ],
             "difficulty": "hard"
@@ -379,19 +379,19 @@
             "title": "Simplificar un radical fraccionario",
             "steps": [
               {
-                "instruction": "Reescribe raiz(243/125) separando numerador y denominador.",
-                "hint": "raiz(a/b)=raiz(a)/raiz(b)",
-                "answer": "raiz(243/125)=raiz(243)/raiz(125)"
+                "instruction": "Reescribe $\\sqrt{243/125}$ separando numerador y denominador.",
+                "hint": "$\\sqrt{a/b}=\\sqrt{a}/\\sqrt{b}$",
+                "answer": "$\\sqrt{243/125}=\\sqrt{243}/\\sqrt{125}$"
               },
               {
                 "instruction": "Factoriza para extraer cuadrados perfectos.",
                 "hint": "243=3^5, 125=5^3",
-                "answer": "raiz(243)=3^2*raiz(3), raiz(125)=5*raiz(5)"
+                "answer": "$\\sqrt{243}=3^2\\sqrt{3}$, $\\sqrt{125}=5\\sqrt{5}$"
               },
               {
                 "instruction": "Simplifica el cociente final.",
                 "hint": "Combina coeficientes y radicales.",
-                "answer": "raiz(243/125)= (3/5)*raiz(3/5)"
+                "answer": "$\\sqrt{243/125}=\\frac{3}{5}\\sqrt{3/5}$"
               }
             ],
             "difficulty": "hard"
@@ -442,7 +442,7 @@
             {
               "area": "Presentacion estandar",
               "description": "La racionalizacion evita radicales en denominadores y deja respuestas en forma convencional.",
-              "example": "5/sqrt(3) se expresa como 5sqrt(3)/3."
+              "example": "$5/\\sqrt{3}$ se expresa como $5\\sqrt{3}/3$."
             }
           ]
         },
@@ -454,17 +454,17 @@
             "problem": "Que par de radicales es semejante despues de simplificar?",
             "options": [
               {
-                "value": "raiz3(162) y raiz3(48)",
+                "value": "$\\sqrt[3]{162}$ y $\\sqrt[3]{48}$",
                 "correct": true,
-                "explanation": "Correcto. Se simplifican a 3raiz3(6) y 2raiz3(6)."
+                "explanation": "Correcto. Se simplifican a $3\\sqrt[3]{6}$ y $2\\sqrt[3]{6}$."
               },
               {
-                "value": "raiz(12) y raiz3(12)",
+                "value": "$\\sqrt{12}$ y $\\sqrt[3]{12}$",
                 "correct": false,
                 "explanation": "Incorrecto. Tienen indices distintos."
               },
               {
-                "value": "raiz(8) y raiz(18)",
+                "value": "$\\sqrt{8}$ y $\\sqrt{18}$",
                 "correct": false,
                 "explanation": "No quedan con el mismo radicando al simplificar."
               }
@@ -477,19 +477,19 @@
             "title": "Racionalizar un denominador",
             "steps": [
               {
-                "instruction": "Parte de la fraccion 5/sqrt(3). Que factor multiplicas arriba y abajo?",
-                "hint": "Usa sqrt(3)/sqrt(3).",
-                "answer": "Multiplico por sqrt(3)/sqrt(3)."
+                "instruction": "Parte de la fraccion $5/\\sqrt{3}$. Que factor multiplicas arriba y abajo?",
+                "hint": "Usa $\\sqrt{3}/\\sqrt{3}$.",
+                "answer": "Multiplico por $\\sqrt{3}/\\sqrt{3}$."
               },
               {
                 "instruction": "Simplifica el denominador.",
-                "hint": "sqrt(3)*sqrt(3)=3",
+                "hint": "$\\sqrt{3}\\cdot\\sqrt{3}=3$",
                 "answer": "Denominador = 3"
               },
               {
                 "instruction": "Escribe el resultado final racionalizado.",
-                "hint": "Conserva numerador multiplicado por sqrt(3).",
-                "answer": "5sqrt(3)/3"
+                "hint": "Conserva numerador multiplicado por $\\sqrt{3}$.",
+                "answer": "$5\\sqrt{3}/3$"
               }
             ],
             "difficulty": "easy"
@@ -504,7 +504,7 @@
       "order": 11,
       "content": {
         "theory": {
-          "definition": "Dados a y x positivos con a!=1, el logaritmo en base a de x es el numero real b tal que a^b=x. En simbolos: log_a(x)=b si y solo si a^b=x.",
+          "definition": "Dados $a$ y $x$ positivos con $a\\neq 1$, el logaritmo en base $a$ de $x$ es el numero real $b$ tal que $a^b=x$. En simbolos: $\\log_a(x)=b$ si y solo si $a^b=x$.",
           "examples": [
             {
               "text": "Ejemplos directos de calculo de logaritmos.",
@@ -524,16 +524,16 @@
             }
           ],
           "properties": [
-            "log_a(xy)=log_a(x)+log_a(y)",
-            "log_a(x/y)=log_a(x)-log_a(y)",
-            "log_a(x^q)=q log_a(x)",
-            "log_a(a^q)=q y a^{log_a(x)}=x",
-            "log_a(x)=log_a(y) si y solo si x=y"
+            "$\\log_a(xy)=\\log_a(x)+\\log_a(y)$",
+            "$\\log_a(x/y)=\\log_a(x)-\\log_a(y)$",
+            "$\\log_a(x^q)=q\\log_a(x)$",
+            "$\\log_a(a^q)=q$ y $a^{\\log_a(x)}=x$",
+            "$\\log_a(x)=\\log_a(y)$ si y solo si $x=y$"
           ],
           "warnings": [
             "No confundir logaritmo de un producto con producto de logaritmos.",
-            "En general log_a(x+y) != log_a(x)+log_a(y).",
-            "En general log_a(x-y) != log_a(x)-log_a(y)."
+            "En general $\\log_a(x+y)\\neq\\log_a(x)+\\log_a(y)$.",
+            "En general $\\log_a(x-y)\\neq\\log_a(x)-\\log_a(y)$."
           ]
         },
         "para_que_sirve": {
@@ -542,7 +542,7 @@
             {
               "area": "Resolucion de ecuaciones",
               "description": "Permite transformar ecuaciones exponenciales en ecuaciones lineales en el exponente.",
-              "example": "Si 2^t=40, entonces t=log_2(40)."
+              "example": "Si $2^t=40$, entonces $t=\\log_2(40)$."
             },
             {
               "area": "Escalas y modelos",
@@ -556,20 +556,20 @@
             "id": "exercise_init_0_11_1",
             "type": "challenge",
             "title": "Aplicar propiedades del logaritmo",
-            "problem": "Como se expresa como un unico logaritmo: log_6(x)+4log_6(y)-log_6(z)?",
+            "problem": "Como se expresa como un unico logaritmo: $\\log_6(x)+4\\log_6(y)-\\log_6(z)$?",
             "options": [
               {
-                "value": "log_6((x*y^4)/z)",
+                "value": "$\\log_6((xy^4)/z)$",
                 "correct": true,
                 "explanation": "Correcto. Se usa potencia, producto y cociente."
               },
               {
-                "value": "log_6(x+y^4-z)",
+                "value": "$\\log_6(x+y^4-z)$",
                 "correct": false,
                 "explanation": "Incorrecto. No hay distributiva de logaritmo sobre suma/resta."
               },
               {
-                "value": "log_6(x)+log_6(y^4-z)",
+                "value": "$\\log_6(x)+\\log_6(y^4-z)$",
                 "correct": false,
                 "explanation": "Incorrecto. La resta no se absorbe asi dentro del logaritmo."
               }
@@ -582,19 +582,19 @@
             "title": "Cambio de base en calculadora",
             "steps": [
               {
-                "instruction": "Plantea log_5(81) con cambio de base usando log o ln.",
-                "hint": "log_a(x)=log(x)/log(a)",
-                "answer": "log_5(81)=log(81)/log(5)"
+                "instruction": "Plantea $\\log_5(81)$ con cambio de base usando $\\log$ o $\\ln$.",
+                "hint": "$\\log_a(x)=\\log(x)/\\log(a)$",
+                "answer": "$\\log_5(81)=\\log(81)/\\log(5)$"
               },
               {
                 "instruction": "Escribe tambien la forma con ln.",
                 "hint": "Es equivalente a la forma con log.",
-                "answer": "log_5(81)=ln(81)/ln(5)"
+                "answer": "$\\log_5(81)=\\ln(81)/\\ln(5)$"
               },
               {
                 "instruction": "Da una aproximacion decimal razonable.",
                 "hint": "Valor cercano a 2.73.",
-                "answer": "log_5(81)≈2.73"
+                "answer": "$\\log_5(81)\\approx 2.73$"
               }
             ],
             "difficulty": "medium"

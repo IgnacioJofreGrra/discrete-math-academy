@@ -27,7 +27,7 @@
               "latex": "-3 \\in Z \\subset Q \\subset R"
             },
             {
-              "text": "sqrt(2) y pi son irracionales.",
+              "text": "$\\sqrt{2}$ y $\\pi$ son irracionales.",
               "latex": "\\sqrt{2}, \\pi \\in I"
             }
           ]
@@ -59,12 +59,12 @@
             "id": "exercise_init_0_1_2",
             "type": "challenge",
             "title": "Clasificacion rapida",
-            "problem": "Cual opcion clasifica correctamente a sqrt(2)?",
+            "problem": "Cual opcion clasifica correctamente a $\\sqrt{2}$?",
             "options": [
               {
                 "value": "Pertenece a I y a R, pero no a Q.",
                 "correct": true,
-                "explanation": "Correcto. sqrt(2) es irracional, por lo tanto pertenece a I y a R."
+                "explanation": "Correcto. $\\sqrt{2}$ es irracional, por lo tanto pertenece a I y a R."
               },
               {
                 "value": "Pertenece a Q porque tiene decimales.",
@@ -74,7 +74,7 @@
               {
                 "value": "Solo pertenece a N.",
                 "correct": false,
-                "explanation": "Incorrecto. sqrt(2) no es natural."
+                "explanation": "Incorrecto. $\\sqrt{2}$ no es natural."
               }
             ],
             "difficulty": "easy"
