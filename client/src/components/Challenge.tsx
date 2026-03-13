@@ -66,15 +66,18 @@ export function Challenge({
   };
 
   const handleSubmit = () => {
+    let wasCorrect = false;
+
     if (userInput) {
-      const correct = userAnswer.toLowerCase().trim() === expectedAnswer?.toLowerCase().trim();
-      setIsCorrect(correct);
+      wasCorrect = userAnswer.toLowerCase().trim() === expectedAnswer?.toLowerCase().trim();
     } else if (selectedOption) {
       const option = options?.find(opt => opt.value === selectedOption);
-      setIsCorrect(option?.correct || false);
+      wasCorrect = option?.correct || false;
     }
+
+    setIsCorrect(wasCorrect);
     setSubmitted(true);
-    onComplete?.(isCorrect);
+    onComplete?.(wasCorrect);
   };
 
   const selectedOptionData = options?.find(opt => opt.value === selectedOption);

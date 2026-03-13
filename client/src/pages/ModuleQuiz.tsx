@@ -4,6 +4,13 @@ import { ChevronLeft } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
 import { Quiz } from '@/components/Quiz';
 import { quizModule0 } from '@/data/quizzes/quiz_module_0';
+import type { QuizQuestion } from '@/components/Quiz';
+
+interface ModuleQuizData {
+  title: string;
+  questions: QuizQuestion[];
+  passingScore?: number;
+}
 
 /**
  * ModuleQuiz - Página para mostrar quizzes de módulos
@@ -13,8 +20,8 @@ export default function ModuleQuiz() {
   const [, setLocation] = useLocation();
 
   // Map module IDs to quizzes
-  const quizzes: Record<string, any> = {
-    'module_0_divisibility': quizModule0,
+  const quizzes: Record<string, ModuleQuizData> = {
+    'module_0_divisibility': quizModule0 as ModuleQuizData,
   };
 
   const quiz = quizzes[params.moduleId];

@@ -17,7 +17,9 @@ interface MathRendererProps {
  * - className: string - Clases CSS adicionales
  */
 export function MathRenderer({ latex, inline = false, className = '' }: MathRendererProps) {
-  const containerRef = useRef<HTMLElement>(null);
+  const inlineRef = useRef<HTMLSpanElement>(null);
+  const blockRef = useRef<HTMLDivElement>(null);
+  const containerRef = inline ? inlineRef : blockRef;
 
   useEffect(() => {
     if (containerRef.current && latex) {
@@ -38,13 +40,13 @@ export function MathRenderer({ latex, inline = false, className = '' }: MathRend
   return (
     inline ? (
       <span
-        ref={containerRef as any}
+        ref={inlineRef}
         className={`math-renderer inline ${className}`}
         style={{ display: 'inline', margin: 0 }}
       />
     ) : (
       <div
-        ref={containerRef as any}
+        ref={blockRef}
         className={`math-renderer block ${className}`}
         style={{ display: 'block', margin: '1rem 0' }}
       />

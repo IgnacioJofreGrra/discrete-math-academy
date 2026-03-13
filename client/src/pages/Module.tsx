@@ -12,45 +12,29 @@ import { getModuleById, markExerciseCompleted, saveExamSectionResult } from '@/l
 import { ChevronLeft, BookOpen, Lightbulb, Zap, ClipboardCheck } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
 import { InlineMathText } from '@/components/InlineMathText';
+import type { QuizQuestion } from '@/components/Quiz';
+import type {
+  ApplicationItem,
+  ChallengeExercise,
+  CourseSection,
+  Exercise,
+  FlashcardExercise,
+  StepByStepExercise,
+  TheoryExample,
+  DivisibilityCriterion,
+} from '@/types/course';
 
-interface Section {
-  id: string;
-  title: string;
-  description: string;
-  order: number;
-  content: {
-    theory: {
-      definition: string;
-      examples?: Array<{ text: string; latex: string }>;
-      [key: string]: any;
-    };
-    para_que_sirve: {
-      title: string;
-      applications: Array<{
-        area: string;
-        description: string;
-        example: string;
-      }>;
-    };
-    exercises: Array<{
-      id: string;
-      type: 'flashcard' | 'step_by_step' | 'challenge';
-      [key: string]: any;
-    }>;
-  };
-}
+const isFlashcardExercise = (exercise: Exercise): exercise is FlashcardExercise => {
+  return exercise.type === 'flashcard';
+};
 
-interface GeneratedQuizQuestion {
-  id: string;
-  question: string;
-  options: Array<{
-    value: string;
-    label: string;
-    correct: boolean;
-    explanation: string;
-  }>;
-  difficulty?: 'easy' | 'medium' | 'hard';
-}
+const isStepByStepExercise = (exercise: Exercise): exercise is StepByStepExercise => {
+  return exercise.type === 'step_by_step';
+};
+
+const isChallengeExercise = (exercise: Exercise): exercise is ChallengeExercise => {
+  return exercise.type === 'challenge';
+};
 
 /**
  * Module - Página que muestra un módulo completo con secciones y ejercicios
@@ -71,7 +55,7 @@ export default function Module() {
     }
   }, [moduleId]);
 
-  const module = getModuleById(normalizedModuleId) as any;
+  const module = getModuleById(normalizedModuleId);
 
   useEffect(() => {
     // Reset UI state when changing module route.
@@ -101,33 +85,33 @@ export default function Module() {
   }
 
   const sectionIndex = Math.min(activeSection, module.sections.length - 1);
-  const section: Section = module.sections[sectionIndex];
+  const section = module.sections[sectionIndex] as CourseSection;
   const exercise = section?.content?.exercises?.[activeExercise];
 
   const sectionExercises = useMemo(() => {
     return Array.isArray(section?.content?.exercises) ? section.content.exercises : [];
   }, [section]);
 
-  const examQuestions = useMemo<GeneratedQuizQuestion[]>(() => {
+  const examQuestions = useMemo<QuizQuestion[]>(() => {
     const fallbackDistractors = [
       'Se verifica unicamente con la ultima cifra del numero.',
       'Solo depende de que la suma de cifras sea un numero par.',
       'Basta con que el numero sea mayor que el divisor.',
     ];
 
-    const extractPrimaryAnswer = (item: any): string | null => {
-      if (item?.type === 'flashcard' && typeof item.answer === 'string') {
+    const extractPrimaryAnswer = (item: Exercise): string | null => {
+      if (isFlashcardExercise(item)) {
         return item.answer.trim();
       }
 
-      if (item?.type === 'step_by_step' && Array.isArray(item.steps) && item.steps.length > 0) {
+      if (isStepByStepExercise(item) && item.steps.length > 0) {
         const lastStepAnswer = item.steps[item.steps.length - 1]?.answer;
         return typeof lastStepAnswer === 'string' ? lastStepAnswer.trim() : null;
       }
 
-      if (item?.type === 'challenge') {
+      if (isChallengeExercise(item)) {
         if (Array.isArray(item.options) && item.options.length > 0) {
-          const correctOption = item.options.find((option: any) => option?.correct);
+          const correctOption = item.options.find((option) => option.correct);
           if (correctOption?.value != null) {
             return String(correctOption.value).trim();
           }
@@ -150,13 +134,13 @@ export default function Module() {
     );
 
     return sectionExercises
-      .map((item, index): GeneratedQuizQuestion | null => {
+      .map((item, index): QuizQuestion | null => {
         const baseQuestion =
-          typeof item.question === 'string'
+          isFlashcardExercise(item)
             ? item.question
-            : typeof item.problem === 'string'
+            : isChallengeExercise(item)
               ? item.problem
-              : typeof item.title === 'string'
+              : isStepByStepExercise(item)
                 ? item.title
                 : null;
 
@@ -167,37 +151,37 @@ export default function Module() {
         let correctLabel: string | null = null;
         let optionBlueprint: Array<{ label: string; correct: boolean; explanation: string }> = [];
 
-        if (item.type === 'flashcard' && typeof item.answer === 'string') {
+        if (isFlashcardExercise(item) && typeof item.answer === 'string') {
           correctLabel = item.answer.trim();
         }
 
-        if (item.type === 'step_by_step' && Array.isArray(item.steps) && item.steps.length > 0) {
+        if (isStepByStepExercise(item) && item.steps.length > 0) {
           const finalAnswer = item.steps[item.steps.length - 1]?.answer;
           if (typeof finalAnswer === 'string') {
             correctLabel = finalAnswer.trim();
           }
         }
 
-        if (item.type === 'challenge' && Array.isArray(item.options) && item.options.length > 1) {
+        if (isChallengeExercise(item) && Array.isArray(item.options) && item.options.length > 1) {
           const challengeOptions = item.options
-            .map((option: any) => ({
-              label: option?.value != null ? String(option.value) : '',
-              correct: Boolean(option?.correct),
+            .map((option) => ({
+              label: option.value != null ? String(option.value) : '',
+              correct: Boolean(option.correct),
               explanation:
-                typeof option?.explanation === 'string'
+                typeof option.explanation === 'string'
                   ? option.explanation
-                  : option?.correct
+                  : option.correct
                     ? 'Correcto. Esta es la respuesta esperada para el desafio.'
                     : 'Incorrecto. Esa alternativa no satisface el desafio.',
             }))
-            .filter((option: any) => option.label.trim().length > 0);
+            .filter((option) => option.label.trim().length > 0);
 
-          if (challengeOptions.some((option: any) => option.correct)) {
+          if (challengeOptions.some((option) => option.correct)) {
             optionBlueprint = challengeOptions;
           }
         }
 
-        if (!optionBlueprint.length && item.type === 'challenge' && typeof item.expectedAnswer === 'string') {
+        if (!optionBlueprint.length && isChallengeExercise(item) && typeof item.expectedAnswer === 'string') {
           correctLabel = item.expectedAnswer.trim();
         }
 
@@ -243,7 +227,7 @@ export default function Module() {
         ];
 
         const questionPrompt =
-          item.type === 'step_by_step' && typeof item.title === 'string'
+          isStepByStepExercise(item) && typeof item.title === 'string'
             ? `En "${item.title}", cual es el resultado final correcto?`
             : baseQuestion;
 
@@ -259,17 +243,26 @@ export default function Module() {
           difficulty: item.difficulty,
         };
       })
-      .filter((question): question is GeneratedQuizQuestion => Boolean(question));
+      .filter((question): question is QuizQuestion => Boolean(question));
   }, [sectionExercises]);
 
-  useEffect(() => {
-    if (exerciseType !== 'exercises') return;
-    const currentExercise = section?.content?.exercises?.[activeExercise];
-    if (!currentExercise?.id || !normalizedModuleId) return;
+  const markCurrentExerciseCompleted = () => {
+    if (!normalizedModuleId || !exercise?.id) {
+      return;
+    }
 
-    // Persist progress as soon as the learner reaches an exercise.
-    markExerciseCompleted(normalizedModuleId, currentExercise.id);
-  }, [exerciseType, activeExercise, section, normalizedModuleId]);
+    markExerciseCompleted(normalizedModuleId, exercise.id);
+  };
+
+  const markSectionExercisesCompleted = () => {
+    if (!normalizedModuleId) {
+      return;
+    }
+
+    sectionExercises.forEach((item) => {
+      markExerciseCompleted(normalizedModuleId, item.id);
+    });
+  };
 
   if (!section) {
     return (
@@ -303,7 +296,10 @@ export default function Module() {
             difficulty={exercise.difficulty}
             canGoNext={activeExercise < section.content.exercises.length - 1}
             canGoPrevious={activeExercise > 0}
-            onNext={() => setActiveExercise(activeExercise + 1)}
+            onNext={() => {
+              setActiveExercise(activeExercise + 1);
+            }}
+            onComplete={markCurrentExerciseCompleted}
             onPrevious={() => setActiveExercise(activeExercise - 1)}
           />
         );
@@ -313,6 +309,7 @@ export default function Module() {
             title={exercise.title}
             steps={exercise.steps}
             onComplete={() => {
+              markCurrentExerciseCompleted();
               if (activeExercise < section.content.exercises.length - 1) {
                 setActiveExercise(activeExercise + 1);
               }
@@ -328,7 +325,13 @@ export default function Module() {
             userInput={exercise.userInput}
             expectedAnswer={exercise.expectedAnswer}
             difficulty={exercise.difficulty}
-            onComplete={() => {
+            onComplete={(correct) => {
+              if (!correct) {
+                return;
+              }
+
+              markCurrentExerciseCompleted();
+
               if (activeExercise < section.content.exercises.length - 1) {
                 setActiveExercise(activeExercise + 1);
               }
@@ -362,7 +365,7 @@ export default function Module() {
         {/* Section Navigation */}
         <div className="mb-6 overflow-x-auto">
           <div className="flex gap-2 pb-2">
-            {module.sections.map((sec: Section, idx: number) => (
+            {module.sections.map((sec, idx) => (
               <Button
                 key={sec.id}
                 variant={activeSection === idx ? 'default' : 'outline'}
@@ -444,7 +447,7 @@ export default function Module() {
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-gray-800 mb-3">Ejemplos:</h4>
                       <div className="space-y-3">
-                        {section.content.theory.examples.map((example: any, idx: number) => (
+                        {section.content.theory.examples.map((example: TheoryExample, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200">
                             <p className="text-gray-700 mb-2">
                               <InlineMathText text={example.text} />
@@ -460,7 +463,7 @@ export default function Module() {
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-gray-800 mb-3">Criterios de divisibilidad:</h4>
                       <div className="space-y-3">
-                        {section.content.theory.criterios.map((item: any) => (
+                        {section.content.theory.criterios.map((item: DivisibilityCriterion) => (
                           <div key={item.divisor} className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
                             <p className="text-gray-800 font-semibold mb-1">Divisor {item.divisor}</p>
                             <p className="text-gray-700">
@@ -479,7 +482,7 @@ export default function Module() {
               <Card className="p-8 max-[359px]:p-4">
                 <h3 className="text-2xl max-[359px]:text-xl font-bold text-gray-900 mb-6">¿Para qué sirve?</h3>
                 <div className="space-y-6">
-                  {section.content.para_que_sirve.applications.map((app: any, idx: number) => (
+                  {section.content.para_que_sirve.applications.map((app: ApplicationItem, idx: number) => (
                     <div key={idx} className="border-l-4 border-green-500 pl-4">
                       <h4 className="text-lg font-semibold text-gray-800 mb-2">{app.area}</h4>
                       <p className="text-gray-700 mb-3">
@@ -517,6 +520,9 @@ export default function Module() {
                   onComplete={(score, totalQuestions) => {
                     if (!normalizedModuleId || !section?.id) return;
                     saveExamSectionResult(normalizedModuleId, section.id, score, totalQuestions, 70);
+                    if (score >= 70) {
+                      markSectionExercisesCompleted();
+                    }
                   }}
                 />
               ) : (

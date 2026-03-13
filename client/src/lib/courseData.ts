@@ -5,22 +5,23 @@ import module3 from '@/data/modules/module_3.json';
 import module4 from '@/data/modules/module_4.json';
 import module5 from '@/data/modules/module_5.json';
 import module6 from '@/data/modules/module_6.json';
+import type { CourseModule } from '@/types/course';
 
-export const modules = [
-  module0,
-  module1,
-  module2,
-  module3,
-  module4,
-  module5,
-  module6,
+export const modules: CourseModule[] = [
+  module0 as CourseModule,
+  module1 as CourseModule,
+  module2 as CourseModule,
+  module3 as CourseModule,
+  module4 as CourseModule,
+  module5 as CourseModule,
+  module6 as CourseModule,
 ];
 
-export const getModuleById = (id: string) => {
+export const getModuleById = (id: string): CourseModule | undefined => {
   return modules.find(m => m.id === id);
 };
 
-export const getAllModules = () => {
+export const getAllModules = (): CourseModule[] => {
   return modules;
 };
 
@@ -54,7 +55,7 @@ export const getCompletedModules = (): number => {
 
 export const getTotalExercises = (): number => {
   return modules.reduce((sum, m) => {
-    return sum + (m.sections?.reduce((sectionSum: number, s: any) => {
+    return sum + (m.sections?.reduce((sectionSum, s) => {
       return sectionSum + (s.content?.exercises?.length || 0);
     }, 0) || 0);
   }, 0);
@@ -133,10 +134,10 @@ const saveCompletedExerciseIds = (ids: string[]) => {
 };
 
 const getModuleTotalExercises = (moduleId: string): number => {
-  const module = getModuleById(moduleId) as any;
+  const module = getModuleById(moduleId);
   if (!module?.sections) return 0;
 
-  return module.sections.reduce((sum: number, section: any) => {
+  return module.sections.reduce((sum, section) => {
     return sum + (section.content?.exercises?.length || 0);
   }, 0);
 };

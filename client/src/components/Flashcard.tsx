@@ -10,6 +10,7 @@ interface FlashcardProps {
   answer: string;
   difficulty?: 'easy' | 'medium' | 'hard';
   onNext?: () => void;
+  onComplete?: () => void;
   onPrevious?: () => void;
   canGoNext?: boolean;
   canGoPrevious?: boolean;
@@ -32,6 +33,7 @@ export function Flashcard({
   answer,
   difficulty = 'easy',
   onNext,
+  onComplete,
   onPrevious,
   canGoNext = true,
   canGoPrevious = true,
@@ -48,6 +50,10 @@ export function Flashcard({
     onPrevious?.();
   };
 
+  const handleComplete = () => {
+    setIsFlipped(false);
+    onComplete?.();
+  };
   // Ensure each new exercise starts on the question side.
   useEffect(() => {
     setIsFlipped(false);
@@ -121,16 +127,26 @@ export function Flashcard({
           {isFlipped ? 'Ver Pregunta' : 'Ver Respuesta'}
         </Button>
 
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={handleNext}
-          disabled={!canGoNext}
-          className="w-full sm:w-auto flex items-center justify-center gap-2"
-        >
-          Siguiente
-          <AppIcon icon={ChevronRight} size={16} colorClass="text-blue-600" />
-        </Button>
+        {canGoNext ? (
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={handleNext}
+            className="w-full sm:w-auto flex items-center justify-center gap-2"
+          >
+            Siguiente
+            <AppIcon icon={ChevronRight} size={16} colorClass="text-blue-600" />
+          </Button>
+        ) : (
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={handleComplete}
+            className="w-full sm:w-auto"
+          >
+            Completar
+          </Button>
+        )}
       </div>
     </div>
   );
