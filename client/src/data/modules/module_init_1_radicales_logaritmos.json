@@ -1,0 +1,606 @@
+{
+  "id": "module_init_1_radicales_logaritmos",
+  "title": "Matematica Inicial 1: Radicales y Logaritmos",
+  "description": "Radicacion, exponentes racionales, propiedades de potencia y logaritmos con cambio de base.",
+  "order": 1,
+  "track": "initial",
+  "difficulty": "beginner",
+  "estimatedHours": 10,
+  "icon": "book-open",
+  "sections": [
+    {
+      "id": "section_init_0_6",
+      "title": "Radicacion y raiz principal",
+      "description": "Define la raiz n-esima y distingue cuando hay cero, una o dos raices reales.",
+      "order": 6,
+      "content": {
+        "theory": {
+          "definition": "Para n natural, r es raiz n-esima de x si r^n = x. Para n=2 hablamos de raiz cuadrada y para n=3 de raiz cubica.",
+          "examples": [
+            {
+              "text": "2 es raiz cubica de 8 y -2 es raiz cubica de -8.",
+              "latex": "2^3=8,\\ (-2)^3=-8"
+            },
+            {
+              "text": "81 tiene dos raices cuadradas reales: 9 y -9.",
+              "latex": "9^2=(-9)^2=81"
+            },
+            {
+              "text": "No existe raiz cuadrada real de -4.",
+              "latex": "\\nexists r\\in R: r^2=-4"
+            },
+            {
+              "text": "sqrt(x) representa la raiz principal cuando esta definida.",
+              "latex": "\\sqrt{81}=9"
+            }
+          ],
+          "root_cases": [
+            "n par, x positivo: dos raices reales (\\pm)",
+            "n par, x negativo: no hay raiz real",
+            "n impar, cualquier x real: una unica raiz real"
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Resolucion de ecuaciones",
+              "description": "Permite resolver ecuaciones tipo t^n=x, cuidando existencia de soluciones reales.",
+              "example": "t^2=81 tiene dos soluciones: t=9 y t=-9."
+            },
+            {
+              "area": "Modelos geometricos",
+              "description": "Se usa para recuperar longitudes a partir de areas y potencias.",
+              "example": "Si A=l^2, entonces l=sqrt(A) como longitud principal."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_6_1",
+            "type": "challenge",
+            "title": "Raices reales",
+            "problem": "Cual enunciado es correcto en R?",
+            "options": [
+              {
+                "value": "x^4=-16 no tiene solucion real.",
+                "correct": true,
+                "explanation": "Correcto. Potencia par de un real no puede ser negativa."
+              },
+              {
+                "value": "sqrt(4)=+-2.",
+                "correct": false,
+                "explanation": "Incorrecto. sqrt(4) denota solo la raiz principal: 2."
+              },
+              {
+                "value": "La raiz cubica de -8 no existe en R.",
+                "correct": false,
+                "explanation": "Incorrecto. La raiz cubica de -8 es -2."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_6_2",
+            "type": "step_by_step",
+            "title": "Operacion combinada con raices",
+            "steps": [
+              {
+                "instruction": "Evalua cada termino: 2*sqrt(25), -raiz4(16), 3*raiz5(32), -raiz3(-8).",
+                "hint": "sqrt(25)=5, raiz4(16)=2, raiz5(32)=2, raiz3(-8)=-2",
+                "answer": "10, -2, 6, +2"
+              },
+              {
+                "instruction": "Suma los resultados respetando signos.",
+                "hint": "10-2+6+2",
+                "answer": "16"
+              },
+              {
+                "instruction": "Explica por que el ultimo termino es +2.",
+                "hint": "Hay dos signos menos consecutivos.",
+                "answer": "Porque -raiz3(-8) = -(-2) = +2."
+              }
+            ],
+            "difficulty": "hard"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_7",
+      "title": "Potencia con exponente racional",
+      "description": "Define x^(m/n) mediante raiz n-esima, con fraccion m/n reducida y casos de base negativa.",
+      "order": 7,
+      "content": {
+        "theory": {
+          "definition": "Si m es entero, n natural y m/n esta en forma irreducible, se define x^(m/n)=raiz_n(x^m) siempre que la raiz exista en R.",
+          "examples": [
+            {
+              "text": "2^(4/3)=raiz3(2^4)=raiz3(16).",
+              "latex": "2^{4/3}=\\sqrt[3]{2^4}"
+            },
+            {
+              "text": "5^(1/2)=sqrt(5).",
+              "latex": "5^{1/2}=\\sqrt{5}"
+            },
+            {
+              "text": "(-27)^(1/3)=-3 y (-27)^(-1/3)=-1/3.",
+              "latex": "(-27)^{1/3}=-3,\\ (-27)^{-1/3}=-1/3"
+            }
+          ],
+          "negative_base_rules": [
+            "Base negativa y denominador impar: puede existir resultado real",
+            "Base negativa y denominador par: no existe resultado real",
+            "Con base negativa, siempre reducir m/n antes de aplicar la definicion"
+          ],
+          "warning": "No reducir el exponente puede producir resultados absurdos. Ejemplo: (-2)^(6/2) debe tratarse como (-2)^3=-8."
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Funciones potencia",
+              "description": "Permite interpretar y calcular funciones con exponentes no enteros.",
+              "example": "f(x)=x^(3/2) combina potencia y raiz."
+            },
+            {
+              "area": "Modelos aplicados",
+              "description": "Aparece en modelos de escalamiento y crecimiento no lineal.",
+              "example": "Muchas leyes empiricas usan exponentes racionales."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_7_1",
+            "type": "challenge",
+            "title": "Existencia en R",
+            "problem": "Cual expresion NO existe en R?",
+            "options": [
+              {
+                "value": "(-4)^(5/6)",
+                "correct": true,
+                "explanation": "Correcto. El denominador 6 es par y la base es negativa."
+              },
+              {
+                "value": "(-27)^(1/3)",
+                "correct": false,
+                "explanation": "Si existe: vale -3 porque el indice es impar."
+              },
+              {
+                "value": "(-2)^(2/5)",
+                "correct": false,
+                "explanation": "Si existe en R porque el indice 5 es impar."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exercise_init_0_7_2",
+            "type": "step_by_step",
+            "title": "Reducir exponente racional",
+            "steps": [
+              {
+                "instruction": "Reduce 6/2 a su forma irreducible.",
+                "hint": "Divide numerador y denominador por 2.",
+                "answer": "6/2 = 3"
+              },
+              {
+                "instruction": "Reescribe (-2)^(6/2) con el exponente reducido.",
+                "hint": "Usa el resultado anterior.",
+                "answer": "(-2)^(6/2)=(-2)^3"
+              },
+              {
+                "instruction": "Evalua la potencia final.",
+                "hint": "Exponente impar conserva signo.",
+                "answer": "-8"
+              }
+            ],
+            "difficulty": "hard"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_8",
+      "title": "Propiedades de la potencia racional",
+      "description": "Trabaja propiedades con base positiva y el cuidado necesario al usar bases negativas.",
+      "order": 8,
+      "content": {
+        "theory": {
+          "definition": "Si x,y > 0 y p,q reales, valen: producto y division de igual base, potencia de potencia, distributiva respecto de producto y cociente, y cambio de orden. No hay distributiva respecto de suma o resta.",
+          "examples": [
+            {
+              "text": "Producto de potencias de igual base: se suman exponentes.",
+              "latex": "x^q\\cdot x^r=x^{q+r}"
+            },
+            {
+              "text": "Division de potencias de igual base: se restan exponentes.",
+              "latex": "x^q:x^r=x^{q-r}"
+            },
+            {
+              "text": "Potencia de potencia: se multiplican exponentes.",
+              "latex": "(x^r)^q=x^{rq}"
+            },
+            {
+              "text": "No distributiva en suma/resta.",
+              "latex": "(x+y)^q\\neq x^q+y^q,\\ (x-y)^q\\neq x^q-y^q"
+            }
+          ],
+          "negative_base_note": "Para base negativa y exponente racional irreducible m/n con n impar, puede usarse (-x)^(m/n)=(-1)^m x^(m/n) para x>0 y asi pasar a base positiva.",
+          "warnings": [
+            "En exponentes racionales, no aplicar ciegamente propiedades con bases negativas.",
+            "Primero verificar si el exponente es irreducible y el denominador es impar.",
+            "Evitar absurdos como concluir -27=27 por aplicar propiedades fuera de dominio."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Simplificacion segura",
+              "description": "Permite simplificar potencias racionales sin violar condiciones de validez.",
+              "example": "Antes de distribuir, revisar si la base es positiva o usar formula para eliminar signo."
+            },
+            {
+              "area": "Calculo asistido",
+              "description": "Aclara por que una calculadora da aproximaciones en exponentes irracionales.",
+              "example": "2^pi se reporta como valor aproximado decimal."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_8_1",
+            "type": "challenge",
+            "title": "Propiedad valida",
+            "problem": "Cual igualdad es siempre valida para base positiva?",
+            "options": [
+              {
+                "value": "(x+y)^q = x^q + y^q",
+                "correct": false,
+                "explanation": "Incorrecto. No existe distributiva respecto de suma."
+              },
+              {
+                "value": "(x^r)^q = x^{rq}",
+                "correct": true,
+                "explanation": "Correcto. Es la propiedad de potencia de potencia."
+              },
+              {
+                "value": "(x-y)^q = x^q - y^q",
+                "correct": false,
+                "explanation": "Incorrecto. Tampoco hay distributiva respecto de resta."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_8_2",
+            "type": "step_by_step",
+            "title": "Eliminar base negativa antes de operar",
+            "steps": [
+              {
+                "instruction": "Reescribe (-8)^(1/5) usando (-x)^(m/n)=(-1)^m x^(m/n).",
+                "hint": "m=1, n=5 (impar).",
+                "answer": "(-8)^(1/5)=(-1)^1*8^(1/5)=-8^(1/5)"
+              },
+              {
+                "instruction": "Evalua 8^(1/5).",
+                "hint": "Busca la raiz quinta de 8.",
+                "answer": "8^(1/5)=raiz5(8)"
+              },
+              {
+                "instruction": "Indica la conclusion sobre el signo final.",
+                "hint": "El factor (-1)^1 conserva signo negativo.",
+                "answer": "El resultado final es negativo."
+              }
+            ],
+            "difficulty": "hard"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_9",
+      "title": "Propiedades de la radicacion",
+      "description": "Aplica propiedades de radicales para simplificar y evitar errores frecuentes con indices.",
+      "order": 9,
+      "content": {
+        "theory": {
+          "definition": "Para n,m naturales y x,y reales positivos: raiz n-esima de producto y cociente se distribuye; raiz de otra raiz multiplica indices. No se distribuye sobre suma ni resta.",
+          "examples": [
+            {
+              "text": "Distribucion respecto del producto.",
+              "latex": "\\sqrt[n]{xy}=\\sqrt[n]{x}\\,\\sqrt[n]{y}"
+            },
+            {
+              "text": "Distribucion respecto del cociente.",
+              "latex": "\\sqrt[n]{x/y}=\\frac{\\sqrt[n]{x}}{\\sqrt[n]{y}}"
+            },
+            {
+              "text": "Raiz de otra raiz.",
+              "latex": "\\sqrt[m]{\\sqrt[n]{x}}=\\sqrt[mn]{x}"
+            },
+            {
+              "text": "Error comun con suma/resta dentro del radicando.",
+              "latex": "\\sqrt[n]{x+y}\\neq\\sqrt[n]{x}+\\sqrt[n]{y}"
+            }
+          ],
+          "simplification_rule": "Si m=qn+r con m>n, entonces raiz_n(x^m)=x^q raiz_n(x^r), para x>0.",
+          "warnings": [
+            "No sumar ni restar indices de radicales al multiplicar o dividir.",
+            "No operar 1/n y 1/m como si 1/n +- 1/m fuera 1/(n+-m).",
+            "Con n impar, raiz_n(-x)=-raiz_n(x)."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Simplificacion simbolica",
+              "description": "Reduce expresiones con radicales a formas mas limpias y comparables.",
+              "example": "raiz(243/125)=3/5*raiz(3/5)."
+            },
+            {
+              "area": "Prevencion de errores",
+              "description": "Evita reglas falsas al combinar radicales con diferentes indices.",
+              "example": "raiz3(7)*raiz(7) no es raiz4(7), sino raiz6(16807)."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_9_1",
+            "type": "challenge",
+            "title": "Identificar error en radicales",
+            "problem": "Que igualdad es incorrecta?",
+            "options": [
+              {
+                "value": "raiz3(24)=2*raiz3(3)",
+                "correct": false,
+                "explanation": "Correcta: 24=8*3 y raiz3(8)=2."
+              },
+              {
+                "value": "raiz4(5^11)=25*raiz4(125)",
+                "correct": false,
+                "explanation": "Correcta al separar 5^11=5^8*5^3."
+              },
+              {
+                "value": "raiz3(7)*raiz(7)=raiz4(7)",
+                "correct": true,
+                "explanation": "Incorrecta. No se suman indices; la combinacion correcta lleva a potencia 1/3+1/2=5/6."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exercise_init_0_9_2",
+            "type": "step_by_step",
+            "title": "Simplificar un radical fraccionario",
+            "steps": [
+              {
+                "instruction": "Reescribe raiz(243/125) separando numerador y denominador.",
+                "hint": "raiz(a/b)=raiz(a)/raiz(b)",
+                "answer": "raiz(243/125)=raiz(243)/raiz(125)"
+              },
+              {
+                "instruction": "Factoriza para extraer cuadrados perfectos.",
+                "hint": "243=3^5, 125=5^3",
+                "answer": "raiz(243)=3^2*raiz(3), raiz(125)=5*raiz(5)"
+              },
+              {
+                "instruction": "Simplifica el cociente final.",
+                "hint": "Combina coeficientes y radicales.",
+                "answer": "raiz(243/125)= (3/5)*raiz(3/5)"
+              }
+            ],
+            "difficulty": "hard"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_10",
+      "title": "Radicales semejantes y racionalizacion",
+      "description": "Reconoce radicales semejantes, combina terminos y racionaliza denominadores.",
+      "order": 10,
+      "content": {
+        "theory": {
+          "definition": "Dos o mas radicales son semejantes si tienen el mismo indice y el mismo radicando tras simplificar. Solo puede cambiar el coeficiente.",
+          "examples": [
+            {
+              "text": "Reconocer radicales semejantes simplificando cada radicando.",
+              "latex": "\\sqrt[3]{162}=3\\sqrt[3]{6},\\ \\sqrt[3]{48}=2\\sqrt[3]{6}"
+            },
+            {
+              "text": "Combinar radicales semejantes en suma o resta.",
+              "latex": "3\\sqrt[3]{6}+2\\sqrt[3]{6}-9\\sqrt[3]{6}=-4\\sqrt[3]{6}"
+            },
+            {
+              "text": "Racionalizacion simple de denominador.",
+              "latex": "\\frac{5}{\\sqrt{3}}=\\frac{5\\sqrt{3}}{3}"
+            },
+            {
+              "text": "Racionalizacion con raiz de indice n en el denominador.",
+              "latex": "\\frac{1}{\\sqrt[n]{x^m}}=\\frac{\\sqrt[n]{x^{n-m}}}{x}\\ (x>0,m<n)"
+            }
+          ],
+          "notes": [
+            "Antes de decidir si dos radicales son semejantes, simplificarlos al maximo.",
+            "Para racionalizar, multiplicar y dividir por una expresion que complete una potencia n-esima exacta en el denominador.",
+            "Resumen de uso seguro de propiedades: base positiva cualquier exponente; base negativa con exponente entero; base negativa con exponente racional requiere cuidado."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Algebra intermedia",
+              "description": "Permite simplificar expresiones con radicales para resolver ecuaciones y comparar resultados.",
+              "example": "Combinar radicales semejantes reduce expresiones largas a pocas terminos."
+            },
+            {
+              "area": "Presentacion estandar",
+              "description": "La racionalizacion evita radicales en denominadores y deja respuestas en forma convencional.",
+              "example": "5/sqrt(3) se expresa como 5sqrt(3)/3."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_10_1",
+            "type": "challenge",
+            "title": "Identificar radicales semejantes",
+            "problem": "Que par de radicales es semejante despues de simplificar?",
+            "options": [
+              {
+                "value": "raiz3(162) y raiz3(48)",
+                "correct": true,
+                "explanation": "Correcto. Se simplifican a 3raiz3(6) y 2raiz3(6)."
+              },
+              {
+                "value": "raiz(12) y raiz3(12)",
+                "correct": false,
+                "explanation": "Incorrecto. Tienen indices distintos."
+              },
+              {
+                "value": "raiz(8) y raiz(18)",
+                "correct": false,
+                "explanation": "No quedan con el mismo radicando al simplificar."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_10_2",
+            "type": "step_by_step",
+            "title": "Racionalizar un denominador",
+            "steps": [
+              {
+                "instruction": "Parte de la fraccion 5/sqrt(3). Que factor multiplicas arriba y abajo?",
+                "hint": "Usa sqrt(3)/sqrt(3).",
+                "answer": "Multiplico por sqrt(3)/sqrt(3)."
+              },
+              {
+                "instruction": "Simplifica el denominador.",
+                "hint": "sqrt(3)*sqrt(3)=3",
+                "answer": "Denominador = 3"
+              },
+              {
+                "instruction": "Escribe el resultado final racionalizado.",
+                "hint": "Conserva numerador multiplicado por sqrt(3).",
+                "answer": "5sqrt(3)/3"
+              }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_11",
+      "title": "Logaritmos y sus propiedades",
+      "description": "Define logaritmo, calcula casos directos e inversos y aplica propiedades y cambio de base.",
+      "order": 11,
+      "content": {
+        "theory": {
+          "definition": "Dados a y x positivos con a!=1, el logaritmo en base a de x es el numero real b tal que a^b=x. En simbolos: log_a(x)=b si y solo si a^b=x.",
+          "examples": [
+            {
+              "text": "Ejemplos directos de calculo de logaritmos.",
+              "latex": "log_2(32)=5,\\ log_{1/2}(32)=-5,\\ log_7(49)=2"
+            },
+            {
+              "text": "Logaritmos especiales: decimal y natural.",
+              "latex": "log(1000)=3,\\ ln(e)=1"
+            },
+            {
+              "text": "Problema inverso: hallar argumento o base desde el valor del logaritmo.",
+              "latex": "log_2(x)=5 \\Rightarrow x=32,\\ log_a(25)=2 \\Rightarrow a=5"
+            },
+            {
+              "text": "Cambio de base para calculadora.",
+              "latex": "log_a(x)=\\frac{log(x)}{log(a)}=\\frac{ln(x)}{ln(a)}"
+            }
+          ],
+          "properties": [
+            "log_a(xy)=log_a(x)+log_a(y)",
+            "log_a(x/y)=log_a(x)-log_a(y)",
+            "log_a(x^q)=q log_a(x)",
+            "log_a(a^q)=q y a^{log_a(x)}=x",
+            "log_a(x)=log_a(y) si y solo si x=y"
+          ],
+          "warnings": [
+            "No confundir logaritmo de un producto con producto de logaritmos.",
+            "En general log_a(x+y) != log_a(x)+log_a(y).",
+            "En general log_a(x-y) != log_a(x)-log_a(y)."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Resolucion de ecuaciones",
+              "description": "Permite transformar ecuaciones exponenciales en ecuaciones lineales en el exponente.",
+              "example": "Si 2^t=40, entonces t=log_2(40)."
+            },
+            {
+              "area": "Escalas y modelos",
+              "description": "Aparece en escalas logaritmicas y en crecimiento exponencial.",
+              "example": "pH, decibeles y magnitud sismica usan logaritmos."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_11_1",
+            "type": "challenge",
+            "title": "Aplicar propiedades del logaritmo",
+            "problem": "Como se expresa como un unico logaritmo: log_6(x)+4log_6(y)-log_6(z)?",
+            "options": [
+              {
+                "value": "log_6((x*y^4)/z)",
+                "correct": true,
+                "explanation": "Correcto. Se usa potencia, producto y cociente."
+              },
+              {
+                "value": "log_6(x+y^4-z)",
+                "correct": false,
+                "explanation": "Incorrecto. No hay distributiva de logaritmo sobre suma/resta."
+              },
+              {
+                "value": "log_6(x)+log_6(y^4-z)",
+                "correct": false,
+                "explanation": "Incorrecto. La resta no se absorbe asi dentro del logaritmo."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_11_2",
+            "type": "step_by_step",
+            "title": "Cambio de base en calculadora",
+            "steps": [
+              {
+                "instruction": "Plantea log_5(81) con cambio de base usando log o ln.",
+                "hint": "log_a(x)=log(x)/log(a)",
+                "answer": "log_5(81)=log(81)/log(5)"
+              },
+              {
+                "instruction": "Escribe tambien la forma con ln.",
+                "hint": "Es equivalente a la forma con log.",
+                "answer": "log_5(81)=ln(81)/ln(5)"
+              },
+              {
+                "instruction": "Da una aproximacion decimal razonable.",
+                "hint": "Valor cercano a 2.73.",
+                "answer": "log_5(81)≈2.73"
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}

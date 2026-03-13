@@ -3,11 +3,11 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { BookOpen, Zap, Target, Award, Hash, Ruler, Link2, Infinity, Bird, Sigma, Github, LogOut, type LucideIcon } from 'lucide-react';
+import { BookOpen, Zap, Target, Award, Hash, Ruler, Link2, Infinity, Bird, Sigma, Github, LogOut, School, Network, type LucideIcon } from 'lucide-react';
 import { AppIcon } from '@/components/AppIcon';
-import { getAllModules, getModuleProgress, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, touchStudyDay } from '@/lib/courseData';
+import { getAllModules, getModuleProgress, getTotalProgress, getCompletedModules, getCompletedExercises, getTotalExercises, getStreak, touchStudyDay, getModulesByTrack } from '@/lib/courseData';
 import { useAuth } from '@/contexts/AuthContext';
-import type { CourseModule, Difficulty } from '@/types/course';
+import type { CourseModule, Difficulty, ModuleTrack } from '@/types/course';
 
 const moduleIconMap: Record<string, LucideIcon> = {
   hash: Hash,
@@ -16,6 +16,7 @@ const moduleIconMap: Record<string, LucideIcon> = {
   target: Target,
   infinity: Infinity,
   bird: Bird,
+  'book-open': BookOpen,
 };
 
 const moduleIconColorMap: Record<string, string> = {
@@ -56,6 +57,7 @@ export default function Home() {
   const { user, loading: authLoading, signInWithGoogle, signInWithGithub, logout } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
+  const [selectedTrack, setSelectedTrack] = useState<ModuleTrack | 'all'>('all');
   const [stats, setStats] = useState({
     totalProgress: 0,
     completedModules: 0,
@@ -78,14 +80,23 @@ export default function Home() {
   }, []);
 
   const allModules = getAllModules();
+  const initialModules = getModulesByTrack('initial');
+  const discreteModules = getModulesByTrack('discrete');
   const moduleProgressById = useMemo<Record<string, number>>(
     () => Object.fromEntries(allModules.map((module) => [module.id, getModuleProgress(module.id)])),
     [allModules, user?.uid],
   );
 
-  const filteredModules = selectedDifficulty === 'all'
-    ? allModules
-    : allModules.filter((m) => m.difficulty === selectedDifficulty);
+  const applyDifficultyFilter = (modulesToFilter: CourseModule[]) => {
+    if (selectedDifficulty === 'all') {
+      return modulesToFilter;
+    }
+
+    return modulesToFilter.filter((module) => module.difficulty === selectedDifficulty);
+  };
+
+  const filteredInitialModules = selectedTrack === 'discrete' ? [] : applyDifficultyFilter(initialModules);
+  const filteredDiscreteModules = selectedTrack === 'initial' ? [] : applyDifficultyFilter(discreteModules);
 
   const handleGoogleLogin = async () => {
     try {
@@ -141,9 +152,9 @@ export default function Home() {
             <div>
               <h1 className="text-4xl max-[359px]:text-2xl font-bold text-gray-900 flex items-center gap-3">
                 <AppIcon icon={Sigma} size={44} colorClass="text-blue-600" className="max-[359px]:w-8 max-[359px]:h-8" />
-                DiscreMath
+                Academia Matematica
               </h1>
-              <p className="text-gray-600 mt-2 max-[359px]:text-sm">Aprende Matemática Discreta de forma interactiva</p>
+              <p className="text-gray-600 mt-2 max-[359px]:text-sm">Aprende Matematica Inicial y Matematica Discreta de forma interactiva</p>
             </div>
             <div className="text-left sm:text-right space-y-2">
               <div>
@@ -205,11 +216,27 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 py-12 max-[359px]:px-3 max-[359px]:py-8">
         {/* Welcome Section */}
         <div className="mb-12 bg-white rounded-lg shadow-md p-8 max-[359px]:p-4 border-l-4 border-blue-500">
-          <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-4">Bienvenido a DiscreMath</h2>
+          <h2 className="text-2xl max-[359px]:text-lg font-bold text-gray-900 mb-4">Bienvenido a la Academia</h2>
           <p className="text-gray-700 max-[359px]:text-sm mb-4">
-            Esta aplicación interactiva te guiará a través de los conceptos fundamentales de la Matemática Discreta,
-            desde divisibilidad y el Principio del Buen Orden, hasta inducción completa, teoría de conjuntos y más.
+            Esta aplicacion interactiva ahora esta organizada en dos grandes secciones:
+            Matematica Inicial y Matematica Discreta.
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <Card className="p-4 border-l-4 border-sky-500 bg-sky-50/60">
+              <div className="flex items-center gap-3 mb-2">
+                <AppIcon icon={School} size={20} colorClass="text-sky-700" />
+                <h3 className="font-semibold text-slate-900">Matematica Inicial</h3>
+              </div>
+              <p className="text-sm text-slate-700">Fundamentos de numeros reales, operaciones, propiedades y reglas base.</p>
+            </Card>
+            <Card className="p-4 border-l-4 border-indigo-500 bg-indigo-50/60">
+              <div className="flex items-center gap-3 mb-2">
+                <AppIcon icon={Network} size={20} colorClass="text-indigo-700" />
+                <h3 className="font-semibold text-slate-900">Matematica Discreta</h3>
+              </div>
+              <p className="text-sm text-slate-700">Divisibilidad, buen orden, induccion, teoria de conjuntos y herramientas para computacion.</p>
+            </Card>
+          </div>
           <p className="text-gray-700 max-[359px]:text-sm mb-4">
             Cada módulo incluye:
           </p>
@@ -219,7 +246,7 @@ export default function Home() {
             <li><strong>Ejercicios interactivos:</strong> Flashcards, demostraciones paso a paso y desafíos</li>
           </ul>
           <p className="text-gray-700 max-[359px]:text-sm mt-4">
-            ¡Comienza con el Módulo 0 si eres nuevo en el tema!
+            Comienza por Matematica Inicial si estas reforzando bases, o entra directo a Discreta si ya dominas algebra elemental.
           </p>
         </div>
 
@@ -283,9 +310,100 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Modules Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredModules.map((module: CourseModule) => {
+        <div className="mb-8">
+          <h2 className="text-lg max-[359px]:text-base font-semibold text-gray-900 mb-4">Secciones principales:</h2>
+          <div className="flex gap-3 flex-wrap">
+            {([
+              { value: 'all', label: 'Todas' },
+              { value: 'initial', label: 'Matematica Inicial' },
+              { value: 'discrete', label: 'Matematica Discreta' },
+            ] as const).map((item) => (
+              <Button
+                key={item.value}
+                variant={selectedTrack === item.value ? 'default' : 'outline'}
+                onClick={() => setSelectedTrack(item.value)}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Initial Math Modules */}
+        {filteredInitialModules.length > 0 && (
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-5">
+              <AppIcon icon={School} size={22} colorClass="text-sky-700" />
+              <h2 className="text-2xl font-bold text-slate-900">Matematica Inicial</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredInitialModules.map((module: CourseModule) => {
+                const colors = difficultyColors[module.difficulty as Difficulty];
+                const iconKey = module.icon ?? '';
+                const moduleIcon = moduleIconMap[iconKey] ?? BookOpen;
+                const moduleIconColor = moduleIconColorMap[iconKey] ?? 'text-blue-600';
+                const moduleProgress = moduleProgressById[module.id] ?? 0;
+                return (
+                  <Card
+                    key={module.id}
+                    className={`${colors.bg} border-2 ${colors.border} p-6 max-[359px]:p-4 hover:shadow-lg transition-all cursor-pointer`}
+                    onClick={() => setLocation(`/module/${module.id}`)}
+                  >
+                    <div className="mb-4">
+                      <div className="flex items-start justify-between mb-3">
+                        <AppIcon
+                          icon={moduleIcon}
+                          size={34}
+                          colorClass={moduleIconColor}
+                          className="max-[359px]:w-7 max-[359px]:h-7"
+                        />
+                        <span className={`px-2 py-1 max-[359px]:px-1.5 max-[359px]:py-0.5 rounded text-xs max-[359px]:text-[11px] font-semibold ${colors.badge}`}>
+                          {difficultyLabels[module.difficulty as keyof typeof difficultyLabels]}
+                        </span>
+                      </div>
+                      <h3 className="text-lg max-[359px]:text-base font-bold text-gray-900 mb-2">{module.title}</h3>
+                      <p className="text-sm max-[359px]:text-xs text-gray-700 mb-4">{module.description}</p>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-gray-700">Progreso</span>
+                          <span className="text-xs font-bold text-gray-900">{moduleProgress}%</span>
+                        </div>
+                        <Progress value={moduleProgress} className="h-2" />
+                      </div>
+
+                      <div className="flex items-center justify-between text-xs text-gray-600">
+                        <span>⏱️ {module.estimatedHours} horas estimadas</span>
+                      </div>
+
+                      <Button
+                        className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setLocation(`/module/${module.id}`);
+                        }}
+                      >
+                        Comenzar →
+                      </Button>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Discrete Math Modules */}
+        {filteredDiscreteModules.length > 0 && (
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-5">
+              <AppIcon icon={Network} size={22} colorClass="text-indigo-700" />
+              <h2 className="text-2xl font-bold text-slate-900">Matematica Discreta</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredDiscreteModules.map((module: CourseModule) => {
             const colors = difficultyColors[module.difficulty as Difficulty];
             const iconKey = module.icon ?? '';
             const moduleIcon = moduleIconMap[iconKey] ?? BookOpen;
@@ -338,8 +456,10 @@ export default function Home() {
                 </div>
               </Card>
             );
-          })}
-        </div>
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Visualizations CTA */}
         <div className="mt-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-md p-8 max-[359px]:p-4 text-white">

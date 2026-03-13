@@ -1,5 +1,6 @@
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced';
 export type ExerciseDifficulty = 'easy' | 'medium' | 'hard';
+export type ModuleTrack = 'initial' | 'discrete';
 
 export interface TheoryExample {
   text: string;
@@ -88,6 +89,7 @@ export interface CourseModule {
   title: string;
   description: string;
   order: number;
+  track?: ModuleTrack;
   difficulty: Difficulty;
   estimatedHours: number;
   icon?: string;

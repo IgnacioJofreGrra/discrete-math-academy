@@ -5,9 +5,15 @@ import module3 from '@/data/modules/module_3.json';
 import module4 from '@/data/modules/module_4.json';
 import module5 from '@/data/modules/module_5.json';
 import module6 from '@/data/modules/module_6.json';
-import type { CourseModule } from '@/types/course';
+import moduleInit0 from '@/data/modules/module_init_0_foundations.json';
+import moduleInit1 from '@/data/modules/module_init_1_radicales_logaritmos.json';
+import moduleInit2 from '@/data/modules/module_init_2_practica_cientifica.json';
+import type { CourseModule, ModuleTrack } from '@/types/course';
 
-export const modules: CourseModule[] = [
+const rawModules: CourseModule[] = [
+  moduleInit0 as CourseModule,
+  moduleInit1 as CourseModule,
+  moduleInit2 as CourseModule,
   module0 as CourseModule,
   module1 as CourseModule,
   module2 as CourseModule,
@@ -17,12 +23,37 @@ export const modules: CourseModule[] = [
   module6 as CourseModule,
 ];
 
+const normalizeTrack = (module: CourseModule): CourseModule => {
+  if (module.track === 'initial' || module.track === 'discrete') {
+    return module;
+  }
+
+  return {
+    ...module,
+    track: 'discrete',
+  };
+};
+
+export const modules: CourseModule[] = rawModules
+  .map(normalizeTrack)
+  .sort((a, b) => {
+    if (a.track !== b.track) {
+      return a.track === 'initial' ? -1 : 1;
+    }
+
+    return a.order - b.order;
+  });
+
 export const getModuleById = (id: string): CourseModule | undefined => {
   return modules.find(m => m.id === id);
 };
 
 export const getAllModules = (): CourseModule[] => {
   return modules;
+};
+
+export const getModulesByTrack = (track: ModuleTrack): CourseModule[] => {
+  return modules.filter((module) => module.track === track);
 };
 
 export const getModuleProgress = (moduleId: string): number => {

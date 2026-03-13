@@ -1,0 +1,682 @@
+{
+  "id": "module_init_2_practica_cientifica",
+  "title": "Matematica Inicial 2: Practica Integrada y Notacion Cientifica",
+  "description": "Repaso guiado con practicos resueltos y notacion cientifica.",
+  "order": 2,
+  "track": "initial",
+  "difficulty": "intermediate",
+  "estimatedHours": 10,
+  "icon": "book-open",
+  "sections": [
+    {
+      "id": "section_init_0_12",
+      "title": "Practica integrada 2.3.1",
+      "description": "Conjunto de ejercicios mixtos sobre operaciones combinadas, simplificacion, radicales, potencias y logaritmos.",
+      "order": 12,
+      "content": {
+        "theory": {
+          "definition": "En esta practica se integran todas las tecnicas de la seccion: jerarquia de operaciones, reglas de potencia y radicacion, racionalizacion y propiedades de logaritmos.",
+          "instructions": [
+            "Asumir letras como numeros positivos, salvo aclaracion.",
+            "Justificar cada paso indicando propiedad usada.",
+            "Distinguir operaciones validas de errores frecuentes.",
+            "Comparar expresiones con y sin parentesis en bases negativas."
+          ],
+          "example_categories": [
+            "Operaciones combinadas con potencias, raices y logaritmos",
+            "Simplificacion algebraica con exponentes racionales",
+            "Racionalizacion de denominadores",
+            "Reescritura a un unico logaritmo",
+            "Deteccion de razonamientos incorrectos"
+          ],
+          "warnings": [
+            "No usar distributiva de potencia o logaritmo sobre suma/resta.",
+            "No omitir parentesis en bases negativas: (-2)^4 no es igual a -2^4.",
+            "Verificar siempre dominio de radicales y logaritmos antes de operar."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Preparacion de evaluaciones",
+              "description": "Consolida tecnicas en un formato de entrenamiento acumulativo.",
+              "example": "Resuelve una combinada que involucra logaritmos, raices y potencias en una sola cadena."
+            },
+            {
+              "area": "Diagnostico de errores",
+              "description": "Ayuda a identificar fallas recurrentes de procedimiento antes de avanzar de capitulo.",
+              "example": "Detectar por que una expansion aparentemente correcta lleva a una contradiccion."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_12_1",
+            "type": "challenge",
+            "title": "Error frecuente",
+            "problem": "Que afirmacion es incorrecta en general?",
+            "options": [
+              {
+                "value": "(x+y)^2 = x^2 + y^2",
+                "correct": true,
+                "explanation": "Incorrecta en general; falta el termino 2xy."
+              },
+              {
+                "value": "a^m * a^n = a^(m+n)",
+                "correct": false,
+                "explanation": "Correcta para misma base."
+              },
+              {
+                "value": "log_a(xy)=log_a(x)+log_a(y)",
+                "correct": false,
+                "explanation": "Correcta para x,y>0 y a>0,a!=1."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_12_2",
+            "type": "step_by_step",
+            "title": "Comparar con y sin parentesis",
+            "steps": [
+              {
+                "instruction": "Calcula (-2)^4.",
+                "hint": "Base negativa con exponente par.",
+                "answer": "16"
+              },
+              {
+                "instruction": "Calcula -2^4.",
+                "hint": "Primero potencia de 2, luego signo menos.",
+                "answer": "-16"
+              },
+              {
+                "instruction": "Explica la diferencia.",
+                "hint": "Los parentesis cambian la base que se eleva.",
+                "answer": "En (-2)^4 la base completa es -2; en -2^4 solo se eleva 2 y luego se aplica el signo menos."
+              }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_13",
+      "title": "Notacion cientifica (2.3.2)",
+      "description": "Introduce la forma m*10^n para escribir numeros muy grandes o muy pequenos.",
+      "order": 13,
+      "content": {
+        "theory": {
+          "definition": "Un numero positivo x esta en notacion cientifica si se escribe como m*10^n, con n entero y 1<=m<10. El exponente n indica el orden de magnitud.",
+          "examples": [
+            {
+              "text": "Potencias de diez basicas.",
+              "latex": "10^5=100000,\\ 10^{-4}=0.0001"
+            },
+            {
+              "text": "Mover el punto decimal al multiplicar por potencias de diez.",
+              "latex": "2.5*10^7=25000000,\\ 2.5*10^{-4}=0.00025"
+            },
+            {
+              "text": "Forma estandar con mantisa entre 1 y 10.",
+              "latex": "74000000000000=7.4*10^{13}"
+            }
+          ],
+          "notes": [
+            "Si n>0, el punto se desplaza n lugares a la derecha.",
+            "Si n<0, el punto se desplaza |n| lugares a la izquierda.",
+            "La notacion cientifica facilita comparaciones por orden de magnitud."
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Ciencias naturales",
+              "description": "Expresa magnitudes astronomicas o microscopicas de forma compacta.",
+              "example": "Distancias espaciales y masas atomicas suelen escribirse con 10^n."
+            },
+            {
+              "area": "Computacion y datos",
+              "description": "Permite leer y comparar facilmente escalas de datos muy dispares.",
+              "example": "Latencias, frecuencias y tamaños pueden diferir en varios ordenes de magnitud."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_13_1",
+            "type": "challenge",
+            "title": "Forma cientifica correcta",
+            "problem": "Cual esta correctamente escrita en notacion cientifica?",
+            "options": [
+              {
+                "value": "0.74*10^14",
+                "correct": false,
+                "explanation": "Incorrecto: la mantisa debe estar entre 1 y 10."
+              },
+              {
+                "value": "7.4*10^13",
+                "correct": true,
+                "explanation": "Correcto: 1<=7.4<10."
+              },
+              {
+                "value": "74*10^12",
+                "correct": false,
+                "explanation": "Incorrecto: mantisa mayor que 10."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_13_2",
+            "type": "step_by_step",
+            "title": "Convertir a notacion cientifica",
+            "steps": [
+              {
+                "instruction": "Escribe 150000000 en forma m*10^n.",
+                "hint": "Mueve el punto hasta obtener mantisa entre 1 y 10.",
+                "answer": "1.5*10^8"
+              },
+              {
+                "instruction": "Escribe 0.0000016726 en notacion cientifica.",
+                "hint": "Cuenta desplazamientos hacia la derecha para la mantisa.",
+                "answer": "1.6726*10^-6"
+              },
+              {
+                "instruction": "Indica el orden de magnitud del segundo numero.",
+                "hint": "Es el exponente de 10.",
+                "answer": "-6"
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_14",
+      "title": "Practico 1: Operaciones (resuelto)",
+      "description": "Banco completo de ejercicios con soluciones del Practico 1 para repaso guiado.",
+      "order": 14,
+      "content": {
+        "theory": {
+          "definition": "Este bloque recopila enunciados y soluciones del Practico 1. Se recomienda intentar cada item antes de revisar su respuesta.",
+          "practice_set": {
+            "ejercicio_1": {
+              "title": "Encontrar resultado o forma reducida",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "31"
+                },
+                {
+                  "id": 2,
+                  "resultado": "-45"
+                },
+                {
+                  "id": 3,
+                  "resultado": "1"
+                },
+                {
+                  "id": 4,
+                  "resultado": "4/3"
+                },
+                {
+                  "id": 5,
+                  "resultado": "-17/15"
+                },
+                {
+                  "id": 6,
+                  "resultado": "9/4"
+                },
+                {
+                  "id": 7,
+                  "resultado": "6/13"
+                },
+                {
+                  "id": 8,
+                  "resultado": "-17/12"
+                },
+                {
+                  "id": 9,
+                  "resultado": "-7^3/15^3"
+                },
+                {
+                  "id": 10,
+                  "resultado": "2^8/3^10"
+                },
+                {
+                  "id": 11,
+                  "resultado": "36/25"
+                },
+                {
+                  "id": 12,
+                  "resultado": "1/7"
+                },
+                {
+                  "id": 13,
+                  "resultado": "37/6"
+                },
+                {
+                  "id": 14,
+                  "resultado": "15"
+                },
+                {
+                  "id": 15,
+                  "resultado": "60"
+                }
+              ]
+            },
+            "ejercicio_2": {
+              "title": "Calcular simplificando en una sola fraccion",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "-11/15"
+                },
+                {
+                  "id": 2,
+                  "resultado": "2"
+                },
+                {
+                  "id": 3,
+                  "resultado": "-10"
+                },
+                {
+                  "id": 4,
+                  "resultado": "-(11x+17)/(4(x^2-1))"
+                },
+                {
+                  "id": 5,
+                  "resultado": "((x-2)(3x-5))/(x+1)"
+                },
+                {
+                  "id": 6,
+                  "resultado": "(xz-y)/(z)"
+                },
+                {
+                  "id": 7,
+                  "resultado": "((A+B)x+2A-B)/((x-1)(x+2))"
+                },
+                {
+                  "id": 8,
+                  "resultado": "(x+yz)/(yz)"
+                },
+                {
+                  "id": 9,
+                  "resultado": "x(3y+10)/(5y^2)"
+                },
+                {
+                  "id": 10,
+                  "resultado": "(x^2+yx)/(xy-y^2)"
+                },
+                {
+                  "id": 11,
+                  "resultado": "(xz+zy)/(y-z^2)"
+                },
+                {
+                  "id": 12,
+                  "resultado": "(x^7 y^5)/(z^4)"
+                }
+              ]
+            },
+            "ejercicio_3": {
+              "title": "Simplificar radicales",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "8"
+                },
+                {
+                  "id": 2,
+                  "resultado": "2*raiz3(3)"
+                },
+                {
+                  "id": 3,
+                  "resultado": "2*raiz5(5^3)"
+                },
+                {
+                  "id": 4,
+                  "resultado": "(3*raiz5(5))/5"
+                },
+                {
+                  "id": 5,
+                  "resultado": "5"
+                },
+                {
+                  "id": 6,
+                  "resultado": "5/3"
+                },
+                {
+                  "id": 7,
+                  "resultado": "-1/3"
+                },
+                {
+                  "id": 8,
+                  "resultado": "x^(-11/3)"
+                },
+                {
+                  "id": 9,
+                  "resultado": "2x"
+                },
+                {
+                  "id": 10,
+                  "resultado": "x^2 y"
+                },
+                {
+                  "id": 11,
+                  "resultado": "4a^2 b*raiz(b)"
+                },
+                {
+                  "id": 12,
+                  "resultado": "2a"
+                }
+              ]
+            },
+            "ejercicio_4": {
+              "title": "Calcular",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "raiz(7)"
+                },
+                {
+                  "id": 2,
+                  "resultado": "2-4^(9/12)+2"
+                },
+                {
+                  "id": 3,
+                  "resultado": "16"
+                }
+              ]
+            },
+            "ejercicio_5": {
+              "title": "Simplificar expresiones (a,b,x,y,z positivos)",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "a^(3/5) b^(-5)"
+                },
+                {
+                  "id": 2,
+                  "resultado": "a^(-2)"
+                },
+                {
+                  "id": 3,
+                  "resultado": "x*y^(3/4)/z"
+                }
+              ]
+            },
+            "ejercicio_6": {
+              "title": "Factorizar",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "2x(6x^2+1)"
+                },
+                {
+                  "id": 2,
+                  "resultado": "ab(c-8)"
+                },
+                {
+                  "id": 3,
+                  "resultado": "(x+1)(x+6)"
+                },
+                {
+                  "id": 4,
+                  "resultado": "(x-3)(x+2)"
+                },
+                {
+                  "id": 5,
+                  "resultado": "(x-4)(x+2)"
+                },
+                {
+                  "id": 6,
+                  "resultado": "(x+4)(2x-1)"
+                },
+                {
+                  "id": 7,
+                  "resultado": "9(x-2)(x+2)"
+                },
+                {
+                  "id": 8,
+                  "resultado": "(2x+1)(4x+3)"
+                },
+                {
+                  "id": 9,
+                  "resultado": "(2x-3)(3x+2)"
+                },
+                {
+                  "id": 10,
+                  "resultado": "(x+5)^2"
+                },
+                {
+                  "id": 11,
+                  "resultado": "(t+1)(t^2-t+1)"
+                },
+                {
+                  "id": 12,
+                  "resultado": "(2t-3s)(2t+3s)"
+                },
+                {
+                  "id": 13,
+                  "resultado": "(2t-3)^2"
+                },
+                {
+                  "id": 14,
+                  "resultado": "(x-3)(x^2+3x+9)"
+                },
+                {
+                  "id": 15,
+                  "resultado": "x(x+1)^2"
+                },
+                {
+                  "id": 16,
+                  "resultado": "(x-2)(x-1)^2"
+                },
+                {
+                  "id": 17,
+                  "resultado": "(x-1)(x+1)(x+3)"
+                },
+                {
+                  "id": 18,
+                  "resultado": "(x-4)(x-3)(x+5)"
+                },
+                {
+                  "id": 19,
+                  "resultado": "(x-1)(x+4)(2x+1)"
+                },
+                {
+                  "id": 20,
+                  "resultado": "(x-3)(x-2)(x+2)"
+                }
+              ]
+            },
+            "ejercicio_7": {
+              "title": "Forma logaritmica y calculos",
+              "items": [
+                {
+                  "id": "1a",
+                  "resultado": "5^3=125 <=> log_5(125)=3"
+                },
+                {
+                  "id": "1b",
+                  "resultado": "3^-2=1/9 <=> log_3(1/9)=-2"
+                },
+                {
+                  "id": "1c",
+                  "resultado": "(1/2)^3=1/8 <=> log_(1/2)(1/8)=3"
+                },
+                {
+                  "id": 2,
+                  "resultado": "log_4(32)=5/2 y log_27(1/81)=-4/3"
+                },
+                {
+                  "id": 3,
+                  "resultado": "log(75/16)-2log(5/9)+log(32/243)=log(2)"
+                },
+                {
+                  "id": 4,
+                  "resultado": "2log(15/18)-log(25/162)+log(4/9)=log(2), si se cumple"
+                }
+              ]
+            },
+            "ejercicio_8": {
+              "title": "Simplificar logaritmos",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "9"
+                },
+                {
+                  "id": 2,
+                  "resultado": "2"
+                },
+                {
+                  "id": 3,
+                  "resultado": "-1"
+                },
+                {
+                  "id": 4,
+                  "resultado": "1/2"
+                },
+                {
+                  "id": 5,
+                  "resultado": "1/2 * log_2(3/2^32)"
+                },
+                {
+                  "id": 6,
+                  "resultado": "3"
+                }
+              ]
+            },
+            "ejercicio_9": {
+              "title": "Un unico logaritmo",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "ln(x*raiz3(x+2))"
+                },
+                {
+                  "id": 2,
+                  "resultado": "ln(y^4 z^5 / x^3)"
+                },
+                {
+                  "id": 3,
+                  "resultado": "5 ln((x+1)x)"
+                },
+                {
+                  "id": 4,
+                  "resultado": "(1/2)ln((48x+2)/(4-x))"
+                },
+                {
+                  "id": 5,
+                  "resultado": "log_3((3a)^2/x^5)"
+                },
+                {
+                  "id": 6,
+                  "resultado": "ln((x+8)/(8x))"
+                },
+                {
+                  "id": 7,
+                  "resultado": "log_3(16x)"
+                },
+                {
+                  "id": 8,
+                  "resultado": "log(10y^2)=1+2log(y)"
+                }
+              ]
+            },
+            "ejercicio_10": {
+              "title": "Aplicaciones de logaritmos",
+              "items": [
+                {
+                  "id": 1,
+                  "resultado": "Si p=e^x y q=e^y, entonces e^(2y-3x)=q^2/p^3"
+                },
+                {
+                  "id": 2,
+                  "resultado": "Si ln(a)=2 y ln(b)=4, entonces ln(1/sqrt(ab))=-3"
+                },
+                {
+                  "id": "3a",
+                  "resultado": "log(24(k+2)^3)=log(24)+3log(k+2)"
+                },
+                {
+                  "id": "3b",
+                  "resultado": "log_3(243y^2/sqrt(2))=5-(1/2)log_3(2)+2log_3(y)"
+                }
+              ]
+            }
+          }
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Autoevaluacion",
+              "description": "Permite practicar con una coleccion grande de ejercicios y verificar de inmediato cada resultado.",
+              "example": "Resolver un item y contrastar con el banco resuelto para detectar el paso donde aparece el error."
+            },
+            {
+              "area": "Refuerzo por tema",
+              "description": "Organiza ejercicios por tipo para estudiar por bloques: factorizacion, radicales, logaritmos y combinadas.",
+              "example": "Hacer todos los items de factorizacion antes de pasar a logaritmos."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_14_1",
+            "type": "challenge",
+            "title": "Chequeo rapido de factorizacion",
+            "problem": "Cual es la factorizacion correcta de x^3-27?",
+            "options": [
+              {
+                "value": "(x-3)(x^2+3x+9)",
+                "correct": true,
+                "explanation": "Correcto. Es diferencia de cubos: a^3-b^3=(a-b)(a^2+ab+b^2)."
+              },
+              {
+                "value": "(x-3)^3",
+                "correct": false,
+                "explanation": "Incorrecto. Al expandir no se obtiene x^3-27."
+              },
+              {
+                "value": "(x+3)(x^2-3x+9)",
+                "correct": false,
+                "explanation": "Esa corresponde a x^3+27, no a x^3-27."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_14_2",
+            "type": "step_by_step",
+            "title": "Expresar en un unico logaritmo",
+            "steps": [
+              {
+                "instruction": "Parte de log_6(x)+4log_6(y)-log_6(z). Convierte el coeficiente 4.",
+                "hint": "k log_a(t)=log_a(t^k)",
+                "answer": "log_6(x)+log_6(y^4)-log_6(z)"
+              },
+              {
+                "instruction": "Combina suma de logaritmos.",
+                "hint": "log_a(u)+log_a(v)=log_a(uv)",
+                "answer": "log_6(x*y^4)-log_6(z)"
+              },
+              {
+                "instruction": "Combina resta de logaritmos para obtener uno solo.",
+                "hint": "log_a(u)-log_a(v)=log_a(u/v)",
+                "answer": "log_6((x*y^4)/z)"
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}

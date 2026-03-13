@@ -179,7 +179,7 @@ export default function Statistics() {
               <AppIcon icon={Target} colorClass="text-green-500" />
               <div>
                 <p className="text-sm max-[359px]:text-xs text-gray-600">Módulos Completados</p>
-                <p className="text-3xl max-[359px]:text-2xl font-bold text-gray-900">{stats.completedModules}/7</p>
+                <p className="text-3xl max-[359px]:text-2xl font-bold text-gray-900">{stats.completedModules}/{progressData.length}</p>
               </div>
             </div>
           </Card>

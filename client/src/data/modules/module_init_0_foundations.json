@@ -1,0 +1,430 @@
+{
+  "id": "module_init_0_foundations",
+  "title": "Matematica Inicial 0: Fundamentos de Numeros Reales",
+  "description": "Conjuntos numericos, propiedades operativas y potencias con exponente natural y entero.",
+  "order": 0,
+  "track": "initial",
+  "difficulty": "beginner",
+  "estimatedHours": 10,
+  "icon": "book-open",
+  "sections": [
+    {
+      "id": "section_init_0_1",
+      "title": "Conjuntos numericos en R",
+      "description": "Ubica N, Z, Q e I dentro de los numeros reales y entiende su relacion.",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "El conjunto de los numeros reales R contiene a los racionales Q y a los irracionales I. Dentro de Q estan los enteros Z y dentro de Z los naturales N.",
+          "notation": "N \\subset Z \\subset Q \\subset R, y ademas I \\subset R con Q \\cap I = \\emptyset.",
+          "examples": [
+            {
+              "text": "5 pertenece a N, Z, Q y R.",
+              "latex": "5 \\in N \\subset Z \\subset Q \\subset R"
+            },
+            {
+              "text": "-3 pertenece a Z, Q y R, pero no a N.",
+              "latex": "-3 \\in Z \\subset Q \\subset R"
+            },
+            {
+              "text": "sqrt(2) y pi son irracionales.",
+              "latex": "\\sqrt{2}, \\pi \\in I"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Algebra basica",
+              "description": "Permite elegir correctamente el conjunto donde trabajas y saber que propiedades puedes usar.",
+              "example": "Si trabajas en N, no siempre existe opuesto aditivo; en Z si existe."
+            },
+            {
+              "area": "Modelado",
+              "description": "Ayuda a distinguir cantidades discretas de magnitudes continuas.",
+              "example": "Cantidad de alumnos: entero. Longitud: real."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_1_1",
+            "type": "flashcard",
+            "question": "Que relacion de inclusion es correcta entre N, Z, Q y R?",
+            "answer": "N esta contenido en Z, Z en Q y Q en R: N subset Z subset Q subset R.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_1_2",
+            "type": "challenge",
+            "title": "Clasificacion rapida",
+            "problem": "Cual opcion clasifica correctamente a sqrt(2)?",
+            "options": [
+              {
+                "value": "Pertenece a I y a R, pero no a Q.",
+                "correct": true,
+                "explanation": "Correcto. sqrt(2) es irracional, por lo tanto pertenece a I y a R."
+              },
+              {
+                "value": "Pertenece a Q porque tiene decimales.",
+                "correct": false,
+                "explanation": "Incorrecto. Tener decimales no implica ser racional."
+              },
+              {
+                "value": "Solo pertenece a N.",
+                "correct": false,
+                "explanation": "Incorrecto. sqrt(2) no es natural."
+              }
+            ],
+            "difficulty": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_2",
+      "title": "Propiedades de la suma y del producto",
+      "description": "Revisa conmutatividad, asociatividad, neutros e inversos en R.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "Para x, y, z reales: suma y producto son conmutativos y asociativos. Existen neutro aditivo 0 y neutro multiplicativo 1. Existe opuesto -x para todo real x y existe inverso multiplicativo x^{-1} para x distinto de 0.",
+          "examples": [
+            {
+              "text": "Conmutativa de la suma: x + y = y + x.",
+              "latex": "x+y=y+x"
+            },
+            {
+              "text": "Inverso aditivo: x + (-x) = 0.",
+              "latex": "x+(-x)=0"
+            },
+            {
+              "text": "Inverso multiplicativo: x.x^{-1}=1, con x != 0.",
+              "latex": "x\\cdot x^{-1}=1,\\ x\\neq 0"
+            },
+            {
+              "text": "Regla de signos: x(-y)=-(xy) y (-x)(-y)=xy.",
+              "latex": "x(-y)=-(xy),\\ (-x)(-y)=xy"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Calculo algebraico",
+              "description": "Estas propiedades justifican cada paso al simplificar expresiones.",
+              "example": "Para reagrupar terminos usas asociatividad y conmutatividad."
+            },
+            {
+              "area": "Resolucion de ecuaciones",
+              "description": "El opuesto y el inverso permiten aislar variables.",
+              "example": "De 5x=10, multiplicas por 1/5 para obtener x=2."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_2_1",
+            "type": "flashcard",
+            "question": "Que significa que el opuesto del opuesto sea el mismo numero?",
+            "answer": "Significa que -(-x)=x para todo real x.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_2_2",
+            "type": "step_by_step",
+            "title": "Aplicar regla de signos",
+            "steps": [
+              {
+                "instruction": "Escribe la regla para x(-y).",
+                "hint": "Producto por un numero negativo.",
+                "answer": "x(-y)=-(xy)"
+              },
+              {
+                "instruction": "Ahora calcula (-3)(-4).",
+                "hint": "Negativo por negativo da positivo.",
+                "answer": "12"
+              },
+              {
+                "instruction": "Explica por que el resultado es positivo.",
+                "hint": "Usa la regla (-x)(-y)=xy.",
+                "answer": "Porque el producto de dos negativos es positivo: (-x)(-y)=xy."
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_3",
+      "title": "Resta y division en R",
+      "description": "Define resta como suma con opuesto y division como producto con inverso.",
+      "order": 3,
+      "content": {
+        "theory": {
+          "definition": "La diferencia entre x e y se define como x - y = x + (-y). El cociente entre x e y (con y != 0) se define como x/y = x.y^{-1}.",
+          "examples": [
+            {
+              "text": "La resta no es conmutativa: 3-5 != 5-3.",
+              "latex": "3-5=-2,\\ 5-3=2"
+            },
+            {
+              "text": "x-(-y)=x+y.",
+              "latex": "x-(-y)=x+y"
+            },
+            {
+              "text": "La division no es conmutativa: 10/5 != 5/10.",
+              "latex": "10/5=2,\\ 5/10=1/2"
+            },
+            {
+              "text": "Distributiva del cociente respecto de suma y resta (z != 0).",
+              "latex": "(x+y)/z=x/z+y/z,\\ (x-y)/z=x/z-y/z"
+            }
+          ],
+          "warning": "Error frecuente: en general x/(y+z) no es igual a x/y + x/z."
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Manejo de expresiones",
+              "description": "Evita errores de signo y de distributiva al operar.",
+              "example": "Para quitar parentesis precedidos por menos, cambias el signo de cada termino."
+            },
+            {
+              "area": "Resolucion de problemas",
+              "description": "Permite transformar una operacion compleja en pasos equivalentes mas simples.",
+              "example": "Convertir una division en multiplicacion por inverso simplifica ecuaciones racionales."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_3_1",
+            "type": "challenge",
+            "title": "Error de distributiva",
+            "problem": "Cual afirmacion es correcta?",
+            "options": [
+              {
+                "value": "(x+y)/z = x/z + y/z, con z distinto de 0.",
+                "correct": true,
+                "explanation": "Correcto. Esta es una distributiva valida del cociente respecto de la suma."
+              },
+              {
+                "value": "x/(y+z)=x/y + x/z siempre.",
+                "correct": false,
+                "explanation": "Incorrecto. Esa igualdad no es valida en general."
+              },
+              {
+                "value": "x/y = y/x para todo x,y.",
+                "correct": false,
+                "explanation": "Incorrecto. La division no es conmutativa."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_3_2",
+            "type": "step_by_step",
+            "title": "Resolver una resta con parentesis",
+            "steps": [
+              {
+                "instruction": "Reescribe: (-2)+5-(1+(-3)+2-(-1+2)).",
+                "hint": "x-y=x+(-y)",
+                "answer": "(-2)+5+(-(1+(-3)+2-(-1+2)))"
+              },
+              {
+                "instruction": "Elimina el parentesis precedido por menos cambiando signos.",
+                "hint": "Distribuye el signo menos.",
+                "answer": "(-2)+5-1+3-2+(-1+2)"
+              },
+              {
+                "instruction": "Suma y simplifica.",
+                "hint": "Agrupa positivos y negativos.",
+                "answer": "4"
+              }
+            ],
+            "difficulty": "hard"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_4",
+      "title": "Potencias con exponente natural o cero",
+      "description": "Define x^n para n natural y la convencion x^0=1 con x distinto de 0.",
+      "order": 4,
+      "content": {
+        "theory": {
+          "definition": "Si x es real y n es natural mayor que 1, entonces x^n es el producto de n factores iguales a x. Ademas, para x distinto de 0, se define x^0=1. La expresion 0^0 se considera una indeterminacion en este contexto.",
+          "examples": [
+            {
+              "text": "x^2=x.x, x^3=x.x.x.",
+              "latex": "x^2=x\\cdot x,\\ x^3=x\\cdot x\\cdot x"
+            },
+            {
+              "text": "2^3=8 y 2^4=16.",
+              "latex": "2^3=8,\\ 2^4=16"
+            },
+            {
+              "text": "(-2)^3=-8 y (-2)^4=16.",
+              "latex": "(-2)^3=-8,\\ (-2)^4=16"
+            },
+            {
+              "text": "x^0=1, con x distinto de 0.",
+              "latex": "x^0=1,\\ x\\neq 0"
+            }
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Modelos de crecimiento",
+              "description": "Las potencias modelan crecimientos repetidos en tiempo discreto.",
+              "example": "Interes compuesto: C_n=C_0(1+r)^n."
+            },
+            {
+              "area": "Notacion cientifica",
+              "description": "Permite representar numeros grandes o pequenos de forma compacta.",
+              "example": "3.2 x 10^5 = 320000."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_4_1",
+            "type": "flashcard",
+            "question": "Como se define x^n para n natural?",
+            "answer": "Como el producto de n factores iguales a x.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_4_2",
+            "type": "challenge",
+            "title": "Evaluar potencias",
+            "problem": "Selecciona la opcion correcta.",
+            "options": [
+              {
+                "value": "(-2)^4=16 y (-2)^3=-8.",
+                "correct": true,
+                "explanation": "Correcto. Exponente par da positivo; impar conserva signo negativo."
+              },
+              {
+                "value": "(-2)^4=-16 y (-2)^3=8.",
+                "correct": false,
+                "explanation": "Incorrecto. Los signos estan invertidos."
+              },
+              {
+                "value": "0^0=1 siempre.",
+                "correct": false,
+                "explanation": "Incorrecto para este curso: 0^0 se trata como indeterminacion."
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_init_0_5",
+      "title": "Potencias con exponente entero",
+      "description": "Extiende la potencia al caso de exponentes negativos y consolida paridad de exponentes.",
+      "order": 5,
+      "content": {
+        "theory": {
+          "definition": "Para a >= 0 y n natural: (-a)^n = a^n si n es par, y (-a)^n = -(a^n) si n es impar. Si x != 0 y n es natural, se define x^{-n} = 1/x^n.",
+          "examples": [
+            {
+              "text": "Exponente par con base negativa da positivo.",
+              "latex": "(-3)^2=9"
+            },
+            {
+              "text": "Exponente impar con base negativa da negativo.",
+              "latex": "(-2)^5=-32"
+            },
+            {
+              "text": "Potencia negativa como reciproco.",
+              "latex": "2^{-3}=1/2^3=1/8"
+            },
+            {
+              "text": "Con fracciones: elevar a exponente negativo invierte la base.",
+              "latex": "(5/3)^{-2}=(3/5)^2=9/25"
+            }
+          ],
+          "properties": [
+            "(p/q)^{-n} = (q/p)^n, con p,q != 0",
+            "x^n . x^m = x^{n+m}"
+          ]
+        },
+        "para_que_sirve": {
+          "title": "Para que sirve",
+          "applications": [
+            {
+              "area": "Simplificacion algebraica",
+              "description": "Permite eliminar exponentes negativos para operar con claridad.",
+              "example": "a^{-3} se transforma en 1/a^3 antes de combinar terminos."
+            },
+            {
+              "area": "Modelos inversos",
+              "description": "Aparece en leyes donde una magnitud decrece como potencia inversa.",
+              "example": "Intensidad proporcional a r^{-2}."
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_init_0_5_1",
+            "type": "challenge",
+            "title": "Paridad de exponente",
+            "problem": "Cual afirmacion es correcta?",
+            "options": [
+              {
+                "value": "(-1)^{180}=1 y (-1)^{175}=-1.",
+                "correct": true,
+                "explanation": "Correcto. Solo importa si el exponente es par o impar."
+              },
+              {
+                "value": "(-1)^{180}=-1 porque la base es negativa.",
+                "correct": false,
+                "explanation": "Incorrecto. Exponente par produce resultado positivo."
+              },
+              {
+                "value": "(-2)^5=32.",
+                "correct": false,
+                "explanation": "Incorrecto. Exponente impar conserva signo negativo."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_5_2",
+            "type": "step_by_step",
+            "title": "Calcular potencias enteras",
+            "steps": [
+              {
+                "instruction": "Reescribe 2^{-3} usando la definicion de exponente negativo.",
+                "hint": "x^{-n}=1/x^n",
+                "answer": "2^{-3}=1/2^3"
+              },
+              {
+                "instruction": "Evalua el denominador.",
+                "hint": "2^3=8",
+                "answer": "1/8"
+              },
+              {
+                "instruction": "Ahora calcula (-3)^{-2}.",
+                "hint": "Primero invierte, luego eleva cuadrado.",
+                "answer": "(-3)^{-2}=1/(-3)^2=1/9"
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}
