@@ -67,6 +67,18 @@ export interface ChallengeExercise extends BaseExercise {
 
 export type Exercise = FlashcardExercise | StepByStepExercise | ChallengeExercise;
 
+export interface ExamQuestion {
+  id: string;
+  question: string;
+  options: Array<{
+    value: string;
+    label: string;
+    correct: boolean;
+    explanation: string;
+  }>;
+  difficulty?: 'easy' | 'medium' | 'hard';
+}
+
 export interface SectionContent {
   theory: TheoryContent;
   para_que_sirve: {
@@ -74,6 +86,7 @@ export interface SectionContent {
     applications: ApplicationItem[];
   };
   exercises: Exercise[];
+  exam?: ExamQuestion[];
 }
 
 export interface CourseSection {

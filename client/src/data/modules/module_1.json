@@ -79,10 +79,152 @@
             "title": "Identificar Conjuntos Bien Ordenados",
             "problem": "¿Cuál de los siguientes conjuntos NO tiene un elemento mínimo?",
             "options": [
-              { "value": "{5, 10, 15, 20}", "correct": false, "explanation": "Este conjunto finito sí tiene mínimo: 5." },
-              { "value": "{..., -3, -2, -1}", "correct": true, "explanation": "Correcto. Este conjunto de enteros negativos no tiene mínimo porque siempre existe uno menor." },
-              { "value": "{0, 1, 2, 3, ...}", "correct": false, "explanation": "Este conjunto sí tiene mínimo: 0." },
-              { "value": "{1/2, 2/3, 3/4, ...}", "correct": false, "explanation": "Este conjunto sí tiene mínimo: 1/2." }
+              {
+                "value": "{5, 10, 15, 20}",
+                "correct": false,
+                "explanation": "Este conjunto finito sí tiene mínimo: 5."
+              },
+              {
+                "value": "{..., -3, -2, -1}",
+                "correct": true,
+                "explanation": "Correcto. Este conjunto de enteros negativos no tiene mínimo porque siempre existe uno menor."
+              },
+              {
+                "value": "{0, 1, 2, 3, ...}",
+                "correct": false,
+                "explanation": "Este conjunto sí tiene mínimo: 0."
+              },
+              {
+                "value": "{1/2, 2/3, 3/4, ...}",
+                "correct": false,
+                "explanation": "Este conjunto sí tiene mínimo: 1/2."
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_1_1_1",
+            "question": "¿Cuál es el elemento mínimo del conjunto $C=\\{n\\in\\mathbb{N}:n^2>5\\}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$3$",
+                "correct": true,
+                "explanation": "Correcto. $0^2=0$, $1^2=1$, $2^2=4$ no superan 5; $3^2=9>5$."
+              },
+              {
+                "value": "b",
+                "label": "$2$",
+                "correct": false,
+                "explanation": "$2^2=4\\not>5$, así que $2\\notin C$."
+              },
+              {
+                "value": "c",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "6 está en $C$, pero no es el mínimo."
+              },
+              {
+                "value": "d",
+                "label": "$1$",
+                "correct": false,
+                "explanation": "$1^2=1\\not>5$."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_1_1_2",
+            "question": "¿Por qué el PBO no se aplica directamente al conjunto $\\mathbb{Z}$ de enteros?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Porque $\\mathbb{Z}$ contiene enteros negativos y no tiene elemento mínimo",
+                "correct": true,
+                "explanation": "El PBO requiere que el conjunto sea de enteros no negativos. $\\mathbb{Z}$ no tiene mínimo."
+              },
+              {
+                "value": "b",
+                "label": "Porque $\\mathbb{Z}$ es infinito",
+                "correct": false,
+                "explanation": "$\\mathbb{N}$ también es infinito y el PBO sí aplica a sus subconjuntos."
+              },
+              {
+                "value": "c",
+                "label": "Porque $\\mathbb{Z}$ contiene el cero",
+                "correct": false,
+                "explanation": "El cero está en $\\mathbb{N}$ y no impide el PBO."
+              },
+              {
+                "value": "d",
+                "label": "Porque $\\mathbb{Z}$ no está bien definido",
+                "correct": false,
+                "explanation": "$\\mathbb{Z}$ está perfectamente definido."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_1_1_3",
+            "question": "Sea $C=\\{n\\in\\mathbb{N}: 3\\mid n\\text{ y }n>0\\}$. ¿Cuánto es $\\min(C)$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$3$",
+                "correct": true,
+                "explanation": "Los múltiplos positivos de 3 son 3, 6, 9, …; el menor es 3."
+              },
+              {
+                "value": "b",
+                "label": "$0$",
+                "correct": false,
+                "explanation": "La condición $n>0$ excluye al 0."
+              },
+              {
+                "value": "c",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "6 está en $C$, pero 3 también y es menor."
+              },
+              {
+                "value": "d",
+                "label": "$1$",
+                "correct": false,
+                "explanation": "$3\\nmid 1$."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_1_1_4",
+            "question": "¿A cuál de los siguientes conjuntos se puede aplicar el PBO para garantizar la existencia de un mínimo?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\{n\\in\\mathbb{N}: n\\geq 5\\}$",
+                "correct": true,
+                "explanation": "Subconjunto no vacío de $\\mathbb{N}$; el PBO garantiza que tiene mínimo (que es 5)."
+              },
+              {
+                "value": "b",
+                "label": "$\\{x\\in\\mathbb{R}: 0<x<1\\}$",
+                "correct": false,
+                "explanation": "Son reales, no enteros; no tiene mínimo."
+              },
+              {
+                "value": "c",
+                "label": "$\\{\\ldots,-3,-2,-1\\}$",
+                "correct": false,
+                "explanation": "Enteros negativos; no tiene mínimo."
+              },
+              {
+                "value": "d",
+                "label": "$\\left\\{\\frac{1}{n}: n\\in\\mathbb{N}^+\\right\\}$",
+                "correct": false,
+                "explanation": "Racionales positivos; no tienen mínimo en $\\mathbb{Q}^+$."
+              }
             ],
             "difficulty": "medium"
           }
@@ -174,11 +316,118 @@
             "title": "Aplicar Plantilla de Prueba",
             "problem": "¿Cuál es el primer paso al demostrar una propiedad $P(n)$ usando el PBO?",
             "options": [
-              { "value": "Definir el conjunto de contraejemplos $C = \\{n \\in \\mathbb{N} \\mid \\neg P(n)\\}$", "correct": true, "explanation": "Correcto. Este es el primer paso de la plantilla." },
-              { "value": "Asumir que $P(n)$ es verdadera para todo $n$", "correct": false, "explanation": "Incorrecto. Eso es lo que queremos probar, no lo que asumimos." },
-              { "value": "Encontrar el mínimo de $\\mathbb{N}$", "correct": false, "explanation": "Incorrecto. Primero definimos el conjunto de contraejemplos." }
+              {
+                "value": "Definir el conjunto de contraejemplos $C = \\{n \\in \\mathbb{N} \\mid \\neg P(n)\\}$",
+                "correct": true,
+                "explanation": "Correcto. Este es el primer paso de la plantilla."
+              },
+              {
+                "value": "Asumir que $P(n)$ es verdadera para todo $n$",
+                "correct": false,
+                "explanation": "Incorrecto. Eso es lo que queremos probar, no lo que asumimos."
+              },
+              {
+                "value": "Encontrar el mínimo de $\\mathbb{N}$",
+                "correct": false,
+                "explanation": "Incorrecto. Primero definimos el conjunto de contraejemplos."
+              }
             ],
             "difficulty": "easy"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_1_2_1",
+            "question": "En una prueba por absurdo con el PBO, ¿qué representa $n_0=\\min C$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "El contraejemplo más pequeño de la propiedad que se quiere probar",
+                "correct": true,
+                "explanation": "$n_0$ es el mínimo del conjunto de contraejemplos; si existe, es el más pequeño."
+              },
+              {
+                "value": "b",
+                "label": "El primer valor para el que la propiedad es verdadera",
+                "correct": false,
+                "explanation": "$n_0$ es un contraejemplo, no un caso favorable."
+              },
+              {
+                "value": "c",
+                "label": "El mínimo del conjunto de todos los naturales",
+                "correct": false,
+                "explanation": "$\\min\\mathbb{N}=0$, pero $n_0$ es el mínimo de $C$, no de $\\mathbb{N}$."
+              },
+              {
+                "value": "d",
+                "label": "El valor inicial desde el que comienza la inducción",
+                "correct": false,
+                "explanation": "Eso describe la inducción, no la prueba por absurdo con PBO."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_1_2_2",
+            "question": "En la demostración de que $2n+7$ es impar, ¿por qué se concluye que $c_0\\geq1$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Porque $2(0)+7=7$ es impar, así que $0\\notin C$",
+                "correct": true,
+                "explanation": "Correcto. Se verifica directamente que el caso $n=0$ no es contraejemplo."
+              },
+              {
+                "value": "b",
+                "label": "Porque el PBO garantiza que $c_0>0$",
+                "correct": false,
+                "explanation": "El PBO solo garantiza que $c_0$ es el mínimo de $C$; no dice nada sobre su valor."
+              },
+              {
+                "value": "c",
+                "label": "Porque todo par de la forma $2n+7$ es mayor que 6",
+                "correct": false,
+                "explanation": "Eso es cierto pero no es la razón por la que $c_0\\geq1$."
+              },
+              {
+                "value": "d",
+                "label": "Porque los contraejemplos siempre son positivos por definición",
+                "correct": false,
+                "explanation": "Los contraejemplos pueden ser cualquier natural; se verifica caso a caso."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_1_2_3",
+            "question": "Si en una prueba por absurdo construyes $C=\\{n\\in\\mathbb{N}:\\neg P(n)\\}$ y llegas a una contradicción, ¿qué concluyes?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$C=\\emptyset$, es decir, $P(n)$ es verdadera para todo $n\\in\\mathbb{N}$",
+                "correct": true,
+                "explanation": "La contradicción proviene de suponer $C\\neq\\emptyset$; por lo tanto $C=\\emptyset$."
+              },
+              {
+                "value": "b",
+                "label": "$C$ tiene exactamente un elemento",
+                "correct": false,
+                "explanation": "La contradicción anula toda la hipótesis $C\\neq\\emptyset$."
+              },
+              {
+                "value": "c",
+                "label": "$P(n)$ es falsa para todo $n$",
+                "correct": false,
+                "explanation": "Es lo contrario; la contradicción muestra que $P(n)$ es verdadera para todo $n$."
+              },
+              {
+                "value": "d",
+                "label": "$P(n)$ es verdadera solo para $n=0$",
+                "correct": false,
+                "explanation": "La conclusión es universal, no solo para $n=0$."
+              }
+            ],
+            "difficulty": "medium"
           }
         ]
       }
@@ -220,6 +469,13 @@
         },
         "exercises": [
           {
+            "id": "exercise_1_3_2",
+            "type": "flashcard",
+            "question": "En la demostracion de fracciones irreducibles con el PBO, ¿por que $m_0/p < m_0$ produce una contradiccion?",
+            "answer": "Porque $m_0$ fue elegido como el minimo del conjunto $C$ de contraejemplos. Si $m_0/p \\in C$ y $m_0/p < m_0$, eso contradice la minimalidad de $m_0$, lo que prueba que $C = \\emptyset$.",
+            "difficulty": "medium"
+          },
+          {
             "id": "exercise_1_3_1",
             "type": "step_by_step",
             "title": "Demostración: Fracciones Irreducibles",
@@ -251,6 +507,101 @@
               }
             ],
             "difficulty": "hard"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_1_3_1",
+            "question": "En la demostración de fracciones irreducibles, ¿por qué se usa $m_0=\\min C$ en lugar de cualquier elemento de $C$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Porque el mínimo garantiza que ningún numerador menor es contraejemplo, lo que permite derivar la contradicción",
+                "correct": true,
+                "explanation": "Si $m_0$ es mínimo y encontramos $m_0/p\\in C$ con $m_0/p<m_0$, se viola la minimalidad."
+              },
+              {
+                "value": "b",
+                "label": "Porque el mínimo de $C$ siempre es 1",
+                "correct": false,
+                "explanation": "No hay razón para que $\\min C=1$."
+              },
+              {
+                "value": "c",
+                "label": "Porque el PBO solo aplica cuando el mínimo es fácil de calcular",
+                "correct": false,
+                "explanation": "El PBO aplica siempre que $C$ sea un subconjunto no vacío de enteros no negativos."
+              },
+              {
+                "value": "d",
+                "label": "Porque $m_0$ debe ser primo para que la prueba funcione",
+                "correct": false,
+                "explanation": "$m_0$ no necesita ser primo; es $p$ (el factor común) quien es primo."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exam_1_3_2",
+            "question": "Si $\\gcd(m_0, n)=p>1$ primo, ¿qué fracción sirve para demostrar que $m_0$ no es el mínimo de $C$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\dfrac{m_0/p}{n/p}$",
+                "correct": true,
+                "explanation": "Esta fracción también es no-irreducible si $m_0$ lo era, y su numerador $m_0/p<m_0$."
+              },
+              {
+                "value": "b",
+                "label": "$\\dfrac{m_0-p}{n}$",
+                "correct": false,
+                "explanation": "Restar $p$ al numerador no produce la reducción correcta."
+              },
+              {
+                "value": "c",
+                "label": "$\\dfrac{m_0}{n-p}$",
+                "correct": false,
+                "explanation": "Modificar el denominador no garantiza que el nuevo numerador esté en $C$."
+              },
+              {
+                "value": "d",
+                "label": "$\\dfrac{m_0}{n\\cdot p}$",
+                "correct": false,
+                "explanation": "Eso aumenta el denominador pero el numerador sigue siendo $m_0$."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exam_1_3_3",
+            "question": "¿Qué significa que $\\frac{m}{n}$ sea una fracción irreducible?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\gcd(m,n)=1$",
+                "correct": true,
+                "explanation": "No tienen factores primos comunes; el único divisor positivo común es 1."
+              },
+              {
+                "value": "b",
+                "label": "$m<n$",
+                "correct": false,
+                "explanation": "Una fracción propia puede no ser irreducible, y una impropia puede serlo."
+              },
+              {
+                "value": "c",
+                "label": "$m$ y $n$ son ambos primos",
+                "correct": false,
+                "explanation": "$\\frac{6}{35}=\\frac{2\\cdot3}{5\\cdot7}$ no es irreducible aunque 6 y 35 tienen factores primos distintos."
+              },
+              {
+                "value": "d",
+                "label": "$m$ no puede dividirse por ningún número",
+                "correct": false,
+                "explanation": "Todo entero se divide al menos por 1 y por sí mismo."
+              }
+            ],
+            "difficulty": "easy"
           }
         ]
       }

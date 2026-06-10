@@ -15,26 +15,12 @@ import { InlineMathText } from '@/components/InlineMathText';
 import type { QuizQuestion } from '@/components/Quiz';
 import type {
   ApplicationItem,
-  ChallengeExercise,
   CourseSection,
   Exercise,
-  FlashcardExercise,
-  StepByStepExercise,
+  ExamQuestion,
   TheoryExample,
   DivisibilityCriterion,
 } from '@/types/course';
-
-const isFlashcardExercise = (exercise: Exercise): exercise is FlashcardExercise => {
-  return exercise.type === 'flashcard';
-};
-
-const isStepByStepExercise = (exercise: Exercise): exercise is StepByStepExercise => {
-  return exercise.type === 'step_by_step';
-};
-
-const isChallengeExercise = (exercise: Exercise): exercise is ChallengeExercise => {
-  return exercise.type === 'challenge';
-};
 
 /**
  * Module - Página que muestra un módulo completo con secciones y ejercicios
@@ -93,158 +79,8 @@ export default function Module() {
   }, [section]);
 
   const examQuestions = useMemo<QuizQuestion[]>(() => {
-    const fallbackDistractors = [
-      'Se verifica unicamente con la ultima cifra del numero.',
-      'Solo depende de que la suma de cifras sea un numero par.',
-      'Basta con que el numero sea mayor que el divisor.',
-    ];
-
-    const extractPrimaryAnswer = (item: Exercise): string | null => {
-      if (isFlashcardExercise(item)) {
-        return item.answer.trim();
-      }
-
-      if (isStepByStepExercise(item) && item.steps.length > 0) {
-        const lastStepAnswer = item.steps[item.steps.length - 1]?.answer;
-        return typeof lastStepAnswer === 'string' ? lastStepAnswer.trim() : null;
-      }
-
-      if (isChallengeExercise(item)) {
-        if (Array.isArray(item.options) && item.options.length > 0) {
-          const correctOption = item.options.find((option) => option.correct);
-          if (correctOption?.value != null) {
-            return String(correctOption.value).trim();
-          }
-        }
-
-        if (typeof item.expectedAnswer === 'string') {
-          return item.expectedAnswer.trim();
-        }
-      }
-
-      return null;
-    };
-
-    const answerPool = Array.from(
-      new Set(
-        sectionExercises
-          .map(extractPrimaryAnswer)
-          .filter((value): value is string => Boolean(value)),
-      ),
-    );
-
-    return sectionExercises
-      .map((item, index): QuizQuestion | null => {
-        const baseQuestion =
-          isFlashcardExercise(item)
-            ? item.question
-            : isChallengeExercise(item)
-              ? item.problem
-              : isStepByStepExercise(item)
-                ? item.title
-                : null;
-
-        if (!baseQuestion) {
-          return null;
-        }
-
-        let correctLabel: string | null = null;
-        let optionBlueprint: Array<{ label: string; correct: boolean; explanation: string }> = [];
-
-        if (isFlashcardExercise(item) && typeof item.answer === 'string') {
-          correctLabel = item.answer.trim();
-        }
-
-        if (isStepByStepExercise(item) && item.steps.length > 0) {
-          const finalAnswer = item.steps[item.steps.length - 1]?.answer;
-          if (typeof finalAnswer === 'string') {
-            correctLabel = finalAnswer.trim();
-          }
-        }
-
-        if (isChallengeExercise(item) && Array.isArray(item.options) && item.options.length > 1) {
-          const challengeOptions = item.options
-            .map((option) => ({
-              label: option.value != null ? String(option.value) : '',
-              correct: Boolean(option.correct),
-              explanation:
-                typeof option.explanation === 'string'
-                  ? option.explanation
-                  : option.correct
-                    ? 'Correcto. Esta es la respuesta esperada para el desafio.'
-                    : 'Incorrecto. Esa alternativa no satisface el desafio.',
-            }))
-            .filter((option) => option.label.trim().length > 0);
-
-          if (challengeOptions.some((option) => option.correct)) {
-            optionBlueprint = challengeOptions;
-          }
-        }
-
-        if (!optionBlueprint.length && isChallengeExercise(item) && typeof item.expectedAnswer === 'string') {
-          correctLabel = item.expectedAnswer.trim();
-        }
-
-        if (!optionBlueprint.length) {
-          if (!correctLabel) {
-            return null;
-          }
-
-          const candidateDistractors = answerPool.filter((value) => value !== correctLabel);
-          const rotateFrom = candidateDistractors.length > 0 ? index % candidateDistractors.length : 0;
-          const rotatedPool = [
-            ...candidateDistractors.slice(rotateFrom),
-            ...candidateDistractors.slice(0, rotateFrom),
-          ];
-
-          const distractors = rotatedPool.slice(0, 2);
-
-          for (const fallback of fallbackDistractors) {
-            if (distractors.length >= 2) break;
-            if (fallback !== correctLabel && !distractors.includes(fallback)) {
-              distractors.push(fallback);
-            }
-          }
-
-          optionBlueprint = [
-            {
-              label: correctLabel,
-              correct: true,
-              explanation: 'Correcto. Esta es la respuesta esperada para el enunciado.',
-            },
-            ...distractors.map((distractor) => ({
-              label: distractor,
-              correct: false,
-              explanation: 'Incorrecto. Ese enunciado corresponde a otra regla o no aplica aqui.',
-            })),
-          ];
-        }
-
-        const optionRotateFrom = index % optionBlueprint.length;
-        const orderedOptions = [
-          ...optionBlueprint.slice(optionRotateFrom),
-          ...optionBlueprint.slice(0, optionRotateFrom),
-        ];
-
-        const questionPrompt =
-          isStepByStepExercise(item) && typeof item.title === 'string'
-            ? `En "${item.title}", cual es el resultado final correcto?`
-            : baseQuestion;
-
-        return {
-          id: `exam_${item.id}`,
-          question: questionPrompt,
-          options: orderedOptions.map((option, optionIndex) => ({
-            value: String.fromCharCode(97 + optionIndex),
-            label: option.label,
-            correct: option.correct,
-            explanation: option.explanation,
-          })),
-          difficulty: item.difficulty,
-        };
-      })
-      .filter((question): question is QuizQuestion => Boolean(question));
-  }, [sectionExercises]);
+    return (section?.content?.exam ?? []) as QuizQuestion[];
+  }, [section]);
 
   const markCurrentExerciseCompleted = () => {
     if (!normalizedModuleId || !exercise?.id) {

@@ -106,6 +106,132 @@
             ],
             "difficulty": "medium"
           }
+        ],
+        "exam": [
+          {
+            "id": "exam_2_1_1",
+            "question": "En una prueba por inducción para todo $n\\geq0$, el paso base consiste en...",
+            "options": [
+              {
+                "value": "a",
+                "label": "Verificar que $P(0)$ es verdadera",
+                "correct": true,
+                "explanation": "El paso base prueba la proposición para el valor inicial."
+              },
+              {
+                "value": "b",
+                "label": "Asumir que $P(n)$ es verdadera para todo $n$",
+                "correct": false,
+                "explanation": "Eso sería asumir lo que hay que demostrar."
+              },
+              {
+                "value": "c",
+                "label": "Demostrar que si $P(k)$ entonces $P(k-1)$",
+                "correct": false,
+                "explanation": "Eso sería inducción hacia atrás; el paso inductivo va hacia adelante."
+              },
+              {
+                "value": "d",
+                "label": "Encontrar el mínimo contraejemplo",
+                "correct": false,
+                "explanation": "Eso es la estrategia de la prueba por absurdo con PBO, no la inducción."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_2_1_2",
+            "question": "En el paso inductivo de la inducción simple se asume $P(k)$ para demostrar...",
+            "options": [
+              {
+                "value": "a",
+                "label": "$P(k+1)$",
+                "correct": true,
+                "explanation": "La hipótesis inductiva $P(k)$ se usa para derivar $P(k+1)$."
+              },
+              {
+                "value": "b",
+                "label": "$P(k-1)$",
+                "correct": false,
+                "explanation": "Eso iría hacia atrás."
+              },
+              {
+                "value": "c",
+                "label": "$P(2k)$",
+                "correct": false,
+                "explanation": "No es la forma estándar de la inducción simple."
+              },
+              {
+                "value": "d",
+                "label": "$P(k)$ para todo $k$",
+                "correct": false,
+                "explanation": "$P(k)$ ya es la hipótesis, no la conclusión."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_2_1_3",
+            "question": "¿Cuánto vale $\\sum_{i=0}^{5}i$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$15$",
+                "correct": true,
+                "explanation": "$0+1+2+3+4+5=15$, o bien $\\frac{5\\cdot6}{2}=15$."
+              },
+              {
+                "value": "b",
+                "label": "$10$",
+                "correct": false,
+                "explanation": "$\\frac{4\\cdot5}{2}=10$ corresponde a $\\sum_{i=0}^{4}i$."
+              },
+              {
+                "value": "c",
+                "label": "$12$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              },
+              {
+                "value": "d",
+                "label": "$20$",
+                "correct": false,
+                "explanation": "$\\sum_{i=0}^{6}i=21$, no 20."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_2_1_4",
+            "question": "¿Para cuál de los siguientes enunciados es suficiente la inducción simple?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Demostrar que $1+2+\\ldots+n=\\frac{n(n+1)}{2}$",
+                "correct": true,
+                "explanation": "El paso inductivo solo usa $P(k)$: si la suma hasta $k$ es $\\frac{k(k+1)}{2}$, añadir $k+1$ da $\\frac{(k+1)(k+2)}{2}$."
+              },
+              {
+                "value": "b",
+                "label": "Probar que $a_n=a_{n-1}+a_{n-2}$ satisface una cota",
+                "correct": false,
+                "explanation": "Se necesita inducción fuerte porque el paso depende de dos valores previos."
+              },
+              {
+                "value": "c",
+                "label": "Probar que todo $n\\geq2$ es primo o producto de primos",
+                "correct": false,
+                "explanation": "Se necesita inducción fuerte porque $n+1=ab$ puede requerir $P(a)$ y $P(b)$ con $a,b$ arbitrarios."
+              },
+              {
+                "value": "d",
+                "label": "Analizar $a_{n+1}=a_n+a_{n-1}$",
+                "correct": false,
+                "explanation": "Depende de dos términos anteriores; requiere inducción fuerte."
+              }
+            ],
+            "difficulty": "medium"
+          }
         ]
       }
     },
@@ -149,11 +275,118 @@
             "title": "¿Cuándo usar inducción fuerte?",
             "problem": "¿Cuál de estos es un ejemplo clásico donde se usa inducción fuerte?",
             "options": [
-              { "value": "Probar que $1+2+\\cdots+n = \\frac{n(n+1)}{2}$", "correct": false, "explanation": "Esto solo depende de $P(n)$, así que inducción simple es suficiente." },
-              { "value": "Probar que $a_n = a_{n-1} + a_{n-2}$ satisface $a_n \\leq 2^n$", "correct": false, "explanation": "Puede demostrarse con una formulación de inducción simple; no es el ejemplo canónico de necesidad de inducción fuerte." },
-              { "value": "Probar que todo número $\\geq 2$ es primo o producto de primos", "correct": true, "explanation": "Si $n+1$ no es primo, $n+1 = ab$ con $a,b < n+1$, y necesitas que ambos sean productos de primos." }
+              {
+                "value": "Probar que $1+2+\\cdots+n = \\frac{n(n+1)}{2}$",
+                "correct": false,
+                "explanation": "Esto solo depende de $P(n)$, así que inducción simple es suficiente."
+              },
+              {
+                "value": "Probar que $a_n = a_{n-1} + a_{n-2}$ satisface $a_n \\leq 2^n$",
+                "correct": false,
+                "explanation": "También requiere inducción fuerte (necesitas $P(n)$ y $P(n-1)$ al mismo tiempo), pero el ejemplo de primos es más canónico porque la 'caja' no es un par de predecesores fijo sino cualquier divisor."
+              },
+              {
+                "value": "Probar que todo número $\\geq 2$ es primo o producto de primos",
+                "correct": true,
+                "explanation": "Si $n+1$ no es primo, $n+1 = ab$ con $a,b < n+1$, y necesitas que ambos sean productos de primos."
+              }
             ],
             "difficulty": "medium"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_2_2_1",
+            "question": "En el paso inductivo de la inducción fuerte para demostrar $P(n+1)$, ¿qué se asume?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$P(k)$ es verdadera para todos los $k$ con $n_0\\leq k\\leq n$",
+                "correct": true,
+                "explanation": "La inducción fuerte asume toda la historia previa, no solo el caso inmediato."
+              },
+              {
+                "value": "b",
+                "label": "Solo se asume $P(n)$",
+                "correct": false,
+                "explanation": "Eso es inducción simple."
+              },
+              {
+                "value": "c",
+                "label": "Se asumen $P(n)$ y $P(n-1)$ únicamente",
+                "correct": false,
+                "explanation": "En inducción fuerte se asumen todos los casos previos, no solo los dos anteriores."
+              },
+              {
+                "value": "d",
+                "label": "No se asume nada",
+                "correct": false,
+                "explanation": "La hipótesis inductiva siempre se asume en inducción."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_2_2_2",
+            "question": "Para $a_n=a_{n-1}+a_{n-2}+a_{n-3}$ con $a_0=1,a_1=2,a_2=3$, ¿cuántos casos base necesita la inducción fuerte?",
+            "options": [
+              {
+                "value": "a",
+                "label": "3 (para $a_0$, $a_1$ y $a_2$)",
+                "correct": true,
+                "explanation": "La recurrencia usa los tres términos anteriores, así que se necesitan tres casos base."
+              },
+              {
+                "value": "b",
+                "label": "1 (solo para $a_0$)",
+                "correct": false,
+                "explanation": "Con solo un caso base no se puede aplicar la recurrencia para $a_1$ ni $a_2$."
+              },
+              {
+                "value": "c",
+                "label": "2 (para $a_0$ y $a_1$)",
+                "correct": false,
+                "explanation": "Falta el tercer caso base para $a_2$."
+              },
+              {
+                "value": "d",
+                "label": "No se necesitan casos base",
+                "correct": false,
+                "explanation": "Siempre se requieren casos base."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_2_2_3",
+            "question": "Al demostrar que todo entero $n\\geq2$ es primo o producto de primos, ¿por qué se necesita inducción fuerte?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Si $n+1=ab$ con $a,b<n+1$, necesitamos $P(a)$ y $P(b)$, no solo $P(n)$",
+                "correct": true,
+                "explanation": "Los factores $a$ y $b$ pueden ser cualquier valor menor que $n+1$, no necesariamente $n$."
+              },
+              {
+                "value": "b",
+                "label": "Porque los números primos son infinitos",
+                "correct": false,
+                "explanation": "La infinitud de primos no es la razón."
+              },
+              {
+                "value": "c",
+                "label": "Porque el caso $n=2$ requiere dos pasos base",
+                "correct": false,
+                "explanation": "El caso $n=2$ es un único paso base sencillo."
+              },
+              {
+                "value": "d",
+                "label": "Porque la inducción simple no funciona con números compuestos",
+                "correct": false,
+                "explanation": "La distinción es sobre cuántos casos previos necesita el paso inductivo."
+              }
+            ],
+            "difficulty": "hard"
           }
         ]
       }
@@ -234,6 +467,132 @@
                 "instruction": "¿Cuál es la sucesión de Fibonacci hasta $F_5$?",
                 "hint": "0, 1, 1, 2, 3, 5",
                 "answer": "0, 1, 1, 2, 3, 5"
+              }
+            ],
+            "difficulty": "easy"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_2_3_1",
+            "question": "¿Cuánto vale $F_7$ en la sucesión de Fibonacci ($F_0=0,F_1=1$)?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$13$",
+                "correct": true,
+                "explanation": "$F_2=1,F_3=2,F_4=3,F_5=5,F_6=8,F_7=13$."
+              },
+              {
+                "value": "b",
+                "label": "$8$",
+                "correct": false,
+                "explanation": "Ese es $F_6$."
+              },
+              {
+                "value": "c",
+                "label": "$21$",
+                "correct": false,
+                "explanation": "Ese es $F_8$."
+              },
+              {
+                "value": "d",
+                "label": "$12$",
+                "correct": false,
+                "explanation": "No es un número de Fibonacci."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_2_3_2",
+            "question": "La recurrencia de Merge Sort es $T(n)=2T(n/2)+cn$. ¿Cuál es su complejidad?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$O(n\\log n)$",
+                "correct": true,
+                "explanation": "Por el Teorema Maestro (caso 2), $T(n)=O(n\\log n)$."
+              },
+              {
+                "value": "b",
+                "label": "$O(n^2)$",
+                "correct": false,
+                "explanation": "Ese sería el caso de algoritmos de ordenamiento ingenuo."
+              },
+              {
+                "value": "c",
+                "label": "$O(n)$",
+                "correct": false,
+                "explanation": "$O(n)$ sería demasiado rápido para un algoritmo de ordenamiento por comparación."
+              },
+              {
+                "value": "d",
+                "label": "$O(\\log n)$",
+                "correct": false,
+                "explanation": "$O(\\log n)$ corresponde a búsqueda binaria, no ordenamiento."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_2_3_3",
+            "question": "¿Cuál de los siguientes NO define una relación de recurrencia?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$a_n=n^2+n-3$",
+                "correct": true,
+                "explanation": "Es una fórmula cerrada; no define $a_n$ en términos de términos anteriores."
+              },
+              {
+                "value": "b",
+                "label": "$a_n=a_{n-1}+2$",
+                "correct": false,
+                "explanation": "Es una recurrencia válida (progresión aritmética)."
+              },
+              {
+                "value": "c",
+                "label": "$a_n=2\\cdot a_{n-1}$",
+                "correct": false,
+                "explanation": "Es una recurrencia válida (progresión geométrica)."
+              },
+              {
+                "value": "d",
+                "label": "$a_n=a_{n-1}\\cdot a_{n-2}$",
+                "correct": false,
+                "explanation": "Es una recurrencia válida."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_2_3_4",
+            "question": "Si $b_0=1$ y $b_n=3\\cdot b_{n-1}$ para $n\\geq1$, ¿cuánto es $b_4$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$81$",
+                "correct": true,
+                "explanation": "$b_1=3,b_2=9,b_3=27,b_4=81$."
+              },
+              {
+                "value": "b",
+                "label": "$12$",
+                "correct": false,
+                "explanation": "Ese sería $4\\times b_0=4$."
+              },
+              {
+                "value": "c",
+                "label": "$64$",
+                "correct": false,
+                "explanation": "$64=2^6$; no surge de esta recurrencia."
+              },
+              {
+                "value": "d",
+                "label": "$27$",
+                "correct": false,
+                "explanation": "Ese es $b_3$."
               }
             ],
             "difficulty": "easy"

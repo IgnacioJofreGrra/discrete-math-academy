@@ -89,12 +89,154 @@
             "title": "Operaciones con Conjuntos",
             "problem": "Si $A = \\{1,2,3\\}$, $B = \\{2,3,4\\}$, ¿cuál es $A \\setminus B$?",
             "options": [
-              { "value": "$\\{1\\}$", "correct": true, "explanation": "Correcto. $A \\setminus B$ contiene elementos en $A$ pero no en $B$, que es solo 1." },
-              { "value": "$\\{2,3\\}$", "correct": false, "explanation": "Incorrecto. Estos elementos están en ambos conjuntos." },
-              { "value": "$\\{4\\}$", "correct": false, "explanation": "Incorrecto. 4 está en $B$ pero no en $A$." },
-              { "value": "$\\{1,2,3,4\\}$", "correct": false, "explanation": "Incorrecto. Esa es la unión." }
+              {
+                "value": "$\\{1\\}$",
+                "correct": true,
+                "explanation": "Correcto. $A \\setminus B$ contiene elementos en $A$ pero no en $B$, que es solo 1."
+              },
+              {
+                "value": "$\\{2,3\\}$",
+                "correct": false,
+                "explanation": "Incorrecto. Estos elementos están en ambos conjuntos."
+              },
+              {
+                "value": "$\\{4\\}$",
+                "correct": false,
+                "explanation": "Incorrecto. 4 está en $B$ pero no en $A$."
+              },
+              {
+                "value": "$\\{1,2,3,4\\}$",
+                "correct": false,
+                "explanation": "Incorrecto. Esa es la unión."
+              }
             ],
             "difficulty": "easy"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_3_1_1",
+            "question": "Si $A=\\{1,2,3,4\\}$ y $B=\\{3,4,5,6\\}$, ¿cuánto es $A\\triangle B$ (diferencia simétrica)?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\{1,2,5,6\\}$",
+                "correct": true,
+                "explanation": "$A\\triangle B=(A\\cup B)\\setminus(A\\cap B)=\\{1,2,3,4,5,6\\}\\setminus\\{3,4\\}=\\{1,2,5,6\\}$."
+              },
+              {
+                "value": "b",
+                "label": "$\\{3,4\\}$",
+                "correct": false,
+                "explanation": "Esa es la intersección $A\\cap B$."
+              },
+              {
+                "value": "c",
+                "label": "$\\{1,2,3,4,5,6\\}$",
+                "correct": false,
+                "explanation": "Esa es la unión $A\\cup B$."
+              },
+              {
+                "value": "d",
+                "label": "$\\{1,2\\}$",
+                "correct": false,
+                "explanation": "Esa es $A\\setminus B$, solo la mitad de la diferencia simétrica."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_3_1_2",
+            "question": "Si $U=\\{1,2,3,4,5\\}$ y $A=\\{1,3,5\\}$, ¿cuánto es $\\overline{A}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\{2,4\\}$",
+                "correct": true,
+                "explanation": "El complemento contiene los elementos de $U$ que no están en $A$."
+              },
+              {
+                "value": "b",
+                "label": "$\\{1,3,5\\}$",
+                "correct": false,
+                "explanation": "Ese es el conjunto $A$ mismo."
+              },
+              {
+                "value": "c",
+                "label": "$\\emptyset$",
+                "correct": false,
+                "explanation": "El complemento es vacío solo si $A=U$."
+              },
+              {
+                "value": "d",
+                "label": "$\\{1,2,3,4,5\\}$",
+                "correct": false,
+                "explanation": "Ese es $U$; el complemento de $A$ respecto de $U$ no incluye los elementos de $A$."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_3_1_3",
+            "question": "¿Cuántos elementos tiene el conjunto potencia de $\\{a,b,c\\}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$8$",
+                "correct": true,
+                "explanation": "$|\\mathcal{P}(A)|=2^{|A|}=2^3=8$."
+              },
+              {
+                "value": "b",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "Hay 8 subconjuntos, no 6."
+              },
+              {
+                "value": "c",
+                "label": "$3$",
+                "correct": false,
+                "explanation": "Eso sería el número de subconjuntos de un elemento."
+              },
+              {
+                "value": "d",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_3_1_4",
+            "question": "La ley de De Morgan dice que $\\overline{A\\cup B}$ es igual a...",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\overline{A}\\cap\\overline{B}$",
+                "correct": true,
+                "explanation": "Primera ley de De Morgan: el complemento de la unión es la intersección de los complementos."
+              },
+              {
+                "value": "b",
+                "label": "$\\overline{A}\\cup\\overline{B}$",
+                "correct": false,
+                "explanation": "Esa sería $\\overline{A\\cap B}$ (segunda ley de De Morgan)."
+              },
+              {
+                "value": "c",
+                "label": "$A\\cap B$",
+                "correct": false,
+                "explanation": "Incorrecto; falta el complemento."
+              },
+              {
+                "value": "d",
+                "label": "$\\overline{A\\cap B}$",
+                "correct": false,
+                "explanation": "Esa es la segunda ley de De Morgan, no la primera."
+              }
+            ],
+            "difficulty": "medium"
           }
         ]
       }
@@ -163,10 +305,144 @@
             "title": "Clasificar Funciones",
             "problem": "¿Es $f(x) = x^3$ de $\\mathbb{R}$ a $\\mathbb{R}$ inyectiva, sobreyectiva o biyectiva?",
             "options": [
-              { "value": "Inyectiva pero no sobreyectiva", "correct": false, "explanation": "Incorrecto. $f$ es sobreyectiva porque todo número real es cubo de algún número." },
-              { "value": "Sobreyectiva pero no inyectiva", "correct": false, "explanation": "Incorrecto. $f$ es inyectiva porque si $x_1^3 = x_2^3$, entonces $x_1 = x_2$." },
-              { "value": "Biyectiva", "correct": true, "explanation": "Correcto. $f$ es tanto inyectiva como sobreyectiva." },
-              { "value": "Ninguna de las anteriores", "correct": false, "explanation": "Incorrecto. $f$ es biyectiva." }
+              {
+                "value": "Inyectiva pero no sobreyectiva",
+                "correct": false,
+                "explanation": "Incorrecto. $f$ es sobreyectiva porque todo número real es cubo de algún número."
+              },
+              {
+                "value": "Sobreyectiva pero no inyectiva",
+                "correct": false,
+                "explanation": "Incorrecto. $f$ es inyectiva porque si $x_1^3 = x_2^3$, entonces $x_1 = x_2$."
+              },
+              {
+                "value": "Biyectiva",
+                "correct": true,
+                "explanation": "Correcto. $f$ es tanto inyectiva como sobreyectiva."
+              },
+              {
+                "value": "Ninguna de las anteriores",
+                "correct": false,
+                "explanation": "Incorrecto. $f$ es biyectiva."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_3_2_3",
+            "type": "step_by_step",
+            "title": "Demostrar que $f(x) = 2x$ es inyectiva",
+            "steps": [
+              {
+                "instruction": "Escribe qué debes demostrar según la definición de función inyectiva.",
+                "hint": "La definición dice: si $f(a) = f(b)$ entonces $a = b$.",
+                "answer": "Debemos probar: si $2a = 2b$, entonces $a = b$."
+              },
+              {
+                "instruction": "Asume que $f(a) = f(b)$. ¿Qué operación aplicas para obtener $a = b$?",
+                "hint": "¿Qué le puedes hacer a $2a = 2b$?",
+                "answer": "Dividimos ambos lados por 2: $\\frac{2a}{2} = \\frac{2b}{2}$, por tanto $a = b$."
+              },
+              {
+                "instruction": "Conclusión: ¿Por qué $f$ no es sobreyectiva de $\\mathbb{N}$ a $\\mathbb{N}$?",
+                "hint": "¿Hay algún número impar en la imagen de $f$?",
+                "answer": "Un número impar como 3 no tiene preimagen en $\\mathbb{N}$ bajo $f(x) = 2x$, pues $f(x) = 3$ implica $x = 1.5 \\notin \\mathbb{N}$. Así $f$ es inyectiva pero no sobreyectiva de $\\mathbb{N}$ a $\\mathbb{N}$."
+              }
+            ],
+            "difficulty": "easy"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_3_2_1",
+            "question": "La función $f:\\mathbb{Z}\\to\\{0,1\\}$ definida por $f(n)=n\\bmod2$ es...",
+            "options": [
+              {
+                "value": "a",
+                "label": "Sobreyectiva pero no inyectiva",
+                "correct": true,
+                "explanation": "$f(0)=0$ y $f(1)=1$ (sobreyectiva); pero $f(0)=f(2)=0$ (no inyectiva)."
+              },
+              {
+                "value": "b",
+                "label": "Inyectiva pero no sobreyectiva",
+                "correct": false,
+                "explanation": "No es inyectiva: $f(0)=f(2)=0$."
+              },
+              {
+                "value": "c",
+                "label": "Biyectiva",
+                "correct": false,
+                "explanation": "No puede ser biyectiva si no es inyectiva."
+              },
+              {
+                "value": "d",
+                "label": "Ni inyectiva ni sobreyectiva",
+                "correct": false,
+                "explanation": "Sí es sobreyectiva: $f$ alcanza tanto 0 como 1."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_3_2_2",
+            "question": "¿Cuál de los siguientes es un ejemplo de función biyectiva?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$f:\\mathbb{N}\\to\\{0,2,4,6,\\ldots\\}$, $f(n)=2n$",
+                "correct": true,
+                "explanation": "Inyectiva ($2n_1=2n_2\\Rightarrow n_1=n_2$) y sobreyectiva (todo par tiene preimagen $n=k/2$)."
+              },
+              {
+                "value": "b",
+                "label": "$f:\\mathbb{R}\\to\\mathbb{R}$, $f(x)=x^2$",
+                "correct": false,
+                "explanation": "No es inyectiva ($f(1)=f(-1)$) ni sobreyectiva (no alcanza valores negativos)."
+              },
+              {
+                "value": "c",
+                "label": "$f:\\mathbb{Z}\\to\\mathbb{N}$, $f(n)=n^2$",
+                "correct": false,
+                "explanation": "No es inyectiva ($f(1)=f(-1)=1$)."
+              },
+              {
+                "value": "d",
+                "label": "$f:\\mathbb{N}\\to\\mathbb{N}$, $f(n)=n+1$",
+                "correct": false,
+                "explanation": "No es sobreyectiva: $0$ no tiene preimagen."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_3_2_3",
+            "question": "Si $f:A\\to B$ no es inyectiva, ¿qué podemos concluir?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Existen $a_1\\neq a_2$ en $A$ tales que $f(a_1)=f(a_2)$",
+                "correct": true,
+                "explanation": "Por definición, la negación de inyectiva es que dos elementos distintos comparten imagen."
+              },
+              {
+                "value": "b",
+                "label": "Existe algún $b\\in B$ sin preimagen en $A$",
+                "correct": false,
+                "explanation": "Eso describe la no-sobreyectividad."
+              },
+              {
+                "value": "c",
+                "label": "$f$ tampoco puede ser sobreyectiva",
+                "correct": false,
+                "explanation": "Una función puede ser sobreyectiva sin ser inyectiva."
+              },
+              {
+                "value": "d",
+                "label": "$|A|<|B|$",
+                "correct": false,
+                "explanation": "La no-inyectividad no implica nada sobre las cardinalidades en general."
+              }
             ],
             "difficulty": "medium"
           }

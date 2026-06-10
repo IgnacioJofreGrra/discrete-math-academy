@@ -52,11 +52,141 @@
             "title": "Comparar Cardinalidades",
             "problem": "¿Tienen $\\{1, 2, 3, 4, 5\\}$ y $\\{a, b, c, d, e\\}$ la misma cardinalidad?",
             "options": [
-              { "value": "Sí, ambos tienen cardinalidad 5", "correct": true, "explanation": "Correcto. Podemos crear una biyección: $1 \\to a, 2 \\to b, 3 \\to c, 4 \\to d, 5 \\to e$." },
-              { "value": "No, porque tienen elementos diferentes", "correct": false, "explanation": "Incorrecto. La cardinalidad depende de la cantidad de elementos, no de qué son." },
-              { "value": "Sí, pero con cardinalidad diferente", "correct": false, "explanation": "Incorrecto. Si tienen la misma cardinalidad, es la misma." }
+              {
+                "value": "Sí, ambos tienen cardinalidad 5",
+                "correct": true,
+                "explanation": "Correcto. Podemos crear una biyección: $1 \\to a, 2 \\to b, 3 \\to c, 4 \\to d, 5 \\to e$."
+              },
+              {
+                "value": "No, porque tienen elementos diferentes",
+                "correct": false,
+                "explanation": "Incorrecto. La cardinalidad depende de la cantidad de elementos, no de qué son."
+              },
+              {
+                "value": "Sí, pero con cardinalidad diferente",
+                "correct": false,
+                "explanation": "Incorrecto. Si tienen la misma cardinalidad, es la misma."
+              }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_4_1_3",
+            "type": "step_by_step",
+            "title": "Verificar misma cardinalidad mediante biyección",
+            "steps": [
+              {
+                "instruction": "¿Tienen los conjuntos $A = \\{\\triangle, \\square, \\circ\\}$ y $B = \\{1, 2, 3\\}$ la misma cardinalidad? Define una biyección $f: A \\to B$.",
+                "hint": "Asigna cada figura a un número distinto.",
+                "answer": "Por ejemplo, $f(\\triangle)=1$, $f(\\square)=2$, $f(\\circ)=3$. Es inyectiva y sobreyectiva, luego $|A|=|B|=3$."
+              },
+              {
+                "instruction": "¿Podría existir una biyección entre $A = \\{\\triangle, \\square, \\circ\\}$ y $C = \\{1, 2\\}$?",
+                "hint": "¿Cuántos elementos tiene cada conjunto?",
+                "answer": "No. $|A|=3$ y $|C|=2$; cualquier función $f: A \\to C$ debe enviar dos elementos de $A$ al mismo elemento de $C$, así que no puede ser inyectiva."
+              },
+              {
+                "instruction": "¿Qué podemos concluir sobre la cardinalidad y las biyecciones?",
+                "hint": "Relaciona la existencia de una biyección con el tamaño de los conjuntos.",
+                "answer": "Dos conjuntos tienen la misma cardinalidad si y solo si existe una biyección entre ellos. Si $|A| \\neq |B|$, ninguna biyección puede existir."
+              }
+            ],
+            "difficulty": "easy"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_4_1_1",
+            "question": "¿Cuántos subconjuntos tiene el conjunto $\\{1,2,3\\}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$8$",
+                "correct": true,
+                "explanation": "$|\\mathcal{P}(A)|=2^3=8$: $\\emptyset,\\{1\\},\\{2\\},\\{3\\},\\{1,2\\},\\{1,3\\},\\{2,3\\},\\{1,2,3\\}$."
+              },
+              {
+                "value": "b",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "Hay 8 subconjuntos en total, contando el vacío y el conjunto mismo."
+              },
+              {
+                "value": "c",
+                "label": "$3$",
+                "correct": false,
+                "explanation": "Eso cuenta solo los subconjuntos de un elemento."
+              },
+              {
+                "value": "d",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_4_1_2",
+            "question": "Si $|A|=5$ y $|B|=5$, ¿puede existir una función $f:A\\to B$ que NO sea biyectiva?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Sí; por ejemplo, una función constante $f(x)=b_0$ para todo $x\\in A$",
+                "correct": true,
+                "explanation": "La función constante no es inyectiva ni sobreyectiva aunque $|A|=|B|$."
+              },
+              {
+                "value": "b",
+                "label": "No; si $|A|=|B|$, toda función es biyectiva",
+                "correct": false,
+                "explanation": "Solo para conjuntos finitos, una función inyectiva equivale a biyectiva, pero las funciones no-inyectivas sí existen."
+              },
+              {
+                "value": "c",
+                "label": "No, porque la igualdad de cardinalidades garantiza biyección",
+                "correct": false,
+                "explanation": "La igualdad de cardinalidades garantiza que existe alguna biyección, no que toda función lo sea."
+              },
+              {
+                "value": "d",
+                "label": "Depende de si los conjuntos son finitos o infinitos",
+                "correct": false,
+                "explanation": "La pregunta ya especifica conjuntos finitos de igual tamaño; aun así pueden existir funciones no biyectivas."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_4_1_3",
+            "question": "¿Cuál de los siguientes pares de conjuntos tiene la misma cardinalidad?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\mathbb{N}$ y $\\mathbb{Z}$",
+                "correct": true,
+                "explanation": "Ambos son numerablemente infinitos; existe la biyección $f(0)=0,f(2k-1)=k,f(2k)=-k$."
+              },
+              {
+                "value": "b",
+                "label": "$\\{1,2,3\\}$ y $\\{a,b\\}$",
+                "correct": false,
+                "explanation": "$|\\{1,2,3\\}|=3\\neq2=|\\{a,b\\}|$."
+              },
+              {
+                "value": "c",
+                "label": "$\\mathbb{R}$ y $\\mathbb{N}$",
+                "correct": false,
+                "explanation": "$\\mathbb{R}$ es no numerable; $\\mathbb{N}$ es numerable."
+              },
+              {
+                "value": "d",
+                "label": "$\\{1,2,3\\}$ y $\\{1,2,3,4\\}$",
+                "correct": false,
+                "explanation": "Cardinalidades 3 y 4 son distintas."
+              }
+            ],
+            "difficulty": "medium"
           }
         ]
       }
@@ -110,11 +240,141 @@
             "title": "¿Es numerable?",
             "problem": "¿Es el conjunto de números enteros $\\mathbb{Z}$ numerable?",
             "options": [
-              { "value": "Sí, porque podemos listar todos los enteros", "correct": true, "explanation": "Correcto. Podemos listar: 0, 1, -1, 2, -2, 3, -3, ... creando una biyección con $\\mathbb{N}$." },
-              { "value": "No, porque hay infinitos enteros negativos", "correct": false, "explanation": "Incorrecto. Que sea infinito no significa que no sea numerable." },
-              { "value": "No, porque $\\mathbb{Z}$ es más grande que $\\mathbb{N}$", "correct": false, "explanation": "Incorrecto. $\\mathbb{Z}$ y $\\mathbb{N}$ tienen la misma cardinalidad (ambos numerables)." }
+              {
+                "value": "Sí, porque podemos listar todos los enteros",
+                "correct": true,
+                "explanation": "Correcto. Podemos listar: 0, 1, -1, 2, -2, 3, -3, ... creando una biyección con $\\mathbb{N}$."
+              },
+              {
+                "value": "No, porque hay infinitos enteros negativos",
+                "correct": false,
+                "explanation": "Incorrecto. Que sea infinito no significa que no sea numerable."
+              },
+              {
+                "value": "No, porque $\\mathbb{Z}$ es más grande que $\\mathbb{N}$",
+                "correct": false,
+                "explanation": "Incorrecto. $\\mathbb{Z}$ y $\\mathbb{N}$ tienen la misma cardinalidad (ambos numerables)."
+              }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_4_2_3",
+            "type": "step_by_step",
+            "title": "Construir la biyección $\\mathbb{N} \\to \\mathbb{Z}$",
+            "steps": [
+              {
+                "instruction": "Define $f: \\mathbb{N} \\to \\mathbb{Z}$ por $f(0)=0$, $f(2k-1)=k$ y $f(2k)=-k$ para $k \\geq 1$. Calcula $f(1), f(2), f(3), f(4)$.",
+                "hint": "Para $k=1$: $f(1)=1$ y $f(2)=-1$. Para $k=2$: $f(3)=2$ y $f(4)=-2$.",
+                "answer": "$f(1)=1,\\ f(2)=-1,\\ f(3)=2,\\ f(4)=-2$"
+              },
+              {
+                "instruction": "Escribe la lista $f(0), f(1), f(2), f(3), f(4), f(5), f(6), \\ldots$",
+                "hint": "Continúa el patrón: el par $f(2k-1), f(2k)$ da $k$ y $-k$.",
+                "answer": "$0,\\ 1,\\ -1,\\ 2,\\ -2,\\ 3,\\ -3,\\ \\ldots$ Cada entero aparece exactamente una vez."
+              },
+              {
+                "instruction": "¿Por qué $f$ es una biyección? ¿Qué conclusión sacamos sobre $|\\mathbb{Z}|$?",
+                "hint": "Todo entero $n > 0$ aparece en posición impar, todo $n < 0$ en posición par.",
+                "answer": "$f$ es inyectiva (cada natural va a un entero distinto) y sobreyectiva (todo entero tiene preimagen). Por tanto $|\\mathbb{Z}| = |\\mathbb{N}| = \\aleph_0$ y $\\mathbb{Z}$ es numerable."
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_4_2_1",
+            "question": "¿Es el conjunto de números racionales $\\mathbb{Q}$ numerable?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Sí, porque se puede listar con el argumento diagonal de Cantor para tablas",
+                "correct": true,
+                "explanation": "Correcto. Los racionales pueden disponerse en una tabla $\\frac{p}{q}$ y recorrerse diagonalmente."
+              },
+              {
+                "value": "b",
+                "label": "No, porque hay infinitos racionales entre cualquier par de enteros",
+                "correct": false,
+                "explanation": "La densidad no implica no-numerabilidad; $\\mathbb{Q}$ es numerable a pesar de ser denso."
+              },
+              {
+                "value": "c",
+                "label": "Sí, pero tiene más elementos que $\\mathbb{N}$",
+                "correct": false,
+                "explanation": "$|\\mathbb{Q}|=|\\mathbb{N}|=\\aleph_0$."
+              },
+              {
+                "value": "d",
+                "label": "No; el argumento diagonal de Cantor lo prueba",
+                "correct": false,
+                "explanation": "El argumento diagonal de Cantor demuestra la no-numerabilidad de $\\mathbb{R}$, no de $\\mathbb{Q}$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_4_2_2",
+            "question": "¿Qué demuestra el argumento diagonal de Cantor?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Que $\\mathbb{R}$ no es numerable",
+                "correct": true,
+                "explanation": "Construye un número real no listado en cualquier enumeración supuesta de $\\mathbb{R}$."
+              },
+              {
+                "value": "b",
+                "label": "Que $\\mathbb{Q}$ no es numerable",
+                "correct": false,
+                "explanation": "$\\mathbb{Q}$ sí es numerable."
+              },
+              {
+                "value": "c",
+                "label": "Que $\\mathbb{N}$ y $\\mathbb{Z}$ tienen cardinalidades distintas",
+                "correct": false,
+                "explanation": "Ambos tienen cardinalidad $\\aleph_0$."
+              },
+              {
+                "value": "d",
+                "label": "Que todo conjunto infinito es numerable",
+                "correct": false,
+                "explanation": "El argumento demuestra exactamente lo contrario para $\\mathbb{R}$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_4_2_3",
+            "question": "¿Cuántas cardinalidades infinitas distintas existen?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Infinitas (hay infinitos tipos de infinito)",
+                "correct": true,
+                "explanation": "La jerarquía de cardinales transfinitos ($\\aleph_0,\\aleph_1,\\aleph_2,\\ldots$) es infinita."
+              },
+              {
+                "value": "b",
+                "label": "Solo una: $\\aleph_0$",
+                "correct": false,
+                "explanation": "$|\\mathbb{R}|>\\aleph_0$; hay más de un infinito."
+              },
+              {
+                "value": "c",
+                "label": "Exactamente dos: numerable y no-numerable",
+                "correct": false,
+                "explanation": "Hay conjuntos con cardinalidades aún mayores que la de $\\mathbb{R}$."
+              },
+              {
+                "value": "d",
+                "label": "No se puede responder; la cardinalidad es indefinida para conjuntos infinitos",
+                "correct": false,
+                "explanation": "La teoría de conjuntos de Cantor define perfectamente cardinalidades transfinitas."
+              }
+            ],
+            "difficulty": "hard"
           }
         ]
       }

@@ -57,12 +57,123 @@
             "title": "Aplicar Principio del Palomar",
             "problem": "¿Cuál es el número mínimo de personas necesarias para garantizar que dos comparten el mismo cumpleaños?",
             "options": [
-              { "value": "183", "correct": false, "explanation": "Incorrecto. Necesitamos solo 366 personas para garantizar (considerando años bisiestos)." },
-              { "value": "365", "correct": false, "explanation": "Incorrecto. Con 365 personas, es posible que todas tengan cumpleaños diferentes." },
-              { "value": "366", "correct": true, "explanation": "Correcto. Por el Principio del Palomar, con 366 personas y 365 días posibles, al menos dos deben compartir cumpleaños." },
-              { "value": "732", "correct": false, "explanation": "Incorrecto. Necesitamos mucho menos." }
+              {
+                "value": "183",
+                "correct": false,
+                "explanation": "Incorrecto. Con solo 183 personas podría ocurrir que todas nacieran en días distintos."
+              },
+              {
+                "value": "365",
+                "correct": false,
+                "explanation": "Incorrecto. Con exactamente 365 personas es posible que cada una haya nacido en un día diferente del año."
+              },
+              {
+                "value": "366",
+                "correct": true,
+                "explanation": "Correcto. Un año tiene 365 días; con 366 personas hay más objetos que cajas, y por el Principio del Palomar al menos dos deben compartir cumpleaños."
+              },
+              {
+                "value": "732",
+                "correct": false,
+                "explanation": "Incorrecto. Necesitamos mucho menos."
+              }
             ],
             "difficulty": "easy"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_5_1_1",
+            "question": "En un cajón hay calcetines rojos y azules. ¿Cuántos calcetines debes sacar (sin mirar) para garantizar un par del mismo color?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$3$",
+                "correct": true,
+                "explanation": "Con 2 colores y 3 calcetines, por el Principio del Palomar al menos dos serán del mismo color."
+              },
+              {
+                "value": "b",
+                "label": "$2$",
+                "correct": false,
+                "explanation": "Con 2 calcetines podrías sacar uno de cada color."
+              },
+              {
+                "value": "c",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "Se necesitan solo 3; con 3 ya se garantiza el par."
+              },
+              {
+                "value": "d",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "Se necesitan muchos menos."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_5_1_2",
+            "question": "En una clase de 8 estudiantes, ¿qué garantiza el Principio del Palomar respecto a los días de la semana en que nacieron?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Al menos dos estudiantes nacieron el mismo día de la semana",
+                "correct": true,
+                "explanation": "8 estudiantes y 7 días; $8>7$ implica que al menos dos comparten día de la semana."
+              },
+              {
+                "value": "b",
+                "label": "Ningún estudiante comparte día de nacimiento",
+                "correct": false,
+                "explanation": "Con más personas que días, es inevitable la repetición."
+              },
+              {
+                "value": "c",
+                "label": "Exactamente dos estudiantes nacieron el mismo día",
+                "correct": false,
+                "explanation": "Se garantiza *al menos* dos, no exactamente dos."
+              },
+              {
+                "value": "d",
+                "label": "Al menos un estudiante nació en domingo",
+                "correct": false,
+                "explanation": "El principio garantiza repetición de día, no qué día específico."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_5_1_3",
+            "question": "¿Cuál es la formalización matemática del Principio del Palomar?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Si $f:A\\to B$ y $|A|>|B|$, entonces $f$ no es inyectiva",
+                "correct": true,
+                "explanation": "Si hay más objetos que cajas, dos objetos deben ir a la misma caja."
+              },
+              {
+                "value": "b",
+                "label": "Si $f:A\\to B$ y $|A|<|B|$, entonces $f$ no es inyectiva",
+                "correct": false,
+                "explanation": "Con $|A|<|B|$ sí puede existir una función inyectiva."
+              },
+              {
+                "value": "c",
+                "label": "Si $f:A\\to B$ y $|A|=|B|$, entonces $f$ es biyectiva",
+                "correct": false,
+                "explanation": "La igualdad de cardinalidades no garantiza que toda función sea biyectiva."
+              },
+              {
+                "value": "d",
+                "label": "Si $f:A\\to B$ y $|A|>|B|$, entonces $f$ no es sobreyectiva",
+                "correct": false,
+                "explanation": "Cuando $|A|>|B|$, la función puede ser sobreyectiva pero no inyectiva."
+              }
+            ],
+            "difficulty": "medium"
           }
         ]
       }
@@ -115,6 +226,101 @@
                 "instruction": "Verifica: si cada aula tuviera a lo sumo 14 estudiantes, ¿cuántos habría en total?",
                 "hint": "$7 \\times 14 = ?$",
                 "answer": "$7 \\times 14 = 98 < 100$, así que al menos una aula debe tener 15."
+              }
+            ],
+            "difficulty": "medium"
+          }
+        ],
+        "exam": [
+          {
+            "id": "exam_5_2_1",
+            "question": "Si distribuimos 25 cartas entre 4 palos, ¿cuántas cartas hay como mínimo en el palo con más cartas?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$7$",
+                "correct": true,
+                "explanation": "$\\lceil25/4\\rceil=\\lceil6.25\\rceil=7$."
+              },
+              {
+                "value": "b",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "$4\\times6=24<25$; no alcanza para todas."
+              },
+              {
+                "value": "c",
+                "label": "$5$",
+                "correct": false,
+                "explanation": "$4\\times5=20<25$; no alcanza."
+              },
+              {
+                "value": "d",
+                "label": "$8$",
+                "correct": false,
+                "explanation": "Se garantiza *al menos* 7, que ya es suficiente."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_5_2_2",
+            "question": "En un examen con puntajes enteros del 0 al 10, si 12 estudiantes rindieron la prueba, ¿cuántos estudiantes como mínimo obtuvieron el mismo puntaje?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$2$",
+                "correct": true,
+                "explanation": "Hay 11 puntajes posibles (0 a 10) y 12 estudiantes; $\\lceil12/11\\rceil=2$."
+              },
+              {
+                "value": "b",
+                "label": "$3$",
+                "correct": false,
+                "explanation": "$\\lceil12/11\\rceil=2$, no 3."
+              },
+              {
+                "value": "c",
+                "label": "$1$",
+                "correct": false,
+                "explanation": "Con más estudiantes que puntajes posibles, al menos dos deben coincidir."
+              },
+              {
+                "value": "d",
+                "label": "No se puede garantizar",
+                "correct": false,
+                "explanation": "El Principio del Palomar sí lo garantiza."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_5_2_3",
+            "question": "¿Cuál es la fórmula del Principio del Palomar Generalizado?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Si $n$ objetos se distribuyen en $k$ cajas, al menos una caja contiene $\\lceil n/k\\rceil$ o más objetos",
+                "correct": true,
+                "explanation": "Esta es la enunciación precisa del principio generalizado."
+              },
+              {
+                "value": "b",
+                "label": "Si $n$ objetos se distribuyen en $k$ cajas, exactamente una caja tiene $n/k$ objetos",
+                "correct": false,
+                "explanation": "El principio da una cota inferior, no un resultado exacto."
+              },
+              {
+                "value": "c",
+                "label": "Si $n>k$, al menos una caja tiene exactamente 2 objetos",
+                "correct": false,
+                "explanation": "Puede tener más de 2; además la cota es $\\lceil n/k\\rceil$."
+              },
+              {
+                "value": "d",
+                "label": "La caja más llena tiene a lo sumo $n/k$ objetos",
+                "correct": false,
+                "explanation": "Es lo contrario: la caja más llena tiene *al menos* $\\lceil n/k\\rceil$."
               }
             ],
             "difficulty": "medium"
