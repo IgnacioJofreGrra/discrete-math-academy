@@ -176,7 +176,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
 
                   <div className="text-sm bg-white p-3 rounded border border-gray-200">
                     <p className="font-medium text-gray-700 mb-1">Explicación:</p>
-                    <p className="text-gray-600">{result.explanation}</p>
+                    <p className="text-gray-600"><InlineMathText text={result.explanation} /></p>
                   </div>
                 </div>
               </Card>
@@ -212,7 +212,7 @@ export function Quiz({ title, questions, passingScore = 70, onComplete }: QuizPr
               <p className={`font-semibold mb-2 ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
                 {isCorrect ? '¡Correcto!' : 'Incorrecto'}
               </p>
-              <p className="text-gray-700 mb-3">{selectedOption?.explanation}</p>
+              <p className="text-gray-700 mb-3"><InlineMathText text={selectedOption?.explanation || ''} /></p>
             </div>
           </div>
         </Card>

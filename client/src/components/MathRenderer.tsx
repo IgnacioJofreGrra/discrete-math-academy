@@ -27,6 +27,7 @@ export function MathRenderer({ latex, inline = false, className = '' }: MathRend
         katex.render(latex, containerRef.current, {
           throwOnError: false,
           displayMode: !inline,
+          output: 'html',
         });
       } catch (error) {
         console.error('Error rendering LaTeX:', error);
