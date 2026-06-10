@@ -137,9 +137,9 @@ export function Challenge({
                     }`}
                   />
                   <div className="flex-1">
-                    <p className="font-medium text-gray-900">{option.value}</p>
+                    <p className="font-medium text-gray-900"><InlineMathText text={option.value} /></p>
                     {submitted && (
-                      <p className="text-sm text-gray-700 mt-2">{option.explanation}</p>
+                      <p className="text-sm text-gray-700 mt-2"><InlineMathText text={option.explanation} /></p>
                     )}
                   </div>
                   {submitted && option.correct && (
@@ -175,7 +175,7 @@ export function Challenge({
                 isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
               }`}>
                 <p className="font-semibold text-gray-900 mb-2">
-                  Respuesta esperada: {expectedAnswer}
+                  Respuesta esperada: <InlineMathText text={expectedAnswer || ''} />
                 </p>
               </div>
             )}
