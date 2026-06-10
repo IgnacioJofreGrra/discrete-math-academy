@@ -2,8 +2,17 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { InlineMathText } from './InlineMathText';
+import { MathInput } from './MathInput';
 import { CheckCircle2, XCircle } from 'lucide-react';
 import { AppIcon } from './AppIcon';
+
+function normalizeAnswer(s: string): string {
+  return s.trim().toLowerCase()
+    .replace(/\$/g, '')
+    .replace(/\s+/g, '')
+    .replace(/\^{(\w)}/g, '^$1')
+    .replace(/[.,!]/g, '');
+}
 
 interface ChallengeOption {
   value: string;
@@ -48,6 +57,7 @@ export function Challenge({
   const [userAnswer, setUserAnswer] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [inputKey, setInputKey] = useState(0);
 
   const difficultyColors = {
     easy: 'bg-green-50 border-green-200',
@@ -71,7 +81,7 @@ export function Challenge({
     let wasCorrect = false;
 
     if (userInput) {
-      wasCorrect = userAnswer.toLowerCase().trim() === expectedAnswer?.toLowerCase().trim();
+      wasCorrect = normalizeAnswer(userAnswer) === normalizeAnswer(expectedAnswer ?? '');
     } else if (selectedOption) {
       const option = options?.find(opt => opt.value === selectedOption);
       wasCorrect = option?.correct || false;
@@ -157,18 +167,11 @@ export function Challenge({
         {/* User Input */}
         {userInput && (
           <div className="mb-6">
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              placeholder="Escribe tu respuesta aquí..."
+            <MathInput
+              key={inputKey}
+              onChange={setUserAnswer}
               disabled={submitted}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
-              onKeyPress={(e) => {
-                if (e.key === 'Enter' && !submitted) {
-                  handleSubmit();
-                }
-              }}
+              placeholder="Escribe tu respuesta aquí..."
             />
             {submitted && (
               <div className={`mt-3 p-4 rounded-lg border-2 ${
@@ -221,6 +224,7 @@ export function Challenge({
             setSubmitted(false);
             setSelectedOption(null);
             setUserAnswer('');
+            setInputKey(k => k + 1);
           }}
           variant="outline"
           className="w-full"

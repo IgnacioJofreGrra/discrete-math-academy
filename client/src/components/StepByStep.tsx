@@ -2,8 +2,17 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { InlineMathText } from './InlineMathText';
+import { MathInput } from './MathInput';
 import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import { AppIcon } from './AppIcon';
+
+function normalizeAnswer(s: string): string {
+  return s.trim().toLowerCase()
+    .replace(/\$/g, '')          // strip $ delimiters
+    .replace(/\s+/g, '')         // collapse whitespace
+    .replace(/\^{(\w)}/g, '^$1') // ^{5} → ^5 (single-char exponent)
+    .replace(/[.,!]/g, '');      // strip trailing punctuation
+}
 
 interface Step {
   instruction: string;
@@ -97,17 +106,11 @@ export function StepByStep({ title, steps, image, onComplete }: StepByStepProps)
 
         {/* Input Area */}
         <div className="mb-6">
-          <input
-            type="text"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
+          <MathInput
+            key={currentStep}
+            onChange={setUserInput}
+            disabled={showAnswer}
             placeholder="Escribe tu respuesta aquí..."
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                handleSubmitAnswer();
-              }
-            }}
           />
         </div>
 
@@ -142,12 +145,12 @@ export function StepByStep({ title, steps, image, onComplete }: StepByStepProps)
         {/* Answer Display */}
         {showAnswer && (
           <div className={`p-4 rounded-lg border-2 ${
-            userInput.toLowerCase().trim() === step.answer.toLowerCase().trim()
+            normalizeAnswer(userInput) === normalizeAnswer(step.answer)
               ? 'bg-green-50 border-green-200'
               : 'bg-orange-50 border-orange-200'
           }`}>
             <div className="flex items-start gap-3">
-              {userInput.toLowerCase().trim() === step.answer.toLowerCase().trim() ? (
+              {normalizeAnswer(userInput) === normalizeAnswer(step.answer) ? (
                 <AppIcon icon={CheckCircle2} size={20} colorClass="text-green-600 mt-1" />
               ) : (
                 <AppIcon icon={AlertCircle} size={20} colorClass="text-orange-600 mt-1" />
