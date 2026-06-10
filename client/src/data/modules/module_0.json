@@ -4,7 +4,7 @@
   "description": "Aprende los fundamentos de divisibilidad, factorización en primos y fracciones irreducibles. Comenzamos desde cero, explicando cada concepto paso a paso.",
   "order": 0,
   "difficulty": "beginner",
-  "estimatedHours": 8,
+  "estimatedHours": 10,
   "icon": "hash",
   "sections": [
     {

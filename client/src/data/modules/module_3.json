@@ -4,7 +4,7 @@
   "description": "Explora la teoría de conjuntos, funciones inyectivas, sobreyectivas y biyectivas.",
   "order": 3,
   "difficulty": "intermediate",
-  "estimatedHours": 10,
+  "estimatedHours": 6,
   "icon": "target",
   "sections": [
     {
