@@ -79,6 +79,58 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_5_1_3",
+            "type": "step_by_step",
+            "title": "Aplicar el PP: grupo de 5 personas y trimestres",
+            "steps": [
+              {
+                "instruction": "¿Cuántos trimestres tiene un año? ¿Cuántas personas hay en el grupo?",
+                "hint": "Un año tiene 4 trimestres (cajas) y hay 5 personas (objetos).",
+                "answer": "4 cajas (trimestres), 5 objetos (personas)."
+              },
+              {
+                "instruction": "¿Se cumple la condición del Principio del Palomar?",
+                "hint": "¿Es 5 > 4?",
+                "answer": "Sí, $5>4$: hay más objetos que cajas."
+              },
+              {
+                "instruction": "¿Qué garantiza el Principio del Palomar?",
+                "hint": "Al menos una caja tiene ≥ 2 objetos.",
+                "answer": "Al menos dos personas nacieron en el mismo trimestre. ✓"
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_5_1_4",
+            "type": "challenge",
+            "title": "Dados y colisiones",
+            "problem": "¿Cuántos dados de 6 caras debes lanzar para garantizar que al menos dos muestren el mismo número?",
+            "options": [
+              {
+                "value": "$7$",
+                "correct": true,
+                "explanation": "Hay 6 valores posibles (cajas); con 7 lanzamientos ($6+1$) el PP garantiza al menos una repetición."
+              },
+              {
+                "value": "$6$",
+                "correct": false,
+                "explanation": "Con 6 lanzamientos es posible obtener los 6 valores distintos."
+              },
+              {
+                "value": "$12$",
+                "correct": false,
+                "explanation": "Solo se necesitan $6+1=7$."
+              },
+              {
+                "value": "$3$",
+                "correct": false,
+                "explanation": "Con 3 lanzamientos aún podrían salir 3 valores distintos."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -229,6 +281,58 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_5_2_3",
+            "type": "challenge",
+            "title": "Categorías de examen",
+            "problem": "Si 50 datos se distribuyen en 8 categorías, ¿cuántos hay como mínimo en la categoría más poblada?",
+            "options": [
+              {
+                "value": "$7$",
+                "correct": true,
+                "explanation": "$\\lceil50/8\\rceil=\\lceil6.25\\rceil=7$."
+              },
+              {
+                "value": "$6$",
+                "correct": false,
+                "explanation": "$8\\times6=48<50$; no alcanza."
+              },
+              {
+                "value": "$5$",
+                "correct": false,
+                "explanation": "$8\\times5=40<50$; insuficiente."
+              },
+              {
+                "value": "$8$",
+                "correct": false,
+                "explanation": "Se garantiza al menos 7, que ya es suficiente."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_5_2_4",
+            "type": "step_by_step",
+            "title": "Demostrar: en 13 personas, dos nacieron el mismo mes",
+            "steps": [
+              {
+                "instruction": "Define las cajas y los objetos.",
+                "hint": "Los meses son las cajas; las personas son los objetos.",
+                "answer": "12 cajas (meses del año), 13 objetos (personas)."
+              },
+              {
+                "instruction": "Aplica el Principio del Palomar Generalizado.",
+                "hint": "$\\lceil13/12\\rceil=?$",
+                "answer": "$\\lceil13/12\\rceil=2$: al menos una caja contiene $\\geq2$ personas."
+              },
+              {
+                "instruction": "Enuncia la conclusión.",
+                "hint": "Una caja con ≥2 personas significa dos personas en el mismo mes.",
+                "answer": "En cualquier grupo de 13 personas, al menos dos nacieron en el mismo mes. ✓"
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [

@@ -97,6 +97,42 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_12_3",
+            "type": "flashcard",
+            "question": "¿Cuál es el orden de prioridad de las operaciones aritméticas?",
+            "answer": "1. Paréntesis. 2. Potencias y raíces. 3. Multiplicación y división (de izquierda a derecha). 4. Suma y resta (de izquierda a derecha).",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_12_4",
+            "type": "challenge",
+            "title": "Prioridad de operaciones",
+            "problem": "¿Cuánto es $2+3\\times4-1$?",
+            "options": [
+              {
+                "value": "$13$",
+                "correct": true,
+                "explanation": "Primero la multiplicación: $3\\times4=12$. Luego $2+12-1=13$."
+              },
+              {
+                "value": "$19$",
+                "correct": false,
+                "explanation": "Error: la multiplicación tiene prioridad sobre la suma."
+              },
+              {
+                "value": "$15$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              },
+              {
+                "value": "$11$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -283,6 +319,42 @@
                 "instruction": "Indica el orden de magnitud del segundo numero.",
                 "hint": "Es el exponente de 10.",
                 "answer": "-6"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_13_3",
+            "type": "flashcard",
+            "question": "¿Cuándo está un número en notación científica correcta?",
+            "answer": "Cuando se escribe como $c\\times10^n$ con $1\\leq|c|<10$ y $n$ entero.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_13_4",
+            "type": "challenge",
+            "title": "División en notación científica",
+            "problem": "¿Cuánto es $(8\\times10^6)\\div(4\\times10^2)$ en notación científica?",
+            "options": [
+              {
+                "value": "$2\\times10^4$",
+                "correct": true,
+                "explanation": "$8/4=2$ y $10^6/10^2=10^{6-2}=10^4$."
+              },
+              {
+                "value": "$2\\times10^3$",
+                "correct": false,
+                "explanation": "$6-2=4$, no 3."
+              },
+              {
+                "value": "$4\\times10^4$",
+                "correct": false,
+                "explanation": "$8/4=2$, no 4."
+              },
+              {
+                "value": "$2\\times10^8$",
+                "correct": false,
+                "explanation": "En la división se restan los exponentes."
               }
             ],
             "difficulty": "medium"
@@ -861,6 +933,42 @@
                 "instruction": "Combina resta de logaritmos para obtener uno solo.",
                 "hint": "$\\log_a(u)-\\log_a(v)=\\log_a(u/v)$",
                 "answer": "$\\log_6\\!\\left(\\frac{xy^4}{z}\\right)$"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_14_3",
+            "type": "flashcard",
+            "question": "¿Cuánto es $\\log_{10}(10^5)$?",
+            "answer": "$5$, porque $\\log_{10}(10^n)=n$ para cualquier $n$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_14_4",
+            "type": "challenge",
+            "title": "Simplificar radical con variables",
+            "problem": "Simplifica $\\sqrt{x^4 y^2}$ para $x,y\\geq0$.",
+            "options": [
+              {
+                "value": "$x^2 y$",
+                "correct": true,
+                "explanation": "$\\sqrt{x^4 y^2}=(x^4 y^2)^{1/2}=x^{4/2}y^{2/2}=x^2 y$."
+              },
+              {
+                "value": "$x^2 y^2$",
+                "correct": false,
+                "explanation": "$(y^2)^{1/2}=y$, no $y^2$."
+              },
+              {
+                "value": "$xy$",
+                "correct": false,
+                "explanation": "$(x^4)^{1/2}=x^2$, no $x$."
+              },
+              {
+                "value": "$x^4 y$",
+                "correct": false,
+                "explanation": "Incorrecto."
               }
             ],
             "difficulty": "medium"

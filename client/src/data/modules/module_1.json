@@ -101,6 +101,36 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_1_1_4",
+            "type": "flashcard",
+            "question": "¿Puede el PBO aplicarse al conjunto $\\left\\{\\frac{1}{2},\\frac{1}{3},\\frac{1}{4},\\ldots\\right\\}$?",
+            "answer": "No. Sus elementos son racionales, no enteros. El PBO requiere un conjunto de enteros no negativos.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_1_1_5",
+            "type": "step_by_step",
+            "title": "Encontrar el mínimo de $C=\\{n\\in\\mathbb{N}: n^2\\geq10\\}$",
+            "steps": [
+              {
+                "instruction": "Comprueba si $n=0,1,2,3$ pertenecen a $C$.",
+                "hint": "Calcula $0^2,1^2,2^2,3^2$ y compara con 10.",
+                "answer": "$0^2=0,1^2=1,2^2=4,3^2=9$; ninguno es $\\geq10$, así que $0,1,2,3\\notin C$."
+              },
+              {
+                "instruction": "¿Pertenece $n=4$ a $C$?",
+                "hint": "$4^2=16$",
+                "answer": "Sí. $4^2=16\\geq10$, por tanto $4\\in C$."
+              },
+              {
+                "instruction": "Concluye cuál es $\\min C$ y por qué.",
+                "hint": "Ya comprobamos que todos los valores menores no están en $C$.",
+                "answer": "$\\min C=4$, porque $4\\in C$ y ningún natural menor pertenece a $C$. El PBO garantiza que ese mínimo existe."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -333,6 +363,41 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_1_2_3",
+            "type": "flashcard",
+            "question": "¿Cuáles son los cinco pasos de la plantilla de prueba por absurdo con el PBO?",
+            "answer": "1) Definir $C=\\{n\\in\\mathbb{N}:\\neg P(n)\\}$. 2) Suponer $C\\neq\\emptyset$. 3) Por el PBO, existe $n_0=\\min C$. 4) Derivar una contradicción. 5) Concluir $C=\\emptyset$, es decir, $P(n)$ es verdadera para todo $n$.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_1_2_4",
+            "type": "step_by_step",
+            "title": "Demostración: $n^2+n$ es par para todo $n\\in\\mathbb{N}$",
+            "steps": [
+              {
+                "instruction": "Define el conjunto de contraejemplos $C$.",
+                "hint": "$C=\\{n\\in\\mathbb{N}: n^2+n\\text{ es impar}\\}$",
+                "answer": "$C=\\{n\\in\\mathbb{N}: n^2+n\\text{ es impar}\\}$."
+              },
+              {
+                "instruction": "Verifica el caso base: ¿pertenece $0$ a $C$?",
+                "hint": "$0^2+0=0$, ¿es par o impar?",
+                "answer": "$0^2+0=0$ es par, así que $0\\notin C$."
+              },
+              {
+                "instruction": "Supón $C\\neq\\emptyset$. Sea $c_0=\\min C$. Entonces $c_0-1\\notin C$, así que $(c_0-1)^2+(c_0-1)$ es par. Factoriza $c_0^2+c_0$.",
+                "hint": "$c_0^2+c_0=c_0(c_0+1)$",
+                "answer": "$c_0^2+c_0=c_0(c_0+1)$. Es el producto de dos enteros consecutivos; uno de ellos siempre es par."
+              },
+              {
+                "instruction": "¿Cuál es la contradicción?",
+                "hint": "El producto de dos consecutivos es par.",
+                "answer": "$c_0(c_0+1)$ es par (uno de los consecutivos es par), contradiciendo $c_0\\in C$. Luego $C=\\emptyset$ y $n^2+n$ es par para todo $n$."
+              }
+            ],
+            "difficulty": "hard"
           }
         ],
         "exam": [
@@ -507,6 +572,42 @@
               }
             ],
             "difficulty": "hard"
+          },
+          {
+            "id": "exercise_1_3_3",
+            "type": "challenge",
+            "title": "Simplificar una fracción",
+            "problem": "Simplifica $\\dfrac{56}{84}$ a forma irreducible.",
+            "options": [
+              {
+                "value": "$\\dfrac{2}{3}$",
+                "correct": true,
+                "explanation": "$\\gcd(56,84)=28$; $56/28=2$ y $84/28=3$."
+              },
+              {
+                "value": "$\\dfrac{4}{6}$",
+                "correct": false,
+                "explanation": "$\\gcd(4,6)=2$, no es irreducible."
+              },
+              {
+                "value": "$\\dfrac{7}{12}$",
+                "correct": false,
+                "explanation": "$7\\times12=84$ pero $7\\times8\\neq56$."
+              },
+              {
+                "value": "$\\dfrac{14}{21}$",
+                "correct": false,
+                "explanation": "$\\gcd(14,21)=7$, no es irreducible."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_1_3_4",
+            "type": "flashcard",
+            "question": "Si $\\gcd(a,b)=d$, ¿cómo se escribe la forma irreducible de $\\frac{a}{b}$?",
+            "answer": "$\\dfrac{a/d}{b/d}$, donde $\\gcd(a/d,\\,b/d)=1$.",
+            "difficulty": "easy"
           }
         ],
         "exam": [

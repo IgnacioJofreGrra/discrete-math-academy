@@ -85,6 +85,41 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_6_1_3",
+            "type": "flashcard",
+            "question": "¿Cuándo es una relación simétrica?",
+            "answer": "Cuando siempre que $aRb$ entonces también $bRa$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_6_1_4",
+            "type": "step_by_step",
+            "title": "Verificar que la congruencia módulo 3 es relación de equivalencia",
+            "steps": [
+              {
+                "instruction": "Reflexividad: ¿es $a\\equiv a\\pmod3$ para todo $a\\in\\mathbb{Z}$?",
+                "hint": "$a-a=0$ y $3\\mid0$.",
+                "answer": "Sí. $a-a=0=3\\times0$, así que $3\\mid(a-a)$. ✓"
+              },
+              {
+                "instruction": "Simetría: si $a\\equiv b\\pmod3$, ¿se cumple $b\\equiv a\\pmod3$?",
+                "hint": "Si $3\\mid(a-b)$, ¿qué pasa con $b-a$?",
+                "answer": "Si $3\\mid(a-b)$, entonces $3\\mid(-(a-b))=b-a$. Por tanto $b\\equiv a$. ✓"
+              },
+              {
+                "instruction": "Transitividad: si $a\\equiv b$ y $b\\equiv c\\pmod3$, ¿se cumple $a\\equiv c$?",
+                "hint": "Suma las dos condiciones de divisibilidad.",
+                "answer": "$3\\mid(a-b)$ y $3\\mid(b-c)$; entonces $3\\mid(a-b+b-c)=a-c$. ✓"
+              },
+              {
+                "instruction": "Conclusión.",
+                "hint": "Se cumplen las tres propiedades.",
+                "answer": "La congruencia módulo 3 es reflexiva, simétrica y transitiva: es una relación de equivalencia."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -270,6 +305,42 @@
                 "answer": "4 clases: $[0], [1], [2], [3]$"
               }
             ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_6_2_3",
+            "type": "challenge",
+            "title": "Clase de un elemento",
+            "problem": "En la congruencia módulo 3, ¿a qué clase pertenece 17?",
+            "options": [
+              {
+                "value": "$[2]$",
+                "correct": true,
+                "explanation": "$17=5\\times3+2$, así que $17\\equiv2\\pmod3$."
+              },
+              {
+                "value": "$[1]$",
+                "correct": false,
+                "explanation": "$17\\bmod3=2$, no 1."
+              },
+              {
+                "value": "$[0]$",
+                "correct": false,
+                "explanation": "17 no es múltiplo de 3."
+              },
+              {
+                "value": "$[17]$",
+                "correct": false,
+                "explanation": "La clase de 17 es $[2]$; en $\\mathbb{Z}/3\\mathbb{Z}$ las clases son $[0],[1],[2]$."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_6_2_4",
+            "type": "flashcard",
+            "question": "¿Cómo se llama el conjunto de todas las clases de equivalencia de $R$ en $A$?",
+            "answer": "El **conjunto cociente**, escrito $A/R$. Sus elementos son las clases de equivalencia $[a]$ para cada $a\\in A$.",
             "difficulty": "medium"
           }
         ],

@@ -105,6 +105,58 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_1_3",
+            "type": "challenge",
+            "title": "Hipótesis inductiva",
+            "problem": "En la prueba por inducción de $\\sum_{i=0}^{n}i=\\frac{n(n+1)}{2}$, ¿cuál es la hipótesis inductiva $P(k)$?",
+            "options": [
+              {
+                "value": "$\\displaystyle\\sum_{i=0}^{k}i=\\frac{k(k+1)}{2}$",
+                "correct": true,
+                "explanation": "Correcto. Se asume que la fórmula vale para $k$ y se demuestra para $k+1$."
+              },
+              {
+                "value": "$\\displaystyle\\sum_{i=0}^{k+1}i=\\frac{(k+1)(k+2)}{2}$",
+                "correct": false,
+                "explanation": "Eso es la conclusión $P(k+1)$, no la hipótesis."
+              },
+              {
+                "value": "$\\displaystyle\\sum_{i=0}^{n}i=\\frac{n(n+1)}{2}$ para todo $n$",
+                "correct": false,
+                "explanation": "Eso es lo que queremos demostrar, no la hipótesis del paso inductivo."
+              },
+              {
+                "value": "$k\\geq0$",
+                "correct": false,
+                "explanation": "Esa es la condición de aplicabilidad, no la hipótesis inductiva."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_1_4",
+            "type": "step_by_step",
+            "title": "Demostrar por inducción que $3^n\\geq n+1$ para todo $n\\geq0$",
+            "steps": [
+              {
+                "instruction": "Paso base ($n=0$): verifica $3^0\\geq0+1$.",
+                "hint": "$3^0=1$",
+                "answer": "$3^0=1\\geq1=0+1$. ✓"
+              },
+              {
+                "instruction": "Hipótesis inductiva: supón que $3^k\\geq k+1$. Queremos probar $3^{k+1}\\geq k+2$.",
+                "hint": "Multiplica ambos lados de la HI por 3.",
+                "answer": "Desde $3^k\\geq k+1$, se tiene $3^{k+1}=3\\cdot3^k\\geq3(k+1)=3k+3$."
+              },
+              {
+                "instruction": "¿Por qué $3k+3\\geq k+2$ para $k\\geq0$?",
+                "hint": "Resta $k+2$ de ambos lados: $2k+1\\geq0$.",
+                "answer": "$3k+3-(k+2)=2k+1\\geq0$ para todo $k\\geq0$. Por tanto $3^{k+1}\\geq k+2$. ✓"
+              }
+            ],
+            "difficulty": "hard"
           }
         ],
         "exam": [
@@ -292,6 +344,41 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_2_3",
+            "type": "step_by_step",
+            "title": "Demostrar por inducción fuerte: todo $n\\geq2$ es primo o producto de primos",
+            "steps": [
+              {
+                "instruction": "Paso base ($n=2$): verifica que 2 es primo.",
+                "hint": "¿Tiene 2 factores distintos de 1 y él mismo?",
+                "answer": "2 es primo (sus únicos divisores son 1 y 2). ✓"
+              },
+              {
+                "instruction": "Hipótesis inductiva fuerte: supón $P(k)$ verdadera para todo $2\\leq k\\leq n$. Considera $n+1$.",
+                "hint": "Dos casos: $n+1$ es primo, o es compuesto.",
+                "answer": "Si $n+1$ es primo, $P(n+1)$ es verdadera directamente."
+              },
+              {
+                "instruction": "Si $n+1$ es compuesto, escribe $n+1=a\\cdot b$ con $2\\leq a,b\\leq n$. ¿Qué garantiza la HI fuerte sobre $a$ y $b$?",
+                "hint": "$a$ y $b$ están en el rango $[2,n]$.",
+                "answer": "Por la HI fuerte, $a$ y $b$ son primos o productos de primos. Por tanto $n+1=a\\cdot b$ también es producto de primos."
+              },
+              {
+                "instruction": "Conclusión.",
+                "hint": "Ambos casos cubren a $n+1$.",
+                "answer": "En ambos casos $P(n+1)$ es verdadera, así que por inducción fuerte todo entero $\\geq2$ es primo o producto de primos."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exercise_2_2_4",
+            "type": "flashcard",
+            "question": "¿Por qué la inducción fuerte y la inducción simple son equivalentes en poder demostrativo?",
+            "answer": "Porque cualquier demostración por inducción simple puede reformularse con inducción fuerte y viceversa. La diferencia es de conveniencia, no de capacidad.",
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -470,6 +557,58 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_2_3_3",
+            "type": "challenge",
+            "title": "Resolver una recurrencia simple",
+            "problem": "La recurrencia $T(n)=T(n-1)+3$ con $T(0)=1$ tiene solución cerrada...",
+            "options": [
+              {
+                "value": "$T(n)=3n+1$",
+                "correct": true,
+                "explanation": "$T(0)=1$, $T(1)=4$, $T(2)=7$, … cada paso suma 3; la fórmula es $T(n)=1+3n$."
+              },
+              {
+                "value": "$T(n)=3^n$",
+                "correct": false,
+                "explanation": "$3^0=1$ ✓ pero $3^1=3\\neq4=T(1)$."
+              },
+              {
+                "value": "$T(n)=2n+1$",
+                "correct": false,
+                "explanation": "$T(0)=1$ ✓ pero $T(1)=3\\neq4$."
+              },
+              {
+                "value": "$T(n)=n+3$",
+                "correct": false,
+                "explanation": "$T(0)=3\\neq1$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_3_4",
+            "type": "step_by_step",
+            "title": "Iterar la recurrencia $a_n=2a_{n-1}+1$ con $a_0=0$",
+            "steps": [
+              {
+                "instruction": "Calcula $a_1$, $a_2$ y $a_3$.",
+                "hint": "$a_1=2\\cdot0+1=1$",
+                "answer": "$a_1=1,\\; a_2=2\\cdot1+1=3,\\; a_3=2\\cdot3+1=7$."
+              },
+              {
+                "instruction": "Calcula $a_4$ y escribe la lista $a_0,\\ldots,a_4$.",
+                "hint": "$a_4=2\\cdot7+1$",
+                "answer": "$a_4=15$. Lista: $0,1,3,7,15$."
+              },
+              {
+                "instruction": "Identifica el patrón y formula $a_n$ en forma cerrada.",
+                "hint": "$0=2^0-1$, $1=2^1-1$, $3=2^2-1$, $7=2^3-1$, …",
+                "answer": "$a_n=2^n-1$. Se puede verificar: $2(2^{n-1}-1)+1=2^n-2+1=2^n-1$. ✓"
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [

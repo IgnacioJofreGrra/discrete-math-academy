@@ -451,6 +451,70 @@
             "userInput": true,
             "expectedAnswer": "2^2 * 3 * 7",
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_2_4",
+            "type": "flashcard",
+            "question": "¿Cuántos divisores positivos tiene $p^n$ cuando $p$ es primo?",
+            "answer": "Exactamente $n+1$: los divisores son $1, p, p^2, \\ldots, p^n$.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_2_5",
+            "type": "challenge",
+            "title": "¿Cuál de estos es primo?",
+            "problem": "¿Cuál de los siguientes números es primo?",
+            "options": [
+              {
+                "value": "51",
+                "correct": false,
+                "explanation": "$51=3\\times17$, no es primo."
+              },
+              {
+                "value": "53",
+                "correct": true,
+                "explanation": "Correcto. 53 no es divisible por ningún primo hasta $\\sqrt{53}\\approx7.3$ (no divide 2, 3, 5 ni 7)."
+              },
+              {
+                "value": "57",
+                "correct": false,
+                "explanation": "$57=3\\times19$, no es primo."
+              },
+              {
+                "value": "63",
+                "correct": false,
+                "explanation": "$63=7\\times9=7\\times3^2$, no es primo."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_2_6",
+            "type": "step_by_step",
+            "title": "Factorizar 120",
+            "steps": [
+              {
+                "instruction": "¿Cuál es el menor primo que divide a 120?",
+                "hint": "¿Es 120 par?",
+                "answer": "2. $120=2\\times60$."
+              },
+              {
+                "instruction": "Factoriza 60 usando la misma estrategia.",
+                "hint": "$60=2\\times30=2\\times2\\times15$",
+                "answer": "$60=2^2\\times15$."
+              },
+              {
+                "instruction": "¿Cómo se factoriza 15?",
+                "hint": "$15=3\\times5$",
+                "answer": "$15=3\\times5$."
+              },
+              {
+                "instruction": "Escribe la factorización completa de 120.",
+                "hint": "Junta todos los factores: $2\\times2^2\\times3\\times5$",
+                "answer": "$120=2^3\\times3\\times5$."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -676,6 +740,65 @@
                 "instruction": "Divide numerador y denominador por el MCD.",
                 "hint": "$\\frac{24}{36} = \\frac{24/12}{36/12}$",
                 "answer": "$\\frac{24}{36} = \\frac{2}{3}$"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_3_4",
+            "type": "challenge",
+            "title": "Calcular el mcm",
+            "problem": "¿Cuánto es $\\text{mcm}(12,\\,18)$?",
+            "options": [
+              {
+                "value": "$36$",
+                "correct": true,
+                "explanation": "$12=2^2\\times3$, $18=2\\times3^2$; $\\text{mcm}=2^2\\times3^2=36$."
+              },
+              {
+                "value": "$6$",
+                "correct": false,
+                "explanation": "Eso es el $\\gcd$, no el mcm."
+              },
+              {
+                "value": "$216$",
+                "correct": false,
+                "explanation": "$216=12\\times18$; el mcm es menor cuando hay factores comunes."
+              },
+              {
+                "value": "$24$",
+                "correct": false,
+                "explanation": "$24=\\text{mcm}(8,12)$, no de 12 y 18."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_3_5",
+            "type": "flashcard",
+            "question": "¿Qué relación existe entre $\\gcd(a,b)$ y $\\text{mcm}(a,b)$?",
+            "answer": "$\\gcd(a,b)\\times\\text{mcm}(a,b)=a\\times b$ para cualesquiera enteros positivos $a$ y $b$.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_0_3_6",
+            "type": "step_by_step",
+            "title": "Encontrar mcm(8, 12) por factorización",
+            "steps": [
+              {
+                "instruction": "Factoriza 8 y 12 en primos.",
+                "hint": "$8=2^3$, $12=2^2\\times3$",
+                "answer": "$8=2^3$, $12=2^2\\times3$."
+              },
+              {
+                "instruction": "Para el mcm, toma cada primo con el mayor exponente que aparece.",
+                "hint": "El primo 2 aparece con exponente 3 en 8 y 2 en 12. El primo 3 aparece solo en 12.",
+                "answer": "$\\text{mcm}=2^3\\times3=24$."
+              },
+              {
+                "instruction": "Verifica: $\\gcd(8,12)\\times\\text{mcm}(8,12)=8\\times12$.",
+                "hint": "$\\gcd(8,12)=4$",
+                "answer": "$4\\times24=96=8\\times12$. ✓"
               }
             ],
             "difficulty": "medium"

@@ -92,6 +92,42 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_4_1_4",
+            "type": "flashcard",
+            "question": "¿Qué es la cardinalidad de un conjunto?",
+            "answer": "Una medida del 'tamaño' del conjunto. Dos conjuntos tienen la misma cardinalidad si y solo si existe una biyección entre ellos.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_4_1_5",
+            "type": "challenge",
+            "title": "¿Es posible una biyección?",
+            "problem": "¿Existe una función biyectiva entre $\\{1,2,3\\}$ y $\\{a,b,c,d\\}$?",
+            "options": [
+              {
+                "value": "No, porque $|\\{1,2,3\\}|=3\\neq4=|\\{a,b,c,d\\}|$",
+                "correct": true,
+                "explanation": "Una biyección requiere la misma cardinalidad. Aquí son distintas."
+              },
+              {
+                "value": "Sí, mapeando 3 elementos a 4",
+                "correct": false,
+                "explanation": "Una función de un conjunto de 3 a uno de 4 no puede ser sobreyectiva."
+              },
+              {
+                "value": "Sí, si dejamos un elemento sin imagen",
+                "correct": false,
+                "explanation": "Una función debe asignar imagen a TODOS los elementos del dominio."
+              },
+              {
+                "value": "Depende de la elección de función",
+                "correct": false,
+                "explanation": "No: la cardinalidad distinta lo impide definitivamente."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -280,6 +316,42 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_4_2_4",
+            "type": "flashcard",
+            "question": "¿Qué representa $\\aleph_0$ (alef-cero)?",
+            "answer": "Es la cardinalidad del conjunto de los números naturales $\\mathbb{N}$. Todo conjunto infinito numerable tiene cardinalidad $\\aleph_0$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_4_2_5",
+            "type": "challenge",
+            "title": "Numerabilidad de los irracionales",
+            "problem": "¿Es el conjunto de los números irracionales $\\mathbb{R}\\setminus\\mathbb{Q}$ numerable?",
+            "options": [
+              {
+                "value": "No, porque $\\mathbb{R}$ no es numerable y $\\mathbb{Q}$ sí; la diferencia debe ser no-numerable",
+                "correct": true,
+                "explanation": "Si $\\mathbb{R}\\setminus\\mathbb{Q}$ fuese numerable, $\\mathbb{R}=\\mathbb{Q}\\cup(\\mathbb{R}\\setminus\\mathbb{Q})$ sería unión de dos numerables, lo que lo haría numerable. Contradicción."
+              },
+              {
+                "value": "Sí, porque entre dos irracionales siempre hay un racional",
+                "correct": false,
+                "explanation": "Esa propiedad (densidad mutua) no implica numerabilidad."
+              },
+              {
+                "value": "Sí, porque los irracionales son menos que los racionales",
+                "correct": false,
+                "explanation": "Ocurre lo contrario: hay 'más' irracionales que racionales."
+              },
+              {
+                "value": "No se puede saber",
+                "correct": false,
+                "explanation": "Sí se puede demostrar; son no-numerables."
+              }
+            ],
+            "difficulty": "hard"
           }
         ],
         "exam": [

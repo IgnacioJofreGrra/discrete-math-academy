@@ -111,6 +111,58 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_3_1_4",
+            "type": "step_by_step",
+            "title": "Verificar De Morgan: $\\overline{A\\cup B}=\\overline{A}\\cap\\overline{B}$",
+            "steps": [
+              {
+                "instruction": "Sea $U=\\{1,2,3,4,5\\}$, $A=\\{1,2,3\\}$, $B=\\{3,4\\}$. Calcula $\\overline{A\\cup B}$.",
+                "hint": "Primero $A\\cup B$, luego complemento.",
+                "answer": "$A\\cup B=\\{1,2,3,4\\}$; $\\overline{A\\cup B}=\\{5\\}$."
+              },
+              {
+                "instruction": "Calcula $\\overline{A}$ y $\\overline{B}$ por separado.",
+                "hint": "Elementos de $U$ que no están en $A$ (ni en $B$).",
+                "answer": "$\\overline{A}=\\{4,5\\}$, $\\overline{B}=\\{1,2,5\\}$."
+              },
+              {
+                "instruction": "Calcula $\\overline{A}\\cap\\overline{B}$ y compara con $\\overline{A\\cup B}$.",
+                "hint": "Intersección = elementos en ambos.",
+                "answer": "$\\overline{A}\\cap\\overline{B}=\\{5\\}=\\overline{A\\cup B}$. La ley de De Morgan se verifica. ✓"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_3_1_5",
+            "type": "challenge",
+            "title": "Principio de inclusión-exclusión",
+            "problem": "Si $|A|=5$, $|B|=4$ y $|A\\cap B|=2$, ¿cuánto es $|A\\cup B|$?",
+            "options": [
+              {
+                "value": "$7$",
+                "correct": true,
+                "explanation": "$|A\\cup B|=|A|+|B|-|A\\cap B|=5+4-2=7$."
+              },
+              {
+                "value": "$9$",
+                "correct": false,
+                "explanation": "Eso sería $|A|+|B|$ sin restar la intersección."
+              },
+              {
+                "value": "$3$",
+                "correct": false,
+                "explanation": "Eso sería solo la intersección y algo más, no la unión."
+              },
+              {
+                "value": "$11$",
+                "correct": false,
+                "explanation": "Eso supera la suma de los tamaños individuales."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -350,6 +402,42 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_3_2_4",
+            "type": "flashcard",
+            "question": "¿Cuándo existe la función inversa $f^{-1}: B\\to A$?",
+            "answer": "Exactamente cuando $f: A\\to B$ es biyectiva (inyectiva y sobreyectiva).",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_3_2_5",
+            "type": "challenge",
+            "title": "¿Tiene inversa?",
+            "problem": "¿Tiene inversa la función $f:\\mathbb{R}\\to\\mathbb{R}$ definida por $f(x)=x^2$?",
+            "options": [
+              {
+                "value": "No, porque no es inyectiva: $f(1)=f(-1)=1$",
+                "correct": true,
+                "explanation": "Correcto. Al no ser inyectiva, no es biyectiva y no tiene inversa en todo $\\mathbb{R}$."
+              },
+              {
+                "value": "Sí, su inversa es $f^{-1}(x)=\\sqrt{x}$",
+                "correct": false,
+                "explanation": "$\\sqrt{x}$ solo cubre la rama positiva; no es inversa en todo $\\mathbb{R}$."
+              },
+              {
+                "value": "Sí, su inversa es $f^{-1}(x)=\\pm\\sqrt{x}$",
+                "correct": false,
+                "explanation": "$\\pm\\sqrt{x}$ no es una función (asigna dos valores a cada $x>0$)."
+              },
+              {
+                "value": "No, porque no es sobreyectiva",
+                "correct": false,
+                "explanation": "Además de no ser sobreyectiva, tampoco es inyectiva; la razón principal es la no-inyectividad."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [

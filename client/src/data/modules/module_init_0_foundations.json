@@ -78,6 +78,41 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_1_3",
+            "type": "step_by_step",
+            "title": "Clasificar números en sus conjuntos",
+            "steps": [
+              {
+                "instruction": "Clasifica: $0$. ¿A qué conjuntos pertenece?",
+                "hint": "¿Es natural? ¿Entero? ¿Racional? ¿Real?",
+                "answer": "$0\\in\\mathbb{N}\\subset\\mathbb{Z}\\subset\\mathbb{Q}\\subset\\mathbb{R}$."
+              },
+              {
+                "instruction": "Clasifica: $-3$.",
+                "hint": "¿Es no-negativo? ¿Es el cociente de dos enteros?",
+                "answer": "$-3\\in\\mathbb{Z}\\subset\\mathbb{Q}\\subset\\mathbb{R}$, pero $-3\\notin\\mathbb{N}$."
+              },
+              {
+                "instruction": "Clasifica: $\\frac{1}{2}$.",
+                "hint": "¿Es entero? ¿Es racional?",
+                "answer": "$\\frac{1}{2}\\in\\mathbb{Q}\\subset\\mathbb{R}$, pero $\\frac{1}{2}\\notin\\mathbb{Z}$ ni $\\mathbb{N}$."
+              },
+              {
+                "instruction": "Clasifica: $\\sqrt{5}$.",
+                "hint": "¿Puede escribirse como $p/q$ con enteros? Pista: $\\sqrt{5}$ es irracional.",
+                "answer": "$\\sqrt{5}\\in\\mathbb{R}\\setminus\\mathbb{Q}$: es real pero irracional."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_1_4",
+            "type": "flashcard",
+            "question": "¿Qué tienen en común $\\mathbb{N}$, $\\mathbb{Z}$, $\\mathbb{Q}$ y $\\mathbb{R}$?",
+            "answer": "Todos son subconjuntos de $\\mathbb{R}$ y forman una cadena de inclusión: $\\mathbb{N}\\subset\\mathbb{Z}\\subset\\mathbb{Q}\\subset\\mathbb{R}$.",
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -280,6 +315,42 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_2_3",
+            "type": "challenge",
+            "title": "Identificar la propiedad",
+            "problem": "¿Cuál de las siguientes igualdades ilustra la propiedad distributiva?",
+            "options": [
+              {
+                "value": "$a(b+c)=ab+ac$",
+                "correct": true,
+                "explanation": "La distributiva del producto sobre la suma."
+              },
+              {
+                "value": "$a+b=b+a$",
+                "correct": false,
+                "explanation": "Esa es la conmutatividad de la suma."
+              },
+              {
+                "value": "$(a+b)+c=a+(b+c)$",
+                "correct": false,
+                "explanation": "Esa es la asociatividad de la suma."
+              },
+              {
+                "value": "$a+0=a$",
+                "correct": false,
+                "explanation": "Esa es la propiedad del elemento neutro aditivo."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_2_4",
+            "type": "flashcard",
+            "question": "¿Cuál es el inverso aditivo (opuesto) de $-7$?",
+            "answer": "$7$, porque $-7+7=0$. En general, el inverso aditivo de $a$ es $-a$.",
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -500,6 +571,42 @@
               }
             ],
             "difficulty": "hard"
+          },
+          {
+            "id": "exercise_init_0_3_3",
+            "type": "flashcard",
+            "question": "¿Qué significa restar un número negativo? Enuncia la regla.",
+            "answer": "Restar un negativo equivale a sumar su opuesto: $a-(-b)=a+b$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_3_4",
+            "type": "challenge",
+            "title": "Operación con paréntesis",
+            "problem": "¿Cuánto es $-3-(2-5)$?",
+            "options": [
+              {
+                "value": "$0$",
+                "correct": true,
+                "explanation": "$2-5=-3$; luego $-3-(-3)=-3+3=0$."
+              },
+              {
+                "value": "$-10$",
+                "correct": false,
+                "explanation": "Error: $-(2-5)=+3$, no $-3$."
+              },
+              {
+                "value": "$-6$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              },
+              {
+                "value": "$4$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -672,6 +779,53 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_4_3",
+            "type": "step_by_step",
+            "title": "Simplificar $(2^3\\times2^2)\\div2^4$",
+            "steps": [
+              {
+                "instruction": "Calcula el numerador: $2^3\\times2^2$.",
+                "hint": "Suma los exponentes de la misma base.",
+                "answer": "$2^3\\times2^2=2^{3+2}=2^5$."
+              },
+              {
+                "instruction": "Ahora divide: $2^5\\div2^4$.",
+                "hint": "Resta los exponentes.",
+                "answer": "$2^5\\div2^4=2^{5-4}=2^1=2$."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_4_4",
+            "type": "challenge",
+            "title": "Potencia de potencia",
+            "problem": "¿Cuánto vale $(3^2)^3$?",
+            "options": [
+              {
+                "value": "$729$",
+                "correct": true,
+                "explanation": "$(3^2)^3=3^{2\\times3}=3^6=729$."
+              },
+              {
+                "value": "$243$",
+                "correct": false,
+                "explanation": "$243=3^5$; el exponente es $2\\times3=6$."
+              },
+              {
+                "value": "$81$",
+                "correct": false,
+                "explanation": "$81=3^4$; el exponente es 6."
+              },
+              {
+                "value": "$36$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -892,6 +1046,42 @@
                 "instruction": "Ahora calcula $(-3)^{-2}$.",
                 "hint": "Primero invierte, luego eleva al cuadrado.",
                 "answer": "$(-3)^{-2}=1/(-3)^2=1/9$"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_5_3",
+            "type": "flashcard",
+            "question": "Regla de signo para potencias de base negativa: ¿cuándo el resultado es positivo y cuándo negativo?",
+            "answer": "Con exponente **par**: $(-a)^{\\text{par}}>0$ (p. ej. $(-2)^4=16$). Con exponente **impar**: $(-a)^{\\text{impar}}<0$ (p. ej. $(-2)^3=-8$).",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_5_4",
+            "type": "challenge",
+            "title": "Ordenar potencias",
+            "problem": "Ordena de menor a mayor: $2^{-3},\\;2^{-1},\\;2^0,\\;2^1$.",
+            "options": [
+              {
+                "value": "$2^{-3}<2^{-1}<2^0<2^1$",
+                "correct": true,
+                "explanation": "$\\frac{1}{8}<\\frac{1}{2}<1<2$."
+              },
+              {
+                "value": "$2^{-3}<2^0<2^{-1}<2^1$",
+                "correct": false,
+                "explanation": "$2^0=1>\\frac{1}{2}=2^{-1}$."
+              },
+              {
+                "value": "$2^1<2^0<2^{-1}<2^{-3}$",
+                "correct": false,
+                "explanation": "El orden es el inverso."
+              },
+              {
+                "value": "$2^{-1}<2^{-3}<2^0<2^1$",
+                "correct": false,
+                "explanation": "$2^{-3}=\\frac{1}{8}<\\frac{1}{2}=2^{-1}$."
               }
             ],
             "difficulty": "medium"
