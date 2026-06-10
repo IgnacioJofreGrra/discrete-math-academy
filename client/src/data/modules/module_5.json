@@ -131,6 +131,36 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_5_1_5",
+            "type": "step_by_step",
+            "title": "En 7 personas, dos nacieron el mismo día de la semana",
+            "steps": [
+              {
+                "instruction": "¿Cuántos días tiene la semana? ¿Cuántas personas hay en el grupo?",
+                "hint": "7 días (cajas), 8 personas (objetos)... espera, el enunciado dice 7.",
+                "answer": "7 días de la semana (cajas). Si hubiera 8 personas garantizaríamos el PP. Con 7 personas es posible que cada una haya nacido en un día distinto."
+              },
+              {
+                "instruction": "¿Cuántas personas se necesitan para garantizar la coincidencia?",
+                "hint": "$n+1$ objetos en $n$ cajas garantizan colisión.",
+                "answer": "Se necesitan al menos $7+1=8$ personas para garantizar que dos compartan el mismo día de la semana."
+              },
+              {
+                "instruction": "Enuncia la conclusión con el PP.",
+                "hint": "8 > 7: más objetos que cajas.",
+                "answer": "Con 8 personas y 7 días posibles, el PP garantiza que al menos dos nacieron el mismo día de la semana. Con 7 personas esto ya no puede garantizarse."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_5_1_6",
+            "type": "flashcard",
+            "question": "¿Cómo se enuncia formalmente el PP en términos de funciones?",
+            "answer": "Si $f:A\\to B$ es una función y $|A|>|B|$, entonces $f$ no es inyectiva (existen $a_1\\neq a_2\\in A$ con $f(a_1)=f(a_2)$).",
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -226,6 +256,68 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_5_1_4",
+            "question": "Hay 5 colores de marcadores disponibles. ¿Cuántos marcadores debes elegir para garantizar que al menos dos sean del mismo color?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$6$",
+                "correct": true,
+                "explanation": "Con 5 colores y 6 marcadores, $6>5$; el PP garantiza una repetición de color."
+              },
+              {
+                "value": "b",
+                "label": "$5$",
+                "correct": false,
+                "explanation": "Con 5 marcadores es posible que cada uno sea de un color diferente."
+              },
+              {
+                "value": "c",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "Con 4 marcadores y 5 colores disponibles, con mayor razón podrían ser todos distintos."
+              },
+              {
+                "value": "d",
+                "label": "$10$",
+                "correct": false,
+                "explanation": "Se necesitan solo $5+1=6$."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_5_1_5",
+            "question": "Seleccionar enteros del conjunto $\\{1,2,\\ldots,10\\}$. ¿Cuántos hay que elegir para garantizar que dos sumen 11?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$6$",
+                "correct": true,
+                "explanation": "Los pares que suman 11 son: $(1,10),(2,9),(3,8),(4,7),(5,6)$ — 5 cajas. Con 6 elegidos, el PP garantiza que dos provienen del mismo par y suman 11."
+              },
+              {
+                "value": "b",
+                "label": "$5$",
+                "correct": false,
+                "explanation": "Con 5 se podría elegir uno de cada par sin suma 11."
+              },
+              {
+                "value": "c",
+                "label": "$11$",
+                "correct": false,
+                "explanation": "Se necesitan solo 6."
+              },
+              {
+                "value": "d",
+                "label": "$2$",
+                "correct": false,
+                "explanation": "Podrían elegirse dos números que no sumen 11."
+              }
+            ],
+            "difficulty": "hard"
           }
         ]
       }
@@ -333,6 +425,42 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_5_2_5",
+            "type": "flashcard",
+            "question": "¿Cuál es la diferencia entre el PP simple y el PP generalizado?",
+            "answer": "El PP simple dice: si $n+1$ objetos en $n$ cajas, al menos una tiene $\\geq2$. El PP generalizado dice: si $n$ objetos en $k$ cajas, al menos una tiene $\\geq\\lceil n/k\\rceil$ objetos (cota que puede ser mayor que 2).",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_5_2_6",
+            "type": "challenge",
+            "title": "PP generalizado: mínimo garantizado",
+            "problem": "En un torneo de ajedrez, 30 jugadores se dividen en 4 grupos. ¿Cuántos jugadores tiene como mínimo el grupo más numeroso?",
+            "options": [
+              {
+                "value": "$8$",
+                "correct": true,
+                "explanation": "$\\lceil30/4\\rceil=\\lceil7.5\\rceil=8$: al menos un grupo tiene 8 o más jugadores."
+              },
+              {
+                "value": "$7$",
+                "correct": false,
+                "explanation": "$4\\times7=28<30$; no alcanza para 30 jugadores."
+              },
+              {
+                "value": "$10$",
+                "correct": false,
+                "explanation": "Se garantiza al menos 8, que es menor."
+              },
+              {
+                "value": "$6$",
+                "correct": false,
+                "explanation": "$4\\times6=24<30$; insuficiente."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -428,6 +556,68 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_5_2_4",
+            "question": "Si 40 personas se distribuyen en 6 habitaciones, ¿cuántas personas hay como mínimo en la habitación más llena?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$7$",
+                "correct": true,
+                "explanation": "$\\lceil40/6\\rceil=\\lceil6.\\overline{6}\\rceil=7$."
+              },
+              {
+                "value": "b",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "$6\\times6=36<40$; al menos una habitación debe tener más."
+              },
+              {
+                "value": "c",
+                "label": "$8$",
+                "correct": false,
+                "explanation": "Se garantiza al menos 7, no necesariamente 8."
+              },
+              {
+                "value": "d",
+                "label": "$5$",
+                "correct": false,
+                "explanation": "$6\\times5=30<40$; insuficiente."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_5_2_5",
+            "question": "¿Por qué el Principio del Palomar Generalizado usa el techo $\\lceil n/k \\rceil$ y no el piso $\\lfloor n/k \\rfloor$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Porque $\\lfloor n/k\\rfloor$ podría ser menor que la cota real cuando $n$ no es divisible por $k$",
+                "correct": true,
+                "explanation": "Si $n=10,k=3$: $\\lfloor10/3\\rfloor=3$ pero la cota correcta es $\\lceil10/3\\rceil=4$."
+              },
+              {
+                "value": "b",
+                "label": "Porque el techo siempre da un número entero y el piso no",
+                "correct": false,
+                "explanation": "Ambos, piso y techo, dan números enteros."
+              },
+              {
+                "value": "c",
+                "label": "Porque si $n$ es divisible por $k$, el piso da 0",
+                "correct": false,
+                "explanation": "Si $n$ es divisible por $k$, $\\lfloor n/k\\rfloor=n/k\\neq0$ en general."
+              },
+              {
+                "value": "d",
+                "label": "Porque el techo siempre es mayor que el piso",
+                "correct": false,
+                "explanation": "El techo es mayor solo cuando $n$ no es divisible por $k$; si lo es, coinciden."
+              }
+            ],
+            "difficulty": "hard"
           }
         ]
       }

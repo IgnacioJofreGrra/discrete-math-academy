@@ -897,6 +897,130 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_0_3_4",
+            "question": "¿Cuál es el $\\gcd(36, 60)$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$12$",
+                "correct": true,
+                "explanation": "$36=2^2\\cdot3^2$ y $60=2^2\\cdot3\\cdot5$; el $\\gcd$ toma el mínimo de cada exponente: $2^2\\cdot3=12$."
+              },
+              {
+                "value": "b",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "$6$ divide a ambos pero no es el mayor divisor común."
+              },
+              {
+                "value": "c",
+                "label": "$18$",
+                "correct": false,
+                "explanation": "$18\\nmid60$, así que no puede ser $\\gcd$."
+              },
+              {
+                "value": "d",
+                "label": "$3$",
+                "correct": false,
+                "explanation": "$3$ divide a ambos pero no es el mayor."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_0_3_5",
+            "question": "¿Qué condición garantiza que $\\frac{a}{b}$ está en forma irreducible?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\gcd(a,b)=1$",
+                "correct": true,
+                "explanation": "Irreducible significa que no hay factor primo común entre numerador y denominador."
+              },
+              {
+                "value": "b",
+                "label": "$a<b$",
+                "correct": false,
+                "explanation": "$\\frac{4}{6}$ es fracción propia pero reducible."
+              },
+              {
+                "value": "c",
+                "label": "$a$ y $b$ son primos",
+                "correct": false,
+                "explanation": "$\\frac{2}{3}$ cumple esto, pero $\\frac{2}{5}$ también y la condición correcta es $\\gcd=1$."
+              },
+              {
+                "value": "d",
+                "label": "$b\\mid a$",
+                "correct": false,
+                "explanation": "Eso daría un entero, no garantiza irreducibilidad en general."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_0_3_4",
+            "question": "¿Cuál es el $\\gcd(36, 60)$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$12$",
+                "correct": true,
+                "explanation": "$36=2^2\\cdot3^2$ y $60=2^2\\cdot3\\cdot5$; el $\\gcd$ toma el mínimo de cada exponente: $2^2\\cdot3=12$."
+              },
+              {
+                "value": "b",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "$6$ divide a ambos pero no es el mayor divisor común."
+              },
+              {
+                "value": "c",
+                "label": "$18$",
+                "correct": false,
+                "explanation": "$18\\nmid60$, así que no puede ser $\\gcd$."
+              },
+              {
+                "value": "d",
+                "label": "$3$",
+                "correct": false,
+                "explanation": "$3$ divide a ambos pero no es el mayor."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_0_3_5",
+            "question": "¿Qué condición garantiza que $\\frac{a}{b}$ está en forma irreducible?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\gcd(a,b)=1$",
+                "correct": true,
+                "explanation": "Irreducible significa que no hay factor primo común entre numerador y denominador."
+              },
+              {
+                "value": "b",
+                "label": "$a<b$",
+                "correct": false,
+                "explanation": "$\\frac{4}{6}$ es fracción propia pero reducible."
+              },
+              {
+                "value": "c",
+                "label": "$a$ y $b$ son primos",
+                "correct": false,
+                "explanation": "$\\frac{2}{3}$ cumple esto, pero $\\frac{2}{5}$ también y la condición correcta es $\\gcd=1$."
+              },
+              {
+                "value": "d",
+                "label": "$b\\mid a$",
+                "correct": false,
+                "explanation": "Eso daría un entero, no garantiza irreducibilidad en general."
+              }
+            ],
+            "difficulty": "easy"
           }
         ]
       }

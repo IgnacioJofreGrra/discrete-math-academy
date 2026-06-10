@@ -131,6 +131,29 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_1_1_6",
+            "type": "step_by_step",
+            "title": "Mínimo del conjunto $C = \\{n \\in \\mathbb{N} : 2^n > 100\\}$",
+            "steps": [
+              {
+                "instruction": "¿Cuánto vale $2^n$ para $n=6$ y $n=7$?",
+                "hint": "$2^6=64$, $2^7=128$.",
+                "answer": "$2^6=64\\leq100$ y $2^7=128>100$."
+              },
+              {
+                "instruction": "¿Pertenece $6$ a $C$? ¿Pertenece $7$?",
+                "hint": "La condición es $2^n>100$.",
+                "answer": "$6\\notin C$ porque $64\\leq100$. $7\\in C$ porque $128>100$."
+              },
+              {
+                "instruction": "Concluye cuál es $\\min C$ invocando el PBO.",
+                "hint": "$C$ es un subconjunto no vacío de $\\mathbb{N}$.",
+                "answer": "Por el PBO, $C$ tiene mínimo. El menor $n$ con $2^n>100$ es $n=7$, así que $\\min C=7$."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -398,6 +421,42 @@
               }
             ],
             "difficulty": "hard"
+          },
+          {
+            "id": "exercise_1_2_5",
+            "type": "challenge",
+            "title": "Identificar prueba válida con PBO",
+            "problem": "¿Cuál de las siguientes describe correctamente el rol de la contradicción al final de una prueba con el PBO?",
+            "options": [
+              {
+                "value": "Demuestra que $C=\\emptyset$, por lo que $P(n)$ es verdadera para todo $n\\in\\mathbb{N}$",
+                "correct": true,
+                "explanation": "La contradicción invalida la hipótesis $C\\neq\\emptyset$, luego $C$ debe estar vacío."
+              },
+              {
+                "value": "Demuestra que el mínimo $n_0$ es 0",
+                "correct": false,
+                "explanation": "La contradicción no determina el valor de $n_0$; invalida su existencia."
+              },
+              {
+                "value": "Demuestra que $C$ tiene exactamente un elemento",
+                "correct": false,
+                "explanation": "La contradicción muestra que $C$ no puede tener ningún elemento."
+              },
+              {
+                "value": "Demuestra que $P(0)$ es verdadera",
+                "correct": false,
+                "explanation": "El caso base se verifica directamente, no por contradicción."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_1_2_6",
+            "type": "flashcard",
+            "question": "¿Cuál es la diferencia clave entre una prueba directa y una prueba por absurdo con el PBO?",
+            "answer": "En la prueba directa se establece $P(n)$ para cada $n$ sin suposición adicional. En la prueba por absurdo con el PBO se supone que existe un contraejemplo mínimo $n_0$ y se derive una contradicción, lo que prueba que no existe ningún contraejemplo.",
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -490,6 +549,68 @@
                 "label": "$P(n)$ es verdadera solo para $n=0$",
                 "correct": false,
                 "explanation": "La conclusión es universal, no solo para $n=0$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_1_2_4",
+            "question": "¿Cuál es el primer paso al iniciar una prueba por absurdo con el PBO para $P(n)$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Definir $C=\\{n\\in\\mathbb{N}:\\neg P(n)\\}$ y suponer $C\\neq\\emptyset$",
+                "correct": true,
+                "explanation": "Se define el conjunto de contraejemplos y se supone que no está vacío para luego derivar la contradicción."
+              },
+              {
+                "value": "b",
+                "label": "Probar $P(0)$ directamente",
+                "correct": false,
+                "explanation": "Probar $P(0)$ es el primer paso de la inducción, no de la prueba por absurdo con PBO."
+              },
+              {
+                "value": "c",
+                "label": "Calcular $\\min\\mathbb{N}$",
+                "correct": false,
+                "explanation": "$\\min\\mathbb{N}=0$ siempre; lo relevante es $\\min C$."
+              },
+              {
+                "value": "d",
+                "label": "Verificar que $P(n)$ es verdadera para $n=1,2,3$",
+                "correct": false,
+                "explanation": "Verificar casos no es el primer paso; se define $C$ antes de cualquier verificación específica."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_1_2_5",
+            "question": "En la demostración de que $n^2+n$ es par, ¿por qué $c_0(c_0+1)$ siempre es par?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Porque de dos enteros consecutivos, uno siempre es par",
+                "correct": true,
+                "explanation": "Entre $c_0$ y $c_0+1$, uno de los dos es divisible por 2."
+              },
+              {
+                "value": "b",
+                "label": "Porque $c_0$ debe ser par por ser el mínimo de $C$",
+                "correct": false,
+                "explanation": "El mínimo de $C$ puede ser cualquier natural, no necesariamente par."
+              },
+              {
+                "value": "c",
+                "label": "Porque $c_0^2$ siempre es mayor que $c_0$",
+                "correct": false,
+                "explanation": "El tamaño relativo no determina la paridad."
+              },
+              {
+                "value": "d",
+                "label": "Porque $c_0+1\\in\\mathbb{N}$",
+                "correct": false,
+                "explanation": "Pertenecer a $\\mathbb{N}$ no implica paridad."
               }
             ],
             "difficulty": "medium"
@@ -608,6 +729,63 @@
             "question": "Si $\\gcd(a,b)=d$, ¿cómo se escribe la forma irreducible de $\\frac{a}{b}$?",
             "answer": "$\\dfrac{a/d}{b/d}$, donde $\\gcd(a/d,\\,b/d)=1$.",
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_1_3_5",
+            "type": "step_by_step",
+            "title": "Demostración: $\\sqrt{2}$ es irracional (usando PBO)",
+            "steps": [
+              {
+                "instruction": "Supón que $\\sqrt{2}$ es racional. ¿Cómo se escribe en ese caso?",
+                "hint": "$\\sqrt{2}=\\frac{m}{n}$ con $m,n\\in\\mathbb{Z}^+$.",
+                "answer": "Si fuera racional, existirían enteros positivos $m,n$ con $\\sqrt{2}=m/n$."
+              },
+              {
+                "instruction": "Define el conjunto $C=\\{m\\in\\mathbb{Z}^+:\\sqrt{2}=m/n\\text{ para algún }n\\in\\mathbb{Z}^+\\}$. Supón $C\\neq\\emptyset$. Sea $m_0=\\min C$ y $n_0$ tal que $\\sqrt{2}=m_0/n_0$. Eleva al cuadrado.",
+                "hint": "$m_0^2=2n_0^2$.",
+                "answer": "$m_0^2=2n_0^2$, así que $m_0^2$ es par, lo que implica que $m_0$ es par."
+              },
+              {
+                "instruction": "Escribe $m_0=2k$. Sustituye en $m_0^2=2n_0^2$ y simplifica para obtener una relación entre $k$ y $n_0$.",
+                "hint": "$(2k)^2=2n_0^2\\Rightarrow4k^2=2n_0^2$.",
+                "answer": "$4k^2=2n_0^2\\Rightarrow n_0^2=2k^2$, así que $n_0$ también es par: $n_0=2j$."
+              },
+              {
+                "instruction": "Entonces $\\sqrt{2}=m_0/n_0=2k/(2j)=k/j$, con $k<m_0$. ¿Cuál es la contradicción?",
+                "hint": "¿Puede $k$ pertenecer a $C$?",
+                "answer": "$k\\in C$ y $k<m_0$, contradiciendo que $m_0=\\min C$. Luego $C=\\emptyset$ y $\\sqrt{2}$ es irracional."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exercise_1_3_6",
+            "type": "challenge",
+            "title": "Fracciones irreducibles",
+            "problem": "¿Cuál de las siguientes fracciones está en forma irreducible?",
+            "options": [
+              {
+                "value": "$\\frac{15}{22}$",
+                "correct": true,
+                "explanation": "$\\gcd(15,22)=1$: $15=3\\cdot5$ y $22=2\\cdot11$; sin factores comunes."
+              },
+              {
+                "value": "$\\frac{12}{16}$",
+                "correct": false,
+                "explanation": "$\\gcd(12,16)=4$; se simplifica a $\\frac{3}{4}$."
+              },
+              {
+                "value": "$\\frac{9}{21}$",
+                "correct": false,
+                "explanation": "$\\gcd(9,21)=3$; se simplifica a $\\frac{3}{7}$."
+              },
+              {
+                "value": "$\\frac{10}{15}$",
+                "correct": false,
+                "explanation": "$\\gcd(10,15)=5$; se simplifica a $\\frac{2}{3}$."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -700,6 +878,68 @@
                 "label": "$m$ no puede dividirse por ningún número",
                 "correct": false,
                 "explanation": "Todo entero se divide al menos por 1 y por sí mismo."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_1_3_4",
+            "question": "¿Cuánto es $\\gcd(48,180)$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$12$",
+                "correct": true,
+                "explanation": "$48=2^4\\cdot3$ y $180=2^2\\cdot3^2\\cdot5$; $\\gcd=2^2\\cdot3=12$."
+              },
+              {
+                "value": "b",
+                "label": "$6$",
+                "correct": false,
+                "explanation": "$6$ divide a ambos pero no es el mayor: $12$ también divide."
+              },
+              {
+                "value": "c",
+                "label": "$24$",
+                "correct": false,
+                "explanation": "$24\\nmid180$ porque $180/24=7.5$."
+              },
+              {
+                "value": "d",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "$4$ divide a ambos pero no es el mayor."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_1_3_5",
+            "question": "Si $\\gcd(a,b)=d$, ¿cuál es la forma irreducible de $\\frac{a}{b}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\frac{a/d}{b/d}$, con $\\gcd(a/d,b/d)=1$",
+                "correct": true,
+                "explanation": "Dividir ambos por $d$ elimina todos los factores comunes."
+              },
+              {
+                "value": "b",
+                "label": "$\\frac{a-d}{b-d}$",
+                "correct": false,
+                "explanation": "Restar el $\\gcd$ no produce necesariamente una fracción irreducible."
+              },
+              {
+                "value": "c",
+                "label": "$\\frac{a}{b-d}$",
+                "correct": false,
+                "explanation": "Solo modificar el denominador no garantiza irreducibilidad."
+              },
+              {
+                "value": "d",
+                "label": "$\\frac{d}{b}$",
+                "correct": false,
+                "explanation": "El numerador de la forma irreducible es $a/d$, no $d$."
               }
             ],
             "difficulty": "easy"

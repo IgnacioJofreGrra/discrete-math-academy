@@ -133,6 +133,58 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_12_5",
+            "type": "step_by_step",
+            "title": "Evaluar $\\sqrt{2^6\\cdot3^4}$",
+            "steps": [
+              {
+                "instruction": "Separa la raíz usando $\\sqrt{ab}=\\sqrt{a}\\cdot\\sqrt{b}$.",
+                "hint": "$\\sqrt{2^6\\cdot3^4}=\\sqrt{2^6}\\cdot\\sqrt{3^4}$.",
+                "answer": "$\\sqrt{2^6}\\cdot\\sqrt{3^4}$."
+              },
+              {
+                "instruction": "Simplifica cada factor.",
+                "hint": "$\\sqrt{x^{2k}}=x^k$.",
+                "answer": "$\\sqrt{2^6}=2^3=8$ y $\\sqrt{3^4}=3^2=9$."
+              },
+              {
+                "instruction": "Multiplica los resultados.",
+                "hint": "$8\\times9$.",
+                "answer": "$8\\times9=72$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_12_6",
+            "type": "challenge",
+            "title": "Identificar error en operación mixta",
+            "problem": "¿Cuál de las siguientes simplificaciones es INCORRECTA?",
+            "options": [
+              {
+                "value": "$\\log_2(8+4)=\\log_2 8+\\log_2 4$",
+                "correct": true,
+                "explanation": "Falsa. El logaritmo del producto vale $\\log(xy)=\\log x+\\log y$, no del cociente. $\\log_2 12\\neq 3+2=5$."
+              },
+              {
+                "value": "$(-2)^4=16$",
+                "correct": false,
+                "explanation": "Verdadera: potencia par de negativo es positivo."
+              },
+              {
+                "value": "$\\sqrt{16\\cdot25}=\\sqrt{16}\\cdot\\sqrt{25}=20$",
+                "correct": false,
+                "explanation": "Verdadera: la raíz del producto es el producto de las raíces."
+              },
+              {
+                "value": "$2^3\\cdot2^4=2^7$",
+                "correct": false,
+                "explanation": "Verdadera: producto de potencias de igual base suma exponentes."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -228,6 +280,68 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exam_i2_12_4",
+            "question": "Evalúa $\\left(\\dfrac{2^4\\cdot3^2}{6^2}\\right)$.",
+            "options": [
+              {
+                "value": "a",
+                "label": "$4$",
+                "correct": true,
+                "explanation": "$6^2=36$; $2^4\\cdot3^2=16\\cdot9=144$; $144/36=4$."
+              },
+              {
+                "value": "b",
+                "label": "$8$",
+                "correct": false,
+                "explanation": "$144/36=4$, no 8."
+              },
+              {
+                "value": "c",
+                "label": "$12$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              },
+              {
+                "value": "d",
+                "label": "$2$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i2_12_5",
+            "question": "¿Es cierto que $\\log_3(9\\cdot27)=\\log_3 9+\\log_3 27$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Sí; la propiedad del logaritmo del producto lo garantiza",
+                "correct": true,
+                "explanation": "$\\log_3(9\\cdot27)=\\log_3 9+\\log_3 27=2+3=5$; y $\\log_3(243)=5$ ✓."
+              },
+              {
+                "value": "b",
+                "label": "No; $\\log_3(9\\cdot27)=\\log_3 9\\cdot\\log_3 27=6$",
+                "correct": false,
+                "explanation": "La propiedad da SUMA, no producto, de logaritmos."
+              },
+              {
+                "value": "c",
+                "label": "Sí, pero solo cuando la base es 3",
+                "correct": false,
+                "explanation": "La propiedad vale para cualquier base válida."
+              },
+              {
+                "value": "d",
+                "label": "No; $9\\cdot27=243$ y $\\log_3 243=4$",
+                "correct": false,
+                "explanation": "$3^5=243$, así que $\\log_3 243=5$."
+              }
+            ],
+            "difficulty": "medium"
           }
         ]
       }
@@ -358,6 +472,58 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_13_5",
+            "type": "step_by_step",
+            "title": "Multiplicar en notación científica: $(3.0\\times10^5)\\times(4.0\\times10^{-2})$",
+            "steps": [
+              {
+                "instruction": "Multiplica las mantisas.",
+                "hint": "$3.0\\times4.0$.",
+                "answer": "$3.0\\times4.0=12.0$."
+              },
+              {
+                "instruction": "Multiplica las potencias de diez.",
+                "hint": "$10^5\\times10^{-2}=10^{5+(-2)}=10^3$.",
+                "answer": "$10^3$."
+              },
+              {
+                "instruction": "Ajusta la mantisa para que esté entre 1 y 10.",
+                "hint": "$12.0=1.2\\times10^1$.",
+                "answer": "$12.0\\times10^3=1.2\\times10^4$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_13_6",
+            "type": "challenge",
+            "title": "Orden de magnitud",
+            "problem": "¿Cuál número es aproximadamente $10^6$ veces mayor que $3.5\\times10^2$?",
+            "options": [
+              {
+                "value": "$3.5\\times10^8$",
+                "correct": true,
+                "explanation": "$3.5\\times10^2\\times10^6=3.5\\times10^{2+6}=3.5\\times10^8$."
+              },
+              {
+                "value": "$3.5\\times10^6$",
+                "correct": false,
+                "explanation": "$3.5\\times10^2\\times10^6=3.5\\times10^8$, no $10^6$."
+              },
+              {
+                "value": "$3.5\\times10^{-4}$",
+                "correct": false,
+                "explanation": "$10^2\\times10^6=10^8$, no $10^{-4}$."
+              },
+              {
+                "value": "$3.5\\times10^{12}$",
+                "correct": false,
+                "explanation": "$2+6=8$, no 12."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -450,6 +616,68 @@
                 "label": "$6\\times10^{-1}$",
                 "correct": false,
                 "explanation": "Los exponentes se suman en la multiplicación."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i2_13_4",
+            "question": "¿Cuánto es $(5\\times10^3)+(2.5\\times10^3)$ en notación científica?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$7.5\\times10^3$",
+                "correct": true,
+                "explanation": "Misma potencia de diez: $(5+2.5)\\times10^3=7.5\\times10^3$."
+              },
+              {
+                "value": "b",
+                "label": "$7.5\\times10^6$",
+                "correct": false,
+                "explanation": "Al sumar, no se suman los exponentes."
+              },
+              {
+                "value": "c",
+                "label": "$12.5\\times10^3$",
+                "correct": false,
+                "explanation": "$5+2.5=7.5$, no 12.5."
+              },
+              {
+                "value": "d",
+                "label": "$7.5\\times10^{6}$",
+                "correct": false,
+                "explanation": "Misma potencia; los exponentes no se suman al sumar."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_i2_13_5",
+            "question": "El sol está a $1.5\\times10^8$ km de la Tierra. ¿Cuántos metros es eso?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$1.5\\times10^{11}$ m",
+                "correct": true,
+                "explanation": "$1$ km $= 10^3$ m; entonces $1.5\\times10^8\\times10^3=1.5\\times10^{11}$ m."
+              },
+              {
+                "value": "b",
+                "label": "$1.5\\times10^5$ m",
+                "correct": false,
+                "explanation": "$8-3=5$; pero al convertir km a m se MULTIPLICA por $10^3$, no se divide."
+              },
+              {
+                "value": "c",
+                "label": "$1.5\\times10^8$ m",
+                "correct": false,
+                "explanation": "Hay que convertir multiplicando por $10^3$."
+              },
+              {
+                "value": "d",
+                "label": "$1.5\\times10^{24}$ m",
+                "correct": false,
+                "explanation": "Incorrecto."
               }
             ],
             "difficulty": "medium"
@@ -972,6 +1200,58 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_14_5",
+            "type": "step_by_step",
+            "title": "Escribir como un único logaritmo: $2\\ln x-\\frac{1}{2}\\ln(x+1)+3\\ln y$",
+            "steps": [
+              {
+                "instruction": "Convierte los coeficientes en exponentes dentro del logaritmo.",
+                "hint": "$k\\ln a=\\ln a^k$.",
+                "answer": "$\\ln x^2-\\ln(x+1)^{1/2}+\\ln y^3$."
+              },
+              {
+                "instruction": "Combina suma de logaritmos.",
+                "hint": "$\\ln a+\\ln b=\\ln(ab)$.",
+                "answer": "$\\ln(x^2 y^3)-\\ln(x+1)^{1/2}$."
+              },
+              {
+                "instruction": "Combina resta de logaritmos.",
+                "hint": "$\\ln a-\\ln b=\\ln(a/b)$.",
+                "answer": "$\\ln\\!\\left(\\dfrac{x^2 y^3}{\\sqrt{x+1}}\\right)$."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exercise_init_0_14_6",
+            "type": "challenge",
+            "title": "Identificar factorización",
+            "problem": "¿Cuál es la factorización de $x^3+8$?",
+            "options": [
+              {
+                "value": "$(x+2)(x^2-2x+4)$",
+                "correct": true,
+                "explanation": "Suma de cubos: $a^3+b^3=(a+b)(a^2-ab+b^2)$, con $a=x$ y $b=2$."
+              },
+              {
+                "value": "$(x+2)^3$",
+                "correct": false,
+                "explanation": "$(x+2)^3=x^3+6x^2+12x+8\\neq x^3+8$."
+              },
+              {
+                "value": "$(x-2)(x^2+2x+4)$",
+                "correct": false,
+                "explanation": "Esa es la factorización de $x^3-8$ (diferencia de cubos)."
+              },
+              {
+                "value": "$(x+2)(x^2+2x+4)$",
+                "correct": false,
+                "explanation": "Signo incorrecto en el factor cuadrático; debería ser $-2x$."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -1064,6 +1344,68 @@
                 "label": "$\\dfrac{1}{3}$",
                 "correct": false,
                 "explanation": "$\\frac{1}{3}$ sería $\\log_8 2$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i2_14_4",
+            "question": "¿Cuánto es $\\log_5 125+\\log_5 \\frac{1}{5}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$2$",
+                "correct": true,
+                "explanation": "$\\log_5 125=3$ y $\\log_5(1/5)=-1$; suma $3+(-1)=2$."
+              },
+              {
+                "value": "b",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "$\\log_5(125/5)=\\log_5 25=2$; o también $3-1=2$."
+              },
+              {
+                "value": "c",
+                "label": "$-3$",
+                "correct": false,
+                "explanation": "$\\log_5 125=3>0$."
+              },
+              {
+                "value": "d",
+                "label": "$3$",
+                "correct": false,
+                "explanation": "Hay que sumar $\\log_5(1/5)=-1$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i2_14_5",
+            "question": "Simplifica $\\dfrac{\\sqrt[3]{x^6}}{x}$ para $x>0$.",
+            "options": [
+              {
+                "value": "a",
+                "label": "$x$",
+                "correct": true,
+                "explanation": "$\\sqrt[3]{x^6}=x^{6/3}=x^2$; entonces $x^2/x=x$."
+              },
+              {
+                "value": "b",
+                "label": "$x^2$",
+                "correct": false,
+                "explanation": "$x^2/x=x^{2-1}=x$, no $x^2$."
+              },
+              {
+                "value": "c",
+                "label": "$x^5$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              },
+              {
+                "value": "d",
+                "label": "$\\sqrt[3]{x^5}$",
+                "correct": false,
+                "explanation": "Incorrecto."
               }
             ],
             "difficulty": "medium"

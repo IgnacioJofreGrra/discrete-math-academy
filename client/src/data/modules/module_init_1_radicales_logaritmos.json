@@ -138,6 +138,58 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_6_5",
+            "type": "step_by_step",
+            "title": "Raíz de índice par vs impar con base negativa",
+            "steps": [
+              {
+                "instruction": "¿Existe $\\sqrt[4]{-16}$ en $\\mathbb{R}$?",
+                "hint": "Índice par, base negativa.",
+                "answer": "No. Potencia de índice par de un real siempre es $\\geq0$; no puede dar $-16$."
+              },
+              {
+                "instruction": "¿Existe $\\sqrt[5]{-32}$ en $\\mathbb{R}$?",
+                "hint": "Índice impar.",
+                "answer": "Sí. $(-2)^5=-32$, entonces $\\sqrt[5]{-32}=-2$."
+              },
+              {
+                "instruction": "Enuncia la regla general.",
+                "hint": "Índice par vs impar.",
+                "answer": "Índice par con radicando negativo → no existe en $\\mathbb{R}$. Índice impar → existe siempre en $\\mathbb{R}$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_6_6",
+            "type": "challenge",
+            "title": "Número de raíces reales",
+            "problem": "¿Cuántas raíces reales tiene $x^4=81$?",
+            "options": [
+              {
+                "value": "$2$ (son $3$ y $-3$)",
+                "correct": true,
+                "explanation": "$3^4=81$ y $(-3)^4=81$; dos raíces reales para índice par con radicando positivo."
+              },
+              {
+                "value": "$1$",
+                "correct": false,
+                "explanation": "Para índice par y radicando positivo, hay dos raíces reales (positiva y negativa)."
+              },
+              {
+                "value": "$4$",
+                "correct": false,
+                "explanation": "En $\\mathbb{R}$ solo hay dos; cuatro raíces serían en $\\mathbb{C}$."
+              },
+              {
+                "value": "$0$",
+                "correct": false,
+                "explanation": "$81>0$ y el índice es par; existen dos raíces reales."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -230,6 +282,68 @@
                 "label": "$-9$",
                 "correct": false,
                 "explanation": "$(-9)^3=-729\\neq-27$."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_i1_6_4",
+            "question": "¿Cuál es la raíz principal cuarta de $16$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$2$",
+                "correct": true,
+                "explanation": "$2^4=16$; la raíz principal es el valor no-negativo."
+              },
+              {
+                "value": "b",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "$4^4=256\\neq16$."
+              },
+              {
+                "value": "c",
+                "label": "$-2$",
+                "correct": false,
+                "explanation": "$(-2)^4=16$ pero la raíz principal es el valor no-negativo."
+              },
+              {
+                "value": "d",
+                "label": "No existe",
+                "correct": false,
+                "explanation": "$16>0$ y el índice es par; existen raíces reales."
+              }
+            ],
+            "difficulty": "easy"
+          },
+          {
+            "id": "exam_i1_6_5",
+            "question": "¿Cuánto vale $\\sqrt[3]{-125}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$-5$",
+                "correct": true,
+                "explanation": "$(-5)^3=-125$; la raíz cúbica de negativos es negativa."
+              },
+              {
+                "value": "b",
+                "label": "$5$",
+                "correct": false,
+                "explanation": "$5^3=125>0$; no da $-125$."
+              },
+              {
+                "value": "c",
+                "label": "No existe en $\\mathbb{R}$",
+                "correct": false,
+                "explanation": "La raíz cúbica (índice impar) existe para cualquier real."
+              },
+              {
+                "value": "d",
+                "label": "$-25$",
+                "correct": false,
+                "explanation": "$(-25)^3\\neq-125$."
               }
             ],
             "difficulty": "easy"
@@ -364,6 +478,36 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_7_5",
+            "type": "step_by_step",
+            "title": "Convertir $\\sqrt[4]{x^3}$ a exponente racional y viceversa",
+            "steps": [
+              {
+                "instruction": "Escribe $\\sqrt[4]{x^3}$ como potencia con exponente racional.",
+                "hint": "$\\sqrt[n]{x^m}=x^{m/n}$.",
+                "answer": "$\\sqrt[4]{x^3}=x^{3/4}$."
+              },
+              {
+                "instruction": "Escribe $x^{5/2}$ en forma radical.",
+                "hint": "$x^{m/n}=\\sqrt[n]{x^m}$.",
+                "answer": "$x^{5/2}=\\sqrt{x^5}=(\\sqrt{x})^5$."
+              },
+              {
+                "instruction": "¿Para qué valores de $x$ existe $x^{3/4}$ en $\\mathbb{R}$?",
+                "hint": "El denominador del exponente es 4 (par).",
+                "answer": "Para $x\\geq0$, ya que la raíz cuarta requiere radicando no-negativo."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_7_6",
+            "type": "flashcard",
+            "question": "¿Por qué es importante reducir el exponente $m/n$ antes de calcular $x^{m/n}$ con base negativa?",
+            "answer": "Porque el denominador reducido determina si el índice de la raíz es par o impar, lo cual decide si el resultado existe en $\\mathbb{R}$. Sin reducir, $6/4$ da índice 4 (par); reducida, $3/2$ da índice 2 (también par), pero en otro caso la diferencia sería crítica.",
+            "difficulty": "hard"
           }
         ],
         "exam": [
@@ -459,6 +603,68 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_7_4",
+            "question": "¿Cuánto vale $32^{3/5}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$8$",
+                "correct": true,
+                "explanation": "$32^{3/5}=(\\sqrt[5]{32})^3=2^3=8$."
+              },
+              {
+                "value": "b",
+                "label": "$16$",
+                "correct": false,
+                "explanation": "$32^{4/5}=(2)^4=16$; aquí el exponente es $3/5$."
+              },
+              {
+                "value": "c",
+                "label": "$4$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              },
+              {
+                "value": "d",
+                "label": "$2$",
+                "correct": false,
+                "explanation": "$32^{1/5}=2$; aquí el exponente es $3/5$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_7_5",
+            "question": "¿Existe $(-8)^{2/6}$ en $\\mathbb{R}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Sí; reduciendo $2/6=1/3$ el índice es impar, y $(-8)^{1/3}=-2$",
+                "correct": true,
+                "explanation": "La fracción reducida es $1/3$; índice 3 es impar, así que existe: $(-8)^{1/3}=-2$."
+              },
+              {
+                "value": "b",
+                "label": "No; el índice 6 es par",
+                "correct": false,
+                "explanation": "Hay que reducir la fracción antes de analizar: $2/6=1/3$, índice 3 es impar."
+              },
+              {
+                "value": "c",
+                "label": "Sí, y vale $4$",
+                "correct": false,
+                "explanation": "$(-8)^{1/3}=-2$, no $4$."
+              },
+              {
+                "value": "d",
+                "label": "No se puede determinar sin calcular",
+                "correct": false,
+                "explanation": "La regla de reducir el exponente permite determinarlo."
+              }
+            ],
+            "difficulty": "hard"
           }
         ]
       }
@@ -594,6 +800,58 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_8_5",
+            "type": "step_by_step",
+            "title": "Simplificar $\\dfrac{x^{1/2}\\cdot x^{3/2}}{x^2}$ para $x>0$",
+            "steps": [
+              {
+                "instruction": "Multiplica las potencias del numerador sumando exponentes.",
+                "hint": "$x^{1/2}\\cdot x^{3/2}=x^{1/2+3/2}$.",
+                "answer": "$x^{1/2+3/2}=x^{4/2}=x^2$."
+              },
+              {
+                "instruction": "Divide $x^2/x^2$.",
+                "hint": "Resta exponentes.",
+                "answer": "$x^{2-2}=x^0=1$."
+              },
+              {
+                "instruction": "Concluye el resultado.",
+                "hint": "Todo número (distinto de cero) a la 0 es 1.",
+                "answer": "$\\dfrac{x^{1/2}\\cdot x^{3/2}}{x^2}=1$ para $x>0$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_8_6",
+            "type": "challenge",
+            "title": "Detectar propiedad incorrecta",
+            "problem": "¿Cuál de las siguientes igualdades es INCORRECTA para $x,y>0$?",
+            "options": [
+              {
+                "value": "$(x+y)^{1/2}=x^{1/2}+y^{1/2}$",
+                "correct": true,
+                "explanation": "Falsa en general: $\\sqrt{4+9}=\\sqrt{13}\\neq\\sqrt{4}+\\sqrt{9}=5$."
+              },
+              {
+                "value": "$(xy)^{1/2}=x^{1/2}y^{1/2}$",
+                "correct": false,
+                "explanation": "Correcta: la raíz cuadrada del producto es el producto de raíces."
+              },
+              {
+                "value": "$(x/y)^{1/2}=x^{1/2}/y^{1/2}$",
+                "correct": false,
+                "explanation": "Correcta: distribución sobre el cociente."
+              },
+              {
+                "value": "$(x^2)^{1/2}=x$ para $x>0$",
+                "correct": false,
+                "explanation": "Correcta para $x>0$: $\\sqrt{x^2}=x$."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -689,6 +947,68 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_8_4",
+            "question": "Simplifica $\\dfrac{(a^3)^{1/2}}{a^{1/2}}$ para $a>0$.",
+            "options": [
+              {
+                "value": "a",
+                "label": "$a$",
+                "correct": true,
+                "explanation": "$\\frac{a^{3/2}}{a^{1/2}}=a^{3/2-1/2}=a^1=a$."
+              },
+              {
+                "value": "b",
+                "label": "$a^{3/4}$",
+                "correct": false,
+                "explanation": "Se resta: $3/2-1/2=1$, no $3/4$."
+              },
+              {
+                "value": "c",
+                "label": "$a^2$",
+                "correct": false,
+                "explanation": "$3/2-1/2=1$, no 2."
+              },
+              {
+                "value": "d",
+                "label": "$\\sqrt{a}$",
+                "correct": false,
+                "explanation": "$a^1=a$, no $\\sqrt{a}=a^{1/2}$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_8_5",
+            "question": "¿Cuánto vale $(9\\cdot16)^{1/2}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$12$",
+                "correct": true,
+                "explanation": "$(9\\cdot16)^{1/2}=9^{1/2}\\cdot16^{1/2}=3\\cdot4=12$."
+              },
+              {
+                "value": "b",
+                "label": "$\\sqrt{25}=5$",
+                "correct": false,
+                "explanation": "$9\\cdot16=144$, no $25$."
+              },
+              {
+                "value": "c",
+                "label": "$7$",
+                "correct": false,
+                "explanation": "$9^{1/2}+16^{1/2}=7$ sería una suma, no un producto."
+              },
+              {
+                "value": "d",
+                "label": "$144$",
+                "correct": false,
+                "explanation": "$\\sqrt{144}=12$; la raíz, no el cuadrado."
+              }
+            ],
+            "difficulty": "easy"
           }
         ]
       }
@@ -824,6 +1144,58 @@
               }
             ],
             "difficulty": "easy"
+          },
+          {
+            "id": "exercise_init_0_9_5",
+            "type": "step_by_step",
+            "title": "Simplificar $\\sqrt[3]{\\sqrt{x}}$ para $x>0$",
+            "steps": [
+              {
+                "instruction": "Reescribe $\\sqrt{x}$ como potencia racional.",
+                "hint": "$\\sqrt{x}=x^{1/2}$.",
+                "answer": "$\\sqrt[3]{\\sqrt{x}}=\\sqrt[3]{x^{1/2}}$."
+              },
+              {
+                "instruction": "Aplica la propiedad $\\sqrt[m]{x^{1/n}}=x^{1/(mn)}$.",
+                "hint": "$\\sqrt[3]{x^{1/2}}=(x^{1/2})^{1/3}=x^{1/6}$.",
+                "answer": "$x^{1/6}=\\sqrt[6]{x}$."
+              },
+              {
+                "instruction": "Conclusión: $\\sqrt[3]{\\sqrt{x}}=?$",
+                "hint": "Escribe con índice de raíz.",
+                "answer": "$\\sqrt[3]{\\sqrt{x}}=\\sqrt[6]{x}$ para $x>0$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_9_6",
+            "type": "challenge",
+            "title": "Simplificar radical",
+            "problem": "Simplifica $\\sqrt[3]{54}$.",
+            "options": [
+              {
+                "value": "$3\\sqrt[3]{2}$",
+                "correct": true,
+                "explanation": "$54=27\\cdot2$; $\\sqrt[3]{27}=3$; resultado: $3\\sqrt[3]{2}$."
+              },
+              {
+                "value": "$2\\sqrt[3]{3}$",
+                "correct": false,
+                "explanation": "$2^3\\cdot3=24\\neq54$."
+              },
+              {
+                "value": "$\\sqrt[3]{27}\\cdot\\sqrt[3]{3}=3\\sqrt[3]{3}$",
+                "correct": false,
+                "explanation": "$54=27\\cdot2$, no $27\\cdot3$."
+              },
+              {
+                "value": "$9\\sqrt[3]{6}$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -919,6 +1291,68 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_9_4",
+            "question": "Simplifica $\\sqrt[6]{a^3}$ para $a>0$.",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\sqrt{a}$",
+                "correct": true,
+                "explanation": "$a^{3/6}=a^{1/2}=\\sqrt{a}$."
+              },
+              {
+                "value": "b",
+                "label": "$a^2$",
+                "correct": false,
+                "explanation": "$a^{3/6}=a^{1/2}$, no $a^2$."
+              },
+              {
+                "value": "c",
+                "label": "$a^3$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              },
+              {
+                "value": "d",
+                "label": "$\\sqrt[3]{a}$",
+                "correct": false,
+                "explanation": "$a^{3/6}=a^{1/2}$, no $a^{1/3}$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_9_5",
+            "question": "¿Cuánto es $\\dfrac{\\sqrt[3]{24}}{\\sqrt[3]{3}}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$2$",
+                "correct": true,
+                "explanation": "$\\sqrt[3]{24/3}=\\sqrt[3]{8}=2$."
+              },
+              {
+                "value": "b",
+                "label": "$\\sqrt[3]{8}=2$",
+                "correct": false,
+                "explanation": "Esta es la respuesta correcta; aparece como opción."
+              },
+              {
+                "value": "c",
+                "label": "$3$",
+                "correct": false,
+                "explanation": "$\\sqrt[3]{24}/\\sqrt[3]{3}=\\sqrt[3]{8}=2\\neq3$."
+              },
+              {
+                "value": "d",
+                "label": "$\\sqrt[3]{21}$",
+                "correct": false,
+                "explanation": "No se restan los radicandos."
+              }
+            ],
+            "difficulty": "easy"
           }
         ]
       }
@@ -1053,6 +1487,36 @@
               }
             ],
             "difficulty": "hard"
+          },
+          {
+            "id": "exercise_init_0_10_5",
+            "type": "step_by_step",
+            "title": "Combinar radicales semejantes: $2\\sqrt{12}-\\sqrt{27}+\\sqrt{48}$",
+            "steps": [
+              {
+                "instruction": "Simplifica cada radical.",
+                "hint": "$12=4\\cdot3$, $27=9\\cdot3$, $48=16\\cdot3$.",
+                "answer": "$\\sqrt{12}=2\\sqrt{3}$, $\\sqrt{27}=3\\sqrt{3}$, $\\sqrt{48}=4\\sqrt{3}$."
+              },
+              {
+                "instruction": "Sustituye en la expresión.",
+                "hint": "Reemplaza cada radical simplificado.",
+                "answer": "$2(2\\sqrt{3})-3\\sqrt{3}+4\\sqrt{3}=4\\sqrt{3}-3\\sqrt{3}+4\\sqrt{3}$."
+              },
+              {
+                "instruction": "Suma y resta los coeficientes.",
+                "hint": "Son radicales semejantes: mismo índice y radicando.",
+                "answer": "$(4-3+4)\\sqrt{3}=5\\sqrt{3}$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_10_6",
+            "type": "flashcard",
+            "question": "¿Qué se entiende por racionalizar el denominador?",
+            "answer": "Transformar una fracción para que su denominador no contenga radicales. Se multiplica numerador y denominador por una expresión que convierta el denominador en un número racional.",
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -1148,6 +1612,68 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_10_4",
+            "question": "Simplifica $4\\sqrt{3}-\\sqrt{48}$.",
+            "options": [
+              {
+                "value": "a",
+                "label": "$0$",
+                "correct": true,
+                "explanation": "$\\sqrt{48}=4\\sqrt{3}$; entonces $4\\sqrt{3}-4\\sqrt{3}=0$."
+              },
+              {
+                "value": "b",
+                "label": "$\\sqrt{3}$",
+                "correct": false,
+                "explanation": "$\\sqrt{48}=4\\sqrt{3}$, no $3\\sqrt{3}$."
+              },
+              {
+                "value": "c",
+                "label": "$-\\sqrt{48}$",
+                "correct": false,
+                "explanation": "Hay que simplificar primero."
+              },
+              {
+                "value": "d",
+                "label": "$4\\sqrt{3}-4\\sqrt{12}$",
+                "correct": false,
+                "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_i1_10_5",
+            "question": "¿Cuál es la forma racionalizada de $\\dfrac{4}{\\sqrt{5}}$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$\\dfrac{4\\sqrt{5}}{5}$",
+                "correct": true,
+                "explanation": "$\\frac{4}{\\sqrt{5}}\\cdot\\frac{\\sqrt{5}}{\\sqrt{5}}=\\frac{4\\sqrt{5}}{5}$."
+              },
+              {
+                "value": "b",
+                "label": "$4\\sqrt{5}$",
+                "correct": false,
+                "explanation": "Falta el denominador 5."
+              },
+              {
+                "value": "c",
+                "label": "$\\dfrac{4}{5}$",
+                "correct": false,
+                "explanation": "No es la forma racionalizada correcta."
+              },
+              {
+                "value": "d",
+                "label": "$\\dfrac{\\sqrt{5}}{4}$",
+                "correct": false,
+                "explanation": "Numerador y denominador están invertidos."
+              }
+            ],
+            "difficulty": "easy"
           }
         ]
       }
@@ -1286,6 +1812,58 @@
                 "value": "$9$",
                 "correct": false,
                 "explanation": "Incorrecto."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_11_5",
+            "type": "step_by_step",
+            "title": "Calcular $\\log_4(\\frac{1}{64})$",
+            "steps": [
+              {
+                "instruction": "Reescribe $\\frac{1}{64}$ como potencia de $4$.",
+                "hint": "$64=4^3$, y $\\frac{1}{4^3}=4^{-3}$.",
+                "answer": "$\\frac{1}{64}=4^{-3}$."
+              },
+              {
+                "instruction": "Aplica la definición de logaritmo.",
+                "hint": "$\\log_a(a^n)=n$.",
+                "answer": "$\\log_4(4^{-3})=-3$."
+              },
+              {
+                "instruction": "Verifica: $4^{-3}=\\frac{1}{64}$ ✓",
+                "hint": "Sustituye el resultado en la definición.",
+                "answer": "$4^{-3}=\\frac{1}{64}$. Correcto."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_init_0_11_6",
+            "type": "challenge",
+            "title": "Propiedad incorrecta de logaritmos",
+            "problem": "¿Cuál de las siguientes igualdades es FALSA en general?",
+            "options": [
+              {
+                "value": "$\\log_b(x+y)=\\log_b(x)+\\log_b(y)$",
+                "correct": true,
+                "explanation": "Falsa. La propiedad correcta es $\\log_b(xy)=\\log_b(x)+\\log_b(y)$; no se aplica a sumas."
+              },
+              {
+                "value": "$\\log_b(xy)=\\log_b(x)+\\log_b(y)$",
+                "correct": false,
+                "explanation": "Verdadera: propiedad del logaritmo del producto."
+              },
+              {
+                "value": "$\\log_b(x^n)=n\\log_b(x)$",
+                "correct": false,
+                "explanation": "Verdadera: propiedad de la potencia."
+              },
+              {
+                "value": "$\\log_b(x/y)=\\log_b(x)-\\log_b(y)$",
+                "correct": false,
+                "explanation": "Verdadera: propiedad del logaritmo del cociente."
               }
             ],
             "difficulty": "medium"

@@ -163,6 +163,29 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_3_1_6",
+            "type": "step_by_step",
+            "title": "Calcular $|A\\cup B|$ con inclusión-exclusión",
+            "steps": [
+              {
+                "instruction": "Sean $A=\\{1,2,3,4,5\\}$ y $B=\\{4,5,6,7\\}$. Calcula $|A|$, $|B|$ y $|A\\cap B|$.",
+                "hint": "$A\\cap B=\\{4,5\\}$.",
+                "answer": "$|A|=5$, $|B|=4$, $|A\\cap B|=2$."
+              },
+              {
+                "instruction": "Aplica la fórmula de inclusión-exclusión: $|A\\cup B|=|A|+|B|-|A\\cap B|$.",
+                "hint": "Sustituye los valores.",
+                "answer": "$|A\\cup B|=5+4-2=7$."
+              },
+              {
+                "instruction": "Verifica listando $A\\cup B$ explícitamente.",
+                "hint": "Une los dos conjuntos sin repetir.",
+                "answer": "$A\\cup B=\\{1,2,3,4,5,6,7\\}$, que tiene 7 elementos. ✓"
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
@@ -438,6 +461,29 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_3_2_6",
+            "type": "step_by_step",
+            "title": "Verificar que $f(x)=x^3$ es biyectiva en $\\mathbb{R}$",
+            "steps": [
+              {
+                "instruction": "Demuestra que $f$ es inyectiva: supón $f(a)=f(b)$ y concluye $a=b$.",
+                "hint": "$a^3=b^3\\Rightarrow a^3-b^3=0$.",
+                "answer": "$a^3=b^3\\Rightarrow a^3-b^3=(a-b)(a^2+ab+b^2)=0$. Como $a^2+ab+b^2>0$ para $a,b$ no ambos cero (y $=0$ solo si $a=b=0$), se concluye $a=b$. Por lo tanto $f$ es inyectiva."
+              },
+              {
+                "instruction": "Demuestra que $f$ es sobreyectiva: dado $y\\in\\mathbb{R}$, encuentra $x$ con $f(x)=y$.",
+                "hint": "Despeja $x$ de $x^3=y$.",
+                "answer": "Para todo $y\\in\\mathbb{R}$, $x=\\sqrt[3]{y}\\in\\mathbb{R}$ cumple $f(x)=y$. Por lo tanto $f$ es sobreyectiva."
+              },
+              {
+                "instruction": "Concluye.",
+                "hint": "Inyectiva + Sobreyectiva = ?",
+                "answer": "$f(x)=x^3$ es inyectiva y sobreyectiva, luego es biyectiva en $\\mathbb{R}$."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -533,6 +579,68 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exam_3_2_4",
+            "question": "¿Cuál de las siguientes funciones $f:\\mathbb{R}\\to\\mathbb{R}$ es biyectiva?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$f(x)=2x+1$",
+                "correct": true,
+                "explanation": "Es inyectiva (pendiente $\\neq0$) y sobreyectiva (toda imagen real es alcanzable)."
+              },
+              {
+                "value": "b",
+                "label": "$f(x)=x^2$",
+                "correct": false,
+                "explanation": "No inyectiva: $f(-1)=f(1)$. No sobreyectiva: imagen $\\geq0$."
+              },
+              {
+                "value": "c",
+                "label": "$f(x)=\\sin x$",
+                "correct": false,
+                "explanation": "No inyectiva (periódica). No sobreyectiva: imagen $=[-1,1]$."
+              },
+              {
+                "value": "d",
+                "label": "$f(x)=|x|$",
+                "correct": false,
+                "explanation": "No inyectiva: $|{-3}|=|3|$. Imagen $\\geq0$."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_3_2_5",
+            "question": "$f:A\\to B$ es sobreyectiva si y solo si:",
+            "options": [
+              {
+                "value": "a",
+                "label": "Para todo $b\\in B$ existe al menos un $a\\in A$ con $f(a)=b$",
+                "correct": true,
+                "explanation": "Sobreyectiva = todo elemento del codominio tiene al menos una preimagen."
+              },
+              {
+                "value": "b",
+                "label": "Para todo $a_1\\neq a_2$, $f(a_1)\\neq f(a_2)$",
+                "correct": false,
+                "explanation": "Esa es la definición de inyectiva."
+              },
+              {
+                "value": "c",
+                "label": "$|A|=|B|$",
+                "correct": false,
+                "explanation": "La igualdad de cardinalidad no garantiza sobreyectividad por sí sola."
+              },
+              {
+                "value": "d",
+                "label": "Existe un $b\\in B$ con exactamente una preimagen",
+                "correct": false,
+                "explanation": "Eso sería una condición puntual, no la definición global."
+              }
+            ],
+            "difficulty": "easy"
           }
         ]
       }

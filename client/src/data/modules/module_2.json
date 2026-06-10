@@ -107,7 +107,7 @@
             "difficulty": "medium"
           },
           {
-            "id": "exercise_2_1_3",
+            "id": "exercise_2_1_3_alt",
             "type": "challenge",
             "title": "Hipótesis inductiva",
             "problem": "En la prueba por inducción de $\\sum_{i=0}^{n}i=\\frac{n(n+1)}{2}$, ¿cuál es la hipótesis inductiva $P(k)$?",
@@ -157,6 +157,35 @@
               }
             ],
             "difficulty": "hard"
+          },
+          {
+            "id": "exercise_2_1_5",
+            "type": "challenge",
+            "title": "¿Cuál enunciado describe la hipótesis inductiva fuerte?",
+            "problem": "En el PIC simple, ¿cuál es la hipótesis inductiva para demostrar $P(k+1)$?",
+            "options": [
+              {
+                "value": "Suponer que $P(k)$ es verdadera para un $k\\geq n_0$ arbitrario",
+                "correct": true,
+                "explanation": "Exacto: se fija un $k\\geq n_0$ y se asume $P(k)$ para luego probar $P(k+1)$."
+              },
+              {
+                "value": "Suponer que $P(k)$ es verdadera para todo $k\\geq n_0$",
+                "correct": false,
+                "explanation": "Eso sería asumir lo que se quiere demostrar; la hipótesis fija un $k$ específico."
+              },
+              {
+                "value": "Suponer que $P(k+1)$ es verdadera",
+                "correct": false,
+                "explanation": "$P(k+1)$ es la conclusión, no la hipótesis."
+              },
+              {
+                "value": "Suponer que $P(0)$ es verdadera",
+                "correct": false,
+                "explanation": "$P(0)$ (o $P(n_0)$) es el caso base, no la hipótesis del paso inductivo."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -379,6 +408,42 @@
             "question": "¿Por qué la inducción fuerte y la inducción simple son equivalentes en poder demostrativo?",
             "answer": "Porque cualquier demostración por inducción simple puede reformularse con inducción fuerte y viceversa. La diferencia es de conveniencia, no de capacidad.",
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_2_5",
+            "type": "flashcard",
+            "question": "¿Cuándo se necesita la inducción fuerte (PIF) en lugar de la inducción simple?",
+            "answer": "Cuando el paso inductivo de $P(k+1)$ requiere asumir $P(j)$ para varios valores $j\\leq k$, no solo para $j=k$. Ejemplo clásico: teorema fundamental de la aritmética.",
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_2_6",
+            "type": "challenge",
+            "title": "Seleccionar el tipo de inducción",
+            "problem": "Para demostrar que todo $n\\geq2$ se puede escribir como producto de primos, ¿qué principio es el más adecuado?",
+            "options": [
+              {
+                "value": "Inducción fuerte (PIF)",
+                "correct": true,
+                "explanation": "Se necesita asumir que todos los naturales $2\\leq j<n$ ya tienen factorización, no solo $n-1$."
+              },
+              {
+                "value": "Inducción simple (PIC)",
+                "correct": false,
+                "explanation": "Con inducción simple solo se usa $P(k)$; aquí necesitamos $P(j)$ para todo $j<k$."
+              },
+              {
+                "value": "Principio del Buen Orden (PBO)",
+                "correct": false,
+                "explanation": "Se podría usar el PBO, pero el PIF es más directo para este enunciado."
+              },
+              {
+                "value": "Ninguna inducción; solo definición directa",
+                "correct": false,
+                "explanation": "Una demostración rigurosa requiere un principio inductivo."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -471,6 +536,68 @@
                 "label": "Porque la inducción simple no funciona con números compuestos",
                 "correct": false,
                 "explanation": "La distinción es sobre cuántos casos previos necesita el paso inductivo."
+              }
+            ],
+            "difficulty": "hard"
+          },
+          {
+            "id": "exam_2_2_4",
+            "question": "¿Cuál es la hipótesis de inducción fuerte para demostrar $P(k+1)$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "$P(j)$ es verdadera para todo $n_0\\leq j\\leq k$",
+                "correct": true,
+                "explanation": "La inducción fuerte asume toda la historia hasta $k$, no solo $P(k)$."
+              },
+              {
+                "value": "b",
+                "label": "$P(k)$ es verdadera",
+                "correct": false,
+                "explanation": "Eso es la hipótesis de inducción simple; la fuerte asume más."
+              },
+              {
+                "value": "c",
+                "label": "$P(k+1)$ es verdadera",
+                "correct": false,
+                "explanation": "Eso es lo que se quiere probar, no la hipótesis."
+              },
+              {
+                "value": "d",
+                "label": "$P(k-1)$ es verdadera",
+                "correct": false,
+                "explanation": "La inducción fuerte asume todos los casos anteriores, incluido $k-1$, pero no solo ese."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exam_2_2_5",
+            "question": "Sea $a_1=1$, $a_2=1$ y $a_n=a_{n-1}+a_{n-2}$ para $n\\geq3$ (Fibonacci). ¿Qué principio es apropiado para demostrar que $a_n<2^n$ para todo $n\\geq1$?",
+            "options": [
+              {
+                "value": "a",
+                "label": "Inducción fuerte, porque el paso de $n$ usa $a_{n-1}$ y $a_{n-2}$",
+                "correct": true,
+                "explanation": "Se necesita $a_{n-1}<2^{n-1}$ y $a_{n-2}<2^{n-2}$ simultáneamente."
+              },
+              {
+                "value": "b",
+                "label": "Inducción simple, porque hay un solo caso base",
+                "correct": false,
+                "explanation": "Con inducción simple no se puede asumir $a_{n-2}<2^{n-2}$ directamente."
+              },
+              {
+                "value": "c",
+                "label": "PBO, buscando el mínimo contraejemplo",
+                "correct": false,
+                "explanation": "Funciona pero el PIF es más directo aquí."
+              },
+              {
+                "value": "d",
+                "label": "No se puede demostrar por inducción",
+                "correct": false,
+                "explanation": "Sí puede demostrarse por inducción fuerte."
               }
             ],
             "difficulty": "hard"
@@ -606,6 +733,58 @@
                 "instruction": "Identifica el patrón y formula $a_n$ en forma cerrada.",
                 "hint": "$0=2^0-1$, $1=2^1-1$, $3=2^2-1$, $7=2^3-1$, …",
                 "answer": "$a_n=2^n-1$. Se puede verificar: $2(2^{n-1}-1)+1=2^n-2+1=2^n-1$. ✓"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_3_5",
+            "type": "challenge",
+            "title": "Identificar recurrencia lineal",
+            "problem": "¿Cuál de las siguientes es una relación de recurrencia lineal de orden 2?",
+            "options": [
+              {
+                "value": "$a_n=3a_{n-1}-2a_{n-2}$",
+                "correct": true,
+                "explanation": "Lineal de orden 2: depende de los dos términos anteriores con coeficientes constantes."
+              },
+              {
+                "value": "$a_n=a_{n-1}^2$",
+                "correct": false,
+                "explanation": "No es lineal porque el término anterior está al cuadrado."
+              },
+              {
+                "value": "$a_n=a_{n-1}+n^2$",
+                "correct": false,
+                "explanation": "Es de orden 1, no de orden 2. Además el término $n^2$ la hace no-homogénea."
+              },
+              {
+                "value": "$a_n=a_{n-1}\\cdot a_{n-2}$",
+                "correct": false,
+                "explanation": "No es lineal porque los términos anteriores se multiplican entre sí."
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_2_3_6",
+            "type": "step_by_step",
+            "title": "Resolver recurrencia $a_n=a_{n-1}+3$ con $a_0=2$",
+            "steps": [
+              {
+                "instruction": "Itera: calcula $a_1, a_2, a_3$ usando la recurrencia.",
+                "hint": "$a_1=a_0+3$, $a_2=a_1+3$, etc.",
+                "answer": "$a_1=5,\\ a_2=8,\\ a_3=11$."
+              },
+              {
+                "instruction": "¿Qué patrón observas? Conjetura una fórmula cerrada $a_n=?$",
+                "hint": "Cada paso suma 3, y $a_0=2$.",
+                "answer": "$a_n=2+3n$."
+              },
+              {
+                "instruction": "Verifica por inducción: comprueba el paso base y el paso inductivo.",
+                "hint": "Paso base $n=0$: $a_0=2+0=2$ ✓. Paso inductivo: si $a_k=2+3k$, entonces $a_{k+1}=a_k+3=2+3k+3=2+3(k+1)$ ✓.",
+                "answer": "La fórmula $a_n=2+3n$ es correcta para todo $n\\geq0$."
               }
             ],
             "difficulty": "medium"

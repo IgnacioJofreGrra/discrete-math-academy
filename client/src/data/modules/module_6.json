@@ -120,6 +120,42 @@
               }
             ],
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_6_1_5",
+            "type": "flashcard",
+            "question": "¿Qué tres propiedades debe cumplir una relación para ser de equivalencia?",
+            "answer": "**Reflexiva**: $aRa$ para todo $a$. **Simétrica**: $aRb\\Rightarrow bRa$. **Transitiva**: $aRb$ y $bRc\\Rightarrow aRc$.",
+            "difficulty": "easy"
+          },
+          {
+            "id": "exercise_6_1_6",
+            "type": "challenge",
+            "title": "Probar transitividad",
+            "problem": "La relación $R$ en $\\mathbb{Z}$ definida por $aRb\\iff 2\\mid(a-b)$ (congruencia módulo 2). Si $aRb$ y $bRc$, ¿qué concluyes?",
+            "options": [
+              {
+                "value": "Que $aRc$, porque $a-c=(a-b)+(b-c)$ y ambos términos son pares",
+                "correct": true,
+                "explanation": "$2\\mid(a-b)$ y $2\\mid(b-c)$ implica $2\\mid((a-b)+(b-c))=a-c$."
+              },
+              {
+                "value": "Que $aRc$ solo si $a<c$",
+                "correct": false,
+                "explanation": "El orden no determina la congruencia módulo 2."
+              },
+              {
+                "value": "Que $a=c$",
+                "correct": false,
+                "explanation": "$aRc$ no implica $a=c$; solo que $2\\mid(a-c)$."
+              },
+              {
+                "value": "No se puede concluir nada sin más información",
+                "correct": false,
+                "explanation": "La transitividad garantiza $aRc$ directamente."
+              }
+            ],
+            "difficulty": "medium"
           }
         ],
         "exam": [
@@ -342,6 +378,58 @@
             "question": "¿Cómo se llama el conjunto de todas las clases de equivalencia de $R$ en $A$?",
             "answer": "El **conjunto cociente**, escrito $A/R$. Sus elementos son las clases de equivalencia $[a]$ para cada $a\\in A$.",
             "difficulty": "medium"
+          },
+          {
+            "id": "exercise_6_2_5",
+            "type": "step_by_step",
+            "title": "Encontrar clases de equivalencia de la congruencia módulo 5 en $\\{0,1,\\ldots,9\\}$",
+            "steps": [
+              {
+                "instruction": "Lista los elementos de $\\{0,1,\\ldots,9\\}$ agrupados por su resto módulo 5.",
+                "hint": "Divide cada número por 5 y observa el resto.",
+                "answer": "Resto 0: $\\{0,5\\}$; Resto 1: $\\{1,6\\}$; Resto 2: $\\{2,7\\}$; Resto 3: $\\{3,8\\}$; Resto 4: $\\{4,9\\}$."
+              },
+              {
+                "instruction": "¿Cuántas clases hay? ¿Cómo se llama la colección de todas las clases?",
+                "hint": "Hay 5 clases; la colección es el conjunto cociente.",
+                "answer": "Hay 5 clases. La colección es el conjunto cociente $\\{0,1,\\ldots,9\\}/\\equiv_5$."
+              },
+              {
+                "instruction": "Verifica que las clases forman una partición: son disjuntas y su unión es todo el conjunto.",
+                "hint": "¿Se solapan? ¿Queda algún elemento sin clase?",
+                "answer": "Son disjuntas (cada número tiene un único resto módulo 5) y su unión es $\\{0,\\ldots,9\\}$. ✓"
+              }
+            ],
+            "difficulty": "medium"
+          },
+          {
+            "id": "exercise_6_2_6",
+            "type": "challenge",
+            "title": "Conjunto cociente",
+            "problem": "¿Cómo se denota el conjunto de todas las clases de equivalencia de $R$ en $A$?",
+            "options": [
+              {
+                "value": "$A/R$",
+                "correct": true,
+                "explanation": "$A/R$ es el conjunto cociente; sus elementos son las clases $[a]$ para $a\\in A$."
+              },
+              {
+                "value": "$A\\times R$",
+                "correct": false,
+                "explanation": "$A\\times R$ sería un producto cartesiano, no el cociente."
+              },
+              {
+                "value": "$A\\setminus R$",
+                "correct": false,
+                "explanation": "$A\\setminus R$ sería la diferencia de conjuntos."
+              },
+              {
+                "value": "$A\\cup R$",
+                "correct": false,
+                "explanation": "$A\\cup R$ sería la unión, no el cociente."
+              }
+            ],
+            "difficulty": "easy"
           }
         ],
         "exam": [
