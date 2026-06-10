@@ -187,6 +187,10 @@
   }
 }
 
+/* Hide scrollbar while keeping scroll functionality */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* KaTeX superscript/subscript layout — reinforce table-based positioning */
 .katex .vlist-t {
   display: inline-table;

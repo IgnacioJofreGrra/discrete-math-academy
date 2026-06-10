@@ -202,23 +202,31 @@ export default function Module() {
         </div>
 
         {/* Section Navigation */}
-        <div className="mb-6 overflow-x-auto">
-          <div className="flex gap-2 pb-2">
-            {module.sections.map((sec, idx) => (
-              <Button
-                key={sec.id}
-                variant={activeSection === idx ? 'default' : 'outline'}
-                onClick={() => {
-                  setActiveSection(idx);
-                  setActiveExercise(0);
-                  setExerciseType('theory');
-                }}
-                className="whitespace-nowrap"
-              >
-                {sec.title}
-              </Button>
-            ))}
+        <div className="mb-6 relative">
+          <div className="overflow-x-auto pb-1 scrollbar-hide">
+            <div className="flex gap-2 pb-2 min-w-max">
+              {module.sections.map((sec, idx) => (
+                <Button
+                  key={sec.id}
+                  variant={activeSection === idx ? 'default' : 'outline'}
+                  onClick={() => {
+                    setActiveSection(idx);
+                    setActiveExercise(0);
+                    setExerciseType('theory');
+                  }}
+                  className={`whitespace-nowrap transition-all ${
+                    activeSection === idx
+                      ? 'shadow-md'
+                      : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-blue-400 hover:text-blue-700 shadow-sm'
+                  }`}
+                >
+                  {sec.title}
+                </Button>
+              ))}
+            </div>
           </div>
+          {/* Scroll hint gradient */}
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-blue-50 to-transparent" />
         </div>
 
         {/* Main Content */}
