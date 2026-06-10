@@ -14,6 +14,7 @@ interface ChallengeOption {
 interface ChallengeProps {
   title: string;
   problem: string;
+  image?: string;
   options?: ChallengeOption[];
   userInput?: boolean;
   expectedAnswer?: string;
@@ -36,6 +37,7 @@ interface ChallengeProps {
 export function Challenge({
   title,
   problem,
+  image,
   options,
   userInput = false,
   expectedAnswer,
@@ -94,6 +96,11 @@ export function Challenge({
       </div>
 
       <Card className={`${difficultyColors[difficulty]} p-8 max-[359px]:p-4 mb-6 border-2`}>
+        {image && (
+          <div className="mb-4 rounded-lg overflow-hidden border border-gray-200 bg-white">
+            <img src={image} alt="Figura del ejercicio" className="w-full object-contain max-h-64" />
+          </div>
+        )}
         <div className="mb-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Problema:</h3>
           <div className="text-gray-800">

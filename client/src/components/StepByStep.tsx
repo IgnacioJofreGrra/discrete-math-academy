@@ -14,6 +14,7 @@ interface Step {
 interface StepByStepProps {
   title: string;
   steps: Step[];
+  image?: string;
   onComplete?: () => void;
 }
 
@@ -25,7 +26,7 @@ interface StepByStepProps {
  * - steps: Step[] - Array de pasos con instrucción, pista y respuesta
  * - onComplete: function - Callback cuando se completa el ejercicio
  */
-export function StepByStep({ title, steps, onComplete }: StepByStepProps) {
+export function StepByStep({ title, steps, image, onComplete }: StepByStepProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [showHint, setShowHint] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -67,6 +68,11 @@ export function StepByStep({ title, steps, onComplete }: StepByStepProps) {
 
   return (
     <div className="w-full max-w-3xl mx-auto px-4 max-[359px]:px-3">
+      {image && (
+        <div className="mb-4 rounded-lg overflow-hidden border border-gray-200 bg-white">
+          <img src={image} alt="Figura del ejercicio" className="w-full object-contain max-h-64" />
+        </div>
+      )}
       <div className="mb-6">
         <h2 className="text-2xl max-[359px]:text-xl font-bold text-gray-900 mb-4">{title}</h2>
         

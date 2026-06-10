@@ -129,6 +129,7 @@ export default function Module() {
           <Flashcard
             question={exercise.question}
             answer={exercise.answer}
+            image={exercise.image}
             difficulty={exercise.difficulty}
             canGoNext={activeExercise < section.content.exercises.length - 1}
             canGoPrevious={activeExercise > 0}
@@ -144,6 +145,7 @@ export default function Module() {
           <StepByStep
             title={exercise.title}
             steps={exercise.steps}
+            image={exercise.image}
             onComplete={() => {
               markCurrentExerciseCompleted();
               if (activeExercise < section.content.exercises.length - 1) {
@@ -157,6 +159,7 @@ export default function Module() {
           <Challenge
             title={exercise.title}
             problem={exercise.problem}
+            image={exercise.image}
             options={exercise.options}
             userInput={exercise.userInput}
             expectedAnswer={exercise.expectedAnswer}

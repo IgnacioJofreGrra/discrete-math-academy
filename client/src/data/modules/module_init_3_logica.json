@@ -1,0 +1,628 @@
+{
+  "id": "module_init_3_logica",
+  "title": "Matematica Inicial 3: Logica Proposicional",
+  "description": "Conectivas logicas, condicion necesaria y suficiente, negacion de enunciados y cuantificadores.",
+  "order": 3,
+  "track": "initial",
+  "difficulty": "beginner",
+  "estimatedHours": 8,
+  "icon": "git-branch",
+  "sections": [
+    {
+      "id": "section_logica_conectivas",
+      "title": "Conectivas lógicas (∧ y ∨)",
+      "description": "Ejercicios de traducción de propiedades matemáticas al lenguaje de conectivas lógicas 'y' (∧) y 'o' (∨).",
+      "order": 1,
+      "content": {
+        "theory": {
+          "definition": "Dado un enunciado matemático, podemos expresarlo usando conectivas lógicas: la conectiva **'y' (∧)** requiere que ambas condiciones se cumplan simultáneamente, mientras que la conectiva **'o' (∨)** requiere que al menos una se cumpla. Para traducir ecuaciones o inecuaciones, se factoriza o analiza el signo del producto/suma.",
+          "examples": [
+            {
+              "text": "El producto (x−2)(x+3)=0 equivale a x=2 o x=−3",
+              "latex": "(x-2)(x+3) = 0 \\Leftrightarrow x = 2 \\lor x = -3"
+            },
+            {
+              "text": "xy > 0 equivale a (x>0 y y>0) o (x<0 y y<0)",
+              "latex": "xy > 0 \\Leftrightarrow (x > 0 \\land y > 0) \\lor (x < 0 \\land y < 0)"
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_logica_s1_1",
+            "type": "step_by_step",
+            "difficulty": "easy",
+            "title": "Traducir (x−2)(x+3)=0",
+            "steps": [
+              {
+                "instruction": "Observa que el producto de dos factores es cero. ¿Cuándo el producto de dos números es igual a cero?",
+                "hint": "A·B = 0 si y solo si A = 0 o B = 0.",
+                "answer": "El producto (x−2)(x+3) es cero si y solo si uno de los dos factores es cero."
+              },
+              {
+                "instruction": "Aplica la propiedad al primer factor: ¿qué valor de x hace que (x−2)=0?",
+                "hint": "Despeja x de x−2=0.",
+                "answer": "x − 2 = 0 implica x = 2."
+              },
+              {
+                "instruction": "Aplica la propiedad al segundo factor: ¿qué valor de x hace que (x+3)=0?",
+                "hint": "Despeja x de x+3=0.",
+                "answer": "x + 3 = 0 implica x = −3."
+              },
+              {
+                "instruction": "Escribe la equivalencia final usando la conectiva lógica correspondiente.",
+                "hint": "¿Se requiere que ambas condiciones se cumplan a la vez, o alcanza con una?",
+                "answer": "\\((x-2)(x+3) = 0 \\Leftrightarrow x = 2 \\lor x = -3\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s1_2",
+            "type": "step_by_step",
+            "difficulty": "easy",
+            "title": "Traducir x²−1=0",
+            "steps": [
+              {
+                "instruction": "Factoriza x²−1 como diferencia de cuadrados.",
+                "hint": "Recuerda que a²−b² = (a−b)(a+b).",
+                "answer": "x² − 1 = (x−1)(x+1)."
+              },
+              {
+                "instruction": "¿Para qué valores de x se anula cada factor?",
+                "hint": "Iguala cada factor a cero por separado.",
+                "answer": "x − 1 = 0 da x = 1; x + 1 = 0 da x = −1."
+              },
+              {
+                "instruction": "Escribe la equivalencia lógica completa.",
+                "hint": "Usa la conectiva 'o' (∨) porque basta con que uno de los factores sea cero.",
+                "answer": "\\(x^2 - 1 = 0 \\Leftrightarrow x = 1 \\lor x = -1\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s1_3",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Traducir xy > 0",
+            "steps": [
+              {
+                "instruction": "¿Cuándo es positivo el producto de dos números reales x e y?",
+                "hint": "Recuerda la regla de signos: (+)(+) > 0 y (−)(−) > 0.",
+                "answer": "El producto xy es positivo cuando ambos factores tienen el mismo signo."
+              },
+              {
+                "instruction": "Escribe la condición para el caso en que ambos sean positivos.",
+                "hint": "Usa la conectiva 'y' (∧).",
+                "answer": "x > 0 ∧ y > 0."
+              },
+              {
+                "instruction": "Escribe la condición para el caso en que ambos sean negativos.",
+                "hint": "Usa la conectiva 'y' (∧).",
+                "answer": "x < 0 ∧ y < 0."
+              },
+              {
+                "instruction": "Combina ambos casos con la conectiva adecuada.",
+                "hint": "Son dos casos alternativos, usa 'o' (∨).",
+                "answer": "\\(xy > 0 \\Leftrightarrow (x > 0 \\land y > 0) \\lor (x < 0 \\land y < 0)\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s1_4",
+            "type": "step_by_step",
+            "difficulty": "easy",
+            "title": "Traducir (x−2)(x−3)≠0",
+            "steps": [
+              {
+                "instruction": "¿Cuándo es distinto de cero el producto de dos factores?",
+                "hint": "El producto A·B ≠ 0 si y solo si ninguno de los dos es cero.",
+                "answer": "El producto es no nulo cuando ambos factores son no nulos simultáneamente."
+              },
+              {
+                "instruction": "Escribe las condiciones individuales sobre x.",
+                "hint": "¿Qué valor de x anularía cada factor? Pide que x no tome esos valores.",
+                "answer": "x ≠ 2 y x ≠ 3."
+              },
+              {
+                "instruction": "Escribe la equivalencia final con la conectiva lógica correcta.",
+                "hint": "Se requieren ambas condiciones de forma simultánea, usa 'y' (∧).",
+                "answer": "\\((x-2)(x-3) \\neq 0 \\Leftrightarrow x \\neq 2 \\land x \\neq 3\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s1_5",
+            "type": "step_by_step",
+            "difficulty": "easy",
+            "title": "Traducir x²−1≠0",
+            "steps": [
+              {
+                "instruction": "Factoriza x²−1 e identifica los valores que lo anulan.",
+                "hint": "x² − 1 = (x−1)(x+1) = 0 cuando x = 1 o x = −1.",
+                "answer": "x² − 1 se anula en x = 1 y en x = −1."
+              },
+              {
+                "instruction": "Para que x²−1 ≠ 0, ¿qué condiciones debe verificar x?",
+                "hint": "x debe evitar ambos valores que anulan la expresión.",
+                "answer": "x ≠ 1 y x ≠ −1."
+              },
+              {
+                "instruction": "Escribe la equivalencia lógica final.",
+                "hint": "Ambas condiciones deben cumplirse simultáneamente.",
+                "answer": "\\(x^2 - 1 \\neq 0 \\Leftrightarrow x \\neq 1 \\land x \\neq -1\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s1_6",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Traducir xy ≤ 0",
+            "steps": [
+              {
+                "instruction": "¿Cuándo es el producto xy menor o igual a cero?",
+                "hint": "Considera los casos: producto negativo (signos opuestos) y producto nulo (al menos un factor es cero).",
+                "answer": "xy ≤ 0 cuando los factores tienen signos opuestos o al menos uno es cero."
+              },
+              {
+                "instruction": "Escribe la condición para el caso x ≤ 0 e y ≥ 0.",
+                "hint": "Usa la conectiva 'y' (∧).",
+                "answer": "x ≤ 0 ∧ y ≥ 0."
+              },
+              {
+                "instruction": "Escribe la condición para el caso x ≥ 0 e y ≤ 0.",
+                "hint": "Usa la conectiva 'y' (∧).",
+                "answer": "x ≥ 0 ∧ y ≤ 0."
+              },
+              {
+                "instruction": "Combina los dos casos con la conectiva adecuada.",
+                "hint": "Son casos alternativos; usa 'o' (∨).",
+                "answer": "\\(xy \\le 0 \\Leftrightarrow (x \\le 0 \\land y \\ge 0) \\lor (x \\ge 0 \\land y \\le 0)\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s1_7",
+            "type": "challenge",
+            "difficulty": "medium",
+            "title": "Identificar la conectiva correcta",
+            "problem": "¿Cuál de las siguientes expresiones representa correctamente la traducción lógica de \\((x-1)(x+5) = 0\\)?",
+            "options": [
+              {
+                "value": "\\(x = 1 \\land x = -5\\)",
+                "correct": false,
+                "explanation": "Incorrecto. No es posible que x sea 1 y −5 al mismo tiempo. La conectiva 'y' (∧) no aplica aquí."
+              },
+              {
+                "value": "\\(x = 1 \\lor x = -5\\)",
+                "correct": true,
+                "explanation": "Correcto. El producto es cero cuando al menos uno de los factores es cero: x = 1 o x = −5."
+              },
+              {
+                "value": "\\(x = 1 \\lor x = 5\\)",
+                "correct": false,
+                "explanation": "Incorrecto. El segundo factor es (x+5), que se anula en x = −5, no en x = 5."
+              },
+              {
+                "value": "\\(x \\neq 1 \\land x \\neq -5\\)",
+                "correct": false,
+                "explanation": "Incorrecto. Esa sería la traducción de (x−1)(x+5) ≠ 0, no de la igualdad a cero."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s1_8",
+            "type": "flashcard",
+            "difficulty": "easy",
+            "question": "¿Qué conectiva lógica se usa para traducir 'A·B = 0' y cuál para 'A·B ≠ 0'?",
+            "answer": "Para A·B = 0 se usa la disyunción (∨): A = 0 ∨ B = 0. Para A·B ≠ 0 se usa la conjunción (∧): A ≠ 0 ∧ B ≠ 0."
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_logica_cns",
+      "title": "Condición necesaria y suficiente (⟺)",
+      "description": "Ejercicios sobre condiciones suficientes, necesarias y necesarias y suficientes (bicondicional ⟺), incluyendo su modificación y completamiento.",
+      "order": 2,
+      "content": {
+        "theory": {
+          "definition": "Una condición P es **suficiente** para Q si P ⟹ Q (siempre que P se cumple, Q también). Es **necesaria** para Q si Q ⟹ P (Q no puede cumplirse sin P). Es **necesaria y suficiente** cuando P ⟺ Q, es decir, P y Q son equivalentes.",
+          "examples": [
+            {
+              "text": "Para x² > 4: la condición x > 100 es suficiente (si x > 100 entonces x² > 4) pero no necesaria (x² > 4 no implica x > 100).",
+              "latex": "x > 100 \\Rightarrow x^2 > 4 \\quad \\text{(suficiente, no necesaria)}"
+            },
+            {
+              "text": "La condición necesaria y suficiente para x² > 4 es x < −2 o x > 2.",
+              "latex": "x^2 > 4 \\Leftrightarrow x < -2 \\lor x > 2"
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_logica_s2_1",
+            "type": "challenge",
+            "difficulty": "easy",
+            "title": "Condición suficiente para x²>4 — caso x>100",
+            "problem": "Dado que nos interesa la afirmación \\(x^2 > 4\\), ¿la condición \\(x > 100\\) es suficiente para dicha afirmación?",
+            "options": [
+              {
+                "value": "Sí, es suficiente.",
+                "correct": true,
+                "explanation": "Correcto. Si x > 100, entonces x² > 10000 > 4. Por lo tanto x > 100 ⟹ x² > 4, es decir, es condición suficiente."
+              },
+              {
+                "value": "No, no es suficiente.",
+                "correct": false,
+                "explanation": "Incorrecto. x > 100 implica x² > 10000, que es mayor que 4, así que sí garantiza x² > 4."
+              },
+              {
+                "value": "Es suficiente y también necesaria.",
+                "correct": false,
+                "explanation": "Incorrecto. Si bien es suficiente, no es necesaria: por ejemplo x = −3 satisface x² > 4 pero no x > 100."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s2_2",
+            "type": "challenge",
+            "difficulty": "easy",
+            "title": "Condición suficiente para x²>4 — caso x>1.9",
+            "problem": "¿La condición \\(x > 1{,}9\\) es suficiente para que se cumpla \\(x^2 > 4\\)?",
+            "options": [
+              {
+                "value": "Sí, es suficiente.",
+                "correct": false,
+                "explanation": "Incorrecto. Por ejemplo x = 1,95 > 1,9 pero x² = 3,8025 < 4. La condición no garantiza x² > 4."
+              },
+              {
+                "value": "No, no es suficiente.",
+                "correct": true,
+                "explanation": "Correcto. Hay valores con x > 1,9 tales que x² ≤ 4 (por ejemplo x = 1,95). Por eso no es condición suficiente."
+              },
+              {
+                "value": "Es necesaria pero no suficiente.",
+                "correct": false,
+                "explanation": "Incorrecto. Tampoco es necesaria: x = −3 verifica x² > 4 pero no x > 1,9."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s2_3",
+            "type": "challenge",
+            "difficulty": "medium",
+            "title": "Condición necesaria Y suficiente para x²>4",
+            "problem": "Entre todas las condiciones estudiadas para \\(x^2 > 4\\), ¿cuál es necesaria Y suficiente?",
+            "options": [
+              {
+                "value": "\\(x > 2\\)",
+                "correct": false,
+                "explanation": "Incorrecto. x > 2 es suficiente pero no necesaria: x = −3 verifica x² > 4 pero no x > 2."
+              },
+              {
+                "value": "\\(x < -2 \\lor x > 2\\)",
+                "correct": true,
+                "explanation": "Correcto. x² > 4 ⟺ |x| > 2 ⟺ x < −2 o x > 2. Esta condición es equivalente a x² > 4, luego es necesaria y suficiente."
+              },
+              {
+                "value": "\\(x < -3 \\lor x > 3\\)",
+                "correct": false,
+                "explanation": "Incorrecto. Es suficiente (si |x| > 3 entonces x² > 9 > 4) pero no necesaria (x = 2,5 cumple x² > 4 pero no |x| > 3)."
+              },
+              {
+                "value": "\\(x < -10\\)",
+                "correct": false,
+                "explanation": "Incorrecto. Es una condición suficiente muy restrictiva, pero no necesaria en absoluto."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s2_4",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Modificar condición suficiente a necesaria y suficiente — Ejercicio 3.1",
+            "steps": [
+              {
+                "instruction": "Sea x un real positivo. La condición dada es: 'si x > 4 entonces x² > 10'. ¿Es esta condición necesaria?",
+                "hint": "Busca un x positivo con x² > 10 pero x ≤ 4.",
+                "answer": "No es necesaria: por ejemplo x = 3,5 verifica x² = 12,25 > 10 pero x < 4."
+              },
+              {
+                "instruction": "Determina el valor exacto de x positivo a partir del cual x² > 10.",
+                "hint": "Resuelve x² = 10 para x positivo.",
+                "answer": "\\(x^2 = 10 \\Rightarrow x = \\sqrt{10}\\). Para x positivo, x² > 10 ⟺ x > √10."
+              },
+              {
+                "instruction": "Escribe la condición necesaria y suficiente para que x² > 10 (con x real positivo).",
+                "hint": "Reemplaza el 4 por el valor exacto que encontraste.",
+                "answer": "Para x real positivo: \\(x^2 > 10 \\Leftrightarrow x > \\sqrt{10}\\). La condición necesaria y suficiente es \\(x > \\sqrt{10}\\)."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s2_5",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Modificar condición suficiente a necesaria y suficiente — Ejercicio 3.2",
+            "steps": [
+              {
+                "instruction": "Sean x e y reales no negativos. La condición dada es: 'si x > 0 e y > 0 entonces x+y > 0'. ¿Es esta condición necesaria?",
+                "hint": "Busca x, y ≥ 0 con x+y > 0 pero sin que ambos sean estrictamente positivos.",
+                "answer": "No es necesaria: por ejemplo x = 1 e y = 0 cumple x+y = 1 > 0, pero y = 0 viola la condición x > 0 ∧ y > 0."
+              },
+              {
+                "instruction": "¿Cuándo es x+y > 0 para reales no negativos x e y?",
+                "hint": "Si x ≥ 0 e y ≥ 0, el único caso en que x+y = 0 es x = y = 0.",
+                "answer": "Para x ≥ 0 e y ≥ 0: x+y > 0 si y solo si no son ambos cero, es decir, x > 0 o y > 0."
+              },
+              {
+                "instruction": "Escribe la condición necesaria y suficiente.",
+                "hint": "Reemplaza 'y' por 'o' en la condición original.",
+                "answer": "Para x, y reales no negativos: \\(x + y > 0 \\Leftrightarrow x > 0 \\lor y > 0\\)."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s2_6",
+            "type": "step_by_step",
+            "difficulty": "hard",
+            "title": "Completar condición necesaria a necesaria y suficiente — Rombo",
+            "steps": [
+              {
+                "instruction": "La condición necesaria dada es: 'para que ABCD sea un rombo, es necesario que sus diagonales sean perpendiculares'. ¿Es suficiente esta condición?",
+                "hint": "¿Existe algún cuadrilátero con diagonales perpendiculares que no sea un rombo?",
+                "answer": "No es suficiente: una cometa (deltoides) tiene diagonales perpendiculares pero no es un rombo."
+              },
+              {
+                "instruction": "¿Qué propiedad adicional sobre las diagonales caracteriza exactamente a los rombos?",
+                "hint": "En un rombo, las diagonales no solo son perpendiculares, sino que también se bisecan mutuamente.",
+                "answer": "Las diagonales de un rombo son perpendiculares y se cortan en el punto medio de ambas (se bisecan mutuamente)."
+              },
+              {
+                "instruction": "Escribe la condición necesaria y suficiente completa para que ABCD sea un rombo.",
+                "hint": "Combina ambas propiedades de las diagonales.",
+                "answer": "ABCD es un rombo si y solo si sus diagonales son perpendiculares y se cortan en el punto medio de cada una."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s2_7",
+            "type": "flashcard",
+            "difficulty": "easy",
+            "question": "¿Qué significa que P sea condición suficiente pero no necesaria para Q?",
+            "answer": "P ⟹ Q (P implica Q) pero Q no implica P. Es decir, P garantiza Q, pero Q puede ocurrir sin que P se cumpla. Ejemplo: x > 100 es suficiente pero no necesaria para x² > 4."
+          },
+          {
+            "id": "exercise_logica_s2_8",
+            "type": "challenge",
+            "difficulty": "hard",
+            "title": "Condición necesaria y suficiente para que tres reales sean positivos",
+            "problem": "Para que los tres números reales a, b, c sean positivos, la condición necesaria dada es: ab > 0 y bc > 0. ¿Qué se debe agregar para que sea también suficiente?",
+            "options": [
+              {
+                "value": "Agregar que ac > 0.",
+                "correct": false,
+                "explanation": "Incorrecto. Si a = −2, b = −1, c = −3, entonces ab = 2 > 0, bc = 3 > 0, ac = 6 > 0, pero ninguno es positivo."
+              },
+              {
+                "value": "Agregar que a > 0.",
+                "correct": true,
+                "explanation": "Correcto. Si ab > 0 entonces a y b tienen el mismo signo. Si además bc > 0, entonces b y c tienen el mismo signo. Conociendo el signo de a (positivo), se deduce que b y c también son positivos."
+              },
+              {
+                "value": "Agregar que a + b + c > 0.",
+                "correct": false,
+                "explanation": "Incorrecto. Podrían existir contraejemplos donde la suma sea positiva pero alguno de los números sea negativo."
+              },
+              {
+                "value": "No hace falta agregar nada, la condición ya es suficiente.",
+                "correct": false,
+                "explanation": "Incorrecto. Con a = −2, b = −2, c = −2: ab = 4 > 0 y bc = 4 > 0, pero ninguno es positivo."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_logica_negacion",
+      "title": "Negación y cuantificadores",
+      "description": "Ejercicios sobre negación de proposiciones, uso de cuantificadores universal (∀) y existencial (∃), contrarrecíproco y demostración por contraejemplo.",
+      "order": 3,
+      "content": {
+        "theory": {
+          "definition": "El **cuantificador universal** (∀) afirma que una propiedad se cumple para todos los elementos. El **cuantificador existencial** (∃) afirma que existe al menos un elemento que cumple la propiedad. La **negación** de '∀x, P(x)' es '∃x, ¬P(x)', y la negación de '∃x, P(x)' es '∀x, ¬P(x)'. El **contrarrecíproco** de 'P ⟹ Q' es '¬Q ⟹ ¬P', que es lógicamente equivalente.",
+          "examples": [
+            {
+              "text": "La negación de 'todos los triángulos son rectángulos' es 'existe al menos un triángulo que no es rectángulo'.",
+              "latex": "\\neg (\\forall x, P(x)) \\equiv \\exists x, \\neg P(x)"
+            },
+            {
+              "text": "El contrarrecíproco de 'si x > 0 entonces x+4 > 0' es 'si x+4 ≤ 0 entonces x ≤ 0'.",
+              "latex": "(P \\Rightarrow Q) \\Leftrightarrow (\\neg Q \\Rightarrow \\neg P)"
+            }
+          ]
+        },
+        "exercises": [
+          {
+            "id": "exercise_logica_s3_1",
+            "type": "step_by_step",
+            "difficulty": "easy",
+            "title": "Cuantificador correcto para (x+1)²=x²+2x+1",
+            "steps": [
+              {
+                "instruction": "Considera la proposición '... x ∈ ℝ, (x+1)² = x²+2x+1'. ¿Es esta igualdad verdadera para algún x, para todo x, o solo para un único x?",
+                "hint": "Expande (x+1)² algebraicamente.",
+                "answer": "(x+1)² = x² + 2x + 1 es la identidad del cuadrado del binomio, que es siempre verdadera."
+              },
+              {
+                "instruction": "¿Qué cuantificador hace verdadera la proposición?",
+                "hint": "Si vale para todos los reales, usa ∀; si solo para alguno, usa ∃.",
+                "answer": "Se usa el cuantificador universal: \\(\\forall x \\in \\mathbb{R}, (x+1)^2 = x^2 + 2x + 1\\)."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s3_2",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Cuantificador correcto para (x+1)²=x²+1",
+            "steps": [
+              {
+                "instruction": "Expande (x+1)² e iguala a x²+1 para hallar para qué valores de x se cumple.",
+                "hint": "(x+1)² = x² + 2x + 1. Igualar a x² + 1 da 2x = 0.",
+                "answer": "x² + 2x + 1 = x² + 1 ⟹ 2x = 0 ⟹ x = 0. Solo se cumple para x = 0."
+              },
+              {
+                "instruction": "¿Qué cuantificador hace verdadera la proposición? ¿Es el valor único?",
+                "hint": "Hay exactamente un real que satisface la ecuación.",
+                "answer": "Se usa el cuantificador existencial de unicidad: \\(\\exists! \\, x \\in \\mathbb{R}, (x+1)^2 = x^2 + 1\\)."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s3_3",
+            "type": "challenge",
+            "difficulty": "medium",
+            "title": "Cuantificador para sin(x) = cos(x)",
+            "problem": "¿Cuál es el cuantificador correcto para hacer verdadera la proposición '... x ∈ ℝ, sin(x) = cos(x)'?",
+            "options": [
+              {
+                "value": "\\(\\forall x \\in \\mathbb{R}\\)",
+                "correct": false,
+                "explanation": "Incorrecto. No es verdad para todo x; por ejemplo sin(0) = 0 ≠ 1 = cos(0)."
+              },
+              {
+                "value": "\\(\\exists! \\, x \\in \\mathbb{R}\\) (existe único)",
+                "correct": false,
+                "explanation": "Incorrecto. La ecuación sin(x) = cos(x) tiene infinitas soluciones: x = π/4 + kπ para todo entero k."
+              },
+              {
+                "value": "\\(\\exists x \\in \\mathbb{R}\\) (existe al menos uno)",
+                "correct": true,
+                "explanation": "Correcto. Existen valores de x con sin(x) = cos(x), por ejemplo x = π/4. Como hay infinitas soluciones, se usa ∃ sin unicidad."
+              },
+              {
+                "value": "Ningún cuantificador hace la proposición verdadera.",
+                "correct": false,
+                "explanation": "Incorrecto. Como x = π/4 es solución, la proposición '∃x ∈ ℝ, sin(x) = cos(x)' es verdadera."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s3_4",
+            "type": "step_by_step",
+            "difficulty": "easy",
+            "title": "Negar proposiciones simples",
+            "steps": [
+              {
+                "instruction": "Escribe la negación de 'x ∈ ℕ'.",
+                "hint": "La negación de una pertenencia es la no pertenencia.",
+                "answer": "\\(x \\notin \\mathbb{N}\\)"
+              },
+              {
+                "instruction": "Escribe la negación de 'x > 0'.",
+                "hint": "La negación de 'mayor que' es 'menor o igual que'.",
+                "answer": "\\(x \\le 0\\)"
+              },
+              {
+                "instruction": "Escribe la negación de 'x ≤ 1'.",
+                "hint": "La negación de 'menor o igual que' es 'estrictamente mayor que'.",
+                "answer": "\\(x > 1\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s3_5",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Negar una proposición cuantificada — ∀x∈ℝ, x>0",
+            "steps": [
+              {
+                "instruction": "¿Es verdadera o falsa la proposición '∀x∈ℝ, x > 0'?",
+                "hint": "Busca un número real que no sea positivo.",
+                "answer": "Es falsa: por ejemplo x = −1 ∈ ℝ y −1 no es mayor que 0."
+              },
+              {
+                "instruction": "Escribe la negación formal de '∀x∈ℝ, x > 0' usando la regla de negación del cuantificador universal.",
+                "hint": "La negación de ∀x, P(x) es ∃x, ¬P(x).",
+                "answer": "\\(\\exists x \\in \\mathbb{R},\\, x \\le 0\\)"
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s3_6",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Negar una proposición cuantificada — ∃x∈ℝ, 2x+1=x",
+            "steps": [
+              {
+                "instruction": "Determina si '∃x∈ℝ, 2x+1=x' es verdadera o falsa.",
+                "hint": "Resuelve la ecuación 2x+1=x.",
+                "answer": "2x + 1 = x ⟹ x = −1. Existe x = −1 que satisface la ecuación, por lo que la proposición es verdadera."
+              },
+              {
+                "instruction": "Escribe la negación formal de '∃x∈ℝ, 2x+1=x'.",
+                "hint": "La negación de ∃x, P(x) es ∀x, ¬P(x).",
+                "answer": "\\(\\forall x \\in \\mathbb{R},\\, 2x + 1 \\neq x\\). Esta negación es falsa (ya que la proposición original es verdadera)."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s3_7",
+            "type": "step_by_step",
+            "difficulty": "medium",
+            "title": "Escribir el contrarrecíproco",
+            "steps": [
+              {
+                "instruction": "Escribe el contrarrecíproco de: 'Si un número es mayor que 7 entonces es mayor que 4'.",
+                "hint": "El contrarrecíproco de P ⟹ Q es ¬Q ⟹ ¬P.",
+                "answer": "Si un número es menor o igual a 4, entonces es menor o igual a 7."
+              },
+              {
+                "instruction": "Escribe el contrarrecíproco de: 'Dado x∈ℝ, si x > 0 entonces x+4 > 0'.",
+                "hint": "Niega ambas partes e invierte la implicación.",
+                "answer": "Dado \\(x \\in \\mathbb{R}\\), si \\(x + 4 \\le 0\\) entonces \\(x \\le 0\\)."
+              },
+              {
+                "instruction": "¿El contrarrecíproco es lógicamente equivalente al enunciado original?",
+                "hint": "Recuerda la equivalencia lógica entre una implicación y su contrarrecíproco.",
+                "answer": "Sí: P ⟹ Q y ¬Q ⟹ ¬P son siempre equivalentes. Demostrar el contrarrecíproco equivale a demostrar la implicación original."
+              }
+            ]
+          },
+          {
+            "id": "exercise_logica_s3_8",
+            "type": "challenge",
+            "difficulty": "hard",
+            "title": "Demostración por contraejemplo",
+            "problem": "Para refutar la afirmación 'un número siempre es inferior a su cuadrado', ¿qué estrategia es correcta?",
+            "options": [
+              {
+                "value": "Demostrar que x < x² es falsa para todo número real.",
+                "correct": false,
+                "explanation": "Incorrecto. Para refutar un enunciado universal no es necesario probar que la propiedad nunca se cumple; basta con encontrar un contraejemplo."
+              },
+              {
+                "value": "Encontrar un único número real para el cual x ≥ x².",
+                "correct": true,
+                "explanation": "Correcto. Para refutar '∀x, x < x²' basta exhibir un contraejemplo. Por ejemplo x = 1/2: x² = 1/4 < 1/2 = x, así que x > x²."
+              },
+              {
+                "value": "Demostrar que la afirmación es verdadera para números negativos.",
+                "correct": false,
+                "explanation": "Incorrecto. Demostrar que vale en un subconjunto no refuta la afirmación universal; hay que encontrar un caso donde falle."
+              },
+              {
+                "value": "La afirmación es verdadera y no se puede refutar.",
+                "correct": false,
+                "explanation": "Incorrecto. El contraejemplo x = 1/2 muestra que x² = 1/4 < x, refutando que siempre x < x²."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

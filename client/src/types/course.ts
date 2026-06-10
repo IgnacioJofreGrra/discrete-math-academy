@@ -42,6 +42,7 @@ export interface ChallengeOption {
 interface BaseExercise {
   id: string;
   difficulty?: ExerciseDifficulty;
+  image?: string;
 }
 
 export interface FlashcardExercise extends BaseExercise {

@@ -8,6 +8,7 @@ import { AppIcon } from './AppIcon';
 interface FlashcardProps {
   question: string;
   answer: string;
+  image?: string;
   difficulty?: 'easy' | 'medium' | 'hard';
   onNext?: () => void;
   onComplete?: () => void;
@@ -31,6 +32,7 @@ interface FlashcardProps {
 export function Flashcard({
   question,
   answer,
+  image,
   difficulty = 'easy',
   onNext,
   onComplete,
@@ -73,6 +75,11 @@ export function Flashcard({
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 max-[359px]:px-3">
+      {image && (
+        <div className="mb-4 rounded-lg overflow-hidden border border-gray-200 bg-white">
+          <img src={image} alt="Figura del ejercicio" className="w-full object-contain max-h-64" />
+        </div>
+      )}
       <div className="mb-4 flex items-center justify-between">
         <span className={`px-3 py-1 rounded-full text-sm font-medium ${difficultyBadgeColors[difficulty]}`}>
           {difficulty === 'easy' ? 'Fácil' : difficulty === 'medium' ? 'Medio' : 'Difícil'}

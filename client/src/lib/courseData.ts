@@ -8,12 +8,14 @@ import module6 from '@/data/modules/module_6.json';
 import moduleInit0 from '@/data/modules/module_init_0_foundations.json';
 import moduleInit1 from '@/data/modules/module_init_1_radicales_logaritmos.json';
 import moduleInit2 from '@/data/modules/module_init_2_practica_cientifica.json';
+import moduleInit3 from '@/data/modules/module_init_3_logica.json';
 import type { CourseModule, ModuleTrack } from '@/types/course';
 
 const rawModules: CourseModule[] = [
   moduleInit0 as CourseModule,
   moduleInit1 as CourseModule,
   moduleInit2 as CourseModule,
+  moduleInit3 as CourseModule,
   module0 as CourseModule,
   module1 as CourseModule,
   module2 as CourseModule,
