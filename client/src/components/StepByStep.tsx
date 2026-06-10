@@ -74,7 +74,7 @@ export function StepByStep({ title, steps, image, onComplete }: StepByStepProps)
         </div>
       )}
       <div className="mb-6">
-        <h2 className="text-2xl max-[359px]:text-xl font-bold text-gray-900 mb-4">{title}</h2>
+        <h2 className="text-2xl max-[359px]:text-xl font-bold text-gray-900 mb-4"><InlineMathText text={title} /></h2>
         
         {/* Progress Bar */}
         <div className="w-full bg-gray-200 rounded-full h-2">
